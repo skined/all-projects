@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">	
+	<title></title>
+</head>
+<body>
+	<!-- 计算属性：定义在computed中，属性的值是函数的返回值 -->
+	<!-- computed:选项对象与data平级，computed放计算后的属性 -->
+	<!-- data存放的是普通的属性 -->
+	<!-- 计算属性作用：把对数据的处理逻辑抽离到计算属性中，使模板更加简洁轻便 -->
+	<!-- 计算属性也会挂载到vue实例上，计算属性里面的this也指向vue实例
+	计算属性和方法的对比：
+	computed和methods
+	计算属性是把计算后的返回结果放在了某个变量缓存里我们多次使用使直接拿这个变量 -->
+	<!-- 计算属性依赖于data属性中的数据，如果data中的数据发生变化，计算属性会重新计算并且渲染 -->
+	<div id="app">
+		<input type="text" v-model="message">
+		<p>{{message}}</p>
+		<p>{{message.split("").reverse().join('')}}</p>
+		<p>{{reverseMessage()}}</p>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'hello',
+		},
+		computed:{
+             reverseMessage:function(){
+             	return this.message.split('').reverse('').join('');
+             },
+		},
+		methods:{
+			 reverseMessage:function(){
+                      console.log(1);
+                      return this.message.split('').reverse('').join('');
+			}
+		}
+	})
+</script>
+</body>
+</html>

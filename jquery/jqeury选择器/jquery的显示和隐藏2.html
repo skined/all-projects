@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<input type="button" value="点击显示与隐藏" name="">
+	<p>p断落的标签</p>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('input').click(function(){
+			$('p').toggle('fast',function(){
+				// alert(1);
+			});//控制显示与隐藏   toggle()方法接收了两个参数，第一个参数代表了时间快慢，第二个参数可以放执行函数，时间取值有fast slow  秒数
+		})
+	})
+</script>
+</body>
+</html>

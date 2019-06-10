@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		li{
+			list-style:none;
+		}
+		.list li{
+			margin:3px 0;
+			color:#333;
+			line-height: 30px;
+			padding-left: 16px;
+			width: 270px;
+			box-sizing:border-box;
+			border-radius:14px;
+
+		}
+		.list li.active,.list li:hover{
+			color:#fff;
+			background: #fd635e;
+			cursor: pointer;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="app"> 
+		 <div style="float:left">
+		 	 <h3>我是自定义的下拉框1</h3>
+		     <custom-select btn="查询" v-bind:list='list1'></custom-select>
+		 </div>
+		<div style="float:right">
+			  <h3>我是自定义的下拉框2</h3>
+		      <custom-select btn='搜索' v-bind:list='list2'></custom-select>
+		</div>
+		
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	  //父组件和子组件的通信的核心：在子组件的标签上绑定自定义属性，冒号前边
+      //v-bind: 自定义属性名称=‘数据’，数据就绑定到了自定义属性名称上了，子组件通过props属性接收props：['自定义属性名称']
+	//自定义列表组件
+	//子组件和父组件的通信的核心：
+	//要把触发的事件广播出去 $emit方法广播事件
+	//子组件需要以某种方式比如一个点击事件来触发自定义事件，将你需要传递的值作为$emit的第二个参数，第一个参数是自定义参数的事件名称，这个值在我们父组件绑定这个自定义事件的函数中获取
+	//子组件
+	  Vue.component('custom-list',{
+          props:['list'],
+          template:`
+            <ul class='list'>
+	            <li v-for='item in list' @click='sendValue(item)'>{{item}}</li>
+	        </ul>
+          `,
+          methods:{
+          	sendValue:function(item){
+          		//告知父组件,调用$emit()方法接收两个参数
+          		//$emit('自定义事件','你要传的值')
+          		//$emit()
+          		this.$emit('receive',item);
+          		console.log(item);
+              }
+	    }
+    })
+	   //自定义下拉框组件
+	   
+	 Vue.component('custom-select',{
+	  
+	   data:function(){
+	   	return {
+	   		isShow:false,
+	   		val:''
+	   	}
+	   },
+	    props:['btn','list'],//使用props接收自定义属性
+       template:`
+        <section>
+          <div>
+             <input type='text' @click='isShow=!isShow' v-model='val'>
+             <input type='button' v-bind:value='btn'/>
+          </div>
+	       <custom-list v-show='isShow' v-on:receive='receiveHandler' v-bind:list='list'></custom-list>
+        </section>
+       `,
+       methods:{
+             receiveHandler:function(val){
+               console.log(val);
+               this.val=val;
+              }
+       }
+	})
+	// 自定义的下拉框组建件
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'Hello World!',
+		    list1:['北京','上海','深圳'],
+		    list2:['2019-4-4','2019-4-3','2019-4-2'],
+		}
+	})
+</script>
+</body>
+</html>

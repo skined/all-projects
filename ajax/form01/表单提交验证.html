@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+      body {
+            margin: 0;
+            padding: 0;
+            background-color: #F7F7F7;
+        }
+
+        ul {
+            margin: 0;
+            padding: 50px;
+            list-style: none;
+        }
+        
+        .register {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #FFF;
+            border: 1px solid #CCC;
+            border-radius:5px;
+        }
+        li{
+            display: flex;
+            margin: 20px 0;
+        }
+        label, input {
+            display: block;
+            float: left;
+            height: 46px;
+            font-size: 24px;
+            box-sizing: border-box;
+            color: #333;
+        }
+        label {
+            width: 200px;
+            line-height: 46px;
+            margin-right: 30px;
+            text-align: right;
+        }
+        input {
+            width: 320px;
+            padding: 8px;
+            line-height:1;
+            outline: none;
+            position: relative;
+        }
+
+
+        input.code {
+            width: 120px;
+        }
+
+      input.verify {
+            width: 190px;
+            margin-left: 10px;
+        }
+
+        input.disabled {
+            background-color: #CCC !important;
+            /*最重要的，优先级高于一切样式*/
+        }
+
+        input[type=button] {
+            border: none;
+            color: #FFF;
+            background-color: #E64145;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .error{
+            color: red;
+            margin-left: 10px;
+            font-size: 12px;
+            line-height: 46px;
+        }
+
+        .tips {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+        }
+
+        .tips p {
+            min-width: 300px;
+            max-width: 400px;
+            line-height: 40px;
+            margin: 0 auto;
+            color: #FFF;
+            display: none;
+            background-color: #C91623;
+            opacity:0.7;
+        }
+  </style>
+</head>
+<body>
+  <div class="register">
+    <form id="ajaxform">
+      <ul>
+        <li>
+          <label for="name">用户名</label>
+          <input type="text" name="name" id="name" class="name">
+          <span class="error"></span>
+        </li>
+        <li>
+          <label for="pass">请设置密码</label>
+          <input type="password" name="pass" id="pass" class="pass">
+        </li>
+         <li>
+          <label for="repass">请确认密码</label>
+          <input type="password" name="repass" id="repass" class="repass">
+        </li>
+         <li>
+          <label for="mobile">请验证手机</label>
+          <input type="text" name="mobile" id="mobile" class="mobile">
+        </li>
+          <li>
+           <label for="code">短信验证码</label>
+           <input type="text" name="code" class="code" id="code">
+           <input type="button" class="verify"  value="获取验证码">
+        </li>
+        <li>
+          <label for="submit"></label>
+          <input type="button" value="立即注册" class="submit" id="submit" >
+        </li>
+      </ul>
+    </form>
+  </div>
+  <div class="tips">
+    <p>用户名不能为空</p>
+  </div>
+<script src="jquery.js"></script> 
+<script type="text/javascript">
+  $(function(){
+     $('.verify').on('click',function(){
+    var mobileval=$('.mobile').val();
+    if(mobileval==''){
+      $('.tips>p').html('请输入手机号').fadeIn(500).delay(1500).fadeOut(500);
+      return;
+    }
+    var phoneReg=/^[1][3,5,7,8][0-9]{9}$/.text(mobileva);
+    if(!phoneReg){
+      $('.tips>p').html('请输入合法的手机号').fadeIn(500).delay(1500).fadeOut(500);
+      return;//禁止后续代码执行
+
+    } 
+    $('.verify').addClass('disabled').val('正在发送中');
+    $.ajax({
+      'url':'register.php',
+      'type':'post',
+      'data':{
+        'mobile':'mobileval',
+      },
+      'dataType':'json',
+      success:function(data){
+        console.log(data);
+        if(data.code==10000){
+          $('.tips>p').html('获取验证码成功').fadeIn(500).delay(1500).fadeOut(500);
+        
+          var time=data.result.time || 10;
+          time=parseIn(time);
+          var timer=setInterval(function(){
+            if(time==0){
+              clearInterval(timer);
+              $('.verify').removeClass('disabled').val('获取验证码')
+              return;
+            }
+            time--;
+            $('.verify').val(time+'秒后在发送');
+          },1000)
+        }
+      },error:function(){
+
+      }
+    })
+  })
+     $('.submit').on('click',function(){
+      if($('.name').val()==''){
+        $('.tips>p').html('请输入用户名').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+      if($('.pass').val()==''){
+        $('.tips>p').html('请输入密码').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+        if($('.repass').val()==''){
+        $('.tips>p').html('请输入密码').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+        if($('.mobile').val()==''){
+        $('.tips>p').html('请输入密码').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+      if($('.code').val()==''){
+          $('.tips>p').html('请输入验证码').fadeIn(500).delay(1500).fadedOut(500);
+          return;
+      }
+      if($('.pass').val==$('repass').val()){
+        $('tips>p').html('您两次输入的密码不一致').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+      $('.submit').addClass('disabled').val('注册中请稍等');
+      var data={
+        'name':$('.name').val(),
+        'pass':$('.pass').val(),
+        'repass':$('.repass').val(),
+        'mobile':$('.mobile').val(),
+        'code':$('.code').val(),
+      }
+      $.ajax({
+        'url':'registerso.php',
+        'type':'post',
+        'dataType':'json',
+        data:data,
+        success:function(data){
+          console.log(data);
+          if(data.code==10000){
+            $('tips>p').html('注册成功').fadeIn(500).delay(1500).fadeOut(500);
+           
+            window.location.href='http://www.baidu.com';
+             return;
+          }else if(data.code==10001){
+            $('.error').html('该名称已被占用');
+          
+          }
+        },error:function(msg){
+          console.log(msg);
+        }
+      })
+     })
+  })
+ 
+</script>
+</body>
+</html>

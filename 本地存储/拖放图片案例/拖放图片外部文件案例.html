@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	*{
+		list-style:none;
+	}
+		div{
+			width:300px;
+			height:300px;
+			border:5px dashed #505050 ;
+			text-align:center;
+			line-height:300px;
+			font-size:20px;
+		}
+	</style>
+</head>
+<body>
+<div id="box">将文件拖放到此处</div>
+<ul id="ul1">
+	<!-- <li></li> -->
+</ul>
+<script type="text/javascript">
+	var oBox=document.getElementById("box");
+	var oUl=document.getElementById('ul1');
+	oBox.ondragenter=function(){  //拖放到目标元素触发的事件
+          this.innerHTML='可以释放啦';
+	}
+	oBox.ondragleave=function(){   //离开目标元素触发的事件
+         this.innerHTML='将文件拖放到此处';
+	}
+	oBox.ondragover=function(ev){
+		ev.preventDefault();//阻止鼠标禁用状态
+	}
+	//释放鼠标触发的事件
+    oBox.ondrop=function(ev){
+    	ev.preventDefault();//阻止浏览器默认打开图片
+    	console.log(ev.dataTransfer.files);//获取外部文件返回一个fileList列表 文件存在这里了
+    	for(i=0;i<ev.dataTransfer.files.length;i++){
+	    	if(ev.dataTransfer.files[i].type.indexOf('image')!=-1){
+	        	var fd=new FileReader();//用来读取文件
+		    	fd.readAsDataURL(ev.dataTransfer.files[i]);//调用文件对象下面的这个方法，这个方法要传参数，参数为要读取的文件对象
+     fd.onload=function(){ //读取文件成功的函数
+	    		var li=document.createElement('li');
+	    		var img=document.createElement("img");
+	            img.src=this.result;//获取文件成功的返回结果
+	            li.appendChild(img);
+	            oUl.appendChild(li);
+	    	}
+	    }else{
+	    	alert("请上传图片格式的文件！");
+	  }
+    }
+}
+</script>
+</body>
+</html>

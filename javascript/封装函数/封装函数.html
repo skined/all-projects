@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script>
+    //push()方法尾部添加多个元素
+	//创建一个空数组
+	// var a=[1,2,3];
+	// function pushDemo(arr){
+		//声明一个空数组，用于存储要添加的的元素
+		// var n=[];
+       //找到需要添加的元素arguments中下标后边所有元素
+       // for(i=0;i<arguments.length;i++){
+       	// console.log(arguments.[i]);
+       // 	n[n.length]=arguments[i];
+       // }
+       // console.log(n);
+       // 找到数组长度的总和
+       // var length=arr.length+n.length;
+       // 第一次循环将新数组n的第一项添加到原数组的最后一项
+       // 第二次循环将新数组的第一项添加到原数组arr的最后一项
+       // for(j=arr.length,i=0;j<length;j++,i++){
+       	// 是将原数组的中的元素跟新数组的元素拼接在一起
+ //           arr[j]=n[i];
+ //       }
+ //       console.log(arr);
+	// }
+	// pushDemo(a,'a','b','c','d');
+    //第一个参数为原数组；
+    //后面所有的参数都是需要添加的元素没有固定的长度；
+    //通过arguments获取到需要添加的元素
+    //将需要添加的元素存放在一个新数组当中
+    //将新数组添加到原数组中
+	//pop方法
+	// var arr=[1,2,3];
+	// function popDemo(arr){
+ //       arr.length--;
+ //       return arr;
+	// }
+	// console.log(popDemo(arr));
+	// console.log(arr);
+//reverse使用for循环倒叙
+// var a=[7,8,9,10];
+// for(i=a.length-1;i>=0;i--){
+// 	document.write(a[i]+' ');
+// }
+//join使用for循环将数组每一项进行字符串连接
+// var a=['a','b','c','d'];
+// function joinDemo(a){
+// 	var newa=' ';
+// 	for(i=0;i<a.length;i++){
+// 		String(a[i]);
+// 		newa+=a[i]+',';
+// 	}
+// 	return newa;
+// }
+// console.log(joinDemo(a));
+// 3.shift(  ) 
+// 		1.头部删除，删除下标为0的元素
+// 		2.使用for循环，将下标为1的元素赋值给下标0
+// 		3.依次类推，将下标为2的元素赋值为下标1<br>
+    // var arr=[1,2,3,4,5];
+    // function shiftDome(){
+    // 	var num=arr[0];
+    // 	if(arr.length==0){
+    // 		return;
+    // 	}
+    // 	for(i=0;i<arr.length;i++){
+    // 		arr[i]=arr[i+1];
+    // 	}
+    // 	arr.length--;
+    // }
+    // shiftDome(arr);
+    // console.log(arr);
+  // 6.slice(  ) 
+		// 1.创建一个空数组
+		// 2.使用for循环获取到开始下标与结束下标之间的元素
+		// 3.赋值给空数组 
+// var arr=[1,2,3,4,5,6];
+// function sliceDemo(arr,s,e){
+//    var item=[];
+//    for(i=s,a=0;i<e;i++,a++){
+//    	item[a]=arr[i];
+//    }
+//    return item;
+// }
+// console.log(sliceDemo(arr,0,4));
+</script>
+</body>
+</html>

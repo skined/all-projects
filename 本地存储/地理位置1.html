@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<input type="button" value="获取地理位置信息" name="" id="btn">
+<br>
+<textarea rows="20" cols="50" id="t1"></textarea>
+<script type="text/javascript">
+	var btn=document.getElementById("btn");
+	var oT=document.getElementById("t1");
+	btn.onclick=function(){
+		window.navigator.geolocation.getCurrentPosition(function(){
+			console.log(position.coords.longitude);//经度
+			console.log(position.coords.latitude);//纬度
+			console.log(position.coords.accuracy);
+			console.log(position.coords.altitude);
+			console.log(position.coords.altitudeAccuracy);
+			console.log(position.coords.speed);
+			console.log(positon.coords.heading);
+		},function(error){
+			alert(error.code);
+		},{
+			timeout:1000,
+		})
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.div1{
+			width:100px;
+			height:100px;
+            background:red;
+            border:10px #000 solid;
+            padding:10px;
+		}
+	</style>
+</head>
+<body>
+<div class="div1 "></div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	// $(function(){
+	// 	$('div').addClass('div2 div3 div4');
+	// 	$('div').remove('div4');
+	// })
+	
+$(function(){
+	console.log($('.div1').width());//只有宽度
+	console.log($('.div1').innerWidth());//宽+border
+	console.log($('.div1').outerWidth(true));  //宽+padding+border
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="app">
+	<p>{{message}}</p>
+	<p>{{number+1+1+5}}</p>
+	<p>{{3+4}}</p>
+	<p>{{message.split("").reverse().join('')}}</p>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	//vue:是一个构造函数,通过实例化的方式创建一个实例用来启动应用,构造函数谣传一个对象形式参数
+	//el:element：Vue管理的元素,id className, tagName
+	//id是唯一的，不会有冲突
+	//可能数据不止一条，所以data数据后面是大括号,data里面的变量名称都会挂载到Vue的实例上
+	//vue的模板语法:
+	//1.Mustache  插值表达式的方式
+	//翻译：小胡子语法
+	//语法{双大括号}的文本插值
+	//将数据动态绑定到大标签里面
+	//绑定某个属性
+	//绑定表达式,可以去计算	
+	//2.指令
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'hello world',
+            number:5,
+            name:'lili'
+		}
+	})
+</script>
+</body>
+</html>

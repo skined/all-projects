@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<p id="op"></p>
+<button onclick="start()">开始</button>
+<button onclick="end()">结束</button>
+<body>
+<script>
+	function demo(){
+		var d=new Date();
+		var f=new Date(2019,00,19);
+		var s=f-d;
+		var _month=parseInt(s/1000/60/60/24/30);
+		var _date=parseInt(s/1000/60/60/24/30);
+        var _hours=parseInt(s/1000/60/60%24);
+        var _minutes=parseInt(s/1000/60%60);
+        var _second=parseInt(s/1000%60);
+        var str='<p>'+ ('距离放假还有'+_month+'月'+_date+'天'+_hours+'时'+_minutes+'分'+_second+'秒')+'</p>';
+        op.innerHTML=str;
+	}
+	function start(){
+		timer=setInterval(demo,1000);
+	}
+	function end(){
+		clearInterval(timer);
+	}
+
+</script>
+</body>
+</html>

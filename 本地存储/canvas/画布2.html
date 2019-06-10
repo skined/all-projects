@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+			body{
+				background:#000;
+			}
+		canvas{
+			background:#fff;
+
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="600" height='500'>
+	
+</canvas>
+<script type="text/javascript">
+	// canvas:用来绘制图形的，通过脚本语言(javascript)来完成
+	// canvas是一个图形容器，它本身没有绘制功能,类似于白板
+	// 这个canvas画布默认宽是300px,高是150px
+	// canvas画布大小可以修改，给canvas标签修改属性，width,height
+	// var oC=document.getElementById('c1');
+	//  var open=oC.getContext('2d');//绘制绘图环境
+ //    open.fillStyle='red';//修改填充颜色
+ //    open.fillRect(50,50,100,100);
+ //    open.lineWidth='20';//线条宽度
+ //     open.strokeStyle='blue';
+ //     open.lineJoin='bevel';
+ //     //边线颜色
+ //     open.strokeRect(50,150,100,100);
+ // //绘制线段相当于js里面作用域，在这段代码里面的样式只会作用到代码中的图形
+ //   open.beginPath();//开始绘制路径
+ //   open.closePath();//结束路径
+ //   open.moveTo(100,100);//定义线条的开始坐标
+ //   open.lineTo(200,200);//定义线条的结束坐标
+ //   open.stroke();
+ // 描边的矩形，带边框的矩形strokeRect(l,t,w,h),同上边框默认颜色
+// 画个矩形
+// fillRect(l,t,w,h);默认黑色填充，
+// l:水平方向起始位置
+// t:垂直方向起始位置
+// w:矩形的宽度
+// h:矩形的高度
+
+
+ //画三角形的方法
+ // var oC=document.getElementById('c1');
+ // var open=oC.getContext('2d');
+ // open.moveTo(100,100);
+ // open.moveTo(200,200);
+ // open.lineTo(300,200);
+ // open.lineTo(100,100);
+ // open.fillStyle='pink';
+ // open.fill();
+ // open.closePath();
+ // open.stroke();
+ 
+
+
+ // open.beginPath();
+ // open.moveTo(100,300);
+ // open.moveTo(100,300);
+ // open.lineTo(200,400);
+ // open.lineTo(300,400);
+ // open.fillStyle='green';
+ // open.fill();
+ // open.closePath();
+ // open.stroke();
+
+
+//画三角形方法二
+var oC=document.getElementById('c1');
+var open=oC.getContext('2d');//绘制绘图环境
+open.beginPath();
+open.moveTo(100,100);//定义线条的开始坐标
+open.lineTo(200,200);//定义线条的结束坐标
+open.lineTo(300,200);
+open.fillStyle='red';
+open.fill();
+open.closePath();//结束绘制路径，图形闭合
+// pen.lineTo(100,100);
+open.stroke();//画线
+
+
+open.beginPath();
+open.moveTo(100,200);
+open.lineTo(300,300);
+open.lineTo(200,300);
+open.closePath();
+open.fillStyle='pink';
+open.fill();
+open.stroke();
+</script>
+</body>
+</html>

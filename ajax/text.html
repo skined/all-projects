@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>阻塞模式与非阻塞模式</title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+<script type="text/javascript">
+	// 非阻塞模式
+	setTimeout(function(){
+		alert(1);
+	},2000);
+	alert(2);
+	// 阻塞模式 
+	var box=document.getElementById('box');
+	
+</script>	
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		fieldset{
+			width:600px;
+			border:1px solid red;
+			margin:20px auto;
+		}
+		fieldset input{
+			width:120px;
+			height:20px;
+			margin:10px 10px;
+		}
+		table{
+			width:600px;
+			border:1px solid red;
+			margin:20px auto;
+			text-align:center;
+		}
+		tr,td{
+			border:1px solid red;
+			background:pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		 <fieldset>
+		 	<legend>学生系录入系统</legend>
+		 	<div>
+		 		<span>姓名：</span>
+		 		<input type="text" placeholder="请输入用户名" v-model='personObj.name' name="">
+		 	</div>
+		 	<div>
+		 		<span>年龄：</span>
+		 		<input type="text" placeholder="请输入用户名的年龄" v-model='personObj.age' name="">
+		 	</div>
+		 	<div>
+		 		<span>性别：</span>
+		 		<select v-model='personObj.sex'>
+		 			<option value="男">男</option>
+		 			<option value="女">女</option>
+		 		</select>
+		 	</div>
+		 	<div>
+		 		<span>手机：</span>
+		 		<input type="text" placeholder="请输入手机号" v-model='personObj.phone' name="">
+		 	</div>
+		 	<button @click="add()">创建新用户</button>
+		 </fieldset>
+         <table>
+         	<tr>
+         		<td>姓名</td>
+         		<td>年龄</td>
+         		<td>性别</td>
+         		<td>手机</td>
+         		<td>删除</td>
+         	</tr>
+         	<tbody>
+         		<tr v-for='(item,index) in person'>
+           			<td>{{item.name}}</td>
+           			<td>{{item.age}}</td>
+           			<td>{{item.sex}}</td>
+           			<td>{{item.phone}}</td>
+           			<td>
+         				  <button @click="dlete(index)">删除</button>
+         			</td>
+         		</tr>
+         	</tbody>
+       </table>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			person:[
+				{name:'张三',age:'23',sex:'男',phone:'1258533350'},
+				{name:'李四',age:'34',sex:'男',phone:'1287533350'},
+				{name:'王五',age:'36',sex:'男',phone:'1768533350'},
+				{name:'赵六',age:'56',sex:'男',phone:'1258533346'}
+		],
+			personObj:{
+				name:'',
+				age:'',
+				sex:'男',
+				phone:''
+			}
+		},
+		methods:{
+			add(){
+				if(this.personObj.name==''){
+					alert('用户名不能为空');
+					return;
+				}
+				if(this.personObj.age<=0 || this.personObj.age==''){
+					alert('请输入正确的年龄');
+					return;
+				}
+				if(this.personObj.phone==''){
+					alert('请输入手机号');
+					return;
+				}
+				this.person.unshift(this.personObj);
+					this.personObj={
+						name:'',
+						age:'',
+						sex:'男',
+						phone:'',
+					}
+
+			}, dlete:function(index){
+              this.person.splice(index,1);
+      }
+      
+		}
+	})
+</script>
+</body>
+</html>

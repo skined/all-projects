@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"content='width=device-width,initial-scale=1.0'>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>rem布局</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+	<style type="text/css">
+          html{
+          	font-size:20px;
+          }
+          div{
+          	width:5rem;
+          	background:red;
+          }
+	</style>
+</head>
+<body >
+	<!-- document.documentElement.style.fontSize=20*(d/360)+'px'; -->
+<!-- rem布局：相对于根元素，(html)的字体大小 -->
+<!-- rem布局实现自适应的原理：页面上的内容显示大小 -->
+<!-- 根据子元素的字体大小来显示	
+r:root根
+em:element元素
+HTML字体大小是10px 1rem=10px
+html字体大小是16px 1rem=16px   -->
+<div>今天天气不错</div>	
+<script src="jquery.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>		
+<script type="text/javascript">
+  !function(a){function b(){var b=a
+  	.document,c=b.documentElement,d=c.getBoundingClientRect().width;
+  	// 设置根元素字体大小，d:
+  	// ui设计图的宽度 720px,1rem=40px;
+  	document.documentElement.style.fontSize=20*(d/360)+'px'}
+  	window.addEventListener('DOMContentLoaded',function(){b(){},!1},window.addEventListener('resize',function(){b()}),b()}(window);
+  
+</script> 
+</body>
+</html>

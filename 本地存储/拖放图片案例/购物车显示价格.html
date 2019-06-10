@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+         ul{
+         	overflow:hidden;
+
+         }
+         li{
+         	border:1px solid #000;
+         	padding:5px;
+         	float:left;
+         	margin-right:10px;
+         }
+         li img{
+         	width:220px;
+         	height:275px;
+         }
+         li p{
+         	border-bottom:1px dashed #000;
+         }
+         #box{
+         	width:400px;
+         	height:600px;
+         	border:1px solid #000;
+         }
+         #box p{
+            border:1px dashed #000;
+            display:flex;
+            justify-content:space-around;
+         }
+	</style>
+</head>
+<script type="text/javascript">
+	window.onload=function(){
+		var aLi=document.getElementsByTagName('li');
+		var oBox=document.getElementById('box');
+		var total=0;
+		var obj={};
+		var allPrice=null;
+		for(i=0;i<aLi.length;i++){
+			aLi[i].ondragstart=function(ev){
+				var op=this.getElementsByTagName('p');
+				console.log(op);
+				ev.dataTransfer.setData('bookName',op[0].innerHTML);
+				ev.dataTransfer.setData('price',op[1].innerHTML);
+			}
+		}
+		oBox.ondragover=function(ev){
+			ev.preventDefault();
+		}
+		oBox.ondrop=function(ev){
+             var bookName=ev.dataTransfer.getData('bookName');
+             var price=ev.dataTransfer.getData('price');
+             console.log(bookName);
+             console.log(price);
+             if(!obj[bookName]){
+             	 var p=document.createElement('p');
+	             var span1=document.createElement('span');
+	             span1.className='num';
+	             span1.innerHTML=1;
+	             var span2=document.createElement('span');
+	             span2.className='name'
+	             span2.innerHTML=bookName;
+	             var span3=document.createElement('span');
+	             span3.innerHTML=price;
+	             p.appendChild(span1);
+	             p.appendChild(span2);
+	             p.appendChild(span3);
+	             oBox.appendChild(p);
+	            obj[bookName]=1;
+	        }else{
+	        	var iNum=document.getElementsByClassName('num');
+	        	var iName=document.getElementsByClassName('name');
+	        	for(i=0;i<iName.length;i++){
+	        		if(iName[i].innerHTML==bookName){
+	        			var aaa=parseInt(iNum[i].innerHTML);
+	        			aaa=aaa+1;
+	        			iNum[i].innerHTML=aaa;
+	        		}
+	        	}
+	        }
+            if(!allPrice){
+               allPrice=document.createElement('div');
+               allPrice.style.float='right';
+            }
+            total+=parseInt(price);
+            allPrice.innerHTML=total+'￥';
+            oBox.appendChild(allPrice);
+		}
+	}
+</script>
+<body>
+<ul>
+	<li draggable='true'>
+		<img src="img/bc.JPG" alt="">
+		<p>Javascript语言精粹</p>
+		<p>40￥</p>
+	</li>
+	<li draggable='true'>
+		<img src="img/qw.JPG" alt="">
+		<p>Javascript权威指南</p>
+		<p>120￥</p>
+	</li>
+	<li draggable='true'>
+		<img src="img/bc.JPG" alt="">
+		<p>Javascript编程艺术</p>
+		<p>45￥</p>
+	</li>
+	<li draggable='true'>
+		<img src="img/jt.JPG" alt="">
+		<p>精通Javascript</p>
+		<p>35￥</p>
+	</li>
+</ul>
+<div id="box">
+<!-- 	<p>
+		<span class="num">1</span>
+		<span class="name">JavaScript编程艺术</span>
+		<span class="price">45￥</span>
+	</p>
+	<p>
+		<span class="num">1</span>
+		<span class="name">Javascript编程艺术</span>
+		<span class="price">￥45</span>
+	</p> -->
+</div>
+</body>
+</html>

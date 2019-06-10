@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#box{
+			width:200px;
+			height:200px;
+			border:1px #ccc solid;
+			position:absolute;
+		}
+		label{
+			display:inline-block;
+		}
+	     span{
+			display:block;
+			position:absolute;
+			right:0;
+			top:-4px;
+		}
+	</style>
+</head>
+<body style="height:2000px">
+	<input type="button" value="点击" id="btn">
+<script src="jquery.js"></script>	
+<script type="text/javascript">
+	$(function(){
+		$('#btn').click(function(){
+			var oBox=$('<div id="box"><label for="username">用户名：<input type="text" id="username"></label>'+'<label for="password">密码:<input type="text" id="password"></label><span id="close">x</span></div>');
+			
+			$('body').append(oBox);
+			  oBox.css('left',($(window).width()-oBox.outerWidth())/2);
+			  oBox.css('top',($(window).height()-oBox.outerHeight())/2);
+			$(window).on('scroll resize',function(){
+			 oBox.css('left',($(window).width()-oBox.outerWidth())/2);
+			 oBox.css('top',($(window).height()-oBox.outerHeight())/2);
+			})
+			$('#close').click(function(){
+				$('#box').parent().remove();
+			})
+		})
+	})
+</script>
+</body>
+</html>

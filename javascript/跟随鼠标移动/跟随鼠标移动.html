@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			masrgin:0;
+			padding:0;
+		}
+		#wrap{
+			width:100%;
+			height:100%;
+			/*border:1px #ccc solid;*/
+			margin:100px auto;
+			position: absolute;
+		}
+		#mask{
+			width:100px;
+			height:100px;
+			/*background:rgba(255,255,0,0.4);*/
+			position:relative;
+			top:0;
+			left:0;
+			cursor:move;
+			display:none; 
+		}
+	/*	img{
+			position:absolute;
+		}*/
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="mask">
+		<img src="img/img.JPG" width="50" height="50">
+	</div>
+</div>
+<script type="text/javascript">
+	var wrap=document.querySelector('#wrap');
+	var mask=document.querySelector('#mask');
+	wrap.onmouseover=function(){
+		mask.style.display='block';
+
+	}
+	wrap.onmouseout=function(){
+		mask.style.display='none';
+	}
+	window.onmousemove=function(ev){
+		var e=ev || window.event;
+		mask.style.left=e.clientX-mask.offsetWidth/2+'px';
+		mask.style.top=e.clientY-mask.offsetHeight/2+'px';
+      //var pageX=e.pageX || wrap.clientX+document.documentElement.scrollLeft;
+	  // var pageY=e.pageY || wrap.clientY+document.documentElement.scrollTop;
+	  // var wrapX=pageX-wrap.offsetLeft;
+	  // var wrapY=pageY-wrap.offsetTop;
+	  // positionX=wrapX-mask.offsetWidth/2;
+	  // positionY=wrapY-mask.offsetHeight/2;
+	}
+
+</script>
+</body>
+</html>

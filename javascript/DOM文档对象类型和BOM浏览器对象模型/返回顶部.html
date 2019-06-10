@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		button{
+               width:200px;
+               height:100px;
+               font-size:25px;
+               color:#000;
+               line-height:100px;
+               text-align:center;  
+
+		}
+		#box1{
+			width:1360px;
+			height:500px;
+			background:#2D8955;
+			font-size:40px;
+			color:#000;
+			line-height:500px;
+			text-align:center;  
+		}
+		#box2{
+			width:1360px;
+			height:500px;
+			background:#04D504;
+			font-size:40px;
+			color:#000;
+			line-height:500px;
+			text-align:center; 
+		}
+		#box3{
+			width:1360px;
+			height:500px;
+			background:#00BDFC;
+			font-size:40px;
+			color:#000;
+			line-height:500px;
+			text-align:center; 
+		}
+	</style>
+</head>
+<body>
+<button id="btn1" style="background:pink;border:3px red solid">第一页</button>
+<button id="btn2" style="background:pink;border:3px red solid">第二页</button>
+<button id="btn3" style="background:pink;border:3px red solid">第三页</button>
+<div id="box1">这里是第一页</div>
+<div id="box2">这里是第二页</div>
+<div id="box3">
+	<button id="btn4" style="background:pink;width:200px;height:100px;">返回顶部</button>
+	这里是第三页
+</div>	
+<script type="text/javascript">
+window.onload=function(){
+	btn1.onclick=function(){
+		scroll(100)
+	}
+	btn2.onclick=function(){
+		scroll(600)
+	}
+	btn3.onclick=function(){
+		scroll(1230)
+	}
+	btn4.onclick=function(){
+		scroll(0)
+	}
+	function scroll(end){
+		document.documentElement.scrollTop;
+		var step=2;
+		var start=document.documentElement.scrollTop;
+		if(end>start){
+           step=+step;
+		}else if(end<start){
+            step=-step;
+		}
+	
+	var time=setInterval(function(){
+		if(Math.abs(end-document.documentElement.scrollTop)<=Math.abs(step)){
+			clearInterval(time);
+		}else{
+            Top=document.documentElement.scrollTop;
+            Top=step+Top;
+            document.documentElement.scrollTop=Top; 
+		}
+	},10)
+	}
+}	
+</script>
+</body>
+</html>

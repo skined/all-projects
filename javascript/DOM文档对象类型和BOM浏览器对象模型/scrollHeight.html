@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		div{
+			width:1000px;
+			height:500px;
+			background:red;
+		}
+		.div1{
+			width:1000px;
+			height:500px;
+			background:skyblue;
+		}
+		.div2{
+			width:1000px;
+			height:500px;
+			background:pink;
+		}
+        #btn{
+        	width:80px;
+        	height:50px;
+        }
+	</style>
+</head>
+<body>
+<button id="btn1" style="background:red">点击到500px</button>
+<button id="btn2" style="background:skyblue">点击到1000px</button>
+<button id="btn3" style="background:pink">点击到1500px</button>	
+<div style="margin-top:500px"></div>
+<div class="div1"></div>
+<div class="div2">
+	<button id="btn4">点击回到顶部</button>
+</div>
+<script type="text/javascript">
+	// window.onscroll=function(){
+	// 	var a=document.documentElement.scrollTop; //scrollTop设置和获取位于对象最顶端和窗口中目前可见内容最顶端之间的距离
+	// 	console.log(a);  
+	// }
+	window.onload=function(){
+       btn1.onclick=function(){
+       	   scroll(500);  
+       }
+       btn2.onclick=function(){
+       	   scroll(1000)
+       }
+        btn3.onclick=function(){
+       	   scroll(1500)
+       }
+        btn4.onclick=function(){
+        	scroll(0)
+        }
+       function scroll(end){
+           var step=2;
+           //找到开始位置
+           var start=document.documentElement.srollTop;
+           // console.log(start);
+            if(end>start){
+            	step=+step;
+            }else if(end<step){
+            	step=-step;
+            }
+            console.log(step);
+            var timer=setInterval(function fn(){
+               if(Math.abs(end-document.documentElement.scrollTop)<=Math.abs(step))
+               {
+               	clearInterval(timer);
+
+               }else{
+               	 var Top=document.documentElement.scrollTop;
+               	 Top=step+Top;
+               	 document.documentElement.scrollTop=Top; 	 
+               }            
+            },10)
+       }
+	}
+</script>
+</body>
+</html>

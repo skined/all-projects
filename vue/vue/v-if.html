@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="app">
+	<ul>
+		<li>{{message}}</li>
+	</ul>
+	<div v-if='show'>我是你能看到的</div>
+	<div v-if='hidden'>我是你所看不到的</div>
+	<div v-if="age<25">{{age}}</div>
+	<div v-else="name">{{name}}</div>
+	<div v-if="name.indexOf('fe')>=0">{{name}}</div>
+	
+</div>
+<!-- v-if:根据表达式的值的真假条件来渲染元素，返回布尔值只有为true的时候才会被渲染到页面中 -->
+<!-- 语法：v-if="content" -->
+<!-- v-else:必须和v-if一起使用，而且要放在v-if的后面，否则v-else是无效的 -->
+<!-- v-else-if :充当v-if的else-if块放在v-if和v-else之间，可以连续使用-->
+<!-- indexOf:可返回字符串的某个值在字符串中首次出现的位置 -->
+<script src="vue.js"></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'I want do anything  only with you',
+			show:true,
+			hidden:false,
+			age:28,
+			name:'fe_cow',
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	/*	div{
+			width:100px;
+			height:100px;
+			background:chocolate;
+		}*/
+        *{
+        	margin:0;
+        	padding:0;
+        }
+		.box1{
+			width:200px;
+			height:200px;
+			background:red;
+			position:relative;
+		}
+		.box2{
+			width:100px;
+			height:100px;
+			background:blue;
+			position:absolute;
+			left:50px;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+<!-- <div class="box"></div> -->
+
+<div class="box1"></div>
+<div class="box2"></div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	//ev：pageX鼠标x轴位置
+	//ev:pageY鼠标y轴位置
+	//ev:which键值
+	//ev:preventDefault()阻止默认事件
+	//ev:stopPropagation()阻止冒泡
+	//return false阻止默认事件+阻止冒泡
+//  $(function(){
+// 	$('.box').click(function(ev){
+// 		console.log(ev);
+// 	})
+// 	$(document).keydown(function(ev){
+// 		console.log(ev);
+// 		console.log(ev.which);
+// 	})
+// })
+
+
+
+
+
+// one方法只执行一次的时候可以用one()
+// one跟on有点类似
+// $(function(){
+// 	$('.box').one('click',function(){
+// 		console.log(1);
+// 	})
+// })
+
+
+
+
+//offset获取距离相关
+$(function(){
+		console.log($('.box2').offset().left)//到屏幕最左边的距离，和定位父级无关
+	    console.log($('.box2').position().left)//到定位父级的距离
+	    console.log($('.box2').offsetParent());//找定位父级，如果没有定位父级，就返回body
+	    console.log($('.box2').parent());//就是找定位父级
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	 body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+        }
+        h3 {
+            text-align: center;
+            color:#fff;
+        }
+        .chatbox {
+            width: 500px;
+            height: 500px;
+            margin: 0 auto;
+            border: 1px solid #CCC;
+            background-color: #FFF;
+            border-radius: 5px;
+        }
+        .messages {
+            height: 350px;
+            padding: 20px 40px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #CCC;
+            overflow:scroll;
+        }
+        .self {
+            text-align: left;
+        }
+        .other {
+            text-align: right;
+        }
+        .form {
+            height: 150px;
+        }
+        .form .input {
+            height: 110px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .form .btn {
+            height: 40px;
+            box-sizing: border-box;
+            border-top: 1px solid #CCC;
+        }
+        .form textarea {
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            outline: none;
+            font-size: 20px;
+        }
+        .form input {
+            display: block;
+            width: 100px;
+            height: 30px;
+            margin-top: 5px;
+            margin-right: 20px;
+            float: right;
+        }
+	</style>
+</head>
+<body>
+	<h3>简单的Ajax实例聊天室</h3>
+	<!-- 对话框 -->
+	<div class="chatbox">
+        <!-- 盛放聊天内容的容器 -->
+        <div class="messages"></div>
+        <div class="form">
+            <!-- 输入框 -->
+            <div class="input"><textarea></textarea></div>
+            <!-- 按钮组 -->
+            <div class="btn">
+                <input type="button" class="send" value="发送">
+                <input type="button" class="clear" value="清屏">
+            </div>
+        </div>
+    </div>
+<script src="ajax.js"></script>    
+<script type="text/javascript">
+	//1.用户输入内容点及发送之后，聊天窗口需要将用户输入得内容
+	var sendBtn=document.querySelector('.send');
+	var textArea=document.querySelector('textarea');
+	var msgBox=document.querySelector('.messages');
+	var clearBtn=document.querySelector('.clear');
+    //聊天逻辑的函数
+	function chat(){
+		//默认清除空格                
+		var value=(textArea.value.trim());
+		//验证值为空
+       		if(!value){
+			alert('请输入聊天内容');
+			return;
+		}else{
+			var p=document.createElement('p');
+			p.innerText="我说："+value;
+			p.addClass='self';
+			msgBox.appendChild(p);
+			textArea.value='';
+			//获取相应数据，等待回答，请用ajax封装函数
+			ajax('get','chat.php','',function(data){
+                console.log(data);
+                var p=document.createElement('p');
+                p.innerText="撒旦说:"+data;
+                p.classList.add('other');
+                msgBox.appendChild(p);
+			},function(){
+
+			})
+
+		}
+	}
+	//点击发送按钮聊天
+	sendBtn.onclick=function(){
+      chat();
+	}
+	// 回车的聊天
+	window.onkeyup=function(e){
+        // console.log(e);
+        if(e.keyCode==13){
+         chat();               
+        }     
+	}
+	//点击清屏按钮实现清屏功能
+	clearBtn.onclick=function(){
+		msgBox.innerHTML='';
+	}
+
+</script>
+</body>
+</html>

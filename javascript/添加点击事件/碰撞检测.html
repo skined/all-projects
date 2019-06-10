@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	   *{
+	   	margin:0;
+	   	padding:0;
+	   }
+	   #red{
+	   	width:200px;
+	   	height:200px;
+	   	background:red;
+	   	font-size:25px;
+	   	color:#fff;
+	   	line-height:100px;
+	   	text-align:center;
+	   	position:absolute; 
+	   	top:0px;
+	   	left:0px;  
+	   }
+	   #blue{
+	   	width:200px;
+	   	height:200px;
+	   	background:blue;
+	   	font-size:25px;
+	   	color:#fff;
+	   	line-height:100px;
+	   	text-align:center;
+	   	position:relative;
+	   	margin:200px 400px;   
+	   }
+	</style>
+</head>
+<body>
+<div id="red">我来了</div>
+<div id="blue"></div>
+<script type="text/javascript">
+	 window.onload=function(){
+	 	var red=document.getElementById("red");
+	 	var blue=document.getElementById("blue");
+	      red.onmousedown=function(){
+	    	window.onmousemove=function(ev){
+	    		var e=ev || window.event;
+	    		// console.log(e);
+	    		red.style.left=e.clientX-red.offsetWidth/2+'px';
+	    		red.style.top=e.clientY-red.offsetHeight/2+'px';
+	    		redLeft=red.offsetLeft+red.offsetWidth;
+	    		redTop=red.offsetTop+red.offsetHeight;
+	    		blueLeft=blue.offsetLeft+blue.offsetHeight;
+	    		blueTop=blue.offsetTop+blue.offsetWidth;
+	    		if(redLeft>=blue.offsetLeft && redTop>=blue.offsetTop 
+	    			&& red.offsetLeft<=blueLeft && red.offsetTop<=blueTop){
+	    			blue.style.background='pink';
+	    		    blue.innerText='不要碰我！！！'
+	    		}else{
+	    			blue.style.background='blue';
+	    			blue.innerText='不要离开我'
+	    		}
+	    	}
+	    	
+	    }
+	    red.onmouseup=function(){
+                  window.onmousemove=null;
+	    	}
+
+	}
+	//offsetX offsetY鼠标相对于事件源元素的x,y坐标
+	//event.screenX event.screenY鼠标相对于用户显示器屏幕左上角的x,y坐标
+	//event.clientX event.clientY鼠标相对于浏览器可视窗口区域的X坐标，y坐标
+</script>
+</body>
+</html>

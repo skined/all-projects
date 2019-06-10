@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<!-- // 表单提交 向后台提交数据
+	// form元素的重要属性
+	// action：提交地址  默认是本页面file:///D:/home/ajax/BOM%E8%A1%A8%E5%8D%95%E6%8F%90%E4%BA%A4.html
+	//method： 提交方式  默认是get 
+	//enctype提交数据格式 默认格式："application/x-www-form-urlencoded" -->
+    <!-- python 人工智能 -->
+    <!-- name属性:向后台提交数据的时候的名字，后端根据name属性来获取发送的数据 -->
+    <!-- get提交方式数据名称和数据值用=连接,如果有多个值用&符号连接，然后把数据放到url?后面传到指定的页面 暴露在地址栏中，对数据请求的大小有限制 4k
+    	url长度限制的原因我们不要通过get方式传递更多的数据-->
+    	<!-- 从传输的数据上来说理论上没有限制的，post相对于get比较安全不会把信息暴露在地址栏中 -->
+    	<!-- 但post传输速度相对较快 -->
+    	<!-- get速度相对较慢，安全性较低 -->
+	<form action="1.get.php" method="get" enctype="application/x-www-form-urlencoded">
+		姓名:<input type="text" name="username"></br>
+		年龄：<input type="text" name="age"></br>
+	    <input type="submit"  value="提交">
+	</form>
+       
+	
+    
+</body>
+</html>

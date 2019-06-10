@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="example"></div>	
+<script type="text/javascript">
+	// 1.递归函数
+	// 5!=5*(5-1);
+	// 1!=1
+	// function jc(n){
+	// 	if(n==1){
+	// 		return 1;
+	// 	}
+	// 	return n*jc(n-1);
+	// }
+	// console.log(jc(2));
+	// 当使用匿名函数如何计算阶乘调用arguments.clallee实现它的应用
+	//arguments.callee返回函数引用 func.caller返回函数的执行环境
+	// var jc=(function(n){
+	// 	if(n==1){
+	// 		return 1;
+	// 	}
+	// 	return n*arguments.callee(n-1);
+	// })(6)
+	// console.log(jc);
+
+
+	// 函数预编译函数预解析
+	// 发生在函数执行之前函数，执行完成会释放自己的作用域，释放指(切断自身与作用域之间的关系)
+	// 1.创建ao对象   ao对象-->活跃对象                 
+	// 2.找形参和变量声明，值为undefined  
+	// 3.形参和实参相统一    
+	// 4.找函数声明，值赋予函数体，函数声明提升
+// function test(a){
+//    console.log(a);  //fun
+//    var a=123;
+//    function a(){}
+//    console.log(a);  //123
+//    var b=function(){} 
+//    console.log(b);   //funb
+// }
+// test(1);
+                   
+// 全局预编译
+// 1.找变量声明值为undefined
+// 2.找函数声明值为函数体
+// 3.先提升变量声明在提升函数声明
+
+
+// console.log(a);
+// var a=10;
+// function a(){}
+// 作用域属于函数，函数产生作用域函数,有一个隐式属性[[scrope]]
+// scrope储存函数的作用域
+// 2.作用域链 scrope中储存的是(执行期上下文也叫执行上下文，还叫运行期上下文)，集合成链式连接,
+// 我们叫这种链式连接叫作用域链
+// 定义函数:[[scrope]]数组[0-->go]
+// 执行 [[scrope]] [0-->AO,1-->GO]
+// function a(){
+// 	function b(){
+// 		var b=234;
+// 	}
+// 	var a=123;
+// 	b();
+// 	console.log(b);
+// }
+// a();
+//  console.log(a);
+// a 定义[0-->go]
+// a执行[0-->aAO 1-->GO]
+// b定义[0-->aAO 1-->GO]
+// b 执行[0-->aAO bAO 1-->GO]
+
+
+
+// function a(){
+// 	function b(){
+// 		var bb=234;
+// 		aa=0;
+// 	}
+// 	var aa=123;
+// 	b();
+// 	console.log(aa);  //0
+// }
+// a();
+
+// 闭包函数的引用  但凡内部函数被保存到外部都会形成闭包
+// 缺点:内存泄漏   优点:实现共有变量(函数累加器)、可以做缓存(储存结构)、模块化开发，防止污染全局变量，实现封装属性私有化.
+// function a(){
+// 	function b(){
+// 		var bbb=234;
+// 		console.log(aaa);  //123
+// 	}
+// 	var aaa=123;
+// 	return b;
+// 	var demo=a();
+// }
+// demo();
+//累加器
+// function a(){
+// 	var aa=0;
+// 	function b(){
+// 	   return aa++;
+// }
+// 	return b;  
+// }
+// var demo=a();
+// console.log(demo());
+// function test(){
+//     var arr = [];
+//     for(var i = 0;i < 10;i++){
+//     	(function(i){
+//     		  arr[i] = function(){
+//             console.log(i)
+//         }
+//     	}(i))
+      
+//     }
+//     return arr;
+// }
+// var myArr = test();
+// for(var j = 0;j<10;j++){
+//     console.log(myArr[j]());
+// }
+
+
+
+// 对象
+// 对象创建方式 ：1.字面量
+               // 2.构造函数
+ // var obj={};
+ // var obj1=new Person(); 
+ // function Person(){
+ // 	// var this={};
+ // 	this.name='abc';
+ // 	// return this;
+ // }
+ // console.log(obj1);   
+
+
+// getTime 时间戳  
+// var obj=new Person();
+ // console.log(obj);
+ // 原型 构造函数 对象 三者的关系
+ // 原型是构造出对象的共有祖先
+ // 构造函数通过实例得到对象
+ // 对象会继承原型的属性和方法
+ // 构造函数找原型 prototype 
+ // 对象找原型 __proto__
+ // 原型找构造函数 constructor
+ // 对象找构造函数 (继承原型的)constructor
+ // 原型链查找原则 就近原则 
+   // 包装类
+   // var str='abc';
+   // new string('abc').length;  隐式的
+   // delete
+   // str.age=123;
+   // new String('abc').age=123;
+   //delete
+    
+    //null唯一一个没有原型的对象 原型最顶端
+    // var obj=Object.create(null);
+    // console.log(obj);
+// bind 单纯改变this指向函数不执行 es5扩展方法 IE6,7,8不支持
+    // var num=123;
+    // console.log(Object.prototype.toString.call(num));
+
+  // this指向
+  // 函数预编译时 this-->window
+  // 全局作用域     this-->window
+  // call/apply   改变this指向
+  // obj.func()   this指向obj
+
+  // var a;
+  // var n=true;
+  // a=n?1:0
+  // 类数组 DOM返回值的集合都是类数组
+
+ // var cArr={
+ // 	'0':'a',
+ // 	'1':'b',
+ // 	'2':'c',
+ // 	'length':3,
+ // 	name:'classArr',
+ // 	push:Array.prototype.push,
+ // 	splice:Array.prototype.splice,
+ // }
+
+//报错的方法
+ // try{
+
+ // }catch(e){
+
+ // }
+// target目标  origin
+// 原型的继承性(圣杯模式)
+ // var extend=(function(){
+ // 	var F=function(){};
+ // 	return function(a,b){
+ //        F.prototype=a.prototype;
+ // 	    b.prototype=new F();
+ // 	    b.prototype.constructor=b;
+ // 	    b.prototype.uber=a.prototype;
+ // }
+ // }());
+
+  // instanceOf 判断a对象是否在b对象的原型上
+
+  //关于bind方法
+  // var bar=function(){
+  // 	console.log(this.x);
+  // }
+  // var foo={
+  // 	x:3
+  // }
+  // bar()
+  // bar.bind(foo)();
+  // var func=bar.bind(foo);
+  // func()
+ 
+
+
+ // 面试常问
+// 1.简述函数预编译步骤   
+   // （1）创建ao对象
+   // （2）找形参变量和函数声明作为ao对象的属性，值为undefined
+   // （3）形参和实参想统一
+   // （4）找函数声明，值赋函数体，函数声明整体提升
+// 2.对象与原型与函数之间的关系
+    // 对象找原型找__proto__
+    // 原型找构造函数用constructor
+    // 构造函数找原型用prototype
+    // 构造函数找对象用new
+    // 对象找构造函数用constructor
+// 3.简述闭包函数的优缺点
+// 缺点:内存越来越少
+// 优点:做函数累加器
+//      模块化开发，防止污染全局变量
+//      封装函数属性私有化
+//      做一个储存结构
+// 4.简述this指向
+ // 全局作用域:this-->window
+ // 函数预编译:this-->window
+ // call和apply可改变this指向，call传参传的是参数，apply以数组的形式传参
+ // obj调用属性，this会指向obj
+// 5.封装数组去重
+
+// Array.prototype.uniqude=function(arr){
+//       var obj={};
+//       var newArr=[];
+//       for(i=0;i<this.length;i++){
+//         if(!obj[this[i]]){
+//            obj[this[i]]=123;
+//            newArr.push(this[i]);
+//         }
+//       }
+//       return newArr;
+
+// }
+// var arr=[1,2,3,2,3];
+// console.log(arr.uniqude());
+// function demo(arr){
+//   var newArr=[];
+//   for(i=0;i<arr.length;i++){
+//     if(newArr.indexOf(arr[i])==-1){
+//         newArr.push(arr[i]);
+//     }
+//   }
+//   return newArr;
+// }
+// var arr=[323,2333,2333,442];
+// console.log(demo(arr));
+// 格林威治时间1970年至今的总毫秒数
+// function unique(arr){
+//   var res=arr.sort(function(a,b){
+//     return a-b;
+//   })
+//   var arr1 =[];
+//   for(i=0;i<res.length;i++){
+//      if(res[i]!==arr1[arr1.length-1]){
+//            arr1.push(res[i]);
+//      }
+//   }
+//   return arr1;
+// }
+// var arr=[1,2,3,3,2,34];
+// console.log(unique(arr));
+// function demo(arr){
+//   var newArr=[];
+//   for(i=0;i<arr.length;i++){
+//        var ret=false;
+//     for(j=0;j<newArr.length;j++){
+//         if(arr[i]==newArr[j]){
+//             ret=true;
+//             break;
+//         }
+//     }
+//     if(!ret){
+//        newArr.push(arr[i]);
+//     }
+//   }
+//   return newArr;
+// }
+// var arr=[1,2,3,2,3];
+// console.log(demo(arr));
+
+
+// txt='<p>浏览器代号：'+Navigator.appCodeName+'</p>'
+// txt='<p>浏览器名称:'+Navigator.appName+'</p>'
+// txt='<p>浏览器版本:'+Navigator.appversion+'</p>'
+// txt='<p>启用Cookies:'+Navigator.cookieEnabled+'</p>'
+// txt='<p>硬件平台:'+Navigator.platform+'</p>'
+// txt='<p>:用户代理:'+Navigator.userAgent+'</p>'
+// txt='<p>用户代理语言:'+Navigator.systyemLanguage+'</p>'
+// document.getElementById('example').innerHTML=txt;
+
+
+
+function test(a,b){
+  console.log(a);  //function
+  console.log(b);  //undefined
+  var b=234;
+  console.log(b);  //234
+  a=123;
+  console.log(a);  //123
+  function a(){}     
+  var a;
+  b=234;
+  var b=function C(){}
+  console.log(a);   123
+  console.log(b);   //function
+}  
+test();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// promise:承诺，在js中解决异步编程的方式，比传统方式要强大
+	// ，更合理，ajax:用来前后台交互，是一种传统解决异步的方式
+	//之前解决使用了回调函数和
+// 	$.ajax({
+// 		url:'1.php',
+// 		data:{
+
+// 		},
+// 		type:'post',
+// 		success:function(){
+// 			//请求成功的回调函数
+// 		},fail:function(){
+// 			// 请求失败的回调函数
+// 		}
+// 	})
+// 	// jquery源码
+// 	function ajax(url,data,successCb,failCb){
+// 		var xhr=new XMLHttpRequest();
+// 		xhr.open();
+// 		xhr.send();
+// 		xhr.onreadystatechange=function(){
+// 			//省略
+// 		}
+// 	}
+// 	send(url,data,success,fuction(){
+// 	   //第一步异步执行的时候，让某个div变红
+// 	   send(url,data,success,function(){
+// 	   	 //div的宽变长
+	   
+// })
+//回调地狱：不利于代码的维护,promise解决了回调地狱的问题
+//Promise的用法：根据es6的规定Promise是一个构造函数，用来实例化一个promise对象
+//promise函数的参数需要接受一个函数，这个函数叫立即执行器
+//立即执行器：excutor,在实例化的时候会立即执行，立即执行器接收两个参数，
+//resolve,reject这两参数是两个函数，js引擎提供，不需要我们自己部署
+//resolve:异步成功的函数 作用：将Promise的状态从‘未完成’改变成‘成功’
+//(成功从padding变成resolved)
+//reject:异步失败的函数 将Promise的状态从‘未完成’改变成‘失败’(从pending变成reject)
+//promise有三种状态：
+//pending(进行中)
+//resolve(成功)
+//rejected(失败)
+//状态特点：要么成功要么失败，两种状态是互斥的
+//例子：支付宝付款，要么付款成功，要么付款失败 ，请稍等()
+var promise=new Promise((resolve,resject)=>{
+if('如果异步请求成功'){
+  resolve('shsdsd');
+  //resolve在异步请求成功时调用，并将请求成功的结果作为参数传递出去
+  // 写法 resolve(值可以是任意值)
+}else{
+  reject();
+  // reject是在异步请求失败时调用，并将请求失败的原因作为reject()函数的参数传递出去
+  // 写法reject(值)可以是任意值
+}
+});//实例化一个promise对象
+console.log(promise);
+// PromiseStatus:当前promise的状态
+// PromiseValue:当前promise返回的值
+
+</script>
+</body>
+</html>

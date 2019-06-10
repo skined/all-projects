@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<input type="button" value="存储" name="">
+<input type="button" value="获取" name="">
+<input type="button" value="删除" name="">
+<input type="text" id="" name="" >
+<script type="text/javascript">
+	//写法：setItem表示存储数据,key/value的形式存储 自定义名字：比如有：name sex age job
+	//value我们要存储的数据
+	//getItem表示直接获取数据
+	//removeItem:表示删除数据的某一项 removeItem("key"); clear表示全部删除
+     window.onload=function(){
+     	  var aInput=document.getElementsByTagName("input");
+
+     	  // 设置
+     	  aInput[0].onclick=function(){
+               window.sessionStorage.setItem("name",aInput[3].value);
+              //window.localStorage.setItem("name",aInput[3].value);
+     	  }
+     	  //获取
+     	  aInput[1].onclick=function(){
+            alert(window.sessionStorage.getItem("name"));
+           //alert(window.localStorage.getItem("name"));
+     	  }
+     	  aInput[2].onclick=function(){
+     	  	window.sessionStorage.removeItem("name");
+     	  	 window.sessionStorage.clear();
+     	  	//window.localStorage.removeItem("name");
+     	  	 //window.localStorage.clear("name");
+     	  }
+     }
+</script>
+</body>
+</html>

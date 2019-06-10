@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<!-- 单向数据流的定义： -->
+	<!-- 什么是单向数据流 -->
+	<!-- 单向数据流原则 -->
+	<!-- 数据只能从父组件流向（传递）子组件，只能单向绑定，在子组件内部不能修改父组件传递过来的数据 -->
+	<!-- 解决问题： -->
+	<!-- 1.在子组件内部定义一个本地的data属性，将props的值作为data的初始化数据 
+		 2.这个props一种原始的方式传入继续转换，
+		 怎么转换？ 计算属性computed data -->
+	<!-- 每个组件都是vue实例
+	     组件实例的作用域是孤立的，不能再子组件直接用父组件的数据，可以在组件使用自定义属性绑定数据，声明自定义的btn-Value属性名 -->
+	<!-- props:绑定自定义属性 在等号左边绑定自定义属性名称 等号右边是数据
+	-->
+	<div id="app">
+		<count-compontent v-bind:count='count'><count-compontent>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	Vue.component('count-compontent',{//创建全局的子组件
+		template:`
+		<div>
+		   <p>{{reCount}}</p>
+           <button @click="changeCount()">点击</button>
+		</div>
+		`,
+		props:['count'],
+		data:function(){
+           return{
+           	   reCount:this.count
+           }
+		},
+		computed:{
+			// 计算属性的值是函数的返回值
+			// 他是一个选项对象
+			// 选项对象实现data的实时计算
+			computedCount:function(){
+				return this.reCount
+			}
+		},
+		// 第一种方式
+		methods:{
+			changeCount:function(){
+				this.reCount++;
+			}
+		}
+	})
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			count:0
+		},
+
+
+	})
+</script>
+</body>
+</html>

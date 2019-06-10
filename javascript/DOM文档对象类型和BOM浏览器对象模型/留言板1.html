@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	  *{
+	  	margin:0;
+	  	padding:0;
+	  }	
+	  .write{
+	  	width:400px;
+	  	height:80px;
+	  }
+	  textarea{
+	  	width:397px;
+	  	height:50px;
+	  }
+	  .box{
+	  	width:400px;
+	  	height:400px;
+	  	background:pink;
+	  }
+	  .a{
+	  	width:400px;
+	  	height:60px;
+	  	background:skyblue;
+	  }
+	  .del{
+	  	float:right;
+	  }
+	</style>
+</head>
+<body>
+<div class="write">
+ <textarea name="text"></textarea>
+  <button onclick="fn()">留言</button>
+</div>
+<div class="box">
+  <h1>留言板</h1>	
+</div>
+<script type="text/javascript">
+	var txt=document.getElementsByName('text')[0];
+	var box=document.getElementsByClassName('box')[0];
+	function fn(){
+		console.log(txt.value);
+		//创建一个div标签
+		var oa=document.createElement('div');
+		//给div标签添加类名
+		oa.setAttribute('class','a');
+		//创建一个span
+		var span=document.createElement('span');
+		span.innerHTML=txt.value;
+        //创建删除按钮
+        var btn=document.createElement('button');
+        btn.setAttribute('class','del');
+        btn.innerHTML='删除';
+        //将span button添加给oa
+        oa.appendChild(span);
+        oa.appendChild(btn);
+        //将div添加到页面中
+        box.appendChild(oa);
+        var del=document.getElementsByClassName('del');
+        //循环给所有的删除按钮添加事件
+        for(i=0;i<del.length;i++){
+        	del[i].onclick=function(){
+        		//删除元素
+        		box.removeChild(this.parentNode);
+        		console.log(this.parentNode);
+        	}
+        }
+	}
+</script>
+</body>
+</html>

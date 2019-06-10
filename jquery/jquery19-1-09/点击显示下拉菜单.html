@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>点击按钮实现下拉菜单和隐藏</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+      #div1{
+			width: 240px;
+			height:550px;
+			background: #66FFCC;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="div1">
+	<div class="das">
+		<p class="p1">菜单一</p>
+		<p>111</p>
+		<p >222</p>
+		<p >333</p>
+	</div>
+	<div class="das">
+		<p class="p1">菜单二</p>
+		<p >111</p>
+		<p >222</p>
+		<p >333</p>
+	</div>
+	<div class="das">
+		<p class="p1">菜单三</p>
+		<p >111</p>
+		<p >222</p>
+		<p >333</p>
+	</div>
+		
+	
+</div>
+
+ <script src="jquery.js"></script>     
+<script type="text/javascript">
+	// $(function(){
+ //       $('.p1').hover(function(){
+ //       	$(this).css('fontSize','18px')
+ //       },function(){
+ //       	$(this).css('fontSize','16px');
+ //       })
+ //       $("p").not($('.p1')).css('display','none');  
+ //     $('.p1').click(function(){
+ //        $("p").not($('.p1')).css("display","none");
+ //        $(this).siblings().css('display','block');
+
+ //     })
+	// })
+$(function(){
+	$('.p1').hover(function(){
+		$(this).css('fontSize','18px');
+	},function(){
+		$(this).css('fontSize','15px');
+	})
+	$('p').not($('.p1')).css('display','none');
+	$('.p1').click(function(){
+		$('p').not($('.p1')).css('display','none');
+		$(this).siblings().css('display','block');
+	})
+})
+
+
+
+</script>
+</body>
+</html>

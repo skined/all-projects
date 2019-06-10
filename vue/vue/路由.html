@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div id="app">
+		<h3>hello Vue-router</h3>
+		<p>
+			<!-- 1.使用router-link进行导航,在页面中被渲染成a标签 -->
+			<!-- router-link的to属性，指向跳转的组件-->
+			<!-- 语法 to=‘自定义路径名称 '-->
+			<router-link to='/foo'>Go to foo</router-link>	
+			<router-link to='/bar'>Go to bar</router-link>	
+		</p>
+		<!-- 2.router-view提供路由出口,把router-link对应的组件渲染到路由出口中 -->
+		<router-view></router-view>
+	</div>
+	<script src="vue.js"></script>
+	<script src="vue-rounter.js"></script>
+<script type="text/javascript">
+	// 路由：vue-router它依赖于vue.js
+	// 定义组件：
+	 var  Foo={template:`<div>这是foo对应的组件</div>`}
+     var Bar={template:`<div>这是bar对应的组件</div>`}
+	//路由配置 const routses=[
+	//{路游信息的每一项}
+	//{路游信息的每一项}
+	//路由信息每一项由路由的路经和组件名称]
+	//路由的路径和path信息的每一项都一样
+	var routes=[
+	    {path:'/foo',component:Foo},
+		{path:'/bar',component:Bar}
+		]
+    // 创建根和实例让整个应用都有路由功能
+       var router=new VueRouter({
+       	   routes:routes //简写成 routes
+       	   //routes实例化路由的一个选项，当配置信息
+       	   //名字和routes选项同名的时候可以简写
+       })
+	// 	var  vm=new Vue({
+	// 	 router,//把路由注入到根实例里面
+	// }).$mount('#app')//用$mount挂载根实例
+		
+    var vm=new Vue({
+    	el:'#app',
+    	router:router,
+    	// router是选项，实例化出来的vue-router
+    })
+
+
+
+</script>
+</body>
+</html>

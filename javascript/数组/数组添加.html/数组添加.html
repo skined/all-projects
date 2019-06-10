@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+</head>
+<body>
+<script>
+	    //数组的添加:
+		// var arr=[1,2,3,4,5];
+		// arr.push=(6);
+		// console.log(arr);
+		//数组的删减只适用于数组的最后一项使用pop;
+		// var arr=[1,2,3,4,5];
+		// arr.pop();
+		// console.log(arr);
+        //封装一个添加,删减的函数,
+        //添加
+        // var a=[1,2];
+        // function pushDemo(arr,item){
+        //       arr[arr.length]=item;
+        //       return ;
+        // }
+        // pushDemo(a,'name');
+        // console.log(a);
+        // var arr=[1,2];
+        // function pushDemo(arr,item)//()内arr为要添加的数组,item则为要添加的数组的值
+        // {
+        // 	arr[arr.length]=item;
+        // 	console.log(arr);
+        // }
+        // pushDemo(arr,'name');
+       //那么上述封装的添加函数后边数组添加只能添加一个值,添加多个值方法如下
+        // var arr=[1,2];
+        // function pushName(arr){
+        // 	//创建一个空数组，用于存放要添加的元素
+        // 	var item=[];
+        //    //循环arguments找到除了第一项的所有元素
+        //    for(i=0;i<arguments.length-1;i++){
+        //    	item[i]=arguments[i+1];
+        //    }
+        //    console.log(item);
+        //   // 数组总长度
+        //    var len=arr.length+arguments.length-1;
+        //    //将原数组的长度存储起来；
+        //    var s=arr.length;
+        //    for(var i=arr.length;i<len;i++){
+        //    	arr[i]=item[i-s];
+        //    }
+        //    return arr;
+        // }
+        //  pushName(arr,1,2,3,4,5);
+        //  console.log(arr);
+        //删减函数的封装
+       //  function popDemo(arr){
+       //  	arr.length--;
+       //  	console.log(arr);
+
+       //  }
+      //  popDemo([1,2,3,4]);
+      //  function popDemo(a){
+      //  	  a.length--;
+      //  	  return a;
+      //  }
+      // console.log(popDemo([1,2,3,4]));
+    //冒泡排序
+    //将数组从小到大进行排列
+     // var arr=[15,13,74,16];
+     // function fn(arr){
+     // 	for(i=0;i<=arr.length;i++){
+     // 		for(j=i+1;j<=arr.length;j++){
+     // 			if(arr[i]>arr[j]){
+     // 				var num=arr[i];
+     //                arr[i]=arr[j];
+     //                arr[j]=num;
+     // 			}
+     // 		}
+     // 	}
+     // 	return arr;
+     // }
+     // fn(arr);
+     // console.log(arr);
+     
+
+	</script>
+</body>
+</html>

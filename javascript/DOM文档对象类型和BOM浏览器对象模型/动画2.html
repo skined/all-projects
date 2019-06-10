@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+         .box{
+         	width:300px;
+         	height:200px;
+         	border:1px red solid;
+         	position:relative; 
+         }  
+         #wrap{
+         	width:50px;
+         	height:50px;
+         	background:red;
+         	top:0;
+         	left:0;
+         	position:absolute; 
+         }
+	</style>
+</head>
+<body>
+<div class="box">
+	<div id="wrap">
+		
+	</div>
+</div>
+<button id="btn">点击向右移动300</button>
+<script type="text/javascript">
+	var btn=document.getElementById('btn');
+	window.onload=function(){
+		btn.onclick=function(){
+        var timer=5;
+        // 获取到div起始的位置
+        var  _left=wrap.offsetLeft;
+        // 定义一个计时器
+        var ID=setInterval(function(){
+          //  _left+=timer;
+          // // console.log(_left);
+          // wrap.style.left=_left+'px';
+          // // 判断当前位置等于300时，静止运动
+          // if(_left>=300){
+          //  clearInterval(ID);
+          // }
+
+          // 获取到div当前位置 每调用一次就加5
+          var A=wrap.offsetLeft;
+          A+=timer;
+          console.log(A);
+          wrap.style.left=A+'px';
+          //判断结束位置减去初始位置时等于300时，静止运动
+          if(A-_left>=300){
+            clearInterval(ID);
+            console.log('起始位置'+_left);
+            console.log('当前位置'+wrap.offsetLeft);
+          }
+        },10)
+      }
+    }
+</script>
+</body>
+</html>

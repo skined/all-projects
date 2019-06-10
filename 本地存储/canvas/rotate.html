@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500"></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+  //默认rotate的旋转参考起始点是画布的起始点
+  //rotate的参考点与translate有关，旋转的角度值可以为负值
+  //正方向是顺时针，反方向是逆时针
+  pen.fillStyle='red';
+  pen.rotate(-30*Math.PI/180,false);
+	pen.fillRect(0,0,150,100);
+
+
+</script>
+</body>
+</html>

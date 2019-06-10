@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+	<!-- 在canvas中引入图片，必须让图片预加载 -->
+	<img src="img/luf.JPG" id="img">
+<canvas id="c1" width="500" height="500"></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	var pic=document.getElementById('img');
+	// 如何预加载，给图片添加onload事件，在时间函数里面调用这个方法
+	// oImg就是当前图片，x,y是当前图片的位置 w,h是图片的宽高
+	// repeat:x轴方向平铺
+	// repeat：y轴方向平铺
+	// no-repeat:不平铺
+	pic.onload=function(){
+       // pen.drawImage(oImg,x,y,w,h);
+       pen.drawImage(pic,0,0,150,100);
+       // pen.createPattern(oImg,平铺方式);
+       var bg=pen.createPattern(pic,'repeat');//首先得有图片
+       pen.fillStyle=bg;//然后用图片填充样式
+       pen.fillRect(0,0,oc.width,oc.height);//设置大小
+	}
+</script>
+</body>
+</html>

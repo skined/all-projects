@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		li{
+			width:100px;
+			height:30px;
+			background:yellow;
+			margin:10px;
+			list-style:none;
+		}
+		div{
+			width:200px;
+			height:200px;
+			background:red; 
+		}
+	</style>
+</head>
+<body>
+<!-- 拖放：选中拖动的对象把它放到目标的对象之内
+两个对象：目标对像 脱拽对象 -->
+<!-- 最终的效果：把黄色的方块拖到红色的盒子里面然后消失 删除效果-->
+<!-- 拖拽：给拖动的对象添加属性：draggable：true表示可拖动或false禁止拖动 -->
+<!-- 鼠标变成禁止操作状态，副本的拖动 -->
+<!-- dragstart脱宅的一瞬间触发 -->
+<!-- 拖放事件在火狐浏览器里面有兼容性 无法实现拖拽-->
+
+
+<!-- 目标对象的事件：div是目标对象 -->
+<!-- drageenter：进入目标元素触发 -->
+<!-- dragleave离开目标元素触发 -->
+<!-- drag事件触发的条件：在dragover触发的时候要阻止默认事件 -->
+<!-- 能释放的光标和不能释放的光标不一样 -->
+
+<!-- 解决火狐下面无法拖放的问题 -->
+<!-- 给拖放对象添加一个dataTransfer对象的setData方法 dataTransfer对象在ev对象下面，setData方法在datatransfer对象的下面-->
+<!-- drag事件拖拽前拖拽结束之间连续触发 -->
+<!-- drop事件在目标元素上释放元素触发，要想触发drop事件就必须在dragover时候阻止默认事件 -->
+<ul id="list">
+	<li draggable="true">1111</li>
+	<li draggable="true">dsdss</li>
+	<li draggable="true">dsdadccdd</li>
+</ul>
+<div id="box"></div>
+<script type="text/javascript">
+    var aLi=document.getElementsByTagName("li");
+    var oBox=document.getElementById("box");
+    var oUl=document.getElementById('list');
+   
+    for(i=0;i<aLi.length;i++){//拖拽的一瞬间触发
+        aLi[i]._index=i;
+    	aLi[i].ondragstart=function(ev){
+    		this.style.background='green';
+    	   ev.dataTransfer.setData('name',this._index);
+           ev.dataTransfer.effectAllowed='none';//禁止状态
+           ev.dataTransfer.effectAllowed='copy';  //
+           ev.dataTransfer.effectAllowed='link';
+           ev.dataTransfer.effectAllowed='copylink'; 
+    	}
+    	//drag事件发生在拖拽开始和拖拽结束之前触发，并且是连续触发
+    	 var num=0;
+    	// aLi[i].ondrag=function(){
+    	// 	  num++;
+     //          document.title=num;
+    	// }
+    	aLi[i].ondragend=function(){//拖拽结束的时候鼠标
+           this.style.background='yellow';
+    	}
+    	// 进入目标元素触发的事件
+    	oBox.ondragenter=function(){
+    		this.style.background='lightblue';
+    	}
+    	// 在进入目标元素和离开目标元素之间触发的事件（时间连续触发）
+    	 oBox.ondragover=function(ev){
+         //    document.title=num++;
+            ev.preventDefault(); //阻止默认事件
+    	 }
+    	//离开目标元素触发的事件
+    	oBox.ondragleave=function(){
+    	   this.style.background='red';
+
+    	}
+    	//drap事件在目标元素上释放鼠标
+    	oBox.ondrop=function(ev){
+    		 // alert(123);
+    		console.log(ev.dataTransfer.getData('name',this._index));
+    		 //扔的时候触发删除的操作
+    		oUl.removeChild(aLi[ev.dataTransfer.getData('name',this._index)]);
+    	}
+    }
+
+
+</script>
+</body>
+</html>

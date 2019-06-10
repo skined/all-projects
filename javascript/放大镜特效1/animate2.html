@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	var timer=null;
+	var animate=function(obj,end){
+		clearInterval(timer);
+		var step=15;
+		timer=setInterval(function(){
+			var leader=obj.offsetLeft;
+			var end>leader?step=step:=-step;
+			if(leader!=end){
+              ul.stle.left=leader+step+'px';
+			}
+			else if(Math.abs(end-leader)<Math.abs(step)){
+				ul.style.left=end+'px';
+			}
+		},15)
+	}
+</script>
+</body>
+</html>

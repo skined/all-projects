@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>链式操作</title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div></div>
+	<script src="jquery.js"></script>
+<script type="text/javascript">
+	// 链式操作
+	// 实质可以把多个操作连接在一块
+	// $(function(){
+	// 	$('div').css('background','red');
+	// 	$('div').html('678');
+	// 	$('div').click(function(){
+	// 		alert(1);
+	// 	})
+	// })
+	$('div').css('background','red').html('456').click(function(){
+		alert(2);
+	})
+</script>
+</body>
+</html>

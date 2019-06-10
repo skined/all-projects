@@ -1,0 +1,36 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/video/video"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#85d6d8",
+    "navigationBarTitleText": "梦塔同人秀",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "list": [
+      {
+      "pagePath": "pages/index/index",
+      "text": "cos",
+      "iconPath": "./images/icon/cosplay.png",
+      "selectedIconPath": "./images/icon/cosplay_1.png"
+    },
+        {
+          "pagePath": "pages/logs/logs",
+          "text": "draw",
+          "iconPath": "./images/icon/draw_2.png",
+          "selectedIconPath": "./images/icon/draw_1.png"
+        },
+          {
+            "pagePath": "pages/video/video",
+            "text": "tv",
+            "iconPath": "./images/icon/video_1.png",
+            "selectedIconPath": "./images/icon/video.png"
+          }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

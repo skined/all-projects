@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css"></style>
+</head>
+<body>
+	<script type="text/javascript">
+		// var a ='God is girl';
+		// js代码执行分为两个步骤：
+		// 1.编译
+		// 2.执行
+		// var a;发生在编译阶段，会被提升到当前作用域的最前面
+		// a=God is Girl发生在执行阶段留在原地等待执行阶段
+		// console.log(a);//只声明变量没有赋值
+		// var a='God is girl';
+		// var a;
+		// a='God is Girl';
+  //       console.log(a);
+         // 补充：在es6之前js只有全局作用域和函数作用域，let和const为其引入了块级作用域
+        //let:
+        //1.不存在变量提升只能在声明的位置后面使用
+        //2.在相同的作用域内不允许重复声明同一个变量
+        //3.他是一个块级作用域
+        // console.log(a);//a is not undefined
+        // let a=5;
+
+        // if(true){
+        // 	let a=3.14;
+        // 	let a=5;
+        // }
+        // console.log(a);
+        // {
+        // var a=5;
+        // const c=6;
+        // }  
+        // console.log(a);//5
+        // console.log(c);//b is not undefiend
+       
+
+       // for(i=0;i<3;i++){
+       // 	document.addEventListener('click',function(){
+       // 		alert(i);
+       // 	})
+       // }
+
+       //  for(let i=0;i<3;i++){
+       // 	document.addEventListener('click',function(){
+       // 		alert(i);
+       // 	})
+       // }
+       
+
+       // const:1.声明一个只读的常量，一旦声明，常量的值不能被改变
+       // 意味着const一旦声明变量必须立即初始化，不能留在以后去赋值
+             // 2.只在声明的块级作用域内有效                
+             // 3.不存在变量提升,只能在声明的位置后面使用      
+            // const a;//声明的时候立马去赋值
+            // console.log(a);//Missing initializer in const declaration
+            // a=5;
+            const pic=3.1415926;
+            pic=3;//Assignment to costant variable.
+            console.log(pic);
+            //暂时性死区:
+            //var声明变量可以在声明之前使用，相当于其声明其值为undefined,但是let 声明的变量一旦用let声明，那么在声明之前此变量都是不可用的，术语称为暂时性死区
+            //所以我们要养成先声明再使用的习惯
+            // console.log(a);//undefined
+            // var a=5;
+           
+            // console.log(b);//undefined
+            // let b=10;
+	</script>
+</body>
+</html>	

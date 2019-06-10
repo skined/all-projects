@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+</head>
+<body>
+<script type="text/javascript">
+	// reduce:这个方法接受一个函数累加器，从数组从左往右依次缩减，最后计算得出一个值，
+	// prev:上一次累加计算的值(必须值)
+	// next:当前要参与计算的值(必须值)
+	// index:当前值的索引（可选）
+	// array：数组本身
+	// 第一次执行的时候prev是数组的第一项1，next2,1+2=3
+	// 第二次prev是3
+	// 核心:return后面的值作为下一次的prev(previous)
+	// prev是可以传参的，如果给prev传参，那么next第一次是数组的第一项
+	var arr=[1,2,3,4];
+     var res=arr.reduce((prev,next,index,array)=>{
+            //求和
+            return prev+next;//返回值作为下一次prev的值
+     })
+     console.log(res);
+   let carlist=[{
+   	  'name':'apple',
+   	  'count':2,
+   	  'price':10
+
+   },{
+   	  'name':'banana',
+   	  'count':3,
+   	  'price':8
+   },{
+   	  'name':'orange',
+   	  'count':4,
+   	  'price':20
+   }]
+   var ran=carlist.reduce((prev,next)=>{
+      return prev+next.count*next.price;
+      // 第一次：prev：prev.count*prev.price+next.count*next.price;
+      // 第二次：prev:44+next->carlist[2].count*carlist.price;
+   },0)
+   console.log(ran);
+   //传参以后：prev初始值为0,next为数组第一项。
+   //后续累加都是数组的下一项
+   //initalValue初始值相对于prev(可选)
+  
+
+  var a1=['name','age'];
+  var a2=['小明',12];
+  var obj={};
+  var array=a1.reduce((prev,next,index)=>{
+ 		obj[next]=a2[index];
+ 	return obj;
+},{})
+  console.log(array);
+
+</script>
+</body>
+</html>

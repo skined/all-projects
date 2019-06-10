@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+<div class="box">
+	<p>p</p>
+</div>	
+<ul id="ul1">
+	<li>上海</li>
+	<li>广州</li>
+</ul>	
+<span>span</span>
+<div>div</div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	//appendTo() append()相当于appendChild
+	$(function(){
+		var li=$('<li>北京</li>');  //创建节点
+		 //$('#ul1').append(li);//appendTo和append区别：主语和谓语不同append往那里边放，要放的元素
+	      // li.appendTo('#ul1');//appendTo()谁往谁里边放
+		// $('#ul1').prepend(li);//放在开头
+		 // li.prepend($('#ul1'));
+		 //$('div').insertBefore('span');//将div剪切到span前面
+		//移出
+		 $('.box p').remove();//移出删除
+		
+
+
+	})
+</script>
+</body>
+</html>

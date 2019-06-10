@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500"></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	//getImageData(x,y,w,h);
+	//x,y:获取像素的起始位置
+	//w,h:获取图像像素的宽高
+	//data:像素数组组合
+	//createImageData(w,h);
+	//w:对象的宽度和高度
+	//putImageData()获取的图像，设置新的图像数据，x,y把获取到的图像放到画布的位置上
+	var imgData=pen.getImageData(10,10,100,50);
+	console.log(imgData);
+	console.log(imgData.data.length);
+	//创建红色的小矩形
+	var imgData=pen.createImageData(100,100);
+	for(i=0;i<imgData.data.length;i++){
+		imgData.data[4*i]=255;
+		imgData.data[4*i+1]=0;
+		imgData.data[4*i+2]=0;
+		imgData.data[4*i+3]=255;
+	}
+	pen.putImageData(imgData,100,100);
+</script>
+</body>
+</html>

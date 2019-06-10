@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+	//创建日期对象，获取到当前时间
+	var d=new Date();
+	document.write('当前时间'+d+'<br>');
+	//toString()将日期转换为字符串
+	document.write('当前时间'+d.toString()+'<br>');
+	//1970年1月1日夜
+	//valueOf()返回距离1970年1月1日午夜的毫秒数
+	// document.write(d.valueOf()+'<br>');
+	//getTime()获取到当前时间距离1970年1月1日午时的毫秒数
+	// document.write('距离1970年1月1日午时有'+d.getTime()+'毫秒'+'<br>');
+	// var m=parseInt(d.getTime()/1000);
+	// document.write('距离1970年1月1日午时有'+m+'秒'+'<br>');
+	// var f=parseInt(d.getTime()/1000/60);
+	// document.write('距离1970年1月1日午时有'+f+'分'+'<br>');
+	// var h=parseInt(d.getTime()/1000/60/60);
+	// document.write('距离1970年1月1日午时有'+h+'小时'+'<br>');
+	// var t=parseInt(d.getTime()/1000/60/60/24);
+	// document.write('距离1970年1月1日午时有'+t+'天'+'<br>');
+	// var y=d.getTime()/1000/60/60/24/30;
+	// document.write('距离1970年1月1日午时有'+y+'月'+'<br>');
+	// var n=d.getTime()/1000/60/60/24/30/12;
+	// document.write('距离1970年1月1日午时有'+n+'年'+'<br>');
+
+    //getFullYear();获取年份
+    document.write(d.getFullYear()+'年');
+    //getMonth();获取月份
+    document.write(d.getMonth()+1+'月');
+    //getDate();获取月份中的某一天
+    document.write(d.getDate()+'日');
+    //getDay();获取工作日，返回0~6之间的整数，0代表周日，1~6代表周一到周六
+    document.write('星期'+d.getDay()+' ');
+    //getHours();获取小时，返回0~23的整数
+    document.write(d.getHours()+'点');
+    //getMinutes();
+    document.write(d.getMinutes()+'分');
+    //getSeconds();获取秒数，返回0~59之间的整数
+    document.write(d.getSeconds()+'秒');
+    //getMilliseconds();获取毫秒数，返回0~999之间的整数
+    document.write(d.getMilliseconds()+'毫秒'+'<br>');
+
+    //setFullYear()用于设置年份
+    var d=new Date();
+    document.write(d.setFullYear(1998,11,23)+'<br>');
+    document.write(d.getFullYear()+'年');
+    //setMonth()用于设置月份
+    var d=new Date();
+    document.write(d.setMonth(10,23)+'<br>');
+    document.write(d.getMonth()+'月');
+    var d=new Date();
+    document.write(d.setDate(10)+'<br>');
+    document.write(d.getDate()+'日'+'<br>');
+
+
+
+
+
+var d=new Date();
+document.write('当前时间'+d+'<br>');
+var k=new Date(2018,9,16,08,30,00);
+document.write('当前时间'+k+'<br>');
+var c=k-d;
+document.write('时间差'+c+'<br>');
+var _date=parseInt(c/1000/60/60/24);
+var _hours=parseInt(c/1000/60/60%24);
+var _minutes=parseInt(c/1000/60%60);
+var _second=parseInt(c/1000%60);
+document.write('距离考试还有'+_date+'天'+_hours+'时'+_minutes+'分'+_second+'秒'+'<br>');
+//setFullYear(Year,Month,Day)设置年份
+//改变日期对象的年份(必须)，月份(可选)，日(可选)
+d.setFullYear(1999);
+d.setMonth(1,26);
+//setMonth(Month,Day)设置月份
+//改变日期对象的月份(必需)，日(可选)
+d.setDate(5);
+//改变日期对象的某一日
+//用于设置指定小时内的字段setHours(hour,min,sec);
+hour必需，min可选，sec可选
+d.setHours(08,34,2,112);
+//设置小时setHours(hour,minutes,seconds,milliseconds);
+//小时(可选)，分(可选)，秒(可选),毫秒(可选);
+d.setMinutes(12);
+//setMinutes(min,sec,millisec);用于设置指定时间内的分钟字段 min必需，sec可选，millisec可选
+d.setSeconds(59);
+//setSeconds(sec,millisec);sec必须的值,millisec可选表示可选的值
+d.setMilliseconds(180);
+//setMilliseconds();用于设置指定时间内的毫秒字段
+document.write(d);
+</script>
+</body>
+</html>

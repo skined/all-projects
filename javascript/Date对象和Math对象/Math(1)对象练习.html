@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    <style type="text/css">
+    	*{
+          margin:0;
+          padding:0;
+    	}
+    	#box{
+    		width:360px;
+    	}
+    	p{
+    		width:90px;
+    		height:90px;
+    		border:1px red solid;
+    		float:left;
+    	}
+    </style>
+</head>
+<body>
+<!-- 	<div id="box"></div>
+	<button onclick="demo()">切换颜色</button> -->
+<script>
+ // function random(max,min){
+ // 	var a=Math.random()*(max-min+1)+min;
+ // 	return parseInt(a);
+ // }
+ // var arr=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+
+ // function Demo(){
+ // 	var str='';
+ //    for(i=0;i<12;i++){
+ //    	var color='#';
+ //    	for(j=0;j<6;j++){
+ //    	var ran=random(0,arr.length-1);
+ //    	color=color+arr[ran];	 
+ //    	}
+ //    	 str+='<p style="background:'+color+';"></p>'
+ //    	 // console.log(color); 
+ //    }
+ //    box.innerHTML=str;
+ // }
+ // Demo();
+//math对象
+// console.log(Math.max(1,2,3,4,5,6));
+// console.log(Math.min(1,2,3,4,5,));
+// console.log(Math.ceil(5.5));
+// console.log(Math.floor(5.0));
+// console.log(Math.round(3.5));
+// console.log(Math.abs(-2));
+//Math.random()产生0~1之间随机的一个数
+// console.log(Math.random());
+//随机产生1~100之间不重复的整数
+function random(min,max){
+  var a=Math.random()*(max-min+1)+min;
+  return parseInt(a);
+}
+
+</script>
+</body> 
+</html> 

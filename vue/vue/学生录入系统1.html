@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    *{
+      margin:0;
+      padding:0;
+      list-style:none;
+    }
+    fieldset{
+      width:600px;
+      margin:20px auto;
+      border:1xp solid orangered;
+    }
+   fieldset input{
+      width:200px;
+      margin:20px auto;
+   }
+   table{
+      width:600px;
+      text-align:center;
+       border:1px solid #ccc;
+      background:pink;
+      margin:20px auto;
+   }
+   table tr td{
+    border:1px solid red;
+   }
+  </style>
+</head>
+<body>
+<div id="app">
+  <fieldset>
+      <legend>学生信息录入系统</legend>
+      <div>
+        <span>姓名</span>
+       <input type="text" placeholder="请输入用户名" name="" v-model='personObj.name'>
+      </div>
+       <div>
+        <span>年龄</span>
+       <input type="text" placeholder="请输入用户名的年龄" name="" v-model='personObj.age'>
+      </div>
+        <div>
+        <span>性别</span>
+        <select v-model='personObj.sex'>
+          <option value="男">男</option>
+          <option value="女">女</option>
+        </select>
+      </div>
+      <div>
+        <span>手机</span>
+        <input type="text" name="" placeholder="请输入用户名的手机号" v-model='personObj.phone'>
+      </div>
+      <button @click='addStudent()'>创建新用户</button>
+
+  </fieldset>
+  <table>
+    <tr>
+      <td>姓名</td>
+      <td>年龄</td>
+      <td>性别</td>
+      <td>手机</td>
+      <td>删除</td>
+    </tr>
+    <tr v-for='(item,index) in person'>
+      <td>{{item.name}}</td>
+      <td>{{item.age}}</td>
+      <td>{{item.sex}}</td>
+      <td>{{item.phone}}</td>
+      <td><button @click='deleteStudent(index)'>删除</button></td>
+    </tr>
+  </table>
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+  var vm=new Vue({
+    el:'#app',
+    data:{
+      person:[
+         {name:'张三',age:'45',sex:'男',phone:'1154511485'},
+         {name:'李四',age:'15',sex:'男',phone:'1154321485'},
+         {name:'王五',age:'35',sex:'男',phone:'1154521485'},
+         {name:'赵六',age:'25',sex:'男',phone:'3354511485'},
+
+      ],
+      personObj:{
+        name:'',
+        age:0,
+        sex:'男',
+        phone:''
+      },
+    },
+    methods:{
+          addStudent:function(){
+              if(this.personObj.name==''){
+                alert('请输入用户名');
+                return;
+              }
+              if(this.personObj.age<=0 || this.personObj.age==''){
+                alert('请输入正确的年龄');
+                return;
+              }
+              if(this.personObj.phone==''){
+                alert('请输入手机号');
+                return;
+              }
+             this.person.unshift(this.personObj);
+          },
+          deleteStudent:function(index){
+              console.log(index);
+              this.person.splice(index,1);
+          }
+    }
+  })
+</script>
+</body>
+</html>

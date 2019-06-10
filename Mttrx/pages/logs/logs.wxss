@@ -1,0 +1,18 @@
+.font{
+  font-size:18px;
+  font-weight:bold;
+  width:350rpx;
+  height:50rpx;
+  display:block;
+  margin:40rpx auto;
+  line-height:50rpx;
+  text-align:center; 
+}
+.font1{
+  font-size:14px;
+  display:inline-block;
+   margin-top:150rpx;
+}
+.draw{
+  margin-top:100rpx;
+}

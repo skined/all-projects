@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+		   margin:0;
+		   padding:0;
+		}
+		.box{
+            width:350px;
+            height:350px;
+            border:1px #ccc solid;
+            margin:100px;
+            position:relative;
+        }
+        .small{
+            position:relative;
+        }
+        .mask{
+            width:175px;
+            height:175px;
+            background:rgba(255,255,0,0.3);
+            top:0;
+            left:0;
+            position:absolute;
+        }
+        .big{
+            width:400px;
+            height:400px;
+            border:1px #000 solid;
+            top:0;
+            left:360px;
+            overflow:hidden;
+            position:absolute;
+        }
+        .small img{
+            vertical-align:top;
+        }
+        #bigBox img{
+            position:absolute;
+        }
+
+	</style>
+</head>
+<body>
+<div id="box" class="box">
+	<div id="smallBox" class="small">
+		<img src="image/001.jpg" width="350" alt=""/>
+		<div id="mask" class="mask"></div>
+	</div>
+	<div id="bigBox" class="big">
+		<img src="image/0001.jpg" id="bigImg" width="800" alt=""/>
+	</div>
+</div>
+<script type="text/javascript">
+	var smallBox=document.querySelector("#smallBox");
+	var mask=document.querySelector("#mask");
+	var bigBox=document.querySelector("#bigBox");
+	var bigImg=document.querySelector("#bigImg");
+	var box=document.querySelector(".box");
+     smallBox.onmouseover=function(){
+     	bigBox.style.display='block';
+     	mask.style.display='block';
+     }
+     smallBox.onmouseout=function(){
+     	bigBox.style.display='none';
+     	mask.style.display='none';
+     }
+     document.onmousemove=function(e){
+        //创建鼠标的横纵位置的变量
+     	var pageX=e.pageX || e.clientX+document.documentElement.scrollLeft;
+        var pageY=e.pageY || e.clientY+document.documentElement.scrollTop;
+        //由于遮罩盒子相对于小合子定位，因此要求小盒子鼠标相对于小盒子的位置
+     	var boxX=e.pageX-box.offsetLeft;
+     	var boxY=e.pageY-box.offsetTop;
+        //为了让遮罩盒子跟随鼠标移动，应该让遮罩盒子定位减去宽和高的一半
+     	var positionX=boxX-mask.offsetWidth/2;
+     	var positionY=boxY-mask.offsetHeight/2;
+      //限制小盒子的移动范围不能超出小图片盒子
+     if(positionY<=0){
+        positionY=0;
+     }
+     //从左边超出盒子
+     if(positionX<=0){
+     	positionX=0;
+     }
+     //从下边超出盒子 
+     //从右边超出盒子                        
+     if(positionX>=smallBox.offsetWidth-mask.offsetWidth){
+     	positionX=smallBox.offsetWidth-mask.offsetWidth;
+     }
+     if(positionY>=smallBox.offsetHeight-mask.offsetHeight){
+           positionY=smallBox.offsetHeight-mask.offsetHeight;
+            }
+     	   mask.style.left=positionX+'px';
+     	   mask.style.top=positionY+'px';
+     	   maskJl=smallBox.offsetHeight-mask.offsetHeight;
+     	   bigImgJl=bigImg.offsetHeight-bigBox.offsetHeight;
+     	   var rate=bigImgJl/maskJl;
+     	   bigImgX=-positionX*rate;
+     	   bigImgY=-positionY*rate;
+           bigImg.style.left=bigImgX+'px';
+           bigImg.style.top=bigImgY+'px';
+    
+}
+</script>
+</body>
+</html>

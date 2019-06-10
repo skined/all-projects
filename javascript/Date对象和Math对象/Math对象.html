@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:360px;	
+		}
+		p{
+			width:90px;
+			height:90px;
+			border:1px red solid;
+			float:left; 
+		}
+
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button onclick="Demo()">切换颜色</button>
+<script>
+	   //math对象
+	   //Math.max(x,y);最大值; 
+	   // console.log(Math.max(1,3,5,7,9));
+	   //Math.min(x,y,z);最小值;
+	   // console.log(Math.min(1,2,4,6,8));
+	   //Math.ceil()向上取整;
+	   // console.log(Math.ceil(1.005));
+	   //Math.floor();向下取整,当输入的数为小数时取与他最接近的最大值的整数
+	   // console.log(Math.floor(3.9));
+	   //Math.round();四舍五入；
+	   // console.log(Math.round(3.5));
+	   //Math.abs();绝对值
+	   // console.log(Math.abs(-2));
+	   //Math.random()产生一个0~1之间随机数
+	   // console.log(Math.random());
+	   // var ran=Math.random()*(max-min+1)+min;
+	   // var ran=Math.random()*(100-10+1)+10;
+	   // console.log(parseInt(ran));
+	   // var _Math={
+	   // 	  max: function(){
+	   	  	//假设argument[0]为最大值，使用arguments[0]和其他元素进行比较
+	   // 	  	var num=arguments[0];
+	   // 	  	for(i=0;i<arguments.length;i++){ 
+	   // 	  		if(num<arguments[i]){
+	   // 	  			num = arguments[i];
+	   // 	  		}
+
+	   // 	  	}
+	   // 	  	  return num;
+	   // 	  },
+    //       min: function(){
+    //       	var num=arguments[0];
+    //       	for(i=0;i<arguments.length;i++){
+    //       		if(num>arguments[i]){
+    //                 num!=argumens[i];
+    //       	 }
+    //       	}
+    //       	return num;
+    //       },
+    //       ceil: function(x){
+    //          var a=parseInt(x);
+    //          if(x%a==x){
+    //          	return x;
+    //          }else{
+    //          	return x++;
+    //          }
+    //          return x; 
+    //       },
+    //       floor: function(x){
+    //          var a=parseInt(x);
+    //          if(x%a<=x){
+    //          	return x;
+    //          }
+    //          return x;
+    //       },
+    //       round: function(x){
+    //       	var a=parseInt(x);
+    //       	if(x%a==0){
+    //           return x; 
+    //       	}else{
+    //       	   var _float=x%a;
+    //       	   if(float>=0.5){
+    //       	   	   a++;
+    //              return a;
+    //       	   }else{
+    //       	   	  return a;      
+    //       	   }
+    //       	}
+    //       },
+    //       abs: function(a){
+    //         if(a>=0){
+    //         	return a;
+    //         }else{
+    //         	return -a;
+    //         }
+    //       },
+        
+	   // 	}
+	   // console.log(Math.max(1,2,3,1520));
+	   // console.log(Math.min(5,821,12));
+	   // console.log(Math.ceil(5.0));
+	   // console.log(Math.floor(6.01));
+	   // console.log(Math.round(5.5));
+	   // console.log(Math.abs(-8));
+	   //  function ranDemo(max,min){
+    //          var a=Math.random()*(max-min+1)+min;
+    //          return  parseInt(a);
+    //       }    
+	   // console.log(ranDemo(10,40));
+
+
+
+
+//      1、随机产生100个从0~1000之间不重复的整数
+          //   var arr=[];
+          //   function fn(max,min){
+          //   	for(i=0;i<100;i++){
+          //   		arr.push(parseInt(Math.random()*(max-min+1)+min));
+          //   		for(j=0;j<arr.length-1;j++){
+          //   			if(arr[arr.length-1]==arr[j]){
+          //   				arr.splice(j,1);
+          //   				j--;
+          //   				i--;
+          //   			}
+          //   		} 
+          //   	}
+          //   }   
+          // fn(0,1000);
+          // document.write(arr);
+
+
+          //随机产生100个0~1000之间不重复的整数的方法
+          // function random(max,min){
+          // 	var a=Math.random()*(max-min+1)+min;
+          // 	return parseInt(a);
+          // }
+          //创建一个空数组用于存放不重复的数据
+          // var ranArr=[];
+          //将数组中每一项和a进行比较，相等就不添加
+          //如果数组中每一项和a相等的话就x=1;
+          //如果数组中每一项和a不相等的话就x=0;
+          //设置初始值为零,因为数组第一次循环为空
+          //i为循环的次数
+          // for(var i=0;i<100;i++){
+          // 	var a=random(0,1000);
+          // 	var x=0;
+          //  for(var j=0;j<ranArr.length;j++){
+          //  	 if(ranArr[j]!=a){
+          //  	 	x=0;
+          //  	 }else{
+          //  	 	x=1;
+           	 	//只要有相等的，就会结束当前循环
+           // 	 	break;
+           // 	 }
+           // }
+           // if(x==0){
+           // 	 ranArr.push(a);
+           // }else if(x==1){
+           	//如果重复了，就不添加到数组中，需要再添加一个随机数
+          //    i--;
+          //  }
+          // }
+          // document.write(ranArr);
+          // function random(min,max){
+          // 	var a=Math.random()*(max-min+1)+min;
+          // 	return parseInt(a);
+          // }
+          // var ranArr=[];
+          // for(i=0;i<100;i++){
+          // 	var a=random(0,1000);
+          //  var x=0
+          //  for(j=0;j<ranArr.length;j++){
+          //  	if(ranArr[j]!=a){
+          //  		x=0
+          //  	}else{
+          //  		x=1;
+          //  		break;
+          //  	}
+          //  }
+          //  	if(x==0){
+          //  		ranArr.push(a);
+          //  	}
+          //  	else if(x==1){
+          //  		i--;
+          //  	}
+          //  }
+          // document.write(ranArr);
+//		2、随机产生一个三位数字，判断其是不是回文数字
+             // var a=parseInt(Math.random()*(999-100+1)+100);
+             // document.write(a);
+             // var g=parseInt(a%10);
+             // var s=parseInt(a/10%10);
+             // var b=parseInt(a/100);
+             // if((g==s==b) || b==g){
+             // 	document.write("是回文");
+             //  }else{
+             //      document.write('不是回文');
+             //  }
+          //        function random(max,min){
+          //             var a=Math.random()*(max-min+1)+min;
+          // 	          return parseInt(a);
+          // }
+          //   	  var ran =random(100,999);
+            	  //找到当前数字需要循环的次数
+            	  //比如12321则需要进行两次的比较长度/2=2.5
+            	  //向下取整
+            	  //这里将随机数转换为字符串
+            	  // var str=ran.toString();
+               //    var x=Math.floor(str.length/2);
+               //    for(i=0;i<x;i++){
+               //    	if(str.charAt(i)!=str.charAt(str.length-1-i)){
+               //    		document.write('不是回文数字');
+               //    	}else{
+               //    		document.write(str+'是回文数字');
+               //    	}
+               //    }
+//		3、随机产生0~100 的数字，输出个位或十位是7、或者是7的倍数的。 
+                 // function random(max,min){
+                 // 	var a=Math.random()*(max-min+1)+min;
+                 // 	return parseInt(a);
+                 // }
+                 // var num=random(0,100);
+                 // var g=num%10;
+                 // var s=parseInt(num/10%10);
+                 // var b=num/100;
+                 // if(g==7 || s==7 || b==7){
+                 // 	document.write(num);
+                 // }else{
+                 // 	document.write('该数个位，十位不为7，也不是七的倍数');
+                 // }
+               
+
+               //方法二
+                // for(i=0;i<=100;i++){
+                // 	if(i%10==7){
+                // 		document.write('个位为7的数字:'+i+'<br>');
+                // 	}
+                // 	if(i/10%10==7){
+                //         document.write('十位为7的数字:'+i+'<br>');  
+                // 	}
+                // 	else if(i%7==0){
+                // 		document.write('是7的倍数的数字:'+i+'<br>');
+                // 	}
+                // }
+                        
+
+//		4、如何产生2~17之间的随机整数，包括2和7
+		        // var ran=Math.random()*(17-2+1)+2;
+		        // console.log(parseInt(ran));
+//        5、随机产生6个十六进制的数字，并将它们组合成颜色的值，应用于文字上面。
+//		例如：#2f34ad;
+         // var arr=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+         // var color='#';
+         // for(i=0;i<6;i++){
+         // 	var ran=random(0,arr.length-1);
+         // 	color=color+arr[ran];
+         // }
+         // console.log(color);
+         // var str= '<p style="color:'+color+';">我是随机产生的颜色</p>';
+         // document.write(str);
+       	function random(max,min){
+       		var a=Math.random()*(max-min+1)+min;
+       		return parseInt(a);
+       	}
+       var arr=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+       function Demo(){
+       	var str='';
+       for(i=0;i<12;i++){
+       	var color='#';
+       	for(j=0;j<6;j++){
+
+       	var ran=random(0,arr.length-1);
+       	color=color+arr[ran];
+
+       } 
+              
+         str+='<p style="background:'+color+';"></p>';
+         console.log(color);      
+    }
+        box.innerHTML=str;
+}
+ Demo();
+ 
+</script>
+</body>
+</html>   

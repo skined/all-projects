@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.box{
+			width: 200px;
+			height: 200px;
+			margin: 50px auto;
+			border:#000 solid 1px;
+			border-radius: 50%;
+			position: relative;
+			overflow: hidden;
+			transition: all 2s;
+			background: linear-gradient(to right,
+			white 50%,
+			black 50%);
+		}
+		.left,.right{
+			width: 50%;
+			height: 100%;
+			background: #FFF;
+			float: left;
+		}
+		.right{
+			background: black;
+		}
+		.top,.bottom{
+			width: 50%;
+			height: 50%;
+			position: absolute;
+			border-radius: 50%;
+		}
+		.top{
+			top: 0px;
+			left: 25%;
+			background: #000000;
+		}
+		.bottom{
+			bottom: 0;
+			left: 25%;
+			background: #FFFFFF;
+		}
+		.top>div,.bottom>div{
+			width: 30%;
+			height: 30%;
+			border-radius: 50%;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			right: 0;
+			left: 0;
+			margin: auto;
+		}
+		.top>div{
+			background: #FFF;
+		}
+		.bottom>div{
+			background: #000;
+		}
+		.box:hover{
+			transform: rotate(360deg) scale(2,2);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<!--<div class="left"></div>-->
+		<!--<div class="right"></div>-->
+		<div class="top">
+			<div></div>
+		</div>
+		<div class="bottom">
+			<div></div>
+		</div>
+	</div>
+</body>
+</html>

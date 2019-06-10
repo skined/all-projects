@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+
+		}
+		canvas{
+			background:transparent;
+		}
+		#pic{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+    <canvas id="c1" width="400" height="300"></canvas>
+    <input type="button" value="→" name="" id="left">
+    <input type="button" value="←" name="" id="right">
+<img src="img/life.JPG" id="pic">
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+    var pic=document.getElementById('pic');
+    var left=document.getElementById('left');
+    var right=document.getElementById('right');
+	pic.onload=function(){
+		pen.translate(200, 150);
+		left.onclick=function(){
+            pen.rotate(Math.PI/2);
+            pen.clearRect(-280,-300,pic.width,pic.height);
+	        pen.drawImage(pic,-200,-100,400,300);
+		}
+		right.onclick=function(){
+			pen.rotate(-Math.PI/2);
+			pen.clearRect(-250,-200,pic.width,pic.height);
+			pen.drawImage(pic,-200,-100,400,300);
+		}
+		}
+</script>
+</body>
+</html>

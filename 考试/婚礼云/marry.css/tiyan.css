@@ -1,0 +1,156 @@
+*{
+	margin:0;
+	padding:0;	
+}
+.content{
+	width:100%;
+	height:100%;
+}
+.zhuc{
+	width:100%;
+	height:802px;
+	background:#364150;
+}
+.zhucenter{
+	width:1200px;
+	height:749px;
+	margin:0 auto; 
+	overflow:hidden; 
+	/*border:1px red solid;*/
+}
+.zc{
+	width:418px;
+	height:674px;
+	margin:74px auto;
+	/*border:1px white solid;*/
+}
+.logo{
+	width:183px;
+	height:60px;
+	margin:23px auto;
+	/*border:1px red solid;*/
+}
+
+.tab{
+	width:404px;
+	height:480px;
+	margin:45px auto;
+	overflow:hidden;
+	background:#ffffff;
+}
+.title{
+	width:63px;
+	height:31px;
+	margin:35px auto;
+	font-size:25px;
+	font-weight:350;
+	color:#32C5D2;
+	text-align:center; 
+	/*border:1px green solid;*/
+}
+.gray{
+	width:341px;
+	height:42px;
+	margin:14px 30px;
+	background:#DDE3EC;
+}
+#gray1{
+	margin-top:-16px;
+}
+.gray>p{
+	font-size:14px;
+	font-weight:350;
+	color:#8290A3;
+	line-height:42px;
+	margin-left:14px; 
+}
+.bli{
+	width:98px;
+	height:42px;
+	float:right;
+	margin-top:-42px;
+	background:#3598DC;
+}
+.bli>p{
+	font-size:14px;
+	font-weight:350;
+	color:#ffffff;
+	line-height:42px;
+	text-align:center;  
+}
+.tongy{
+	width:129px;
+	height:43px;
+	margin:23px 30px;
+	/*border:1px red solid;*/
+}
+.square{
+	width:15px;
+	height:17px;
+	margin-top:13px;
+	border:1px #696969 solid;
+}
+.tongy p{
+	font-size:14px;
+	font-weight:350;
+	color:#000;
+	margin:-18px 21px;
+}
+.tongy span{
+	width:75px;
+	height:17px;
+	font-size:14px;
+	font-weight:350;
+	color:#337AB7;
+	display:block; 
+	margin:-14px 59px;
+}
+.lu{
+	width:342px;
+	height:45px;
+	margin:46px 29px;
+	/*border:1px red solid;*/
+}
+.dllu{
+	width:70px;
+	height:44px;
+	float:left;
+	font-size:13px;
+	font-weight:bold;
+	color:#32C5D2;
+	line-height:41px;
+	text-align:center;
+	transition-duration:1s;   
+	border:1px #32C5D2 solid;
+}
+.dllu:hover{
+   color:#ffffff;
+   background:#32C5D2;
+}
+.sub{
+	width:70px;
+	height:46px;
+	float:right;
+	font-size:13px;
+	font-weight:350;
+	color:#FFFFFF;
+	line-height:41px;
+	text-align:center;  
+	background:#36C6D3;
+	transition-duration:1s; 
+}
+.sub:hover{
+	background:#27A4B0;
+}
+.time{
+	width:333px;
+	height:37px;
+	margin:-20px auto;
+	/*border:1px green solid;*/
+}
+.time>p{
+	font-size:13px;
+	font-weight:350;
+	color:#7A8CA5;
+	text-align:center; 
+}

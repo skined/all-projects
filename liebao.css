@@ -1,0 +1,76 @@
+
+*{
+	margin:0;
+	padding:0;
+}
+.max{
+	width: 100%;
+	height:579px;
+	background-image: url(img/liebao2.png.png);
+	background-position: center;
+	background-repeat:no-repeat;
+	background-color:#FD6A28;
+
+}
+.top{
+	width:100%; 
+	height:88px;
+	background-color:#EE6426;
+			margin-top:5px;  
+
+}
+
+.right{
+	width: 950px;
+	height:85px;
+	margin: 0 auto;
+	border: 1px #EE6426   solid;
+	float: right;
+	line-height:88px; 
+}
+.left{
+	margin-top: 20px;
+	
+}
+.bb{
+	width:85px; 
+	height:93px;
+	font-size: 25px;
+	text-align: center; 
+	line-height: 88px;
+	color: #ffd4b6; 
+}
+
+
+
+.bb{
+	float: right;
+	margin-right:0;
+	line-height:88px; 
+}
+.bb:hover{
+			background-color: rgba(0,0,0,0.2);
+		}
+		.ba{
+			width: 157px;
+			height:93px;
+			line-height:88px;
+			font-size: 25px;
+			text-align: center;
+			color: #ffd4b6;
+		}
+		.ba{
+			float: right;
+			margin-right:0;
+			line-height: 88px;
+		}
+		.ba:hover{
+			background-color: rgba(0,0,0,0.2); 
+
+		}
+		.box2{
+			width: 100%;
+			height: 313px;
+			background-color: #FFFFFF;
+		}
+		

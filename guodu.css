@@ -1,0 +1,14 @@
+div{
+	width:100px;
+	height:100px;
+	background-color: red;
+	transition-property:width,height,opacity;
+	transition-duration: 2s;
+	/*transition-delay:2s;*/  
+    transition-timing-function:ease-out; 
+}
+div:hover{
+	width:300px;
+	height:200px;
+	opacity:1;   
+}

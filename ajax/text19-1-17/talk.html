@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			margin:0;
+			padding:0;
+			background-color:#000;
+		}
+		h3{
+			color:#fff;
+			text-align:center;
+		}
+		.chatbox{
+			width:500px;
+			height:500px;
+			background-color:#fff;
+			border:1px solid #ccc;
+			margin:50px auto;
+		}
+		.messages{
+			width:500px;
+			height:350px;
+			overflow:scroll;
+		}
+        .input{
+        	width:490px;
+        	height:110px;
+        }
+        .input textarea{
+        	width:100%;
+        	height:100%;
+        	outline:none;
+        	border:none; 
+        }
+        .btn{
+        	float:right;
+        	margin-right:10px;
+        	margin-top:10px;
+        }
+        .self{
+        	text-align:left; 
+        }
+        .other{
+        	text-align: right;
+        }
+
+	</style>
+</head>
+<body>
+<h3>ajax的实训聊天室</h3>	
+<div class="chatbox">
+	<div class="messages"></div><!-- 对话框 -->
+	<div class="form">
+		<div class="input"> <!-- 输入框 -->  
+			<textarea></textarea>
+		</div>
+		<div class="btn"> <!-- 按钮组 -->
+			<input type="button" class="send" value="发送" name="">
+			<input type="button" class="clear" value="清屏" name="">
+		</div>
+	</div>	
+</div>
+<script src="ajax.js"></script>
+<script type="text/javascript">
+var send=document.querySelector('.send');
+var clear=document.querySelector('.clear');
+var textarea=document.querySelector('textarea');
+var msg=document.querySelector('.messages');
+function chat(){
+	var value=(textarea.value.trim()); //trim用来清屏使用的
+	if(!value){
+		alert('请输入内容');
+	}else{
+		var p=document.createElement('p');
+		p.innerText='我说:'+value;
+		msg.appendChild(p);
+		p.addClass='self';
+		textarea.value='';
+
+	} 
+	ajax('get','chat.php','',function(data){
+      	if(value=='你今天吃了什么'){
+           var p=document.createElement('p');		
+          p.innerText='铁子说：今天吃了水饺'; 
+          p.classList.add('other');
+          msg.appendChild(p);
+          op.innerText='';
+	     }
+
+        
+    var op=document.createElement('p');
+       op.innerHTML='铁子说：'+data;
+       msg.appendChild(op);
+       op.classList.add('other');
+	},function(err){
+		console.log(err);
+	})
+}
+send.onclick=function(){
+	chat();
+}
+window.onkeyup=function(e){
+   // console.log(e);
+   if(e.keyCode==13){
+   	chat();
+   }
+}
+clear.onclick=function(){
+		msg.innerHTML='';                                                          
+	}
+    		                                                         
+</script>
+</body>
+</html>

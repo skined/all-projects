@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+ <input type="button" value="点击" id="btn">
+<ul id="ul1"></ul>
+<script type="text/javascript">
+	var btn=document.getElementById('btn');
+	var ul1=document.getElementById('ul1');
+	btn.onclick=function(){
+      var xhr=null;
+      if(window.XMLHttpRequest){
+      	xhr=new XMLHttpRequest();
+      }else{
+      	xhr=new ActiveXObject(Microsoft.XMLHTTP);
+      }
+      //建立连接
+      xhr.open('get','getList1.php',true);
+      //发送请求
+      xhr.send();
+      //等待响应
+      xhr.onreadystatechange=function(){
+      	if(readyState==4){
+      		if(readyStatus==200){
+      		var arr=JSON.parse(xhr.responseText);	
+      			for(i=0;i<arr.length;i++){
+      			var li=document.createElement('li');
+      			var a=document.createElement('a');
+      			a.setAttribute('_href','#');
+      			var span=document.createElement('span');
+      			span.innerHTML='['+arr[i].date+']';
+      			li.appendChild(a);
+      			li.appendChild(span);
+      			ul1.appendChild(li);	
+      			}
+      		}
+      	}
+      }		
+}
+</script>
+</body>
+</html>

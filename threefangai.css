@@ -1,0 +1,40 @@
+.box{
+	width:200px;
+	height:200px;
+	border-radius:50%; 
+	margin:200px auto;
+	position:relative;     
+}
+.rotate{
+	width:100%;
+	height:100%;
+	border-radius:50%;
+	background:#b7617e;
+	position:absolute;    
+}
+.black{
+	width:8px;
+	height:8px;
+	border-radius:50%; 
+	background:black;
+	position:absolute;
+    top:0px;
+	left:100px; 
+
+}
+.bg{
+	width: 100%;
+	height:100%;
+	border-radius:50%;
+	position:absolute; 
+	background-image:url(img/AJ.JPG);
+	background-size:100px;
+	transform-style:preserve-3d;
+	perspective:500px;
+	transform-origin:top;
+	transition-duration:2s;  
+	
+}
+.box:hover .bg{
+	transform:rotate3d(1,0,0,-180deg);     
+}

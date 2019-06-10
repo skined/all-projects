@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- <custom-count></custom-count> -->
+		<my-list v-bind:list="list"></my-list>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	// 要注意标点符号
+	Vue.component('custom-count',{
+		template:`
+              <button @click='count++'>我被点击了{{count}}times</button>
+		`,
+	 	data:function() {
+	 		return {
+				count:0
+			}
+	 	}
+	 })
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'hello world!',
+			list:['第一项','第二项','第三项']
+		},
+		components:{
+			'my-list':{
+				template:`
+				<div>
+				  <ul v-for='item in list'>
+				    <li >{{item}}</li>
+				  </ul>
+				  <child-list v-bind:car='list'></child-list>
+				</div>
+				`,
+			    props: ['list'],
+	     components:{
+			  'child-list':{
+			  	template:`
+			  	<div>
+                  <ul  v-for='item in car'>
+                    <li>{{item}}</li>
+                  </ul>	
+                     <lit-sis v-bind:suv='car'></lit-sis>
+			  	</div>`,
+			  	props:['car'],
+		 components:{
+			  'lit-sis':{
+			  	template:`
+			  	<div>
+                  <ul v-for='item in suv'>
+                    <li >{{item}}</li>
+                  </ul>
+			  	</div>
+				`,
+			  	props:['suv'],
+			  }
+			}  
+			  }
+		
+			}
+		}
+    	}
+	})
+</script>
+</body>
+</html>

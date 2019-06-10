@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>面向对象的继承</title>
+	<style type="text/css"></style>
+</head>
+<body>
+<script type="text/javascript">
+	// 什么是继承：在原有对象基础上略作修改得到一个新的对象，并且不影响原有对象的功能
+	// 原有对象可以充当一个父类，新的对象：子类
+	// 继承的好处：子类不影响父类，子类可以继承父类的一些功能()代码复用
+	// 以下代码继承方式是拷贝继承，juqery编码就是（拷贝继承）
+	// 封装的函数
+	// 
+
+	 function extend(obj1,obj2){
+        for(var attr in obj2){
+        	obj2[attr]=obj1[attr];
+        }
+	}
+	// 创建父类
+	function CreatePerson(name,age){
+          this.name=name;
+          this.age=age;
+	}
+	CreatePerson.prototype.showName=function(){
+		alert(this.name+this.age);
+	}
+	var p1=new CreatePerson('小明','12');
+	p1.showName();
+
+	//创建子类
+	function CreateStar(name,age,job){
+      // this.name=name;//这里可以用继承实现
+      // this.age=age;
+      //改变this指向，调用父类的构造函数
+      CreatePerson.call(this,name,age);
+      this.job=job;
+	}
+	CreateStar.prototype.showJob=function(){
+		alert(this.name);
+	}
+   CreateStar.prototype=CreatePerson.prototype;//对象继承
+    extend(CreateStar.prototype,CreatePerson.prototype);
+ 
+   var p2=new CreateStar('黄晓明',35,'演员');
+   p2.showName();
+   //父类属性的继承：调用父类的构造函数通过call改变this指向
+   //把父类的方法继承过去：用for in方法
+   //叫做拷贝继承
+   //  CreateStar.prototype=CreatePerson.prototype对象的引用，值给他了，但地址也被占用了
+   
+
+
+
+</script>
+</body>
+</html>

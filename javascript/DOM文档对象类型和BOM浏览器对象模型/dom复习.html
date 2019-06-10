@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		td{
+			width:50px;
+			height:30px;
+			border:1px red solid;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<p>111</p>
+	<p>222</p>
+	<p>333</p>
+	<span>我是span标签</span>
+</div>
+<table>
+  <tr>
+	<td class="red pink">姓名</td>
+	<td class="red">111</td>
+	<td>班级</td><td>年龄</td>
+	<td>
+		<button id="btn">编辑</button>
+	</td>
+  </tr>
+</table>
+<script type="text/javascript">
+	//获取元素的父节点
+	var box=document.getElementsByClassName('box')[0];
+	console.log(box.parentNode);
+	//获取元素子节点的数组
+	console.log(box.childNodes);
+	//给box中所有的p标签添加颜色
+	//循环所有的子节点，判断节点名称是不是p
+	for(i=0;i<box.childNodes.length;i++){
+		console.log(box.childNodes[i]);
+		if(box.childNodes[i].nodeName=='P'){
+		box.childNodes[i].style.color='red';
+	}
+	}
+    //获取该节点上的上一个兄弟节点
+    console.log(box.previousSibling);
+    //获取该元素的下一个兄弟节点
+    console.log(box.nextSibling.nodeValue);
+    //点击编辑按钮，对姓名的td添加颜色
+     btn.onclick=function(){
+     	var a=btn.parentNode.previousSibling.previousSibling;
+     	a.style.color='red';
+     	//找到tr所有的子节点判断子节点是否拥有red类名
+     	var tr=btn.parentNode.parentNode;
+        console.log(tr);
+        //找到tr的子节点数组
+        var arr=tr.childNodes;
+        console.log(arr);
+        //循环判断所有的子节点是不是元素节点
+        for(i=0;i<arr.length;i++){
+        	//如果子节点的节点名为text就跳过
+        	if(arr[i].nodeName=='#text'){
+        		//跳出本次循环
+                 continue;
+        	}else{
+        		console.log(arr[i].nodeName);
+        		//判断所有的td是否拥有类名red 
+        		console.log(arr[i].getAttribute('class'))
+        if(arr[i].getAttribute('class').indexOf('red')>0){
+        			arr[i].style.color='red';
+        		}
+        	}
+        }
+     }
+</script>
+</body>
+</html>

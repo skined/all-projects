@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+             margin:0;
+             padding:0;
+		}
+         table{
+			width:500px;
+			height:200px;
+			margin:100px auto;
+            border-collapse:0px;
+		}
+		 th,td{
+            padding:15px 20px;
+            border:1px #ccc solid;
+		}
+	</style>
+</head>
+<body>
+<table id="tb">
+ 	<thead>
+ 		<th>序号</th>
+ 		<th>球员姓名</th>
+ 		<th>场均得分</th>
+ 		<th>场均篮板</th>
+ 	</thead>
+ 	<tbody>
+ 		<tr>
+ 			<td colspan="4">数据加载中....</td>
+ 		</tr>
+ 	</tbody>
+ </table>
+<script type="text/javascript">
+		var xhr=null;
+		if(window.XMLHttpRequest){
+			xhr=new XMLHttpRequest();
+		}else{
+			xhr=new ActiveXObject('Microsoft.XMLHttp');
+		}
+	    xhr.open('get','try.php',true);
+	    xhr.send();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+	                console.log(xhr.responseText);
+	                var arr=JSON.parse(xhr.responseText);
+	                var html='';
+	                for(i=0;i<arr.length;i++){
+	                	console.log(arr[i]);
+	                	html+='<tr><td>'+(i+1)+'</td><td>'+arr[i].name+'</td><td>'+arr[i].score+'</td><td>'+arr[i].ban+'</td></tr>'
+	                  
+	                }
+	                console.log(html);
+	                document.querySelector('tbody').innerHTML=html;
+				}
+			}
+		}
+</script>
+</body>
+</html>

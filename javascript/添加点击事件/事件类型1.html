@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+        div{
+           width:100px;
+           height:100px;
+           background:red;     
+        }
+        textarea{
+        	background:pink;
+        }
+	</style>
+</head>
+<body id="body">
+<div id="box"></div>
+<textarea id="txt" rows="" cols=""></textarea>	
+<script type="text/javascript">
+	window.onload=function(){
+		//单击
+		box.onclick=function(){
+		console.log("box被单击了！！！");
+	}
+        //双击
+        //窗口被调整大小时执行函数
+        body.onreise=function(){
+        	console.log("123");
+        }
+	}
+	
+//onresize在窗口或框架被调整大小时发生，当用户试图调整窗口的大小时将显示一个对话框
+//onclick在对象被点击时发生，当按钮被单击时第一个输入框中的文本将会被考入第二个文本框
+</script>
+</body>
+</html>

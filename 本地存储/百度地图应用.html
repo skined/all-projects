@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width:400px;
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+<input type="button" value="获取我的地理位置" id="btn" name="">
+<!-- 装载地图的容器 -->
+<div id="allMap">
+	<script type="text/javascript">
+		var oBtn=document.getElementById("btn");
+		oBtn.onclick=function(){
+           window.navigator.geolocation.getCurrentPosition=(function(position){
+           	    console.log(position.coords.longitude);//经度
+           	    console.log(position.coords.latitude);//纬度
+           	  
+           })
+		}
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+		// promise:承诺，在js中解决异步编程的方式，比传统方式要强大
+	// ，更合理，ajax:用来前后台交互，是一种传统解决异步的方式
+	// 之前解决使用了回调函数和
+// 	$.ajax({
+// 		url:'1.php',
+// 		data:{
+
+// 		},
+// 		type:'post',
+// 		success:function(){
+// 			//请求成功的回调函数
+// 		},fail:function(){
+// 			// 请求失败的回调函数
+// 		}
+// 	})
+// 	// jquery源码
+// 	function ajax(url,data,successCb,failCb){
+// 		var xhr=new XMLHttpRequest();
+// 		xhr.open();
+// 		xhr.send();
+// 		xhr.onreadystatechange=function(){
+// 			//省略
+// 		}
+// 	}
+// 	send(url,data,success,fuction(){
+// 	   //第一步异步执行的时候，让某个div变红
+// 	   send(url,data,success,function(){
+// 	   	 //div的宽变长
+	   
+// })
+//回调地狱：不利于代码的维护,promise解决了回调地狱的问题
+//Promise的用法：根据es6的规定Promise是一个构造函数，用来实例化一个promise对象
+//promise函数的参数需要接受一个函数，这个函数叫立即执行器
+//立即执行器：excutor,在实例化的时候会立即执行，立即执行器接收两个参数，
+//resolve,reject这两参数是两个函数，js引擎提供，不需要我们自己部署
+//resolve:异步成功的函数 作用：将Promise的状态从‘未完成’改变成‘成功’
+//(成功从padding变成resolved)
+//reject:异步失败的函数 将Promise的状态从‘未完成’改变成‘失败’(从pending变成reject)
+//promise有三种状态：
+//pending(进行中)
+//resolve(成功)
+//rejected(失败)
+//状态特点：要么成功要么失败，两种状态是互斥的
+//例子：支付宝付款，要么付款成功，要么付款失败 ，请稍等()
+var promise=new Promise((resolve,resject)=>{
+	console.log(1);  
+  resolve('abcde');
+  //resolve在异步请求成功时调用，并将请求成功的结果作为参数传递出去
+  // 写法 resolve(值可以是任意值)
+  reject(111);
+  // reject是在异步请求失败时调用，并将请求失败的原因作为reject()函数的参数传递出去
+  // 写法reject(值)可以是任意值
+});//实例化一个promise对象
+console.log(promise);
+promise.catch(function(err){
+  console.log(err);
+}).finally(()=>{
+	console.log('执行完了');
+})
+// PromiseStatus:当前promise的状态
+// PromiseValue:当前promise返回的值
+// then的解释：每一个promise都有一个then方法，这个方法接受两个回调函数作为参数
+// 每个then方法会返回一个全新的promise
+// finally不管异步请求成功还是失败，都会执行finally方法
+// 第一个回调函数：promise的状态有pending变成resolved的时候调用
+// 第二个回调函数：promise的状态由pending变成reject的时候调用
+promise.then((data)=>{//微任务
+
+//成功
+  console.log(data);
+},()=>{
+ //失败
+   console.log(1);
+});
+
+
+
+
+
+
+// 微任务：promise的then方法是微任务
+// 宏任务：
+// 1,4,6,5,2,3
+// js里面：任务执行大概分为两类：宏任务和微任务
+// 微任务会在本次所有宏任务执行完成之后在执行
+console.log(1);//宏任务
+ setTimeout(function(){//定时器把任务推到了任务队列里面
+	console.log(2);
+})
+setTimeout(function(){
+	console.log(3);
+})
+var promise=new Promise((resolve,reject)=>{
+	console.log(4);
+	resolve();
+	reject('本次执行失败了')
+})
+promise.then((data)=>{//微任务
+	console.log(5);
+})
+console.log(6);//宏任务
+promise.catch((err)=>{
+//失败
+console.log(err);
+})
+var newPromise=promise.then((data)=>{
+	console.log(data);
+	return new Promise((resolve,reject)=>{
+		resolve('这是一个新的promise');
+	});
+}).then((res)=>{
+   console.log(res);
+})
+console.log(newPromise);
+
+
+
+
+
+// promise的其他静态方法
+// promise.all:接受一个参数数组，必须等所有promise对象执行完毕以后才会返回一个结果，并将结果放在了数组之内
+// promise.race:接受一个数组作为一个参数，谁执行的快就返回谁
+var p1=new Promise((resolve,reject)=>{
+	setInterval(()=>{
+        resolve(1);
+	},1000)
+})
+var p2=new Promise((resolve,reject)=>{
+	setInterval(()=>{
+    resolve(2);
+	},1500)
+})
+var p3=new Promise((resolve,reject)=>{
+	setInterval(()=>{
+		resolve(3);
+	},2000)
+})
+var allPromise=Promise.all([p1,p2,p3]);
+var racePromise=Promise.race([p1,p2,p3]);
+console.log(allPromise);
+console.log(racePromise);
+</script>
+</body>
+</html>

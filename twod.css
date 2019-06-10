@@ -1,0 +1,26 @@
+
+.box{
+	width:150px;
+	height:150px;
+	background-color:red;
+	border:1px black solid;
+	transform:translate(50px,50px);     
+}
+.box:hover{
+	transform:scale(1,2); 
+}
+.box1{
+	width:100px;
+	height:100px;
+	margin:100px 100px; 
+	background-color:pink;
+	transform-origin:top right; 
+	transform:rotate(50deg);   
+}
+.box2{
+	width:100px;
+	height:100px;
+	background-color:yellow;
+	transform:skew(10deg,20deg);    
+}	 
+	

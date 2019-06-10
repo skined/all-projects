@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+	    <!-- for属性规定：label与那个表单元素绑定 -->
+	    <!-- 通过表单的id和for属性同名可以进行绑定 -->
+	    <!-- 联动 -->
+		<p>{{message}}</p>
+		<!-- 单文本输入框 -->
+		<input type="text" name="" id="" v-model="txt" placeholder="请输入">
+		<div>更新:{{txt}}</div>
+		<br>
+		<!-- 单选框 -->
+		<input type="radio" id="men"   name="a" v-model="checked" value="男">
+		<label for="men">男</label>
+		<br>
+		<input type="radio" id="women" name="a" v-model="checked" value="女">
+		<label for="women">女</label>
+		<p>您选择了:{{checked}}</p><br>
+		<!-- 复选框 -->
+		<input type="checkbox"  id="checkbox" v-model="checkbox" value="Jack">
+		<label for="checkName1">Jack</label>
+		<input type="checkbox"  id="checkbox" v-model="checkbox" value="John">
+		<label for="checkName2">John</label>
+		<input type="checkbox"  id="checkbox" v-model="checkbox" value="Mike">
+		<label for="checkName3">Mike</label>
+		<p>Checked Names:{{checkbox}}</p>
+		<!-- 下拉选择框 -->
+		<select name=" " id="" v-model="selected">
+			<option value="">请选择你的国家</option>
+			<option>伊拉克</option>
+			<option> 巴基斯坦</option>
+			<option >迪拜</option>	
+		</select>
+		<p>真心话大冒险：{{selected}}</p>	
+		<div>
+			<select id="" name="" v-model="selected1">
+				<option>天之将名</option>
+				<option>其黑尤烈</option>
+				<option>飓风过岗</option>
+				<option>伏草惟存</option>	
+			</select>
+			<p>哪句箴言：{{selected1}}</p>
+		</div>
+		<!-- 文本域 -->
+	</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	// v-model这个指令在表单元素上创建双向数据绑定，他会根据不同的表单类型自动选取正确的方法更新元素，
+	// 负责监听用户的输入事件来更新数据
+	// 原因：v-model会忽略表单元素的初始值，将vue实例的数据作为数据来源
+	// 所以我们要在vue实例里面的data里面去初始化
+	// trim：去除空格
+	// v-model修饰符：
+	// 1.去除空格 v-model.trim=""
+	// 2.输入值：转为数值类型：v-model.number=''
+	// 3.把默认事件的input
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'嗨喽,这世界!',
+			txt:"",//声明输入框的初始值
+			checked:'',
+			checkbox:[],
+			selected:'',
+			selected1:'',
+		}
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.active{
+			background:crimson;
+		}
+		#div1 div{
+			width:100px;
+			height:100px;
+			border:1px red solid;
+			text-align:center;
+			line-height:100px;
+			font-size:28px;
+			display:none;
+		}
+
+	</style>
+</head>
+<body>
+<div id="div1">
+<input type="button" value="aaa" class="active">
+<input type="button" value="bbb">	
+<input type="button" value="ccc" >	
+<div style="display: block" >11111</div>
+<div>22222</div>
+<div>33333</div>
+</div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	var box=document.getElementById('div1');
+	var btn=box.getElementsByTagName('input');
+	var div=box.getElementsByTagName('div');
+	console.log(box);
+	console.log(btn);
+	console.log(div);     
+		for(i=0;i<btn.length;i++){
+		  btn[i].index=i; 
+	btn[i].onclick=function(){  
+			//清空所有
+	  for(i=0;i<btn.length;i++){
+		  btn[i].className='';
+		  div[i].style.display='none';
+		   }
+		// 设置当前
+         this.className='active';
+         div[this.index].style.display='block';
+	}
+	}
+	
+
+	// $(function(){
+	//         $('#div1').find('input').click(function(){
+	// 		//清空所有
+	// 		$('#div1').find('input').attr('class','');
+	// 		$('#div1').find('div').css('display','none');
+	// 		//设置当前
+	// 		$(this).attr('class','active');
+	// 		$('#div1').find('div').eq($(this).index()).css('display','block');
+	// 	})
+	// })
+	    
+  
+	
+</script>
+</body>
+</html>

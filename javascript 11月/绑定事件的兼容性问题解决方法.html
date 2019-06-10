@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	   *{
+		  margin:0;
+		  padding:0;
+	    }
+	/*	div{
+			width:100px;
+			height:100px;
+			position:absolute;
+			background:red;
+			left:100px;
+			top:100px;
+		}*/
+	</style>
+</head>
+<body>
+	<!-- <ul>
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+	</ul>
+ -->
+
+<div>
+	<span>'大神'</span>
+</div>
+<!-- <div></div> -->
+<script type="text/javascript">
+	// id.class{}100+10=110
+// js控制css(行间)
+// 权重: * div class id(imp) 行间
+//       0	1    10    100     1000
+// 1.脚本化css
+// 2.查询计算样式getComputedStyle IE不兼容
+                 // currentStyle     IE兼容
+ // 碰见关键字或保留字前面加css然后再将首字母大写在后台语言中
+// var div=document.getElementsByTagName('div')[0];
+//  div.style.width='200px';
+// var obj=window.getComputedStyle(div,null);
+// console.log(obj)
+//封装查询计算样式兼容性方法 
+// function getStyle(elem,prop){
+// 	if(window.getComputedStyle){
+// 		return window.getComputedStyle(elem,null)[prop];
+// 	}else{
+// 		elem.currentStyle[prop];
+// 	}
+// }
+
+
+// 如何异步执行
+// var div=document.getElementsByTagName('div')[0];
+// div.onclick=function(){
+// 	console.log('a');
+// }
+// div.onclick=function(){
+// 	console.log('b');
+// }
+
+// div.addEventListener('click',function(){
+// 	console.log('a');
+// },false)
+// div.addEventListener('click',function(){
+// 	console.log('b');
+// },false)
+
+// div.addEventListener('click',test,false);
+// div.addEventListener('click',test,false);
+// function test(){
+// 	console.log('b');
+// }
+
+// div.onclick=function (一次只能绑定一个)  this指向调用者
+// addEventListener(可以绑定多个不同引用的方法) IE不兼容   this指向元素本身
+//   attachedEvent ie独有
+
+//点击ul中的任意一个li输出他们的下标
+// var lis=document.getElementsByTagName('li');
+// console.log(lis)
+
+// for(var i = 0;i<lis.length;i++){
+// 	(function(j){
+// 	lis[j].onclick=function(){
+// 	    console.log(j);
+// 	}
+// }(i));
+// }
+// 兼容所有的监听绑定事件的方法
+// function getEvent(elem,type,func){
+// 	if(elem.addEventListener){
+// 		elem.addEventListener(type,func,false)
+// 	}else if(elem.attachedEvent){
+//          elem.attachedEvent('on'+type,func);
+// 	}else{
+//        elem['on'+type]=func;
+// 	}
+// }
+
+// 兼容所有的监听绑定事件的方法
+// eventListener解除绑定事件
+var div=document.getElementsByTagName('div')[0];
+div.onclick=function(){
+	console.log('a');
+}
+
+
+
+
+function addEvent(elem,type,func){
+      if(elem.addEventListener){
+      	     elem.addEventListener(type,func,false);
+      }else if(elem.attchedEvent){
+      	elem.attachedEvent('on'+type,function(){
+      		func.call(elem);
+      	});
+      }else{
+      	    elem['on'+type]=func;
+      }
+
+}
+</script>
+</body>
+</html>

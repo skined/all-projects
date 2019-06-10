@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script>
+// push(  )  
+// (1)获取到需要添加的元素
+// (2)将需要添加的元素保存在一个空数组中
+// (3)将空数组中的元素，循环添加给原数组
+// (4)将空数组的第一项添加给原数组的最后一项
+// (5)依次循环，知道空数组结束
+//var a=[1,2,3];
+// function pushDemo(arr){
+// 	var n=[];
+// 	for(i=0;i<arguments.length;i++){
+// 		n[n.length]=arguments[i];
+// 	}
+// 	console.log(n);
+// 	var length=arr.length+n.length;
+// 	for(j=arr.length,i=0;j<length;i++,j++){
+//        arr[j]=n[i];
+// 	}
+// 	console.log(arr);
+// }
+// pushDemo(a,'a','b','c','d');
+// pop(  )  
+// 改变元素的长度  进行减一
+// var a=[21,12,545];
+// function popDemo(arr){
+// 	arr.length--;
+// 	return arr;
+// }
+// console.log(popDemo(a));
+// shift(  ) 
+// (1)头部删除，删除下标为0的元素
+// (2)使用for循环，将下标为1的元素赋值给下标0
+// (3)依次类推，将下标为2的元素赋值为下标1
+// var a=[212,123,212,21,45];
+// function shiftDemo(arr){
+// 	var num=arr[0]; 
+//    if(arr.length==0){
+//      return;
+//    }
+//    for(i=0;i<arr.length;i++){
+//    	arr[i]=arr[i+1];
+//    }
+//    arr.length--;
+// }
+// shiftDemo(a);
+// console.log(a);
+
+// reverse(  ) 
+// (1)使用for循环倒叙
+// var a=[110,12,45,22];
+// for(i=a.length-1;i>=0;i--){
+// 	document.write(a[i]+' ');
+// }
+// join(  )  
+// (1)使用for循环将数组的每一项进行字符串拼接
+// var a=['a','b','c','d'];
+// function joinDemo(a){
+//     var num=' ';
+//     for(i=0;i<a.length;i++){
+//     	String(a[i]);
+//     	num+=a[i]+' ';
+//     }
+//     return num;
+// }
+// console.log(joinDemo(a));
+// slice(  ) 
+// (1)创建一个空数组
+// (2)使用for循环获取到开始下标与结束下标之间的元素
+// (3)赋值给空数组 
+// var a=[55,12,23,5213,45,23];
+// function sliceDemo(arr,s,e){
+// 	var item=[];
+// 	for(i=s,a=0;i<e;i++,a++){
+// 		item[a]=arr[i];
+// 	}
+// 	return item;
+// }
+// console.log(sliceDemo(a,0,4));
+//reverse()方法
+// var arr=[1,2,3];
+// function reverseDemo(arr){
+	//声明一个空数组用于存放倒叙的新元素
+	// var a=[];
+	//将新数组进行倒叙
+	//i规定循环次数，j规定新数组a的下标，然后进行for循环
+// 	for(i=arr.length-1,j=0;i>=0;j++,i--){
+// 	   a[j]=arr[i];
+// 	}
+// 	return a;
+// }
+// console.log(reverseDemo(arr));
+//join()方法
+// var  arr=[1,2,3];
+// function joinDemo(arr,q){
+// 	var str='';
+	//判断用户是否规定分隔符，如果没有规定，则默认分隔符为","
+	// if(q==undefined){
+	// 	q=',';
+	// }
+	//循环将数组的每一项添加到空字符串中
+// for(i=0;i<arr.length;i++){	
+//     str +=arr[i];
+    //判断当前循环次数是否为最后一次，如果不是，就追加分隔符
+//   if(i!=arr.length-1){
+//   	str+=',';
+//   }
+//  } 
+//   return str;
+// }
+// console.log(joinDemo(arr));
+//pop()方法
+// var arr=[1,2,3];
+// function popDemo(arr){
+// 	if(arr.length>0){
+// 	arr.length--;
+// 	return arr;
+// }else{
+// 	return '不能再减了';
+// }
+// }
+// console.log(popDemo(arr));
+// console.log(popDemo(arr));
+// console.log(popDemo(arr));
+// console.log(popDemo(arr)); 
+//slice()方法
+// var arr=[1,2,3,4,5];
+// function sliceDemo(arr,start,end){
+// 	var a=[];
+	//判断用户是否传递end参数，如果没有则截取到最后一项
+	// if(end==undefined){
+	// 	end=arr.length;
+	// }else if(end<0){
+ //       end=arr.length+end;
+	// }
+	//判断参数为负数则找到当前元素的下标重新赋值
+	// if(start<0){
+	// 	start=arr.length+start;
+	// }
+	//循环将start下标到end下标之间的元素，添加到数组a中
+	//i指要截取到元素的下标，j指空数组下标
+// 	for(i=start,j=0;i<end;i++,j++){
+// 		a[j]=arr[i];
+// 	} 
+// 	return a;
+// }
+// console.log(sliceDemo(arr,-3,-1));
+//1.定义一个新数组
+//2.将start下标到end下标之间的元素添加到新数组a中
+//3.当用户没有传递end参数时，需要从start下标截取到最后一项
+//4.当start或者end值为负数时，需要找到当前负数元素所在下标
+//例如-2，要找到的是数组的倒数第二项，那么我们可以使用
+//数组长度减去2得到当前元素的下标
+
+//shift()方法
+//shift将数组的头部删除后将第二项替换到第一项，第三项替换到第二项依次类推
+//数组多循环的一次除去，避免重复的一项，当数组只有两个元素时for循环会循环两次，
+//因此他会重复最后一项因此需要在赋值后添加一个arr.length--;
+// var arr=['a','b','c'];
+// function shiftDemo(arr){
+// 	for(i=0;i<arr.length-1;i++){
+// 		arr[i]=arr[i+1];  
+// 	}
+// 	 arr.length--;
+// 	return arr;
+// }
+// console.log(shiftDemo(arr));
+//shift()方法
+// var arr=[1,2,3];
+// function shiftDemo(arr){
+//   for(i=0;i<arr.length-1;i++){
+//         arr[i]=arr[i+1];
+
+//   }
+//   arr.length--;
+//   return arr;
+// }
+// console.log(shiftDemo(arr));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	
+	// var xhr=XMLHttpRequest;
+	  var xhr=null;
+	if(window.XMLHttpRequest){
+       xhr=new XMLHttpRequest();
+	}else{
+       xhr=new ActiveXObject('Microsoft.XMLHttp');//兼容ie6
+	}
+    //建立连接
+    //get方式传参键值对用等号链接 多个键值对用&链接
+     xhr.open('post','url','true');//默认是true 可以省略
+     //设置请求头只针对post请求，告知后台发送的数据格式
+     xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+     //发送请求
+     xhr.send('username=xiaoming&age=13');//post方式发送请求数据要放在主体里面
+      //等待响应
+     xhr.onreadystatechange=function(){
+     	//判断ajax的工作状态
+     	if(xhr.readyState==4){
+     	//判断后台状态，容错处理
+     		if(xhr.status==200 || xhr.status==304){ //http状态码
+     			var data=xhr.responseText;//后端返回的数据都放在了responseText，返回的是字符串
+     			console.log(data);
+     		}
+     	}
+     }
+     // 304：缓存请求成功 200：服务器请求成功
+     // 
+</script>
+</body>
+</html>

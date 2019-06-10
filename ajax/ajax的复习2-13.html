@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+<script type="text/javascript">
+	// 创建ajax对象
+	var xhr=null;
+	if(window.XMLHttpRequest){
+		xhr=new XMLHttpRequest();
+	}else{
+		xhr=new ActiveXObject('Microsoft.XMLHttp');
+	}
+	//建立连接,请求方式，地址，是否异步，默认是true   
+	//如果get方式有参数传递的话放在url后面，拼接键值对的方式   有多个键值用&链接
+	// xhr.open('get','1.php',true);
+	xhr.open('post','1.php');
+	//设置请求头只针对post方式
+	xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	// 发送请求
+	xhr.send('key1=value1&key2=value2&key3=value3');
+	//发送请求
+	xhr.send(null); //xhr.send();
+	xhr.onreadystatechange=function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				console.log(xhr.responseText);
+			}else{
+				console.log(xhr.status);
+			}
+		}
+	}
+	// 判断ajax的工作状态
+	 // 0:初始化没有调用open方法
+	 // 1：载入中
+	 // 2：载入完成
+	 // 3：解析中
+	 // 4：解析完成
+	 //服务器状态
+	 //100:客户端继续发出请求
+	 //101：
+	 //200 ：请求成功
+	 //201：提示知道新文件的url
+	 //304：请求从缓存里边获取
+	 //403：请求不允许
+	 //500 内部服务器错误
+	 // json:轻量级的数据交互格式，便与书写，易。json结尾，引号，最后一个不忙
+	  
+	 // xml:存储和传输数据，html显示数据，
+	 // jsonp：跨域请求 json with padding 
+	 // 需要的时候动态创建script标签，利用script标签的src属性是没有跨余限制的，在我们需要的时候加载进来资源url？callback
+</script>	
+</body>
+</html>

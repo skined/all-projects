@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:200px;
+			height:200px;
+			background:red;
+		}
+		/*#wrap{
+			width:200px;
+			height:200px;
+			
+		}*/
+	</style>
+</head>
+<body>
+<div id="wrap">	
+ <div id="box">
+	<button id="btn">
+		点击触发
+	</button>
+ </div>
+</div> 
+<script type="text/javascript">
+	window.onload=function(){
+		//获取元素
+		var wrap=document.getElementById("wrap");
+		var box=document.getElementById("box");
+		var btn=document.getElementById("btn");
+		wrap.addEventListener('click',function(){
+            console.log("wrap的事件被触发了")
+		},true)
+		box.addEventListener("click",function(){
+			console.log('box的事件被触发了');
+		},true)
+		btn.addEventListener("click",function(){
+			console.log("button的事件被触发了");
+		},true)
+//			添加事件的方法有两种:
+//			分别为DOM0 与 DOM2
+//			DOM2 通过 addEventListener() 添加事件
+//			第一个参数 规定事件名称
+//			第二个参数 规定触发的函数
+//			第三个参数 规定事件执行是在冒泡阶段 还是 捕获阶段
+//			布尔值  true时,为捕获阶段调用
+//				  false时,为冒泡阶段调用
+//			默认为false;
+			
+//			事件冒泡:由具体到不具体
+//			例如: <div id="box">
+//					<button id="btn">点击输出</button>
+//				 </div>
+//			先触发子元素button的事件
+//			再触发父元素box的事件
+//			一层一层向外查找
+//			① button —— ② box —— ③ body —— ④ html
+
+//			事件捕获:由不具体到具体
+//			例如: <div id="box">
+//					<button id="btn">点击输出</button>
+//				 </div>
+//			先触发父元素box的事件
+//			再触发子元素button的事件
+//			从外向里一层一层查找
+//			① element —— ② html —— ③ body 
+//			—— ④ div#box —— ⑤ button#btn
+//         事件冒泡触发由具体到不具体
+//         先触发子元素button的事件再触发父元素的事件，一层一层向外查找			  //当父元素为捕获状态时子元素为冒泡,执行捕获状态
+	  //当父元素为冒泡状态，父元素为捕获状态时，不会影响父元素的状态		
+		
+
+	}
+	
+
+</script>
+</body>
+</html>

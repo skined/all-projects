@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<div id="app">
+		<p v-html='p'>{{message}}</p>
+	</div>
+</head>
+<body>
+<script src="vue.js"></script>	
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'Hello World!',
+			p:"<h1 style='color:aqua'>我是新添加的h1标签</h1>"
+		}
+	})
+	// Vue的指令都是v-开头的
+	// v-html='string'用来更新元素的innerHTML
+	
+</script>
+</body>
+</html>

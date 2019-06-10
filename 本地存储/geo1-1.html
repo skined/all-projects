@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	textarea{
+		border:1px solid red;
+	}
+</style>
+</head>
+<body>
+<input type="button" id="btn" value="获取地理位置信息" name=""><br>
+<textarea id="t1" rows="20" cols="50"></textarea>
+<script type="text/javascript">
+	//coords请求成功返回的数据有以下这些餐数：
+  var btn=document.getElementById("btn");
+  var oT=document.getElementById("t1");
+  var timer=null;
+  btn.onclick=function(){
+     timer=window.navigator.geolocation.watchPosition(function(){
+     	console.log(position.cookie.longitude);//经度
+        console.log(position.cookie.latitude);//纬度
+        console.log(position.cookie.accuracy);//位置经度
+        console.log(position.cookie.altitude);//海拔
+        console.log(psoition.cookie.altitudeAccuracy);//海拔准确度
+        console.log(psoition.cookie.heading);//前进方向
+        console.log(psoition.cookie.speed);
+        //行进速度
+  },function(error){
+  	alert(error.code);
+  	clear(watch);
+  },{
+  	timeout:1000,
+  	frequency:1000,
+  })
+ }
+</script>
+</body>
+</html>

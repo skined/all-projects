@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<input type="button" value="点击" name="" id="btn">
+<ul id="ul"></ul>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	// $(document)ready(function(){
+
+	// <!-- }) -->
+	$(function(){
+	 $('#btn').click(function(){
+	 	//交互
+	 	$.ajax({
+	 		type:'GET',
+	 		async:false,
+	 		contentType:'application/x-www-form-urlencoded',
+	 		data:'请后台发送的数据',
+	 		url:'getList.php',
+	 		dataType:'json',//告知后台返回的数据格式
+	 		timeout:'5000',//请求超时
+	 		jsonp:'callback',//向后台请求的时候发送的函数名
+	 		jsonpCallback:'getData'//获取数据成功的函数名
+	 		success: function(res){
+	 			//获取数据成功返回的回调函数
+	 			console.log(res);
+	 			for(i=0;i<res.length;i++){
+	 				var li=$('<li></li>');
+                    li.html(res[i].title);
+                    $('ul').append(li);
+	 			}
+	 		},
+error:function(err){
+	 			console.log(err);
+	 		}
+	 	})
+	 })	
+	})
+
+
+// $(function(){
+// 	$('#btn').click(function(){
+// 		$.ajax({
+// 			type:'GET',
+// 			url:'getList.php',
+// 			dataType:'json',
+// 			success:function(res){
+// 				console.log(res);
+// 			},error:function(err){
+// 				console.log(err);
+// 			}
+// 		})
+// 	})
+// })
+</script>
+</body>
+</html>

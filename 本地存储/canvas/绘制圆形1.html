@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="myCanvas" width="500" height="500"></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('myCanvas');
+	var pen=oc.getContext('2d');
+	// article:art：圆形
+	// open.arc(x,y,r，a,b,dir);
+	// x,y圆心横纵坐标
+	// r:圆的半径
+	// a:开始弧度
+	// b:结束弧度
+	// dir:旋转方向
+	// 弧度=(45°*Math.PI/180);
+	// dir:旋转方向，默认false是顺时针，true逆时针
+	// canvas画圆形都是以弧度计算的，我们拿到了角度的值要把他转换成弧度，计算的公式就是弧度=角度*Math.PI/180;
+   //pen.beginPath();
+   //pen.moveTo(200,200);
+   //pen.arc(200,200,150,0,90*Math.PI/180,true);
+   //pen.closePath();
+   //pen.stroke();
+
+
+
+   //pen.beginPath();
+   //pen.fillStyle='yellow';
+   //pen.moveTo(200,200);
+   //pen.arc(200,200,150,0,360*Math.PI/180,true);
+   //pen.closePath();
+   // //pen.stroke();
+   // pen.fill();
+
+
+
+
+//画时钟
+//分析：时针 分针，秒针
+//大格12个大格 每个大格360度/12=30度
+//小格：60个小格 每个小格360/60=6度
+// window.onload=function(){
+
+// }
+function toDraw(){
+   var time=new Date();
+   var oh=time.getHours();
+   var om=time.getMinutes();
+   var os=time.getSeconds();
+   var ohValue=(-90+30*oh+om/2)*Math.PI/180;
+   var omValue=(-90+6*om)*Math.PI/180;
+   var osValue=(-90+6*os)*Math.PI/180;
+   //画小刻度
+   pen.beginPath();
+   for(i=0;i<60;i++){
+    pen.moveTo(200,200);
+    pen.arc(200,200,150,i*6*Math.PI/180,(i+1)*6*Math.PI/180,false);
+   }
+ pen.closePath();
+ pen.stroke();
+ //画小圆
+pen.beginPath();
+pen.moveTo(200,200);
+pen.fillStyle='white';
+pen.arc(200,200,150*19/20,360*Math.PI/180,false);
+pen.closePath();
+pen.fill();
+//画大刻度
+pen.beginPath();
+pen.lineWidth=3;
+for(j=0;j<12;j++){
+  pen.moveTo(200,200);
+  pen.arc(200,200,150,j*30*Math.PI/180,(j+1)*Math.PI,false);
+
+}
+pen.closePath();
+pen.stroke();
+//画大圆
+pen.beginPath();
+pen.moveTo(200,200);
+pen.fillStyle='white';
+pen.arc(200,200,150*18/20,360*Math.PI/180,false);
+pen.closePath();
+pen.fill();
+//画时针
+pen.beginPath();
+pen.lineWidth=3;
+pen.moveTo(200,200);
+pen.arc(200,200,150*1/2,ohValue,ohValue,false);
+pen.closePath();
+pen.stroke();
+//画分针
+pen.beginPath();
+pen.lineWidth=2;
+pen.moveTo(200,200);
+pen.arc(200,200,150*15/20,omValue,omValue,false);
+pen.closePath();
+pen.stroke();
+//画秒针
+pen.beginPath();
+pen.lineWidth=1;
+pen.moveTo(200,200);
+pen.arc(200,200,150*19/20,osValue,osValue,false);
+pen.closePath();
+pen.stroke();
+
+
+// 画数字
+ var hou = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1, 2];               
+  hou.forEach(function(num,i){           
+   var rad = 2 * Math.PI / 12 * i;            
+   var x = Math.cos(rad) * 120;            
+   var y = Math.sin(rad) * 120;    
+   pen.font = "18px sans-self";            
+   pen.textAlign = "center";            
+   pen.fillStyle='green';            
+   pen.fill();            
+   pen.fillText(num, x+200, y+200);
+ })   
+
+
+}
+ toDraw();
+ setInterval(toDraw,1000);
+
+</script>
+</body>
+</html>

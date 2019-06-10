@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div id="box">
+		<span>qqq</span><br>
+		<span class="span2">wwww</span><br>
+		<span class="span3">eeeee</span>
+	</div>
+	<div class="one">2222</div>
+	<div class="two">333333</div>
+	
+
+<script src="jquery.js"></script>	
+<script type="text/javascript">
+	// $(function(){
+	// 	$('div').filter('.one').css('background','red');
+	// 	$('div').filter('.two').css('background','pink');
+	// })
+	// filter针对当前元素本身
+	$(function(){
+		$('div').not('.box').css('background','red');
+		$('div').has('span').css('background','blue');
+	})
+   
+
+	//filter过滤dom元素包装集，是指操作当前元素集，删除不匹配的元素，得到一个新的集合 
+	//filter()方法与has()方法中的参数，都是过滤条件。不同的是filter()方法，条件作用于自身；has()方法条件是作用于它的后代元素中。
+	//has(selector选择器或DOM元素) 将匹配元素集合根据选择器或DOM元素为条件，检索该条件在每个元素的后代中是否存在，将符合条件的的元素构成新的结果集。
+	//find()在当前选中元素的上下文中找到符合条件的后代，返回的是子元素
+	
+</script>
+</body>
+</html>

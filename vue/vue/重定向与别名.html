@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<!-- //通过to属性指定路由匹配的路径，实现切换路由 -->
+		<!-- <router-link to='/login'>登录</router-link>
+		<router-link to='/register' >注册</router-link> -->
+		<!-- 通过命名路由的方式，命名方式是在路由配置中 -->
+		<!-- 配置name属性，name的值可以代表这个路由 -->
+		<router-link :to="{name:'loginModule'}">登录</router-link>
+		<router-link :to="{name:'regmodule'}" >注册</router-link>
+		<router-view></router-view>
+	</div>
+	<script src="vue.js"></script>
+	<script src="vue-rounter.js"></script>
+<script type="text/javascript">
+	var login={
+		template:`<div>登录</div>`
+	}
+	var register={template:`<div>注册</div>`
+	}
+
+	var router=new VueRouter({
+		routes:[
+		    {
+		    	path:'/login',
+		    	component:login,
+		    	name:'loginModule',
+		    	// redirect:'/register'//重定向重定向到url
+		    	//redirect:{name:'regmodule'}//重定向到名字
+		    	// redirect:function(to){
+		    	// 	 console.log(to);
+       //               return  ("/register");
+		    	// }
+		    	redirect:to=>{
+		    		console.log(to);
+		    		return "/register";
+		    	}
+		    },
+		    {
+		    	path:'/register',
+		    	component:register,
+		    	name:'regmodule'
+		    }],
+	})
+	var vm=new Vue({
+      el:'#app',
+      router:router,	
+	})
+</script>
+</body>
+</html>

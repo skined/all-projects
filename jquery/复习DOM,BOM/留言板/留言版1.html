@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#all{
+         width:500px;
+         height:300px;
+         border:1px #ccc solid;
+         background-color:pink;
+         margin:100px auto;
+
+		}
+		h4{
+			line-height:40px;
+			margin-bottom:10px;
+			border-bottom:1px #333 solid;
+		}
+		#box{
+			width:500px;
+			height:30px;
+		    border:1px blue solid;
+		    margin-top:-11px;
+		    line-height:30px;
+
+		    position:absolute;
+		}
+          p{
+          	width:100%;
+          	position:relative;
+          	background:skyblue;
+            margin-bottom:25px;
+            cursor:pointer;
+          }
+          span{
+          	position:absolute;
+          	top:-20px;
+          	right:0px;
+          }
+          em{
+          	position:relative;
+          	top:-2px;
+          }
+          #text{
+          	width:100%;
+          	height:90px;
+          	overflow:auto;
+          }
+          #btn{
+          	width:100%;
+          	height:50px;
+          }
+	</style>
+</head>
+<body>
+<div id="all">
+	<h4>留言内容</h4>
+	<div id="box"><em>...这里会显示留言内容</em></div>
+	<textarea style="width: 400px;height:100px;margin-top:150px" id="text">
+	</textarea><br>
+	<input type="button" value="发表留言" id="btn">
+</div>
+<script type="text/javascript">
+	var box=document.getElementById('box');
+	var txt=document.getElementById('text');
+	var btn=document.getElementById('btn');
+	var num=0;
+	btn.onclick=function(){
+		num++;
+		var op=document.createElement('p');
+		op.innerHTML=num+'.'+txt.value;
+		box.appendChild(op);
+		txt.value='';
+		op.onmouseover=function(){
+    	var spn=document.createElement('span');
+    	spn.innerHTML='<strong style=color:"red">您要删除'+this.innerHTML+'</strong>这条留言吗?';
+        this.appendChild(spn);
+        
+    }
+    op.onmouseout=function(){
+    	this.removeChild(this.children[0]);
+    }
+    op.onclick=function(){
+    	box.removeChild(op);
+    }
+    dmeo();
+}
+    function dmeo(){
+    	if(box.children.length==1){
+             box.children[0].style.display='block';
+    	}else{
+    		box.children[0].style.display='none';
+    	}
+    }
+	
+
+
+
+
+</script>
+</body>
+</html>

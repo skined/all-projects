@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='swi'>
+  <block wx:for="{{imgUrls}}" >
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view>
+
+ <text class='gr'>
+  cosplay个人展示
+  </text>
+  <block wx:for="{{list}}">
+  <text class='font'>{{item.name}}</text>
+  <image src='{{item.img}}' class='cosplay'></image>
+  </block>
+  
+</view>

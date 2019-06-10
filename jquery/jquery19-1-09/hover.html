@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.div1{
+			width:100px;
+			height:100px;
+			background:#b19898;
+		}
+	</style>
+</head>
+<body>
+	<!-- <div class="div1"></div>
+ -->
+<!-- <div class="box">
+<p class="p1">111111</p>
+<p class="p2">222222</p>
+<p class="p3">333333</p>
+<p class="p2">444444</p>	
+</div> -->
+
+
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li class="selected">3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+</ul>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	//hover(fn1,fn2)fn1:移入上去的函数,fn2移出的函数,不是必填项
+	// $(function(){
+	// 	$('#div').hover(function(){
+ //         $(this).css('background','red')
+	// 	},function(){
+ //          $(this).css('background','blue');
+	// 	})
+	// })
+	
+	
+
+	//children的用法
+	 // $(function(){
+	 // 	$('.box').children('.p2').css('background','red');
+	 // })
+
+	 //siblings的用法
+	 $(function(){
+        $('li').siblings('.selected').css('background','green');
+        $('li.selected').siblings('li').css('background','pink');
+	 })
+</script>
+</body>
+</html>

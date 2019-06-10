@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	    *{
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            vertical-align: top
+        }
+
+        .box {
+            width: 490px;
+            height: 170px;
+            margin: 100px auto;
+            padding: 5px;
+            border: 1px solid #000;
+        }
+
+        .inner {
+            width: 490px;
+            height: 170px;
+            background-color: pink;
+            overflow: hidden;
+            position: relative;
+            /*overflow: hidden;*/
+        }
+
+        .inner ul {
+            width: 1000%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .inner li {
+            width: 490px;
+            height: 100%;
+            float: left;
+        }
+
+        .square {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .square span {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 16px;
+            cursor: pointer;
+        }
+
+        .square span.current {
+            background-color: orangered;
+            color: #fff;
+        }
+
+	</style>
+</head>
+<body>
+    <!-- 最外层包裹的大盒子 -->
+<div class="box" id="box">
+    <!-- 内部包裹轮播图ul的盒子 -->
+    <div class="inner">
+        <ul>
+            <li><a href="#"><img src="images/01.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/02.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/03.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/04.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/05.jpg" alt=""/></a></li>
+        </ul>
+        <!-- 下面的序号标签 -->
+        <div class="square">
+            <span class="current">1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+        </div>
+    </div>
+</div>
+<script src="animate1.js"></script>	
+<script type="text/javascript">
+//ul的offsetLeft是依据inner的盒子来计算的
+	//鼠标经过哪个序号，哪个序号亮起
+	var squares=document.querySelectorAll('.square>span');
+	for(i=0;i<squares.length;i++){
+		squares[i].index=i;
+        console.log(i);
+        //鼠标移入事件
+        squares[i].onmouseover=function(){
+           //在加一层循环
+           for(j=0;j<squares.length;j++){
+           	  squares[j].className='';
+             
+           }
+           this.className='current';
+           //让ul滚动起来
+           var ul=document.querySelector('ul');
+           //计算end
+           var li=ul.children[0];
+           var wid=li.offsetWidth;
+           var end=-this.index*wid;
+            animate1(ul,end);
+        }  
+		
+	}
+</script>
+</body>
+</html>

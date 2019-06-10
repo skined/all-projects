@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+	</style>
+</head>
+<body>
+<video  id="v1">
+	<source src="Intermission-Walk-in_512kb.mp4" type="">
+</video>
+<input type="button" value="播放" name="">
+<input type="button" value="00:00:00" name="">
+<input type="button" value="00:00:00" name="">
+<input type="button" value="静音" name="">
+<input type="button" value="全屏" name="">
+<script type="text/javascript">
+	// window.onload=function(){
+	// 	var oV=document.getElementById("v1");
+	// 	var aBtn=document.getElementsByTagName("input");
+	// 	var timer=null;
+	// 	aBtn[0].onclick=function(){
+	// 		// console.log(oV.paused);
+	// 		if(oV.paused){
+	// 			oV.play();
+	// 			this.value="暂停";
+	// 			nowTime(oV.currentTime);
+	// 			timer=setInterval(function(){
+	// 				nowTime(oV.currentTime);
+	// 			},1000)
+	// 		}else{
+	// 			oV.pause();
+	// 			this.value="播放";
+	// 			clearInterval(timer);
+	// 		}
+	// 	}
+	// 	function nowTime(num){
+	// 		console.log(num);
+	// 		aBtn[1].value=changeTime(num);;
+	// 	}
+	// 	aBtn[2].value=changeTime(oV.duration);
+	// 	function changeTime(num){
+	// 		var num=parseInt(num);
+ //            var iH=toZero(Math.floor(num/3600));
+ //            var iM=toZero(Math.floor(num%3600/60));
+ //            var iS=toZero(Math.floor(num%60));
+ //            return iH+":"+iM+":"+iS; 
+	// 	}
+	// 	function toZero(num){
+	// 		if(num<=9){
+	// 			return "0"+num;
+	// 		}else{
+	// 			return ""+num;
+	// 		}
+	// 	}
+	// }
+	
+
+
+
+
+
+	window.onload=function(){
+		var aBtn=document.getElementsByTagName("input");
+		var oV=document.getElementById("v1");
+		var timer=null;
+		aBtn[0].onclick=function(){
+				if(oV.paused){
+			oV.play();
+			this.value="暂停";
+			timer=setInterval(function(){
+				nowTime(oV.currentTime);
+			},1000)
+		}else{
+		    oV.pause();
+		    this.value="播放";
+		    clearInterval(timer);
+		}
+		}
+		function nowTime(num){
+			console.log(num);
+			aBtn[1].value=changeTime(num);
+		}
+		aBtn[2].value=changeTime(oV.duration);
+		//时间转换函数
+	  function changeTime(num){
+	  	var num=parseInt(num);
+	  	var iH=toZero(Math.floor(num/3600));//除号取商  取模式取余 
+	  	var iM=toZero(Math.floor(num%3600/60));
+	  	var iS=toZero(Math.floor(num%60));
+	  	return iH+":"+iM+":"+iS; 
+	  }
+	  // 补零的函数
+	  function toZero(num){
+	  	  if(num<=9){
+	  	  	return "0"+num;
+	  	  }else{
+	  	  	return ""+num;
+	  	  }
+	  }
+	 aBtn[3].onclick=function(){
+	 	if(oV.muted){
+	 		oV.muted=false;
+	 		this.value="静音";
+	 	}else{
+	 		oV.muted=true;
+	 		this.value="取消静音"
+	 	}
+	 }
+	  aBtn[4].onclick=function(){
+	  	oV.webkitRequestFullScreen()
+	  }
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			
+		}
+		html,body,ul,ul>li{
+			width:100%;
+			height:100%;
+		}
+     ul>li{
+     	font-size:100px;
+     	color:#fff;
+     	text-align:center;
+     	line-height:400px;  
+     }
+     ol{
+     	position:fixed;
+     	left:100px;
+     	top:100px;
+     	list-style:none; 
+     }
+     ol>li{
+     	font-size:60px;
+     	color:#fff;
+     	border:1px #000 solid;
+     	width:80px;
+     	height:80px;
+     	text-align:center;
+     	line-height:80px;   
+     }
+	</style>
+</head>
+<body>
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+<ol>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ol>
+<script>
+	//1.先将各屏的背景色和按钮的背景色设置好
+	var ulLis=document.querySelectorAll("ul>li");
+	var olLis=document.querySelectorAll("ol>li");
+	var colorArr=['red','orange','yellow','green','blue'];
+	//先设置ul中li的背景色
+	for(i=0;i<ulLis.length;i++){
+		ulLis[i].style.background=colorArr[i];
+		olLis[i].style.background=colorArr[i];
+		//1.点击按钮实现跳转到对应屏的效果
+
+	}
+    var timer=null;
+    var timer1=null;
+    var timer2=null;
+		for(i=0;i<olLis.length;i++){
+			//先设法保存住下标i,for循环里的i不能直接使用
+			olLis[i].index=i;
+			olLis[i].onclick=function(){
+				//清除先前所由的定时器
+				clearInterval(timer);
+				clearInterval(timer1);
+				clearInterval(timer2);
+				//在事件处理函数中this表示事件源
+				//动画三要素:起点，终点，步长
+				//点击关联事件控制pic
+				// pic=this.index;
+				var end=this.index*document.documentElement.offsetHeight;
+				//ie11以下浏览器使用的是document.body来表示html元素
+				//设置间歇定时器，让动画走起来
+				 timer=setInterval(function(){
+                   //设置起点
+                   //起点时当前页面的scrolltop值
+                  var leader=document.documentElement.scrollTop;
+                   //设置步长
+                   var step=(end-leader)/10;
+                   //让页面能够走到终点
+                   //三元运算符
+                   step>0?step=Math.ceil(step):step=Math.floor(step);
+                   //让页面开始滚动
+                   if(end!=leader){
+                   	//设置scrollTo并且更新起点值
+                   	document.documentElement.scrollTo(0,leader+step);
+                   	leader=leader+step;
+                   }      
+                   else{
+                   	clearInterval(timer);
+                   }
+				},15)
+			}
+		}
+        //做判断：用户是向上滚动还是向下滚动
+        //如果向下滚动
+        document.documentElement.onmousewheel=function(e){
+        	//先创建一个计数变量
+          //向下滚动
+          if(e.wheelDelta<0){
+         	//向下滚动页面向上滚动，滚动一屏，鼠标向下滚动页面向上滚动
+           		//清除先前所由的定时器
+				clearInterval(timer);
+				clearInterval(timer1);
+        clearInterval(timer2);
+         	//求终点值
+        var end=Math.ceil(document.documentElement.scrollTop/document.documentElement.offsetHeight)*document.documentElement.offsetHeight;
+             timer1=setInterval(function(){
+            	//起点
+            	var leader=document.documentElement.scrollTop;
+            	//步长
+            	var step=(end-leader)/10;
+            	step>0?step=Math.ceil(step):step=Math.floor(step);
+            	if(leader!=end){
+            		//更新起点值
+            		leader+=step;
+            		document.documentElement.scrollTo(0,leader);
+            	}else{
+            		clearInterval(timer1);
+            	}	
+            },15)
+         }else if(e.wheelDelta>0){
+         	clearInterval(timer);
+         	clearInterval(timer1);
+         	clearInterval(timer2);
+         	var end=Math.floor(document.documentElement.scrollTop/document.documentElement.offsetHeight)*document.documentElement.offsetHeight;
+         	timer2=setInterval(function(){
+         		var leader=document.documentElement.scrollTop;
+         		var step=(end-leader)/10;
+         		step>0?step=Math.ceil(step):step=Math.floor(step);
+         		if(leader!=end){
+         			leader+=step;
+         			document.documentElement.scrollTo(0,leader);
+         		}else{
+         			clearInterval(timer2);
+         		}
+         	},15)
+         }
+        }
+     
+
+
+
+
+
+
+
+
+
+		//全滚动特效
+		//1.全屏滚动中我们使用scrollTop来控制页面纵向滚动的距离
+		//2.当页面显示第一屏的时候，scrolltop为零，显示第二屏，页面scrolltop为一屏高度
+		//显示第三屏，页面scrolltop为2屏高度，以此类推,当前scrolltop值为该页面下标*屏高
+		//3.这里说每一屏的高度的下标和按钮的的下标一致，这里公式也可以写作按钮下标*屏高
+        //鼠标滚轮事件 onmousewheel
+        //鼠标滚动实现页面跳转
+        //（1）鼠标滚轮事件 onmousewheel
+        //触发时机是在用户滚动滚轮的时候
+        //（2）注意这里分两种情况，向上滚动看上一屏向下滚动看下一屏
+        //(3)在滚轮事件对象中如果向上滚动，wheelDelta属性为正数，如果向下滚动,wheelDelta属性为负数
+         //(6)卡bug是由于点击事件和滚轮事件定时器产生了叠加，互相矛盾造成的
+        //（7）解决方法:每一个事件触发的时候把先前所有的定时器都清除一遍
+        //(8)如果想清除必须把所有定时器声明在全局作用域里
+        //滚轮事件
+        //兼容性问题（1）在火狐中滚轮事件叫做DOMMouseScroll在使用该事件的时候要通过添加事件监听的方式绑定事件
+        //（2）判断滚轮方向的时候使用的是事件对象detail中的值，值为正向下滚动值为负向上滚动
+
+</script>
+</body>
+</html>

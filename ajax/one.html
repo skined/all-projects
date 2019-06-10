@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<h3>我的第一个ajax小程序</h3>
+<input type="button" value="点我">
+<script type="text/javascript">
+	// ajax:数据交互,可以把数据传输给后端,也可以从后端获取数据渲染
+	var oBtn=document.getElementsByTagName('input')[0];
+	oBtn.onclick=function(){
+		//我有一个浏览器 
+        var xhr=new XMLHttpRequest();  //ie6以下不支持 IE7及以上支持 cc chrome
+        // 解决方法
+        // new ActiveXObject('Microsoft.XML');针对ie6及以下
+        // 兼容性方法
+	 //   var xhr=null;
+	 //   if(window.XMLHttpRequest){
+		// xhr=new XML.HttpRequest();
+	 //   }else{
+		// xhr=new ActiveXObject(XML);
+	 //   } 
+        //地址栏中输入地址
+        xhr.open('get','1.get.php?username='+encodeURI('老弟')+'&age=18&'+new Date().getTime(),true);
+         xhr.open('post','1.post.php',true);
+        // open方法的参数:
+        // get方式的问题:1.缓存问题，在url后面加个时间戳或者随机数
+        // get方式的编码问题:encodeURI('老弟');
+        // post把发送的参数写在xhr.send()方法里面,并且告知后端发送的数据格式:设置请求头
+        // post请求没有缓存,post请求也没有编码问题
+        // 参数一:get代表请求方式 post方式发送
+        // 参数二:'1.txt'代表请求路径
+        // 参数三：true代表异步请求(前面的代码不影响后面执行)，异步也叫非阻塞模式   false代表同步请求(前面的代码影响后面的执行)同步也叫阻塞模式
+        // 设置请求头告知后端发送数据的格式
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        // 点击回车，发送请求
+        xhr.send('username=张三&age=18');
+        // 等待响应
+        xhr.onreadystatechange=function(){
+        	//判断ajax的工作状态
+      if(xhr.readyState==4){
+		//判断服务器的状态
+		if(xhr.readystatus==200){
+			alert(xhr.responseText);
+		}else{
+			alert('出错了');
+	   }
+	}
+   }
+}
+
+// 错误及时处理
+//先尝试执行try里面的代码块,
+//如果有问题就执行catch不影响后续代码的执行
+// try{
+// 	alert(a);
+// }catch(e){
+//     alert(2);
+// }
+// alert('哈哈');
+// try{
+//    xhr=new XMLHttpRequest();
+// }catch(e){
+//   xhr=new ActiveXObject('Microsoft.XML');
+// }
+// 等待响应
+// 1.xhr.reponseText:后端给我们返回的数据都存在responseText属性下面了
+// 2.status :服务器状态码
+// 3.xhr.readyState:ajax的工作状态
+// 4.onreadystatechange当准备状态发生的时候
+// 后端给我们返回的数据都存在responseText属性下面了,并且数据类型都是string，需要我们去处理数据
+</script>
+</body>
+</html>

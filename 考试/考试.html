@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+            width:200px;
+            height:200px;
+            border:1px red solid; 
+		}
+	   p{
+	   	width:200px;
+	   	height:200px;
+	   	border:1px red solid;
+	   }
+	</style>
+</head>
+<div id="box"></div>
+<button onclick="demo()">切换颜色</button>
+<body>
+<script>
+//1.
+//当消费2000元打65折，当消费1500元打7折，当消费满1000元打8折
+//当消费满500元打9折, 总共花了2543元
+//小明打完折之后该付多少钱;
+// var a=2543;
+// var b=0;
+// if(a>=2000){
+// 	b=0.65;
+
+// }else if(1500>=a){
+// 	b=0.7;
+// }if(1000>=a){
+// 	b=0.8;
+// }else if(500>=a){
+// 	b=0.9;
+// }
+// console.log(b*a);
+//2.
+//封装产生随机数的函数
+// function random(max,min){
+// 	var a=Math.random()*(max-min+1)+min;
+// 	return parseInt(a);
+// }
+// 这个数组用来产生颜色的随机值
+// var arr=[0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F'];
+// var str='';
+// function demo(){
+	// i用来规定盒子的个数，j为产生颜色的数字或字母
+// for(i=0;i<1;i++){
+// var color='#';
+// for(j=0;j<6;j++){
+// 将产生随机的颜色放到数组中	
+// 	color=color+arr[random(0,arr.length-1)];
+// 	console.log(color);
+// }
+// 将颜色添加到设置好的盒子样式中，最后放入页面中
+//   str='<p style="background:'+color+'"></p>';
+// }
+// box.innerHTML=str;
+// }
+// demo();
+//随机产生100个0~1000之间不重复的数
+ function random(max,min){
+ 	var a=Math.random()*(max-min+1)+min;
+ 	return parseInt(a);
+ }
+ //创建一个空数组用来存放随机产生的数字;
+ //将数组每一项和a进行比较，相等就添加不相等就不添加
+ //如果数组中每一项和a相等的话就x=1;
+//如果不相等就x=0;
+//设置初始值为零,因为数组第一次循环为空
+//i为循环的次数;
+//删除下表为零的元素              
+</script>
+</body>
+</html>

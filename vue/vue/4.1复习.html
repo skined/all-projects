@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<p>{{message}}</p>
+		<div v-html='p'></div>
+		<ul v-for='item in arr'>
+		
+			<li>{{item}}</li>
+		</ul>
+		<h3 v-once>{{num}}</h3>   <!-- 只渲染一次 -->
+		<button @click='count()'>点击</button>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	// 复习：MVVM
+	// M:Model 数据层
+	// View:视图层
+	// VM:ViewModel 数据层和视图层的通信的桥梁，vue的好处放弃了操作DOM，专注于数据操作，插值表达式
+	// {{}} mustache,小胡子语法,计算
+	// v-html,
+	// v-model:实现双向数据绑定 根据用户发出的指令使用正确的方法更新元素，表单控件初始值要定义在data里面
+	// v-for循环：遍历对象或数组，item,in,expression
+	// v-if :v-if='表达式' 控制节点的添加和删除，性能消耗
+	// // v-show:v-show='表达式'控制css的display属性
+	// v-else必须放在v-if的后面
+	// v-else-if:他是放在v-if与v-else中间
+	// v-bind:操作class列表和style样式
+	// v-on：用来绑定事件 v-on:事件名不加on，简写@click
+	// :style :class :src
+	//v-once:语法：v-once只渲染组件一次
+	// Vue是一个构造函数，使用vue要实例化一个vue
+	// new Vue({
+	// 大括号里面的东西都叫选项对象})
+	var vm=new Vue({
+		el:'#app',//id是唯一的，不会起冲突
+		data:{
+			message:'Hello World!',
+			arr:['apple','pear','banana'],
+			num:0
+		},
+		methods:{
+			count:function(num){
+				this.num++;
+			}
+		},
+		beforeCreate:function(){
+			    
+		}
+
+	})
+
+</script>
+</body>
+</html>

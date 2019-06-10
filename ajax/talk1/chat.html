@@ -1,0 +1,107 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+    body{
+      margin:0;
+      padding:0;
+      background-color:#000;
+    }
+    h3{
+      text-align:center;
+      color:#fff;
+    }
+    .chatbox{
+      width:500px;
+      height:500px;
+      background-color:#fff;
+      border:1px solid #ccc;
+      margin:100px auto;
+    }
+    .messages{
+      width:500px;
+      height:330px;
+      overflow:scroll;
+    }
+    .input{
+      width:480px;
+      height:120px;
+    }
+    .input textarea{
+      width:100%;
+      height:100%;
+    }
+    .btn{
+      float:right;
+      margin-top:10px;
+      margin-right:10px;
+    }
+    .self{
+      text-align:left;
+    }
+    .other{
+      text-align:right;
+    }
+  </style>
+</head>
+<body>
+  <h3>ajax实训聊天室</h3>
+<div class="chatbox">
+  <div class="messages"></div>
+    <div class="form">
+      <div class="input">
+        <textarea></textarea>
+      </div>
+      <div class="btn">
+        <input type="button" value="发送" class="send" name="">
+        <input type="button" value="清屏" name="" class="clear">
+      </div>
+    </div>
+</div>
+<script src="ajax.js"></script>
+<script type="text/javascript">
+  var send=document.querySelector('.send');
+  var clear=document.querySelector('.clear');
+  var msg=document.querySelector('.messages');
+  var textarea=document.querySelector('textarea');
+
+  function chat(){
+      var value=(textarea.value.trim());
+      if(!value){
+        alert('请输入聊天内容');
+        return;
+      }else{
+        var p=document.createElement('p');
+        p.innerText='我说'+value;
+        msg.appendChild(p);
+        p.addClass='self';
+        textarea.value='';
+               ajax('get','chat.php','',function(data){
+          console.log(data);
+          var p=document.createElement('p');
+          p.innerHTML='铁子说'+data;
+          msg.appendChild(p);
+          p.style.float='right';
+        },function(err){
+            console.log(err);
+        })
+        
+      }
+  }
+send.onclick=function(){
+          chat();
+        }
+ window.onkeyup=function(e){
+      console.log(e);
+      if(e.keyCode==13){
+        chat();
+      }
+ }
+ clear.onclick=function(){
+      msg.innerHTML='';
+ }       
+</script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		div{
+			width:500px;
+			height:500px;
+			background:pink;
+			position:absolute;
+		}
+		p{
+			width:300px;
+			height:300px;
+			background:red;
+			margin-left:100px;
+			margin-top:100px;
+			padding:10px;
+			border:10px blue solid;
+		}
+	</style>
+</head>
+<body>
+<div>
+<p style="height:200px"></p>	
+</div>
+<script type="text/javascript">
+	var div=document.getElementsByTagName('div');
+	var p=document.getElementsByTagName('p');
+	// console.log(p[0].offsetParent);
+	// console.log(p[0].offsetLeft);
+ //    console.log(p[0].offsetTop);
+    console.log(p[0].style.height); //样式高只获取在元素内添加的高度
+    console.log(p[0].clientHeight); //样式高+padding
+    console.log(p[0].offsetHeight); //样式高+padding+border
+	//offsetParent返回距离当前元素最近的一个有定位属性的父节点
+	//如果没有已定为父级默认是body 
+	//offsetLeft当前元素到定位父级的距离(偏宜的距离值)
+	//若无定位父级则offsetLeft则返回元素的x坐标
+	//offsetLeft也可以判断一个物体的跟document的左边距离也就是浏览器边缘
+	//offsetTop当前元素到定位父级的距离若无定位父级则offsetTop属性返回元素的y作标  同上
+    //height
+    //style.height// 样式高，只获取在元素上添加的高度
+    //clientHeight  可视区高 样式高+padding
+    //offsetHeight  占位高  样式高+padding+border(可视区高+边框)
+    //width与上边height同理
+    //style.width// 样式宽 之获取在元素上添加的宽度
+    //clientWidth   可视区宽 样式宽+padding
+    //offsetWidth // 占位宽 样式宽+padding+border(可视区宽+边框)
+</script>
+</body>
+</html>

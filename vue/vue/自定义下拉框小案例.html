@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+     li{
+       list-style:none;
+     } 
+     .list li{
+      margin:3px 0;
+      color:#333;
+      line-height:30px;
+      padding-left:16px;
+      width:270px;
+      box-sizing:border-box;
+      border-radius:14px;
+     }
+     .list li.active,.list li:hover{
+      color:#fff;
+      background:#fd635e;
+      cursor:pointer;
+     }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div style="float:left">
+    <h3>
+      我是自定义的下拉框1
+    </h3>
+     <custom-select v-bind:list='list1' btn='查询'></custom-select>
+  </div>
+  <div style="float:right">
+      <h3>我是自定义的下拉框2</h3>
+      <custom-select v-bind:list='list2' btn='搜索'></custom-select>
+  </div>
+ 
+</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+  Vue.component('custom-lis',{
+    props:['list'],
+    template:`
+      <ul class='list'>
+       <li v-for='item in list' @click='sendValue(item)'>{{item}}</li>
+      </ul>
+    `,
+    methods:{
+        sendValue:function(item){
+              this.$emit('receive',item);
+        }
+    }
+  })
+
+  Vue.component('custom-select',{
+
+     data:function(){
+     return{  
+         isShow:false,
+         val:''
+       }
+     },
+   props:['btn','list'],//使用props属性接收自定义属性
+   template:`
+    <section>
+      <div>
+       <input type='text' @click='isShow=!isShow' v-model='val'>
+       <input type='button' v-bind:value='btn'/>
+      </div>
+      <custom-lis v-show='isShow' v-on:receive='receiveHandler' v-bind:list='list'></custom-lis>
+    </section>
+   `,
+  methods:{
+    receiveHandler:function(val){
+       this.val=val;
+       console.log(val);
+    }
+  }
+})
+  
+  var vm=new Vue({
+    el:'#app',
+    data:{
+      message:'hello Vue',
+      list1:['北京','上海','深圳'],
+      list2:['2015-3-2','2019-3-3','2019-1-2'],
+    }
+  })
+</script>
+</body>
+</html>

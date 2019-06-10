@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		th,td{
+           width:50px;
+           height:30px;
+           text-align:center; 
+           border:1px red solid;
+		}
+		.date{
+			width:100px;
+		}
+		.a{
+			width:80px;
+		}
+	</style>
+</head>
+<body>
+姓名: <input id="name" type="text"  /> <br>
+班级: <input id="classMate" type="text" /><br>
+性别: <input id="sex" type="text"/><br>
+<button id="add">添加</button>
+<button id="delAll">全部删除</button>
+<button id="delCheck">选中删除</button>
+<input id="searchText" type="text">
+<button id="searchBtn">搜索</button>
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<th><input type="checkbox" id="checkAll">全选</th>
+		<th>编号</th>
+		<th>姓名</th>
+		<th>班级</th>
+		<th>性别</th>
+		<th class="date">时间</th>
+		<th class="a">操作</th>
+	</tr>
+</table>
+<script type="text/javascript">
+	   //获取元素
+		var _name=document.getElementById("name");
+		var _classMate=document.getElementById("classMate");
+		var _sex=document.getElementById("sex");
+       //获取按钮
+       var _add=document.getElementById("add");
+       var _delAll=document.getElementById("delAll");
+       var _delCheck=document.getElementById("delCheck");
+       var _searchText=document.getElementById("searchText");
+       var _search=document.getElementById("search");
+       var _tbody=document.getElementsByTagName("tbody")[0];
+       var _searchBtn=document.getElementById("searchBtn");
+       //获取到所有的tr
+       var _tr=document.getElementsByTagName("tr");
+       var _dels=document.getElementsByClassName("del");
+       _add.onclick=function(){
+       	var _date=new Date();
+       	var tr=document.createElement("tr");
+       	var td='<td><input type="checkbox" class="check"></td><td class="index"></td><td class="seTextrev">'+_name.value
+       	    +'</td><td class="rev">'+_classMate.value
+       	    +'</td><td class="rev">'+sex.value
+       	    +'</td><td>'+_date.toLocaleString()
+       	    +'</td><td><input type="button" value="删除" class="del"><input type="button" value="编辑" class="revise"></td>';
+         	tr.innerHTML=td;
+         	_tbody.appendChild(tr);
+         //删除   
+         for(i=0;i<_dels.length;i++){
+         	_dels[i].onclick=function(){
+         		//删除当前元素的父节点的父节点
+               console.log(this.parentNode.parentNode);
+               _tbody.removeChild(this.parentNode.parentNode);
+               indexFun();
+         	}
+         }
+        //全部删除  
+          _delAll.onclick=function(){
+          	 for(i=1;i<_tr.length;i++){
+             _tbody.removeChild(_tr[i]);
+             i--;
+             indexFun();
+        }
+       }
+       //选中删除
+       //获取到所有的复选框跟全选框然后复选框选中状态为true时进行删除
+      var _checkAll=document.getElementById("checkAll");
+      var _check=document.getElementsByClassName("check");
+       _delCheck.onclick=function(){
+            for(i=0;i<_check.length;i++){
+              if(_check[i].checked==true){
+                
+                   _tbody.removeChild(_tr[i+1]);
+                   i--;
+                   indexFun();
+              }
+            } 	    
+          }
+   
+
+   //搜索框
+         _searchBtn.onclick=function(){
+             var a=_searchText.value;
+             console.log(a);
+                 
+             var _seText=document.getElementsByClassName("seText");
+              for(i=0;i<_seText.length;i++){
+                if(_seText[i].innerText==a){
+                  _seText[i].parentNode.style.background='pink';
+                }else{
+                  _tbody.removeChild(_seText[i].parentNode);
+                  i--;
+                  indexFun();
+                }
+              }  
+         }
+
+//用于编号
+       function indexFun(){
+        var indexFun=document.getElementsByClassName("indexFun");
+        for(j=0;j<indexFun.length;j++){
+          _indexFun[j].innerHTML=j+1;
+        }
+       }
+       indexFun();
+
+
+       }
+</script>   
+</body>
+</html>

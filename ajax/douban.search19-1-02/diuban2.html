@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#text1{
+			width:300px;
+			height:30px;
+			border:1px #f90 solid;
+			font-size:20px;
+			padding:5px;
+		}
+		#btn{
+			width:100px;
+			height:40px;
+			border:none;
+			color:#fff;
+			background:#f90;
+			text-align:center;
+			font-size:19px;
+		}
+		dl{
+			border-bottom:1px dashed #999;
+		}
+		dt{
+			font-weight:bold;
+		}
+		dd{
+			color:#f90;
+		}
+	</style>
+</head>
+<body>
+	<input type="text" id="text1" name=""><input type="button" value="搜索" id="btn" name="">
+	<hr>
+	<div id="num"></div>
+	<div id="content">
+		<!-- <dl>
+			<dt>锋利的javascript	</dt>
+			<dd>詹姆斯哈登</dd>
+		</dl>
+		<dl>
+			<dt>锋利的javascript	</dt>
+			<dd>詹姆斯哈登</dd>
+		</dl>
+		<dl>
+			<dt>锋利的javascript	</dt>
+			<dd>詹姆斯哈登</dd>
+		</dl> -->
+	</div>
+<script type="text/javascript">
+	var txt=document.getElementById('text1');
+	var btn=document.getElementById('btn');
+    var div=document.getElementById('content');
+function fn1(data){
+	console.log(data);
+	var arr=data.entry;
+	var html='';
+	for(i=0;i<arr.length;i++){
+		var a=document.createElement('a');
+		a.setAttribute('href','#');
+		
+			
+		for(j=0;j<arr[i]['db:attribute'].length;j++){
+			if(arr[i]['db:attribute'][j]['@name']=='price'){
+			html+='<dl><dt>'+'标题:'+arr[i].title.$t+'</dt><dd>'+'作者:'+arr[i].author[0].name.$t+'价格：'+arr[i]['db:attribute'][j].$t+'</dd></dl>'
+			}
+		}
+       var num=document.getElementById('num');
+       num.innerHTML=data.title.$t+data['opensearch:totalResults'].$t;
+	}
+	a.innerHTML=html;
+	content.appendChild(a);
+}
+btn.onclick=function(){
+	var oScript=document.createElement('script');
+	oScript.src='http://api.douban.com/book/subjects?q='+txt.value+'&alt=xd&callback=fn1';
+	document.body.appendChild(oScript);
+}
+</script>
+</body>
+</html>

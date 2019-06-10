@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	*{
+		padding: 0;
+		margin: 0;
+	}
+		.main{
+			width: 1348px;
+			height: 579px;
+			background-color:#FD6A28;			
+			background-image: url(img/liebao2.png.png);
+			background-repeat: no-repeat;
+			margin: 0 auto;
+
+		}
+		.bbb{
+			float: right;
+			margin-right:0px;
+			line-height: 5px;
+
+
+		}
+		.top{
+			width: 100%;
+			height: 88px;
+			background-color:#EE6426;
+			padding-top:5px;
+			}
+			.bbb{
+				width: 200px;
+				height: 88px;
+				font-size: 25px;
+				line-height: 88px;
+				text-align: center;
+	
+			}
+			.bbb:hover{
+				background-color: rgba(0,0,0,0.5);
+			}
+	
+		
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="top">
+		<span class="bbb" >international</span>
+		<span class="bbb" >论坛</span>
+		<span class="bbb" >下载</span>
+		<span class="bbb" >首页</span>
+		<span class="top"><img src="img/logo.png"></span>
+	</div>
+		
+	</div>
+
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            width: 200px;
+        }
+        ul li {
+            color: #666;
+            background-color: #eee;
+            font-weight: bold;
+            font-size: 14px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 20px;
+            list-style: none;
+        }
+        ul .focus {
+            font-size: 22px;
+            color: #fff;
+            background-color: #555;
+        }
+        ul .near {
+            font-size: 18px;
+            background-color: #ccc;
+            color: blue;
+        }
+        ul .side {
+            background: orange;
+        }
+        ul .none {
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul1">
+        <li class="none">这是首行</li>
+        <li>33333333333333</li>
+        <li>55555555555555</li>
+        <li>66666666666666</li>
+        <li>11111111111111</li>
+        <li>33333333333333</li>
+        <li>22222222222222</li>
+        <li>55555555555555</li>
+        <li>33333333333333</li>
+        <li>55555555555555</li>
+        <li>66666666666666</li>
+        <li>11111111111111</li>
+        <li>33333333333333</li>
+        <li class="none">这是末行</li>
+    </ul>
+    <script>
+        var ul = document.getElementById("ul1");
+        var li = ul.children;
+        for(i=0;i<li.length;i++){
+        	li[i].onmouseover=function(){
+        		if(this==ul.firstElementChild || this==ul.lastElementChild){
+                 this.className='side';
+        		}else{
+        			this.className='focus';
+        			this.previousElementSibling.className='near';
+        			this.nextElementSibling.className='near';
+        			ul.firstElementChild.className='none';
+        			ul.lastElementChild.className='none';
+        		}
+
+        	}
+        	li[i].onmouseout=function(){
+        			for(i=0;i<li.length;i++){
+        				li[i].className='';
+        			}
+        			ul.firstElementChild.className='none';
+                    ul.lastElementChild.className='none';
+        		}
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+* { 
+    padding: 0; 
+    margin: 0; 
+}
+li { 
+    list-style: none; 
+}
+
+#parent { 
+    width: 600px; 
+    margin: 0 auto; 
+}
+h4 { 
+    line-height: 40px; 
+    margin-bottom: 10px; 
+    border-bottom: 1px solid #333; 
+}
+p { 
+    width: 100%; 
+    background: #f1f1f1; 
+    position: relative; 
+    margin-bottom: 25px; 
+}
+#box { 
+    width: 580px; 
+    padding: 25px 10px 0; 
+    border: 1px solid #ddd; 
+    margin-bottom: 10px; 
+}
+span { 
+    position: absolute; 
+    top: -20px; 
+    right: 0px; 
+}
+em { 
+    position: relative; 
+    top: -13px; 
+}
+#text { 
+    width: 100%; 
+    height: 90px; 
+    overflow: auto; 
+}
+#btn { 
+    width: 100%; 
+    height: 50px; 
+}
+	</style>	
+</head>
+<body>
+<div id="parent">
+	<h4>留言内容：</h4>
+	<div id="box"><em>这里会显示留言内容……</em></div>
+	<textarea id="text"></textarea><br/>
+	<input id="btn" type="button" value="发表留言"/>
+    </div>
+
+<script type="text/javascript">
+	// 设计思想:
+	// 1.或许所有需要操作的元素
+	// 2.点击发表留言按钮先判断是否为空，为空的话就阻止留言，并且不为空的话就在留言区域中显示留言
+	// 留言内容:显示留言内容创建p标签，然后追加到留言盒子里面，并且清空留言盒子
+		var oBox=document.getElementById('box');
+		var oTxt=document.getElementById('text');
+		var btn=document.getElementById('btn');
+		var n=0;  //定义一个计数变量用来计算几条留言
+        btn.onclick=function(){
+        	if(oTxt.value===''){
+                 alert('您还没有留言哦!');
+        	}else{
+                var op=document.createElement('p');
+                n++;
+                op.innerHTML=n+'.'+oTxt.value;
+
+                oBox.appendChild(op); //把留言板内容添加到留言区域
+            
+                oTxt.value='';     //清空文本域的内容 
+                op.onmouseover=function(){
+             	var tip=document.createElement('span');
+             	tip.innerHTML='您确定要删除<strong style="color:red;">'+this.innerHTML+'</strong>这条留言吗'
+             	this.appendChild(tip);
+                
+
+             }
+             op.onmouseout=function(){
+             	this.removeChild(this.children[0]);
+             }
+             op.onclick=function(){
+             	oBox.removeChild(this);
+
+            }
+             emshow();
+             } 
+            }
+               function emshow(){
+             	if(oBox.children.length==1){
+                  oBox.children[0].style.display='block';
+             	}else{
+             	  oBox.children[0].style.display='none';
+             	}
+             }
+         
+             
+        	 
+        
+           
+
+        
+</script>
+</body>
+</html>

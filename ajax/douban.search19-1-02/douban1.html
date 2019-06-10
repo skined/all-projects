@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+		#text1{
+			width:300px;
+			height:30px;
+			border:1px #f90 solid;
+			font-size:20px;
+			padding:5px;
+		}
+        #btn{
+        	width:100px;
+        	height:40px;
+        	border:none;
+        	color:#fff;
+        	background:#f90;
+        	text-align:center;
+        	font-size:19px;
+        }
+        dl{
+        	border-botton:1px dashed #999;
+        }
+        dt{
+        	font-weight:bold;
+        }
+        dd{
+        	color:#f90;
+        }
+	</style>
+</head>
+<body>
+<input type="text" id="text1" name=""><input type="button" value="搜索" id="btn" name="">
+<hr>
+<div id="num"></div>
+<div id="content">
+	<!-- <dl>
+		<dt>2019还一事无成</dt>
+		<dd>施雨</dd>
+	</dl>
+	<dl>
+		<dt>2019还一事无成</dt>
+		<dd>施雨</dd>
+	</dl>
+	<dl>
+		<dt>2019还一事无成</dt>
+		<dd>施雨</dd>
+	</dl> -->
+</div>
+<script type="text/javascript">
+	var txt=document.getElementById('text1');
+	var btn=document.getElementById('btn');
+	var div=document.getElementById('content');
+
+	function fn1(data){
+		console.log(data);
+		 var arr=data.entry;
+		 var html='';
+		 
+		 for(i=0;i<arr.length;i++){
+		 		 	//console.log(arr[i].title.$t);
+		     var a=document.createElement('a');
+		     a.setAttribute('href','#');
+		 	for(var j=0; j<arr[i]['db:attribute'].length; j++){
+			if(arr[i]['db:attribute'][j]['@name']=='price'){
+			html+='<dl><dt>'+'标题:'+arr[i].title.$t+'</dt><dd>'+'作者:'+arr[i].author[0].name.$t+'价格：'+arr[i]['db:attribute'][j].$t+'</dd></dl>';
+      }
+      }
+        // html+='<dl><dt>'+arr[i].title.$t+'</dt><dd>'+arr[i].author[0].name.$t+'</dd></dl>';
+		 	
+        	
+		   //content.innerHTML=html;
+       	var num=document.getElementById('num');
+      	num.innerHTML=data.title.$t+data['opensearch:totalResults'].$t; 
+
+      	}
+      	 a.innerHTML=html;
+         content.appendChild(a); 
+      }
+	btn.onclick=function(){
+		var oScript=document.createElement('script');
+		oScript.src='http://api.douban.com/book/subjects?q='+txt.value+'&alt=xd&callback=fn1';
+		document.body.appendChild(oScript);
+	}
+
+     
+	//在资源加载进来时预先定义一个函数，这个函数接收了一个参数函数利用这个参数做一些事情
+	//在我们需要的时候利用script加载进来你需要的文件资源，当远程资源被加载进来的时候就会执行你上面预先定义的函数
+	//把这个数据当做函数的参数传入进去
+	// 在资源加载进来时预先定义一个函数，这个函数接收了一个参数函数利用这个参数做一些事情
+	// 我们需要的时候利用script加载进来你需要的文件资源，当远程资源被加载进来的时候就会执行你上面的预先定义的函数
+	// 把这个数据当做函数的参数传入进去
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<button onclick="btn()">开始</button>
+<button onclick="reset()">暂停</button>
+<p id="op"></p>
+<body>
+<script type="text/javascript">
+var h=0;
+var m=0;
+var s=0;
+var ss=1;
+function btn(){
+	a=setInterval(time,100);
+}
+function reset(){
+	clearInterval(a);
+}
+function time(){
+	//当毫秒为100进秒为1，毫秒为1;
+	if(ss%100==0){
+		s+=1,ss=1;
+	 //当秒为60进分为1，秒继续进制	
+	}if(s>0 && (s%60)==0){
+		m+=1,s=0;
+	//当分为60进时为1，分归零
+	}if(m>0 && (m%60)==0){
+		h+=1,m=0;
+	}
+	t=h+'时'+m+'分'+s+'秒'+ss+'毫秒';
+	op.innerHTML=t;
+	ss+=1;
+}
+
+</script>
+</body>
+</html>

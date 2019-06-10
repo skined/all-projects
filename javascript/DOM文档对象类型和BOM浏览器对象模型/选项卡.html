@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.active{
+			width:85px;
+			height:35px;
+      background:#FF1595;
+           }
+    .div2{
+      width:356px;
+      height:250px; 
+      border:1px #666666 solid;
+      display:none;
+      line-height:250px;
+      text-align:center;
+      background:#02BFFF;   
+        }
+        
+	</style>
+</head>
+<body>
+<div id="div1">
+    <input type="button" class="active" value="选择1">
+    <input type="button" class="active" value="选择2">
+    <input type="button" class="active" value="选择3"> 
+    <input type="button" class="active" value="选择4">
+      <div class="div2" style="display:block ">第一部分</div>
+      <div class="div2">第二部分</div>
+      <div class="div2">第三部分</div>
+      <div class="div2">第四部分</div>
+</div>
+<script type="text/javascript">
+	 window.onload=function(){
+   var divs=document.getElementById('div1');//获取div
+   var btn=divs.getElementsByTagName('input');//获取div下的input
+   var div2=divs.getElementsByTagName('div') ;//获取div下的div
+ 
+  for(i=0;i<btn.length;i++)//循环每个按钮
+   { 
+     btn[i].index=i 
+//btn[i]是指定button的第i个按钮;为该按钮添加一个index属性，并将index的值设置为i
+     btn[i].onclick=function()//按钮的第i个点击事件
+    {
+    for(i=0;i<btn.length;i++)//循环去掉button的样式，把div隐藏
+     { 
+       btn[i].className='' //清空按钮的样式
+       div2[i].style.display='none'//隐藏div
+      }
+        this.className='active'//自身添加active
+        div2[this.index].style.display='block'//this.index是当前div 
+    }
+ }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<!--pages/video/video.wxml-->
+<view>
+<text class='font'>各类视频剪辑
+</text>
+
+ <block wx:for='{{carlist}}' >
+   <text class='font1'>{{item.name}}</text>
+   <video src='{{item.url}}'></video>
+ </block>
+</view>

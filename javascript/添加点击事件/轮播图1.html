@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		#box{
+			width:500px;
+			height:270px;
+			border:1px #ccc solid;
+			margin:50px auto;
+		    overflow:hidden;
+			position:relative;
+		}
+		#wrap{
+			width:500px;
+			height:270px;
+			postion:absolute;
+            
+		} 
+	   #wrap ul{
+			width:2500px;
+			height:270px;
+			position:absolute;   
+		}
+ 	  #wrap li{	
+			float:left;
+		}
+		img{
+			width:500px;
+			height:270px;
+		}
+		#btn{
+			width:500px;
+			height:50px;
+			position:absolute;
+			z-index:1;
+			top:50%;
+			margin-top:-25px;
+			opacity:0.5; 
+		}
+		#btn p{
+			width:50px;
+			height:50px;	
+			background:#000;		
+			color:#fff;
+			text-align:center;
+			line-height:50px;
+			font-size:35px;
+			 
+
+		}
+		#left{
+			float:left;
+		}
+		#right{
+			float:right;
+		}
+		ol{
+			width:130px;
+			height:30px;
+			position:absolute;
+			bottom:5px;
+			left:50%;
+			margin-left:-65px;
+			z-index:2;
+		}
+		ol li{
+			width:25px;
+			height:25px;
+			background:white;
+            border:1px #ccc solid;
+            margin:2px;
+            text-align:center;
+            line-height:25px;  
+
+		}
+	</style>
+</head>
+<body>
+<div id="box">
+	<div id="wrap">
+		<ul>
+			<li><img src="../添加点击事件/moun1.JPG" alt="" /></li>
+			<li><img src="../添加点击事件/moun2.JPG" alt="" /></li>
+			<li><img src="../添加点击事件/moun3.JPG" alt="" /></li>
+		    <li><img src="../添加点击事件/moun4.JPG" alt="" /></li>
+		</ul>
+		<ol></ol>
+	</div>
+	<div id="btn">
+		<p id="left">&lt;</p>
+		<p id="right">&gt;</p>
+	</div>
+</div>
+<script src="animate.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		//获取元素
+		var _box=document.getElementById("box");
+		var _ul=document.getElementsByTagName("ul")[0];
+		var _ol=document.getElementsByTagName("ol")[0];
+		var _ulList=_ul.children;
+		console.log(_ulList);
+		//获取按钮
+		var left=document.getElementById("left");
+		var right=document.getElementById("right");
+		//获取图片宽度
+		var imgWidth=_ulList[0].offsetWidth;
+		//创建序号
+		for(i=0;i<_ulList.length;i++){
+			//创建一个li标签
+			var li=document.createElement("li");
+			//给li赋值
+			li.innerText=i+1;
+			//将li标签添加到ol
+			_ol.appendChild(li);
+
+		}
+		console.log(_ol);
+		//克隆第一张图片
+		var _li1=_ulList[0].cloneNode(true);
+		_ul.appendChild(_li1);	
+         
+
+		//右箭头
+		//用于保存到第几张图
+		var index=0;
+		//用于保存小圆点下标
+		var square=0;
+		//给右箭头添加点击事件
+         right.onclick=playNext;
+         function playNext(){
+         	//判断第一张图片是最后一张，直接定位到第一张
+         	if(index==_ulList.length-1){
+         		//定位到第一张
+         		_ul.style.left=0+'px';
+         		index=0;
+
+         	}
+         	//下标加一
+         	index++;
+         	console.log(index,-index*imgWidth);
+         	//执行动画
+         	animate(_ul,-index*imgWidth);
+         	//判断是否为最后一个小圆点就赋值成第一个
+         	if(square==_olList.length-1){
+         		square=0;
+         	}else{
+         		square++;
+         	}
+         	//先给所有的序号取消颜色
+         	for(j=0;j<_olList.length;j++){
+         		_olList[j].style.background='white';
+         	}
+         	//再给当前序号添加颜色
+         	_olList[square].style.background='red';
+         }
+         //左箭头
+         left.onclick=function(){
+         	//判断当前图片为第一张时，定位到最后一张
+         	if(index==0){
+         		_ul.style.left=-(_ulList.length-1)*imgWidth+'px';
+         		index=_ulList.length-1;
+         	}
+         	index--;
+         	animate(_ul,-index*imgWidth);
+         	//判断到了第一个小圆点，就赋值为最后一个
+         	if(square==0){
+         		square=_olList.length-1;
+         	}else{
+         		square--;
+         	}
+            //先给所有的序号取消颜色
+            for(j=0;j<_olList.length;j++){
+            	_olList[j].style.background='white';
+            }
+            //再给当前序号添加颜色
+            _olList[square].style.background='red';
+         }
+
+
+
+         //序号切换
+         var _olList=_ol.children;
+         //给第一个序号添加颜色
+         _olList[0].style.background='red';
+         //给每一个按钮添加点击事件
+            for(i=0;i<_olList.length;i++){
+            	//将下标存到当前对象
+            	_olList[i].ind=i;
+            	_olList[i].onclick=function(){
+            		console.log(this.ind);
+            		//结束位置
+            		var end=-this.ind*imgWidth;
+            		animate(_ul,end);
+            		//将当前图片下标存起来，方便左右按钮使用
+            		index=this.ind;
+            		//先给所有的序号取消颜色
+            		for(j=0;j<_olList.length;j++){
+                        _olList[j].style.background='white';
+            		}
+            		//在给当前序号添加颜色
+            		this.style.background='red';
+            	}
+            }
+            //自动轮播
+            //每两千毫秒调用一次下一张的函数，实现自动轮播的效果
+            var timer=setInterval(playNext,2000);
+            //当鼠标移入box,清除计时器
+             box.onmouseover=function(){
+            	clearInterval(timer);
+            }
+            //当鼠标移出计时器开始计时器
+           box.onmouseout=function(){
+           	    timer=setInterval(playNext,2000);
+           }
+     }
+        
+        
+</script>
+</body>
+</html>

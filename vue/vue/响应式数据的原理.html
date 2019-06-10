@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+<div id="app">
+	<button id="btn">点击</button>
+	<h3 id="title">我是标题</h3>
+</div>
+<script src="vue.js"></script>
+<script src="vue-rounter.js"></script>
+<script type="text/javascript">
+	var data={
+		title:'新闻',
+		name:"jsjfskj"
+	} 
+var btn=document.getElementById('btn');
+var oh=document.getElementById('title');
+ oh.innerHTML=data.title;
+ btn.onclick=function(){
+	 data.title='音乐';
+	 oh.innerHTML=data.title;//手动操作dom 本来将是我是标题替换为新闻，后来进行了数据劫持新闻替换为音乐
+}
+// 封装个方法
+// 使用数据的时候会劫持数据
+defineProperty(data);
+function defineProperty(obj){
+	//拿到对象的属性
+	console.log(Object.keys(obj));
+  Object.keys(obj).forEach((item)=>{//获取对象的属性
+  	  console.log(item);
+  	  defineReactive(obj,item,obj[item]);
+  })
+}
+function defineReactive(obj,item,value){
+	Object.defineProperty(obj,item,{
+  		get(){//获取数据
+           return value;
+  		},
+  		set(newValue){//设置数据
+           value=newValue;
+           title.innerHTML=newValue;  
+  		}
+  	})
+}
+/* 
+            Object.defineProperty
+            定义：这个方法可以给一个对象添加一个属性，或者
+            改变已经存在的属性值
+            语法： Object.defineProperty(obj,attr,desc)
+            obj: 要添加或者修改属性的那个对象
+            attr: 被修改或者添加的属性名称
+            desc: 描述符， 用{}表示
+                描述符的分类： 数据描述符和存取描述符
+                数据描述符： 
+                value: 属性对应的值，可以是任意javascript对应的值，默认为undefined
+                configurable: 布尔值，可以给属性设置是否删除
+                writable: 布尔值，当设置为true的时候可以用赋值方法来改变属性的值
+                enumerable： 布尔值，当设置为true的时候，该属性可以被枚举（for in）
+                存取描述符
+                    get和set
+                    get:当我们读取某个属性的时候。会调用
+                    这个方法,方法里面必须有return，return后面的数据就是读取
+                    出来的属性值
+                    set:当我们设置某个属性的时候，会执行这个函数
+                    set方法接收一个参数，这个参数就是设置新的属性值
+        */
+       var obj = {} // {name: "xiaoming"}
+//当我们使用数据的时候，会劫持数据转成个setter和getter
+//{name:'xiaoming'}
+  Object.defineProperty(obj,'name',{
+      // value:'小明',
+      // configurable:true,
+      // writable:false //不可修改
+      get(){
+      	console.log('我被执行了');
+      	return '你要读取的值'
+      },
+      set(newValue){
+        console.log(newValue);
+      }
+})
+  obj.name;
+  obj.name='设置属性';
+  // delete:可以删除属性
+ // delete obj.name;
+ obj.name='我的名字被改了';
+</script>
+</body>
+</html>

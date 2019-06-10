@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<h1>hello vue-router!</h1>
+		<router-link to='/fruit/12'>fruit</router-link>
+		<router-link to='/vegetable'>vegetable</router-link>
+		<router-view></router-view>
+	</div>
+	<script src="vue.js"></script>
+	<script src="vue-rounter.js"></script>
+<script type="text/javascript">
+	var fruit={
+		template:`<div>
+		             <router-link to='/fruit/sweet'>甜的</router-link>
+		             <router-link to='/fruit/sourch'>酸的</router-link>
+		             <router-view></router-view>
+		         </div>`
+		   ,
+		   created:function(){
+               console.log(this.$route.params.id);
+               document.title=this.$route.params.id;
+		   }
+	}
+	var vegetable={
+		template:`<div>
+				     <router-link to='/vegetable/youji'>有机的</router-link>
+				     <router-link to='/vegetable/wuji'>无机的</router-link>
+		             <router-view></router-view>
+		         </div>`
+	}
+	var sweet={
+		template:`<div>太甜了不想吃了</div>`
+	}
+	var sourch={
+		template:`<div>酸死了</div>`
+	}
+	var youji={
+		template:`<div>有机的origin</div>`  
+	}
+	var wuji={
+		template:`<div>无机的无公害</div>`
+	}
+	var routes=[
+	{
+		path:'/fruit/:id',
+		component:fruit,
+		children:[
+		{path:'sweet',component:sweet},
+		{path:'sourch',component:sourch}
+		]
+	},
+	{
+		path:'/vegetable',
+		component:vegetable,
+		children:[
+		{path:'youji',component:youji},
+		{path:'wuji',component:wuji}
+		]
+	},
+	]
+	var router=new VueRouter({
+		routes:routes,
+	})
+	var vm=new Vue({
+		el:'#app',
+		router:router,
+	})
+</script>
+</body>
+</html>

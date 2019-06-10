@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		p{
+			width:200px;
+			height:200px;
+			line-height: 200px;
+			text-align:center; 
+			border:1px salmon solid;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" value="淡入效果" name="">
+	<p>这是段落标签</p>
+	<script src="jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		// $('input').click(function(){
+		//     $('p').fadeOut();	//淡出效果  
+  //          $('p').fadeOut(8000);  //放秒数
+  //          $('p').fadeOut('fast');//快速
+  //          $('p').fadeOut(8000,function(){
+  //          	alert(1);
+  //          })
+		
+
+		 //fadein淡入，用法如下
+		 // $('input').click(function(){
+		 // 	$('p').fadeToggle();//淡入淡出之间切换
+		 // 	$('p').fadeToggle(2000,function(){
+		 // 		alert(2);
+		 // 	})  
+		 // })
+    //fadeTo(时间,透明度（0~1之间)
+   
+
+
+
+
+   // jquery的滑动效果
+        $('input').click(function(){
+        	$('p').slideUp();//slideUp向上滑动
+        	$('p').slideUp('slow',function(){
+        		
+
+        	});
+        })
+
+
+
+        //向下滑动
+       $('input').click(function(){
+       	$('p').slideDown('slow');//向下滑动
+       })
+})	
+</script>
+</body>
+</html>

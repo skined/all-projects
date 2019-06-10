@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		
+	</style>
+</head>
+<body>
+<input type="button" value="←" id="left" name="">
+<input type="button" value="→" id="right" name="">
+<div>
+	<img src="img/life.JPG" id="pic">
+</div>
+<script type="text/javascript">
+	var left=document.getElementById('left');
+	var right=document.getElementById('right');
+	var pic=document.getElementById('pic');
+	var oc=document.createElement('canvas');
+	oc.width=pic.width;
+	oc.height=pic.height;
+	var pen=oc.getContext('2d');
+    pic.parentNode.replaceChild(oc,pic);
+    pen.drawImage(pic,0,0);
+    var num=0;
+    left.onclick=function(){
+    	 if(num==0){
+            num=3;
+    	 }else{
+    	 	num--;
+    	 }
+         show();
+    }
+    right.onclick=function(){
+    	if(num==3){
+    		num=0;
+    	}else{
+    		num++;
+    	}
+    	show();
+    }
+    function show(){
+    	switch(num){
+    		case 1:
+    		oc.width=pic.height;
+    		oc.height=pic.width;
+    		pen.rotate(90*Math.PI/180);
+    		pen.drawImage(pic,0,-pic.height);
+    		break;
+    		case 2:
+    		oc.width=pic.width;
+    		oc.height=pic.height;
+    		pen.rotate(Math.PI/1);
+    		pen.drawImage(pic,-pic.width,-pic.height);
+    		break;
+    		case 3:
+    		oc.width=pic.height;
+    		oc.height=pic.width;
+    		pen.rotate(270*Math.PI/180);
+    		pen.drawImage(pic,-pic.width,0);
+    		break;
+    		case 0:
+    		oc.width=pic.width;
+    		oc.height=pic.height;
+    		pen.rotate(0);
+    		pen.drawImage(pic,0,0);
+    		break;
+    	}
+    }
+    //新节点替换旧节点，第一个参数是新节点，第二个参数是旧节点
+</script>
+</body>
+</html>

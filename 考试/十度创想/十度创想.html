@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="tendu.css">
+</head>
+<body>
+<ul class="ul1">
+	<li class="uli1">
+	   <div id="box" class="all">
+	   	 <div id="screen" class="screen">
+        <div class="nav">
+              <div class="navcenter">
+                <div class="navleft">
+                  <img src="img/logo.PNG">
+                </div>
+                <div class="navright">
+                  <p id="shy">首页</p>
+                  <p>服务</p>
+                  <p>案例</p>
+                  <p>关于</p> 
+                  <p>联系</p>
+                </div>
+              </div>
+          </div>  
+          <div class="zixun">
+           <div class="phone">
+             <img src="img/icon-phone(2).PNG">
+             <p>电话咨询</p>
+           </div>
+           <div class="phone">
+            <img src="img/icon-zx(2).PNG">
+                <p>在线咨询</p>
+           </div>
+           <div class="phone">
+            <img src="img/icon-qq.PNG">
+            <p>qq咨询</p>
+           </div>
+          </div>
+	   	 	<ul class="ul2">
+	   	 		<li class="uli2">
+            <div class="font">
+                 <p class="year">2016~2018</p>
+                 <p class="service">中国资深互联网品牌服务商
+                 </p>
+                  <p id="service2">我们已经成功为</p>
+                 <span class="service3">500</span>
+                 <span class="service4">+</span>
+                 <span class="service" id="service1">企业提供互联网服务</span>
+            </div>
+            <div class="disc">
+              <img src="img/banner0-img1.PNG">
+            </div>
+            <div class="discircle">
+              <img src="img/banner0-img1(2).PNG">
+            </div>
+            <img src="img/banner.jpg">
+            </li>
+	   	 		<li class="uli2">
+            <div class="sanj">
+               <img src="img/banner1-el.PNG">
+               <div class="tend">
+                <p class="think">十度创想从不认为自己是最好的</p>
+               <p>但始终为一流的企业服务</p> 
+               </div>
+               
+            </div>
+            <img src="img/banner1.jpg"></li>
+	   	 		<li class="uli2">
+            <div class="gd">
+              <img src="img/banner2-el.PNG">
+            </div>
+            <div class="Inter">
+              <p>高端·品牌·互联网</p>
+              <p>全线应用服务</p>
+            </div>
+            <img src="img/banner2.jpg" >
+          </li>
+
+	   	 	</ul>
+	   	 	 <ol class="o2"></ol>
+	   	 </div>
+	   </div>	
+	</li>
+	<li class="uli1"></li>
+	<li class="uli1"></li>
+	<li class="uli1"></li>
+	<li class="uli1"></li>
+	<li class="uli1"></li>
+	<li class="uli1"></li>
+</ul>
+<ol class="ol1">
+	<li class="oli1"></li> 
+	<li class="oli1"></li>
+	<li class="oli1"></li>
+	<li class="oli1"></li>
+	<li class="oli1"></li>
+	<li class="oli1"></li>
+	<li class="oli1"></li>
+</ol>
+</body>
+<script src="animate1.js"></script>
+<script type="text/javascript">
+	var ulLis=document.querySelectorAll(".ul1>.uli1");
+	var olLis=document.querySelectorAll(".ol1>.oli1");
+	var colorArr=['red','orange','yellow','green',
+	'purple','blue','pink'];
+  // var box=document.querySelector("#box");
+	for(i=0;i<ulLis.length;i++){
+	ulLis[i].style.background=colorArr[i];
+	}
+	var timer=null;
+	var timer1=null;
+	var timer2=null;
+	for(j=0;j<olLis.length;j++){
+			olLis[j].index=j;	
+			olLis[j].onclick=function(){
+				clearInterval(timer);
+				clearInterval(timer1);
+				clearInterval(timer2);
+				 var end=this.index*document.documentElement.offsetHeight;
+                timer=setInterval(function(){
+                   
+                    var leader=document.documentElement.scrollTop;
+                    var step=(end-leader)/10;
+                    step>0?step=Math.ceil(step):step=Math.floor(step);
+                    if(end!=leader){
+                    	document.documentElement.scrollTo(0,leader+step);
+                    	leader=leader+step;
+                    }else{
+                    	clearInterval(timer);
+                    }
+                },15)
+			}
+		}
+   
+		document.documentElement.onmousewheel=function(e){
+			if(e.wheelDelta<0){
+			  clearInterval(timer);
+			  clearInterval(timer1);
+			  clearInterval(timer2);
+			  var end=Math.ceil(document.documentElement.scrollTop/document.documentElement.offsetHeight)*document.documentElement.offsetHeight;
+			  timer1=setInterval(function(){
+			  	var leader=document.documentElement.scrollTop;
+			  	var step=(end-leader)/10;
+			  	step>0?step=Math.ceil(step):step=Math.floor(step);
+			  	if(leader!=end){
+			  		leader+=step;
+			  		document.documentElement.scrollTo(0,leader);
+			  	}else{
+			  		clearInterval(timer1);
+			  	}
+
+			  },15)
+           }else if(e.wheelDelta>0){
+         	clearInterval(timer);
+         	clearInterval(timer1);
+         	clearInterval(timer2);
+         	var end=Math.floor(document.documentElement.scrollTop/document.documentElement.offsetHeight)*document.documentElement.offsetHeight;
+         	timer2=setInterval(function(){
+         		var leader=document.documentElement.scrollTop;
+         		var step=(end-leader)/10;
+         		step>0?step=Math.ceil(step):step=Math.floor(step);
+         		if(leader!=end){
+         			leader+=step;
+         			document.documentElement.scrollTo(0,leader);
+         		}else{
+         			clearInterval(timer2);
+         		}
+         	},15)
+         }
+        }
+   var ul=document.querySelector(".ul2");
+   var ol=document.querySelector(".o2");
+   var ulLis=ul.children;
+   var olLis=ol.children;
+   console.log(olLis);     
+   var img=ulLis[0];
+    console.log(img);
+   var imgWidth=img.offsetWidth;
+     // var ol=document.querySelector(".o2");
+     var olLis=ol.children;
+     // for(i=0;i<olLis.length;i++){
+     //   olLis[i].onmouseover=function(){
+     //      clearInterval(time);
+     //   }
+     //    }
+       //  for(j=0;j<olLis.length;j++){
+       //      olLis[j].onmouseout=function(){
+       //      time=setInterval(a,3000);
+       // }
+       //  }
+   for(i=0;i<ulLis.length;i++){
+   	var li=document.createElement("li");
+   	 li.innerText=i+1;
+     ol.appendChild(li);
+   }
+   var firstImg=ulLis[0].cloneNode(true);
+   ul.appendChild(firstImg);
+   //焦点轮播
+    var olLis=ol.children;
+  for(j=0;j<olLis.length;j++){
+  	olLis[j].index=j;
+  	olLis[j].onmouseover=function(){
+  		
+  		var end=-this.index*imgWidth;
+  		animate1(ul,end);
+  	}
+  
+  
+   var pic=0;
+   function a(){
+     if(pic==ulLis.length-1){
+        ul.style.left='0px';
+        pic=0;
+     }
+ 	    pic++;
+     var end=-pic*imgWidth;
+     animate1(ul,end);
+ 	}
+   }
+    
+      var time=setInterval(a,3000);
+     
+    
+    //数字自加
+       var span=document.querySelector("span");
+           span.onmouseover=function(){
+            var num=span.innerText;
+             var timerr=setInterval(function(){
+              span.innerText=num;
+               num++;
+               if(num>1600){
+                  clearInterval(timerr);
+
+             } 
+          },1)                 		
+       }
+
+     
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<button onclick="openWin()">点击创建</button>
+<button onclick="closeWin()">点击关闭</button>	
+<script>
+	//全局变量是window对象的属性;
+	//全局函数是window对象的方法;
+	// function openWin(){
+	// 	window.open('new.html','_blank');
+	// }
+	var w
+	function openWin(){
+		w=window.open('new.html','width=500,height=500','_self');
+	}
+	function closeWin(){
+		w.close();
+	}
+
+</script>
+</body>
+</html>

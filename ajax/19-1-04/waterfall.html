@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>waterfall</title>
+	<style type="text/css">
+		ul{
+			width:1000px;
+			margin:100px auto;
+		}
+		li{
+			width:245px;
+			list-style:none;
+			float:left;
+			margin-right:5px;
+		}
+		li div{
+			border:1px solid #000;
+			font-size:18px;
+			color:pink;
+			padding:10px;
+			text-align:center;
+		}
+		li div img{
+			width:225px;
+			height:265px;
+		}
+	</style>
+</head>
+<body>
+<ul id="ul1">
+	<li>
+		 <!-- <div>
+		 	<img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3788578920,875289628&fm=26&gp=0.jpg" alt="">
+		 	<p>paly basketball</p>
+		 </div>	 -->
+		  <!-- <div>
+		 	<img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2621237255,3018862806&fm=26&gp=0.jpg" alt="">
+		 	<p>super star</p>
+		 </div>	 -->
+		</li>
+		<li>
+			<!-- <div><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2463153158,2030697483&fm=26&gp=0.jpg" alt="">
+			<p>超级巨星</p></div> -->
+			
+		</li>
+		<li>
+			<!-- <div>
+		    <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=338685775,1718706338&fm=26&gp=0.jpg" alt="">
+			<p>haloo</p>
+			</div> -->
+		
+		</li>
+		<li>
+			<!-- <div>
+		    <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=41630630,1291412068&fm=26&gp=0.jpg" alt="">
+			<p>sdasddasfdfsd</p>
+			</div> -->
+			
+		</li>
+</ul>
+<script src="pbl.js"></script>	
+<script type="text/javascript">
+	var oUl=document.getElementById('ul1');
+	var aLi=oUl.getElementsByTagName('li');
+	var iLen=aLi.length;
+	console.log(iLen);
+	// 1.请求数据
+	// 2.添加数据，添加条件：找高度最短的li，添加到高度最短的li里面
+	// 初始化数据
+  	
+  ajax('get','getpbl1.php',' ',function(data){
+    // console.log(data);
+   var arr=JSON.parse(data);
+   // console.log(arr);
+   for(var i=0;i<arr.length;i++){
+   	   var index=getShort();
+   	   var oDiv=document.createElement('div');
+	   var oImg=document.createElement('img');
+	   oImg.src=arr[i].preview;
+	   oDiv.appendChild(oImg);
+	   var oP=document.createElement('p');
+	   oP.innerHTML=arr[i].title;
+	   oDiv.appendChild(oP);
+	   aLi[index].appendChild(oDiv);//将长度最短的li添加到高度最短的li里面
+   }
+   //当前最短li？
+   //aLi[_index];
+    
+	},function(err){
+		console.log(err);
+	})
+	
+
+
+	
+   //找出长度最短的li的top值，获取一个元素在
+	function getShort(){
+		var index=0;
+		var ih=aLi[index].offsetHeight;
+		for(var i=0;i<iLen;i++){
+			if(aLi[i].offsetHeight<ih){
+				index=i;
+				ih=aLi[i].offsetHeight;
+			}
+		}
+		return index;  //返回最短li高度的索引
+	}
+</script>
+</body>
+</html>

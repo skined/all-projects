@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background: #f00;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+	<input type="button" value="点击移动" id="btn" name="">
+    <div id="box"></div>
+    <script>
+        /*  
+            obj: 运动的物体
+            attr: 样式属性
+            target: 目标值
+            duration: 运动时间
+            callback: 回调函数
+         */
+         // 需求：
+          // 1.变宽：200
+          // 2.变高：300
+          // 3.left:100
+          // 4.top:200
+          // 回调地狱
+  //       function move(obj,attr,target,duration,callback ){
+		// 	var b = parseInt(getComputedStyle(obj)[attr]);//获取css样式
+		// 	console.log(b);//100
+		// 	var c = target - b; //200-100
+		// 	var d = duration;//时间
+		// 	var temp = new Date().getTime();//当前时间戳
+		// 	var timer = setInterval( function(){
+		// 		var t = new Date().getTime()-temp;
+		// 		if( t >= d ){
+		// 			clearInterval( timer );
+		// 			t = d;
+		// 		}
+		// 		var v = c/d*t+b ;
+		// 		obj.style[attr] = v + "px";
+		// 		if( t === d ){
+		// 			typeof callback === "function" && callback();
+		// 		}
+		// 	},20 )
+		// }
+	 var box=document.getElementById('box');
+	 //    var btn=document.getElementById('btn');
+  //       console.log(btn);
+  //       btn.onclick=function(){
+  //       	move(box,'width',200,500,(()=>{
+  //               move(box,'height',300,600,(()=>{
+  //               move(box,'left',100,500,(()=>{
+  //                  move(box,'top',200,500,(()=>{
+                	
+  //               }))		
+  //               }))	
+  //               }))
+  //       	}));
+  //       }
+  //       
+      function movePromise(obj,attr,target,duration){
+      	return new Promise((resolve,reject)=>{
+            	var b = parseInt(getComputedStyle(obj)[attr]);//获取css样式
+				console.log(b);//100
+				var c = target - b; //200-100
+				var d = duration;//时间
+				var temp = new Date().getTime();//当前时间戳
+				var timer = setInterval(function(){
+					var t = new Date().getTime()-temp;
+					if( t >= d ){
+						clearInterval( timer );
+						t = d;
+					}
+					var v = c/d*t+b;
+					obj.style[attr] = v + "px";
+					if( t === d ){
+						// typeof callback === "function" && callback();
+						resolve();
+					}
+				},20)
+      	})
+      },
+      movePromise(box,'width',200,500)
+      	.then(()=>movePromise(box,'height',200,300))
+      	.then(()=>movePromise(box,'top',200,500))
+      	.then(()=>movePromise(box,'left',200,500));
+    </script>
+</body>
+</html>

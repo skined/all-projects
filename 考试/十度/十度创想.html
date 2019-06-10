@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="十度创想.css">
+	<title></title>
+</head>
+<body style='width:1000%'>
+<div class='container'>
+	<div class='header'>
+		<img src="img/logo.png">
+		<div class='nav'>
+			<p>首页</p>
+			<p>服务</p>
+			<p>案例</p>
+			<p>关于</p>
+			<p>联系</p>
+		</div>
+	</div>
+	<div class='banner'>
+		<div class='banner-center'>
+			<ul>
+				<li><img src="img/banner.jpg"></li>
+				<li><img src="img/banner1.jpg"></li>
+				<li><img src="img/banner2.jpg"></li>
+			</ul>
+		 </div>
+			<div class='circle'>
+				<div class='het'></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class='left'>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+			<div class='right'>
+				<div><img src="img/icon-phone.png"><p>电话咨询</p></div>
+				<div><img src="img/icon-zx.png"><p>在线咨询</p></div>
+				<div><img src="img/icon-qq.png"><p>QQ咨询</p></div>
+			</div>
+	</div>
+</div>
+<script type="text/javascript" src='animate.js';'>
+</script>
+<script type="text/javascript">
+	// 获取left下div标签元素
+	// var divs = document.getElementsByTagName('div');
+	// for(var i =0;i<divs.length;i++){
+	// 	divs[i].onclick = function(){
+	// 		for(var i = 0;i<divs.length;i++){
+	// 			divs[i].className='';
+	// 		}
+	// 		this.className='wid';
+	// 	}
+	// }
+    // 获取circle下的div标签
+ var circle = document.querySelector('.circle');
+ var squares = circle.children;
+for(var i = 0;i<squares.length;i++){
+	squares[i].index = i;
+	squares[i].onclick = playNext;
+	function playNext(){
+		for(var i = 0;i<squares.length;i++){
+			squares[i].className = '';
+		}
+		this.className='het';
+		// 让ul滚动
+		var ul = document.querySelector('ul');
+		// 求end值
+		var li = ul.children[0];
+		var wid = li.offsetWidth;
+		var end = -this.index*wid;
+		animate(ul,end);
+	}
+}
+</script>
+</body>
+</html>

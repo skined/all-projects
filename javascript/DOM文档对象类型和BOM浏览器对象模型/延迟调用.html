@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//一次性计时器，延时调用setTimeout();
+	//他有两个参数第一个为调用事件
+	//第二个参数为延迟的时间,有两种调用方法
+	// var fn=function(){
+	// 	alert('sdsdssa');
+	// }
+	// setTimeout(fn,3200);
+	// function demo(){
+	// 	alert('qqqqqq');
+	// }
+	// setTimeout('demo()',2000);
+	//setInterval()间歇调用(间歇性触发计时器)
+	//第一个参数为调用事件
+	//第二个参数为间歇性调用的时间
+	var num=0;
+	function demo(){
+		num++;
+		console.log(num);   
+	} 
+	a=setInterval(demo,1000);
+    clearInterval(a);
+</script>
+</body>
+</html>

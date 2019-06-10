@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<h3>hello Vue-router</h3>
+		<p>
+			<!-- 1.使用router-link进行导航,在页面中被渲染成a标签 -->
+			<!-- router-link的to属性，指向跳转的组件-->
+			<!-- 语法 to=‘自定义路径名称 '-->
+			<!-- router-link默认被页面渲染成a标签，可以修改标签调用 -->
+			<router-link to='/foo'>Go to foo</router-link>	
+			<router-link to='/bar'>Go to bar</router-link>	
+		</p>
+		<!-- 2.router-view提供路由出口,把router-link对应的组件渲染到路由出口中 -->
+		<!-- tag属性可以把router-link渲染成我们自己想要的属性 -->
+		<router-view></router-view>
+	</div>
+	<script src="vue.js"></script>
+	<script src="vue-rounter.js"></script>
+<script type="text/javascript">
+	var  Foo={
+		template:`
+		      <div>
+                   <div>这是foo对应的组件</div>
+			       <router-link to='/foo/foo1'>子路由1</router-link>
+			       <router-link to='/foo/foo2'>子路由2</router-link>
+			       <router-view></router-view>
+		      </div>
+		     `,
+		     created:function(){
+		     	// 生命周期钩子在data数据和methods渲染的时候执行
+		     	// this.$route表示当前的路由
+		     	// this.$router是new VueRouter()实例化出来的对象
+		     	// 通过query对象取参数
+		     	console.log(this);
+		     	console.log(this.$route);
+		     	console.log(this.$route.query.id);
+		     	document.title=this.$route.query.id;
+		     }
+			}
+		  //子路由的to写成/第一层路由名字、第二成路由名字
+		// 定义子组件
+		const Foo1={
+			template:`
+			<div>我是Foo的第一个子组件</div>`
+		}  
+		const Foo2={
+			template:`
+			<div>我是Foo的第二个子组件</div>`
+		}  
+     var Bar={
+     	template:`
+     	    <div>
+                <div>这是bar对应的组件</div>
+		     	    <router-link to='/bar/Bar1'>子路由1</router-link>
+		     	    <router-link to='/bar/Bar2'>子路由2</router-link>
+		     	    <router-view></router-view>
+     	    </div>
+     	   `}
+     	   // 创建组件的模板
+     	const Bar1={
+			template:`	
+			<div>我是bar的第一个子组件</div>`
+		}  
+		const Bar2={
+			template:`
+			<div>我是bar的第二个子组件</div>`
+		}      
+	//路由配置 const routses=[
+	//{路游信息的每一项}
+	//{路游信息的每一项}
+	//路由信息每一项由路由的路经和组件名称]
+	//路由的路径和path信息的每一项都一样
+	var routes=[
+	    {
+	      path:'/foo',//以/开头开头的路由会被当做跟路由
+	      component:Foo,
+	      //children定义了子路由
+	      children:[
+	          // 不是根路由不用加/
+              {path:'foo1',component:Foo1},
+              {path:'foo2',component:Foo2}
+	      ]
+	  },
+	    {  
+	    	path:'/bar',
+	      component:Bar,
+	      children:[
+	          {path:'bar1',component:Bar1},
+	          {path:'bar2',component:Bar2},
+	          ]
+	    },
+		
+		]
+    // 创建根和实例让整个应用都有路由功能
+       var router=new VueRouter({
+       	   routes:routes //n简写成 routes
+       	   //routes实例化路由的一个选项，当配置信息
+       	   //名字和routes选项同名的时候可以简写
+       })
+	// 	var  vm=new Vue({
+	// 	 router,//把路由注入到根实例里面
+	// }).$mount('#app')//用$mount挂载根实例
+		
+    var vm=new Vue({
+    	el:'#app',
+    	router:router,
+    	// router是选项，实例化出来的vue-router
+    })
+</script>
+</body>
+</html>

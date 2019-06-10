@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- 复习第一部分
+Xml:可扩展标记语言，原来的那些网站
+用来存储和交换数据
+Sur1=$GET();
+var data=file_get_contents('');
+echo data;
+在获取后端返回的数据的时候，不能用responseText，要用responseXML
+//语法规则
+1.标签要闭合，没有单标签
+2.对大小写敏感
+3.合理嵌套，不能混合嵌套
+4.属性必须加引号
+5.不允许出现<,必须要加&lt &gt;
+6.一个xml文档必须有且只有一个根元素
+7.注意：文档必须要有声明<?xml version='1.0' encoding=''>
+version:版本号 encoding：编码格式 
+-->
+
+
+<!-- 复习的第二部分 json-->
+<!-- json:是一种轻量级的数据交互格式，便于编写并且有良好的可读性
+json不是任何一种语言，它是一种单独的数据结构	
+书写规范:
+1.json结尾
+2.属性值必须要加双引号
+3.json数据的最后一条不能加逗号
+有两个非常重要的转换方法:
+JSON.parse()从一个字符串中解析出json对象
+JSON.stringify()将json对象转换成字符串的形式 -->
+<!-- JSON的优缺点:
+1.数据结构比较简单，方便于读写
+2.易于解析，使用起来比较方便,相比于XML数据更加便捷
+3.编译或者预编译的时候节省时间
+4.数据轻量级，传输数据更小 -->
+<!-- 第三部分：ajax
+
+
+
+
+
+
+
+ -->
+
+<script type="text/javascript">
+	// var obj='{"name":"fengkai","age":"12"}';
+	// console.log(typeof obj);
+	// var obj1=JSON.parse(obj);
+	// console.log(obj1);
+	// console.log(typeof obj1);
+	
+
+    // 创建ajax对象
+	var xhr=null;
+	if(window.XMLHttpReuqest){
+		xhr=new XMLHttpRequest();//兼容在ie7以上
+	}else{
+		xhr=new ActiveXObject(Microsoft.XMLHttp);  //兼容在ie7以下
+	}
+	// 建立连接
+	xhr.open('get','http://www.baidu.com?username=+'encodeURL('DSAD')'+&age=32',true);
+	// 发送请求
+	xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+	xhr.send(username=dede&age=32);
+	xhr.onreadystatechange=function(){
+		//判断ajax的工作状态
+		if(xhr.readyState==4){
+			// 判断响应状态码
+			if(xhr.status==200){
+				console.log(xhr.responseText);
+			}
+		}
+	}
+
+	// 以上代码为ajax请求为get的代码，其中要注意几点：
+	// 1.如果有参数需要传递，要放在url后面
+	// 2.有缓存你怎么处理：时间戳或者随机数 new Date().getTime();
+	// 3.编码格式，encodeURL()
+	// 以上代码为post请求方式的ajax
+	// 注意：要写请求主体，在告知后端数据的发送格式
+	// 如果有数据的话，要放在xhr.send()请求主体中
+	// http状态码:
+ //    200：请求成功
+ //    100：继续发出请求
+ //    101：客户端要求服务器根据请求转换HTTP协议文本
+ //    201：提示知道新文件的url
+ //    301：删除请求数据
+ //    400：错误请求
+ //    403：拒绝错误请求
+ //    404：找不到Url的位置
+ //    500:内部服务器错误
+</script>
+</body>
+</html>

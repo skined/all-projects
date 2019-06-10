@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.aaa{
+			width:100px;
+			height:100px;
+			background:red;
+			margin:10px;
+		}
+		.bbb{
+			width:50px;
+			height:50px;
+			background:blue;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div v-bind:style="{background:mybackground,width:mywidth+'px',height:myheight+'px'}" onclick="vm.func()"></div>
+		<div v-bind:class="myclass" onclick="vm.func1()"></div>
+		<div style="width:100px;height:100px" onclick="vm.func2()">
+			<img v-bind:src='mySrc'>
+		</div>
+	</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	// Vue的指令都是v-开头的
+	// v-bind用来绑定属性的，可以操作class列表和内联样式等
+	// 样式：v-bind:style
+	// 类名：v-bind:class
+	// 缩写形式：省略v-bind
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'hello world',
+			p:"<h1 style='color:aqua'></h1>",
+			mybackground:'blue',
+			mywidth:100,
+			myheight:100,
+			myclass:'aaa',
+			mySrc:'img/5.JPG',
+			func:function(){
+                console.log(this);//this指向跟实例
+                if(this.mybackground=='blue'){
+                	this.mybackground='red';
+                	this.mywidth=50;
+                	this.myheight=50;
+                }else{
+                	this.mybackground='blue';
+                	this.mywidth=100;
+                	this.myheight=100;
+                }				
+			},
+			func1:function(){
+               if(this.myclass=='aaa'){
+               	 this.myclass='bbb';
+               }else{
+               	this.myclass='aaa';
+               }
+			},
+			func2:function(){
+				if(this.mySrc=='img/5.JPG'){
+					this.mySrc='img/6.JPG'
+				}else{
+					this.mySrc='img/5.JPG'
+				}
+			}
+		}
+	})
+</script>
+</body>
+</html>

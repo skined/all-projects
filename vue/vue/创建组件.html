@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<my-component></my-component>
+		<my-list></my-list>	
+	</div>
+<script src="vue.js"></script>	
+<script type="text/javascript">
+	// 组件注册：1.全局创建  Vue.component('组件名称',{选项对象})
+	         // 2.局部创建
+	     // 组件名称有命名规则：1.驼峰式命名法 使用 My-Component
+                           // 2.烤串式命名法 kebab-case
+          // 选项对象里面有什么？
+             // 数据，行为逻辑，样式结构
+             // template:没有什么特殊含义，表示的是模板用来盛放HTML元素的用来定义一个局部组件
+             // 局部注册：component
+             // 组件中使用数据：data必须是一个函数，函数必须有返回值，返回值是我们需要的数据
+           Vue.component('my-component',{
+           	   template:
+           	   `<ul>
+                <li>你是大傻子</li>
+                <li>你是二楞子</li>
+                <p>{{message}}</p>
+           	   </ul>`,
+           	data:function(){
+          		return {
+          			message:'hello world'
+          		}
+          	}
+           })
+          var vm=new Vue({
+          	//创建根实例用来启动应用
+          	el:'#app',
+          	// data:{
+          		// message:'Hello  World!'
+          	// },
+          	components:{
+          	'my-list':{
+               template:`<div><p>我是噗欧噗</p></div>`
+          	}
+         }
+          })   
+          
+</script>
+</body>
+</html>

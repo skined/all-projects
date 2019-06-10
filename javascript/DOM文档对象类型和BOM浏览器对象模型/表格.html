@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		table{
+			width:300px;
+		}
+		td,th{
+			width:150px;
+			height:40px;
+			border:1px red solid;
+			text-align:center;
+			line-height:40px;
+		}
+	</style>
+</head>
+<body>
+	姓名: <input type="text"/> <br>
+    班级: <input type="text"/>
+<input type="button" onclick="add()" class="btn" value="添加"/>
+<table cellspacing="0" cellpadding="0">
+	<tr>
+		<th colspan="2">班级信息</th>
+	</tr>
+</table>
+<script type="text/javascript">
+var inp=document.getElementsByTagName('input');
+var tbody=document.getElementsByTagName('tbody');
+function add(){
+	console.log(inp[0].value);
+	console.log(inp[1].value);
+	//创建一个tr
+	var tr=document.createElement('tr');
+	//创建td
+	var td1=document.createElement('td');
+	var td2=document.createElement('td');
+	//将input的值赋值给新创建的td标签
+	td1.innerHTML=inp[0].value;
+	td2.innerHTML=inp[1].value;
+	//把td添加到tr
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	//把tr标签添加给tbody
+    tbody[0].appendChild(tr);
+}  	
+</script>
+</body>
+</html>

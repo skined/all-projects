@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+	//结构赋值 ：es6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这就被称为结构赋值
+	// const props={
+	// 	className:'tiger-button',
+	// 	lodding:false,
+	// 	clicked:true,
+	// 	disabled:'disabled'
+	// }
+	// // 我们的需求：我想要获取props里面的loading和clicked
+	// // es5的时候
+	// var loading=props.loading;
+	// var clicked=props.clicked;
+
+	// //es6
+	// const{loading,clicked}=props;
+	// // 给一个默认值
+	// const{loading=false,clicked}=props;
+	//对象的结构赋值
+	//对象根据属性名称一一对应，这是一个无序的对应关系
+	var {foo,bar}={foo:'aaa',bar:'bbb'}
+	foo//aaa
+	bar//bbb
+	var {bar,foo}={foo:'aaa',bar:'bbb'}
+	bar//bbb
+	foo//aaa
+	var {baz}={foo:'aaa',bar:'bbb'}
+	baz//undefined
+	//如果变量名与属性名不一致必须要写成
+	var {foo:baz}={foo:'aaa',bar:'bbb'};
+	// 证明了对象的结构赋值是下面的简写形式
+	var {foo:foo,bar:bar}={foo:'hello',bar:'world'}
+	var {foo,bar}={foo:'hello',bar:'world'}
+  // 也就是说对象结构赋值的内部机制，先是找到同名属性，然后在赋给对应的变量，真正被赋值的是后者，而不是前者
+    var {foo:baz}={foo:'aaa',bar:'bbb'}
+    // 真正被赋值的是变量baz而不是模式foo
+      
+   
+</script>
+</body>
+</html>

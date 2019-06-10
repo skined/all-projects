@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jsonp</title>
+	<style type="text/css"></style>
+</head>
+<body>
+<script type="text/javascript">
+	var xhr=new XMLHttpRequest();
+	xhr.open('get','1.txt',true);
+	xhr.send();
+	xhr.onreadystate=function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				console.log(xhr.responseText);
+			}
+		}
+	}
+	//ajax不能跨域
+  // ajax的·原理问题
+  // :在资源加载进来之前与先定义一个函数，这个函数预先接收了一个参数
+  // b.在我们需要的时候利用script远程加载进来你需要的文件资源，当远程资源被加载进来的时候就会执行你上面预先定义的函数
+  // c.把这个数据当做函数的参数传进去
+
+</script>
+</body>
+</html>

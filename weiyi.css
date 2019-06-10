@@ -1,0 +1,27 @@
+div
+{
+	width:100px;
+	height:75px;
+	background-color:red;
+	border:1px solid black;
+}
+#translate
+{
+	transform:translate(50px,50px);
+	transform-origin:top right; 
+}
+
+.rotate{
+	transform-origin:top left;
+	transform:rotate(50deg);
+	margin:0 auto;  
+}
+.skew{
+	transform-origin:top left;
+	transform:skew(0deg,20deg);  
+}
+.scale{
+	transform-origin:top right;
+	margin:0 auto; 
+	transform:scale(1,1);   
+}

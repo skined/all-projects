@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+        canvas{
+        	background:#fff;
+        }
+	</style>
+</head>
+<body>
+	
+<canvas id="c1" width="800" height="800"></canvas>
+<img src="img/luf.JPG" id="pic">
+<script type="text/javascript">
+	window.onload=function(){
+	  var oc = document.getElementById('c1');
+      var pic = document.getElementById('pic')
+      var pen =oc.getContext("2d");
+      pen.drawImage(pic,100,100);
+      var imageData= pen.getImageData(0,0,500,300);
+       console.log(imageData);
+     for (var i = 0; i < imageData.data.length; i++){
+		   imageData.data[4*i] =255-imageData.data[4*i];
+		   imageData.data[4*i+1] =255-imageData.data[4*i+1];
+		   imageData.data[4*i+2] =255-imageData.data[4*i+2];
+		   imageData.data[4*i+3] =255;
+            }
+     pen.putImageData(imageData,100,100);
+	}
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+</head>
+<body>
+	<div id="box">
+	 <p>1111</p>
+	 <p>2222</p>
+	 <p>3333</p>
+	 <p>4444</p>
+	 <button>插入</button>
+	</div>	
+<script type="text/javascript">
+	var op=document.getElementsByTagName('p');
+	var btn=document.getElementsByTagName('button')[0];
+	var i=0;
+	btn.onclick=function(){
+		var div=document.createElement('div');
+		i++;
+		div.innerHTML=i;
+		//console.log(div);
+		box.insertBefore(div,op[0]);
+	}
+</script>
+</body>
+</html>

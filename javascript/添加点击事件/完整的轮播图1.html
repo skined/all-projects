@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+    .all{
+        	width:500px;
+        	height:200px;
+        	margin:100px auto;
+          padding:7px;
+        	border:1px #ccc solid;
+          position: relative;
+        }
+       .screen{
+        width:500px;
+        height:200px;
+        overflow:hidden;
+        position:relative;
+       }
+        .screen ul{
+        position: absolute;
+        left:0;
+        top:0px;
+        width:3000px;
+       }
+       .screen li{
+        width:500px;
+        height:200px;
+        float:left;
+       }
+
+       .all ol{
+        position: absolute;
+        right:10px;
+        bottom:10px;
+        line-height: 20px;
+        text-align: center;
+       }
+       .all ol li{
+        float:left;
+        width:20px;
+        height:20px;
+        background:#fff;
+        border:1px #ccc solid;
+        margin-left:10px;
+        cursor:pointer;
+       }
+       .all ol li.current{
+        background:yellow;
+       }
+       #arr{
+        display:none;
+       }
+      #arr span{
+        width:40px;
+        height:40px;
+        position: absolute;
+        top:50%;
+        margin-top:-20px;
+        left:5px;
+        background:#000;
+        cursor:pointer;
+        line-height: 40px;
+        text-align: center;
+        font-weight:bold;
+        font-family:'黑体';
+        font-size:30px;
+        color:#fff;
+        opacity: 0.3;
+        border:1px solid #fff;
+      }
+      #arr #right{
+        right:5px;
+        left:auto;
+      }
+
+	</style>
+</head>
+<body>
+<div class="all" id="box">
+	<div class="screen">
+	   <ul>	
+		<li><img src="images/1.jpg" width='500' height='200' /></li>
+		<li><img src="images/2.jpg"  width='500' height='200' /></li>
+		<li><img src="images/3.jpg"  width='500' height='200' /></li>
+		<li><img src="images/4.jpg"   width='500' height='200'/></li>
+		<li><img src="images/5.jpg"  width='500' height='200'/></li>
+	   </ul>
+	   <ol></ol>	
+	</div>
+	<div id="arr">
+		<span id="left">&lt;</span>
+		<span id="right">&gt;</span>
+	</div>
+</div>
+<script src="animate1.js"></script>
+<script type="text/javascript">
+	var ol=document.querySelector('ol');
+	var ul=document.querySelector('ul');
+	var ulLis=ul.children;
+	var img=document.querySelector('img');
+	var imgWid=img.offsetWidth;
+ 	//创建序号轮播
+	for(i=0;i<ulLis.length;i++){
+     //创建序号并将序号添加到ol中
+       var li=document.createElement('li');
+       li.innerText=i+1;
+       ol.appendChild(li);
+	}
+
+   var firstImg=ul.children[0].cloneNode(true);
+    ul.appendChild(firstImg);
+   var olLis=ol.children;
+   //获取ol中所有li并且绑定所有事件
+	for(j=0;j<olLis.length;j++){
+		olLis[j].index=j;
+		olLis[j].onmouseover=function(){
+      //先同步pic
+         pic=this.index;
+         for(i=0;i<olLis.length;i++){
+          olLis[i].className='';
+         }  	
+         this.className='current';
+         //再使用当前序号的图标*图宽=end
+         end=-this.index*imgWid;
+         animate1(ul,end);  
+		}
+	}
+
+  //左右箭头轮播
+  var arr=document.querySelector('#arr');
+  var left=arr.children[0];
+  var right=arr.children[1];
+  //窗口盒子
+  var screen=document.querySelector('.screen');
+  var box=document.querySelector('#box');
+  var timer1=setInterval(playNext,2000);
+    box.onmouseover=function(){
+      arr.style.display='block';
+      clearInterval(timer1); 
+    }
+    box.onmouseout=function(){
+      arr.style.display='none';
+      
+      timer1=setInterval(playNext,2000);
+    }
+    //设置一个计数变量
+    //pic表示从左边被推出显示框的图片个数
+    //声明square变量用来记录当前的pic值并且让当前的square序号亮起即可
+    var pic=0;
+    var square=0;   
+    right.onclick=playNext;
+    function playNext(){
+      if(pic==ulLis.length-1){
+        ul.style.left='0px';
+        pic=0;
+      }
+      pic++;
+      var end=-pic*imgWid;
+      animate1(ul,end);
+      //让对应的序号亮起
+      square=pic;
+      if(square==ulLis.length-1){
+        square=0;
+      }
+      for(i=0;i<olLis.length;i++){
+         olLis[i].className='';
+      }
+      olLis[square].className='current';
+    }
+    var square=0;
+    left.onclick=function(){
+      if(pic==0){
+        ul.style.left=-(ulLis.length-1)*imgWid+'px';
+        pic=ulLis.length-1;
+      }
+      pic--;
+      var end=-pic*imgWid;
+      animate1(ul,end);
+      //让对应的序号亮起
+      square=pic;
+      if(square==ulLis.length-1){
+        square=0;
+      }
+      for(i=0;i<olLis.length;i++){
+        olLis[i].className='';
+      }
+      olLis[square].className='current';
+    }
+</script>
+</body>
+</html>

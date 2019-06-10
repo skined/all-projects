@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+
+	let obj={
+		name:'lili',
+		age:{age:4},
+		school:'bj',
+		a:{b:1}
+	}
+	function isObject(target){
+		return typeof target=='object' &&typeof target!=null
+	}
+	function observer(target){
+         if(!isObject(target)) return
+                 for(let key in target){
+                 	//defineReactive定义一个数据劫持的方法
+                 	defineReactive(target,key,target[key])
+                 }
+                 
+         
+	}
+	function defineReactive(obj,key,value){
+		  //如果值继续是对象的话，也需要监听
+		     observer(value)//深度劫持
+		    
+           Object.defineProperty(obj,key,{
+           	get(){
+           	return value;
+           },set(val){
+           	console.log('值更新了');
+           	value=val;
+           }
+       })
+       }
+	observer(obj);//监听obj
+	// obj.name=lilei;
+	// obj.age.age=4;
+	 obj.a={b:4}//新赋值的对象不会被劫持
+	obj.a.b=3
+	//computed计算属性里面的get和set就是defineProperty的get和set
+	// 要劫持的属性要对象本身有的，后定义的属性并不会被劫持，vue提供了一个方法
+	// 实例上的方法
+	// Vue.set()
+	 obj.xxx='abc'
+	
+
+
+
+
+
+	// 数组的方法不能通过defineProperty来监测更新，所以vue重写了数组的方法
+	// push pop shift....
+
+    let ary1=[1,2,3,4,5];
+	let methods=['push','pop','shift'];
+	methods.forEach(method=>{
+		let oldmethod=Array.prototype[method];
+		Array.prototype[method]=function(...arg){
+			console.log('值更新了');
+		   oldmethod.call(this,...arg);
+		}
+	})
+	ary1.pop(2);
+	
+	 let ary=[1,2,3,4];
+	 let oldpush=Array.prototype.push;//把数组的方法存在oldpush上
+	 //重写数组方法
+	Array.prototype.push=function(...arg){
+		console.log('值更新了')
+		console.log(...arg);
+		oldpush.call(this,...arg)
+	}
+	ary.push(2);
+</script>
+</body>
+</html>

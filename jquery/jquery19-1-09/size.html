@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	/*	div{
+			width:100px;
+			height:100px;
+			background:chocolate;
+		}*/
+        *{
+        	margin:0;
+        	padding:0;
+        }
+		.box1{
+			width:200px;
+			height:200px;
+			background:red;
+			position:relative;
+		}
+		.box2{
+			width:100px;
+			height:100px;
+			background:blue;
+			position:absolute;
+			left:50px;
+			top:0;
+		}
+	</style>
+</head>
+<body>
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+	<li>6</li>
+
+</ul>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+// $(function(){
+// 	console.log($('li').size);
+// })
+
+
+// 参数一：索引，参数二：每个元素
+$(function(){
+	$('li').each(function(index,ele){
+		console.log(index);
+		console.log(ele);
+      $(this).css('background','red');       
+	})
+})
+</script>
+</body>
+</html>

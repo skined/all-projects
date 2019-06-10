@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#ffff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500"></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+    pen.shadowOffsetY=-20;//相对于这个矩形的形状,偏移量可以写成负值
+    pen.shadowColor='gray';//阴影颜色
+    pen.shadowBlur=100;//值越大越模糊
+    pen.fillRect(100,100,200,150);
+
+
+   
+</script>
+</body>
+</html>

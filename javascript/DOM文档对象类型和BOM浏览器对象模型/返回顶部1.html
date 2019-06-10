@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box div{
+			width:1325px;
+			height:500px;
+			font-size:40px;
+			color:#fff;
+			line-height:500px;
+			text-align:center;  
+		}
+		ul{
+		   width:300px;
+		   height:100px;
+		    
+		}
+		li{
+			width:100px;
+			height:80px;
+			font-size:25px;
+			color:#fff;
+			line-height:100px;
+			text-align:center;
+			float:left;
+			list-style:none;  
+		}
+	</style>
+</head>
+<body>
+<ul id="ul">
+	<li style="background:red">第一页</li>
+	<li style="background:orange">第二页</li>
+	<li style="background:blue">第三页</li>
+</ul>
+<div id="box">
+<div style="background:pink">第一页</div>
+<div style="background:green">第二页</div>
+<div style="background:skyblue">第三页</div>	
+</div>
+<script type="text/javascript">
+	window.onload=function(){
+		//获取元素
+		var divs=document.getElementById("box").children;
+		var lis=document.getElementById("ul").children;
+		//给所有li添加点击事件
+		for(i=0;i<lis.length;i++){
+			//给每一个li添加一个属性，这个属性为他的下标
+			lis[i].index=i;
+			// console.log(i);
+			lis[i].onclick=function(){
+				//获取到相应的div的top值
+				var Top=divs[this.index].offsetTop;
+				console.log(Top);
+				//调用滚动的函数，参数为结束位置
+				scroll(Top);
+			}
+			}
+			function scroll(end){
+			    var _top=document.documentElement.scrollTop;
+			    var time=setInterval(function fn(){
+			    	var step=2;
+			    	//结束位置减去它起始位置小于它的步数
+			    	if(end-document.documentElement.scrollTop<step){
+			    		clearInterval(time);
+			    	}else{
+                       _top=step+_top;
+                       document.documentElement.scrollTop=_top;
+			    	}
+			    },10)
+			}
+		
+	}
+</script>
+</body>
+</html>

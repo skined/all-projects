@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div id="box">
+		<p class="red">1111今天才周二</p>
+		<button>克隆节点</button>
+	</div>
+<script type="text/javascript"> 
+var box=document.getElementById('box');
+var op=document.getElementsByTagName('p')[0];
+var btn=document.getElementsByTagName('button')[0];
+btn.onclick=function(){
+	var newp=op.cloneNode();
+	console.log(newp);
+	box.insertBefore(newp,btn);
+}
+
+	
+</script>
+</body>
+</html>

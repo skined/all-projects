@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #tab{
+            border:5px solid #333;
+        }
+        #tab th,#tab td{
+            width: 200px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        #tab thead{
+            background:#ccc;
+        }
+    </style>
+</head>
+<body>
+    <table id="tab">
+        <thead>
+            <th>商品编号</th>
+            <th>商品名称</th>
+            <th>商品价格</th>
+            <th>商品数量</th>
+            <th>删除商品</th>
+        </thead>
+        <tbody>
+                                
+        </tbody>
+    </table>
+    
+    <script>
+        var arr = [
+        {
+            num  : 1,
+            name : '雪碧',
+            price : 2.2,
+            count : 50
+        },
+        {
+            num  : 2,
+            name : '可口可乐',
+            price : 2.3,
+            count : 55
+        },
+        
+        {
+            num  : 3,
+            name : '百事可乐',
+            price : 2.3,
+            count : 56
+        },
+        
+        {
+            num  : 4,
+            name : '美年达',
+            price : 2.1,
+            count : 45
+        },
+        
+        {
+            num  : 5,
+            name : '醒目',
+            price : 2.0,
+            count : 35
+        },
+        
+        {
+            num  : 6,
+            name : '健力宝',
+            price : 2.6,
+            count : 40
+        },
+        
+        {
+            num  : 7,
+            name : '七喜',
+            price : 2.2,
+            count : 42
+        },
+        
+        {
+            num  : 8,
+            name : '王老吉',
+            price : 3.2,
+            count : 30
+        },
+        
+        {
+            num  : 9,
+            name : '加多宝',
+            price : 3.3,
+            count : 45
+        },
+        
+        {
+            num  : 10,
+            name : '芬达',
+            price : 2.3,
+            count : 48
+        }
+    ];
+    var tb=document.getElementById('tab');
+    var tBody=tb.tBodies[0];
+    //创建tr
+    for (i=0;i<arr.length;i++){
+    	var tr=document.createElement('tr');
+    	if(i%2){
+              tr.style.background='red';
+    	}else{
+            tr.style.background='skyblue';
+    	}
+    	for(var key in arr[i]){
+    		var td=document.createElement('td');
+    		td.innerHTML=arr[i][key];
+    		tr.appendChild(td);
+    	}
+    	var td=document.createElement('td');
+    	td.innerHTML='<a href="#">删除商品</a>'
+    	tr.appendChild(td);
+    	tBody.appendChild(tr);
+    	var aDel=td.children[0];
+
+    	aDel.onclick=function(){
+    		tBody.removeChild(this.parentNode.parentNode);
+    		console.log(this.parentNode.parentNode);
+    	}
+    	tBody.appendChild(tr);
+    }
+
+
+    //tBodies集合返回表格  <tbody>元素的集合
+    </script>
+</body>
+<html>

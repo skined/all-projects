@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" name="" value="点击获取数字" id="btn1">
+	<ul id="ul1">
+		
+	</ul>
+	
+	<ul id="ul2">
+		
+	</ul>
+	<input type="button" name="" value="点击获取字母" id="btn2">
+	<script type="text/javascript">
+		//函数的预定义
+	    function fn1(data){
+          console.log(data);
+          var ul1=document.getElementById('ul1');
+          var html='';
+          for(i=0;i<data.length;i++){
+                html+='<li>'+data[i]+'</li>';
+                ul1.innerHTML=html;
+          }
+	    }
+	    var btn1=document.getElementById('btn1');
+	    btn1.onclick=function(){
+	    	var oScript=document.createElement('script');
+	    	oScript.src='hehe.php?t=num';
+	    	document.body.appendChild(oScript);
+	    }
+
+
+
+	      function fn2(data){
+          console.log(data);
+          var ul2=document.getElementById('ul2');
+          var html='';
+          for(i=0;i<data.length;i++){
+                html+='<li>'+data[i]+'</li>';
+                ul2.innerHTML=html;
+          }
+	    }
+	    var btn2=document.getElementById('btn2');
+	    btn2.onclick=function(){
+	    	var oScript=document.createElement('script');
+	    	oScript.src='hehe.php?t=str&callback=fn2';
+	    	document.body.appendChild(oScript);
+	    }
+	   
+	</script>
+	<!-- <script src="2.txt"></script> -->
+	<!-- 引入js文件时定义一个函数，函数里边边传入一个数据，把数据当做参数，利用这个函数可以做一些事情
+	当加载这个js文件被加载进来时，执行上边的函数，
+	函数把数据当参数开始执行 -->
+</body>
+</html>

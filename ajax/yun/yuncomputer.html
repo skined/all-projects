@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="yunji.css">
+	<link rel="stylesheet" type="text/css" href="iconfont/iconfont/iconfont.css">
+</head>
+<body>
+<div class="background-image">
+	<div class="background-cover">
+		<div class="box">
+           <h3>Cloud——云计算管理平台</h3>
+		 <div class="form">
+           <ul>
+           	<li>
+           	  <label for="name">
+           	  </label>	         
+           	  	<input type="text"  value="请输入用户名" class="name" id="name">
+           	  	<span class="error"></span>
+           	</li>
+           	<li>
+           		<label>
+           			<label for="password">
+           				<input type="text" value="请输入密码" class="pass" id="pass" >
+           			</label>
+           		</label>
+           	</li>
+           	<li>
+           		<label for="code">
+           		</label>
+           		<input type="code" value="请输入验证码" class="code" id="code">
+           		<input type="button" name="" value="6CGO" id="num" class="num">
+           	</li>
+           	<li>
+           		<input type="button" value="马上登陆" class="submit" id="submit" name="">
+           	</li>
+           </ul>
+		 </div>
+       </div>
+       <div class="tips">
+       	<p>用户名不能为空</p>
+       </div>	
+	</div>
+</div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+    $('.num').on('click',function(){
+        var codeVal=$('.code').val();
+        if(codeVal==''){
+          $('.tips>p').html('请输入验证码').fadeIn(500).delay(1500).fadeOut(500);
+            return;
+        }
+        var codeReg=/^[A][C,E,G][A-Z]{4}$/.test(codeVal);
+        if(!codeReg){
+          $('.tips>p').html('请输入合法的验证码').fadeIn(500).delay(1500).fadeOut(500);
+          return;
+        }
+        $('.num').addClass('.disabled').val('正在发送中..');
+        $.ajax({
+          'url':'chatCode.php',
+          'type':'post',
+          'data':{
+            'code':'codeVal',
+          },
+          'dataType':"json",
+          success:function(data){
+            console.log(data);
+            if(data.code==10000){
+              $('.tips>p').html('获取验证码成功').fadeIn(500).delay(1500).fadeOut(500);
+            var time=data.result.time || 10;
+            time=parseInt(time);
+            var timer=setInterval(function(){
+              if(time==0){
+                clearInterval(timer);
+                $('.num').removeClass('disabled').val('获取验证码');
+                return;
+              }
+              time--;
+              $('.num').val(time+'秒后再发送');
+            },1000)
+            }
+            
+          },error:function(){
+
+          }
+        })
+    }) 
+    $('.submit').on('click',function(){
+      if($('.submit').val()==''){
+        $('.tips>p').html('用户名不能为空').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+      if($('.pass').val()==''){
+        $('.tips>p').html('密码不能为空').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+      if($('.code').val()==''){
+        $('.tips>p').html('验证码不能为空').fadeIn(500).delay(1500).fadeOut(500);
+        return;
+      }
+      $('.submit').addClass('disabled').val('注册中请稍等');
+      var data={
+        'name':$('name').val(),
+        'password':$('.pass').val(),
+        'code':$('.code').val(),
+      }
+      $.ajax({
+        'url':'chat.php',
+        'type':'post',
+        'dataType':"json",
+        data:data,
+        success:function(data){
+          console.log(data);
+          if(data.code==10000){
+            $('.tips>p').html('注册成功').fadeIn(500).delay(1500).fadeOut(500);
+            window.location.href='http://www.yun.index.com';
+            return;
+          
+          }else if(data.code==10001){
+              $('.error').html('该名称已被占用');
+          }
+        },
+        error:function(msg){
+          console.log(msg);//提示开发者的错误信息
+        }
+      })
+     
+    })
+ 
+     
+    
+})
+</script>
+</body>
+</html>

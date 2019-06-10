@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		{{message}}
+	</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	// MVC:是一种设计思想，
+	// 
+	// 它将应用分为了三个部分
+	// Model:数据（模型）
+	// View:视图
+	// Controller:控制层（处理逻辑）是view和model沟通的桥梁
+	// View和Model是不能直接进行通信的
+	// MVC就是Model View Controller的缩写，即模型-视图-控制器
+	// 一个事件的发生是什么过程?
+	// 1.用户一个点击操作就是一个指令，view接收一个指令
+	// 它传递给controller
+	// 2.controller控制器接收到指令以后处理逻辑并且要求model 	层改变状态
+	// 3.Model层会把更新的数据传递回view层
+	// 4.View层把最新的数据展示给用户
+	// MVC是单向通信的，MVC模式设计思想的目的：就是让视图层和数据层分离
+	// MVVM模式：
+	//M:Model数据层
+	//V：View视图层  
+	//VM:ViewModel
+	//为什么会有MVVM模式？
+	//  随着前端的发展，早些的HTML，css,js会有一些兼容问题，为了解决兼容问题，我们有了jquery（库）
+	//  可以帮我们解决兼容问题，新的问题是随着项目的扩大对项目的维护性和可扩展性要求越来预告，于是有了一些框架的诞生，比如angular,rect，这些框架是一些完整的生态系统，能帮助我们很好第开发和维护项目，比如我们学的Vue就是一个MVVM思想的框架。
+	//  MVVM和MVC的区别：
+	//  最大的区别是MVVM是实现了双向通信
+	//  view和ViewModel是双向通信的
+	// 要完全脱离DOM操作，我们只关心数据(Model);
+	// el:app,不推荐
+	var app=new Vue({      
+		el:'#app',
+		data:{
+			message:'Hello World!'
+		}
+	})
+	// Vue:是一个构造函数，
+	// new Vue它创建跟实例用来启动应用,接受一个对象，用来告诉Vue做什么事情
+	// el:定义哪块模板受Vue的控制，语法规定，css的选择器也可以是node节点
+	// data:放数据，数据的属性会挂载到Vue的实例上
+	// 
+	// 开发版本：适合学习和工作中的开发项目，会有错误提示和错误警告
+	// 生产版本：适合上线，没有警告和错误提示
+	// vue的使用方法：
+	// 1.把vue下载到本地，比较通用，实用
+	// 2.cdn加速，会受外界影响，网络，服务器等影响造成不稳定
+	// vue:渐进式框架
+	// 什么是渐进式框架？
+	// 可以一步一步实用vue，按照你的项目需求来使用vue,没有必要一次性第把所有vue的东西都放在项目里
+	// 1.声明式渲染：用数据渲染页面
+	// 2.组件系统 组件：页面上的小零件
+	// 3.路由系统
+	// 4.状态管理
+	// 5.构建工具
+	// 指令：v-for v-if v-bind
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<form id="form" action="" method="get">
+		<input type="text" id="inp" name="a">
+		<input type="reset"/>
+		<input type="submit"/>
+	</form>
+	
+<script type="text/javascript">
+	window.onload=function(){
+		var inp=document.getElementById("inp");
+		var form=document.getElementById("form");
+       //表单获得焦点时执行
+		inp.onfocus=function(){
+			console.log('onfocus的事件触发了！！');
+		}
+		//表单失去焦点时执行
+		inp.onblur=function(){
+			console.log("onblur的事件触发了！！");
+		}
+		//表单中的文本被选中时执行
+		inp.onselect=function(){
+			console.log("onselect的事件触发了！！");
+		}
+		//表单控件的值发生改变时执行
+		inp.onchage=function(){
+			console.log(inp.value);
+			input.style.background='red';
+		}
+		//表单控件提交时执行
+		form.onsubmit=function(){
+			console.log("提交了！！");
+		}
+		//表单控件重置时执行
+		form.onreset=function(){
+			console.log("已重置！！！");
+		}
+		//onfocus表单控件获得焦点时执行
+		//onblur表单控件失去焦点时执行
+		//onselect表单中的文本被选中时执行
+		//onchage表单控件的值发生改变时执行
+		//onreset表单信息重置时执行
+		//onsubmit表单信息提交时执行
+	}
+</script>
+</body>
+</html>

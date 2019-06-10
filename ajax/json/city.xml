@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<root>
+	<!-- 需要四条数据 -->
+  <data>
+	<name>詹姆斯</name>
+	<score>50</score>
+	<ban>2</ban>	
+  </data>
+   <data>
+	<name>乔丹</name>
+	<score>30</score>
+	<ban>20</ban>	
+  </data>
+  <data>
+	<name>科比</name>
+	<score>80</score>
+	<ban>8</ban>	
+  </data>
+  <data>
+	<name>姚明</name>
+	<score>35</score>
+	<ban>20</ban>	
+  </data>
+</root>

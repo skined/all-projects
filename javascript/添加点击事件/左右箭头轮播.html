@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+	body, ul, ol, li, img {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box{
+            width: 490px;
+            height: 270px;
+            padding: 5px;
+            position: relative;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        .ad {
+            width: 490px;
+            height: 270px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #box img {
+            width: 490px;
+        }
+
+       /* .ad ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        .ad ol li {
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            text-align: center;
+            background: #fff;
+            float: left;
+            margin-right: 10px;
+            cursor: pointer;
+            display: inline;
+        }
+
+        .ad ol li.current {
+            background: yellow;
+        }*/
+
+        .ad ul li{
+            float: left;
+        }
+
+        .ad ul{
+            position: absolute;
+            top: 0;
+            width: 2940px;
+        }
+
+        .ad ul li.current {
+            display: block;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+	</style>
+</head>
+<body>
+	<div id="box" class="all">
+    <div class="ad">
+        <ul id="imgList">
+            <li><img src="images/5.jpg"></li>
+            <li><img src="images/1.jpg"/></li>
+            <li><img src="images/2.jpg"/></li>
+            <li><img src="images/3.jpg"/></li>
+            <li><img src="images/4.jpg"/></li>
+            <li><img src="images/5.jpg"/></li>
+        </ul>
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+</body>
+<!-- 引入动画函数 -->
+ <script src="animate1.js"></script>
+ <script type="text/javascript">
+ 	//鼠标进框显示箭头鼠标出框隐藏箭头
+    var box=document.querySelector("#box");
+    var arr=document.querySelector('#arr');
+    var right=document.querySelector("#arr>#right");
+    var left=document.querySelector("#arr>#left");
+    var img=document.querySelector("img");
+    var ul=document.querySelector("#imgList");
+    var ulLis=ul.children;
+    firstImg=ulLis[0].cloneNode(true);
+    ul.appendChild(firstImg);
+    box.onmouseover=function(){
+       arr.style.display='block';
+    }
+    box.onmouseout=function(){
+    	arr.style.display='none';
+    }
+ 	//点击左箭头看上一张
+ 	//通过计数变量来记录当前的起点值即可
+ 	var pic=0;
+ 	//点击右箭头实际ul向左走 点一次ul走一张图片的宽度
+ 	var imgWid=img.offsetWidth;	
+ 	right.onclick=function(){
+ 	//限定轮播ul不要出框
+ 	//如果当前已经是最后一张就要让用户再点击右箭头ul不能再动了
+ 	// if(pic==4){
+ 	// 	//函数结束执行的方式
+ 	// 	return false;
+ 	// }	
+     //判断如果当前已经再显示加图片就将ul定位到真的第一张图片的位置
+     if(pic==5){
+        ul.style.left='0px';
+        pic=0;
+     }
+ 	 pic++;
+     var end=-pic*imgWid;
+     animate1(ul,end);
+ 	}
+    left.onclick=function(){
+     if(pic==0){
+        ul.style.left=-(ulLis.length-1)*imgWid+'px';
+        pic=ulLis.length-1;
+     }
+     pic--;
+     var end=-pic*imgWid;
+     animate1(ul,end);
+    }
+ 	
+     
+
+   
+
+
+
+ 	//无缝轮播实现思路
+    //1.当ul滚动到最后一张图片式，在ul最后追加一张克隆的第一张图片，当再次点击右箭头时，就让ul滚动到克隆的第一张图片，冰添加判断，如果当前显示假的第一张，就直接定位到第一张，再继续滚动即可。
+ </script>
+</html>

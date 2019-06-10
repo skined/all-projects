@@ -1,0 +1,361 @@
+ <!DOCTYPE html>   <!-- //标准模式 --> 
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+ <!-- <iframe src="https://www.cnblogs.com/jq-melody/p/4499333.html
+"></iframe>  -->
+<script type="text/javascript">
+//数组创建方式
+// 1.var arr=[] 字面量创建
+// 2.var array = [1]  构造函数创建数组
+// var arr=[1,23,4,5];
+// arr.splice(1,2);
+// -3=-3+arr.length;
+// splice第一个参数为要开始替换下标，第二个为删除元素个数,第三个为要添加的元素
+//sort按ASCII码来排序
+//规则当返回负数时，前面数放前面,
+// 2.返回正数后面放前面,
+// 3.返回0那就不动.
+//升序排序法
+//倒序排序法
+// 正序a-b倒叙则b-a
+// var arr=[1,5,6,25,18,79,4];
+// arr.sort(function (a,b){
+// 	return a-b;
+// })
+
+
+//给对象排序
+// var a={age:35};
+// var b={age:45};
+// var c={age:25};
+// var arr=[a,b,c];
+// arr.sort(function (a,b){
+// 	return a.age-b.age;
+// });
+
+
+//打乱数组
+// var arr=[1,2,3,4,5,6,7];
+// arr.sort(function(){
+// 	return Math.random()-0.5;
+// })
+
+
+//数字和ASCII码的排序
+// var arr=[1,'a','aa',4,7,6];
+// arr.sort(function(a,b){
+// 	return b-a;
+// })
+
+
+
+
+//类数组 
+// 1.属性要为索引(数字)属性
+// 2.必须有length属性
+// 3.最好是有push方法
+// 4.加上splice会更像数组
+//类数组dom获取的元素集合都是数组
+// 好处:一种数据及可以被当成对象使用，也可以当成数使用（操作性强）;
+// var obj={
+// 	'0':'abc',
+// 	'1':'xyz',
+// 	'2':'aaa',
+// 	'length':3,
+// 	 name:'classArray',
+// 	 abc:'haha',
+// 	 push:Array.prototype.push,
+// 	 splice:Array.prototype.splice,
+// 	 pop:Array.prototype.pop,
+// }
+// obj.push('d');
+// obj.push('dd');
+// obj.pop();
+// var classArr={
+// 	'0':'w',
+// 	'1':'e',
+// 	length:2,
+// 	 push:Array.prototype.push,
+// 	 splice:Array.prototype.splice,
+// };
+// classArr.push('c');
+// classArr.push('d');
+// Array.prototype=function(){
+// 	this.length;                  
+// 	return this.length++;
+// }
+
+
+
+ // 数组去重
+ //方法一:利用对象key来实现数组去重
+ // var obj={
+ // 	1:21,
+ // 	2:23,
+ // 	3:24,
+ // 	2:25,
+ // 	3:24,
+ // }
+ // console.log(obj);
+  // Array.prototype.unique=function(){
+  //       var temp={},
+  //       arr=[],
+  //       len=this.length;
+  //       for(var i =0;i<len;i++){  
+  //            if(!temp[this[i]]){
+  //           temp[this[i]]='abc';
+  //           arr.push(this[i]);
+            
+  //     }
+  //    }
+  //    return arr;
+  // }
+  //  var arr=[1,2,3,4,2,4,22];
+  // var newArr=arr.unique();
+
+
+//
+  // var arr=[1,2,3,4,2,1];
+  // var obj={
+  // 	'1':'abc',
+  // 	'2':'abc',
+  // 	'3':'abc',
+  // 	'4':'abc',
+  // }
+  // var newArr=[1,2,3,4];
+
+
+
+
+
+//方法二:
+// indexOf ie8以下不支持
+// var arr=[1,2,3,2,3];
+// console.log(abc(arr));
+ 
+// function abc(arr){
+// 	var newArr=[];
+// 	for(i=0;i<arr.length;i++){
+//         if(newArr.indexOf(arr[i])==-1){
+//             newArr.push(arr[i]);
+//         }
+// 	}
+// 	return newArr;
+// }
+
+
+//方法三:利用数组排序和push方法给数组去重
+// res=[1,10,2,3];
+// res[res.length-1];
+
+// function xyz(arr){
+// 	var narr=arr.sort();
+// 	var narr=arr.sort(function(a,b){
+// 		return a-b;
+// 	})
+// 	var res=[];
+// 	for(var i=0;i<narr.length;i++){
+//          if(narr[i]!==res[res.length-1]){
+//                res.push(narr[i]);
+//          }
+// 	}
+// 	return res;
+// }
+// var arr=[1,2,3,2,3,10,10];
+
+// console.log(xyz(arr));
+
+
+
+
+// 方法四
+// 双重for循环去重法
+
+// function uniqude(arr){
+// 	var res=[arr[0]];
+// 	for(i=0;i<arr.length;i++){
+// 		var ret=false;
+// 	 for(j=0;j<res.length;j++){
+//         if(arr[i]==res[j]){
+//              ret=true;
+//              break;
+//           }
+// 		}
+// 		if(!ret){
+// 			res.push(arr[i]);
+// 		}
+// 	}
+// 	return res;
+// }
+// var arr=[1,2,3,2,3];
+// console.log(uniqude(arr));
+
+
+// var a={name:123};
+// var b={a.name};
+// 如何进行深度克隆
+// 1.判断属性值是不是原始值 typeof
+// 2. 判断数组还是对象  instanceOf toString  constructor   (iframe)内联框架;
+// 3.创建数组或对象  遍历
+//4.递归函数 
+// var a={
+// 	name:{
+// 		n1:'li',[123,]
+// 	}
+// }
+// var b={}
+                    
+// function myClone(origin,target){
+// 	if(origin===null ||  typeof(origin)!=='object'){
+// 		return origin;
+// 	}
+
+// 	var target=target || {};
+//      var toString=Object.prototype.toString;
+//      var arrstr='[Object Array]';
+//      for(key in origin){
+//                 //判断原始值还是引用值
+//                 if(typeof(origin[key])=='object' && origin[key]!==null){
+//                     target[key] = toString.call(origin[key])==arrstr?[]:{};
+//                       myClone(origin[key],target[key]);
+//             }else{
+//             	target[key]=origin[key];
+//             }
+//      	}
+//      return target;
+// }
+// var a = {
+// 	name:{age:23,sex:'nan'},
+// }
+// var b = {
+//    name :{}
+// }
+// b['name']= a['name']
+// var a={
+// 	name:{n1:[1,2,3,{
+// 		sex:'aa'
+// 	}],
+// 	n2:'002'},
+// 	age:25
+// }
+// var c=[123,[1,2,3],
+// {age:25}];
+// var b=myClone(a);
+// console.log(b);
+
+
+
+
+// 正则 内置对象
+// match可在字符串内检索到指定的值返回一个数组，或找到一个或多个正则表达式的匹配
+// i执行对大小写不敏感的匹配
+// m执行多行文本框的匹配
+// g执行与a有关的匹配
+// ^除当前之外的
+// \n代表换行符
+// \r代表结束符  linux系统不认识
+// \w查找单词字符 数字字母下划线 0-9 A-Z a-z
+// \t 制表符代表四个空格
+// \d 匹配0-9
+// \D ===!\d
+// \W ===!\w
+// \s查找空白字符
+// \s===\n\r\t\f\v+空格
+// \S===!\s;
+// \b寻找单词边界(一个单词有两个边界);
+// \uxxxx 查找以十六进制xxxx规定的Unicode字符
+// +===至少出现一次或多次
+// *表示出现0次或多次
+// ?出现0次或一次
+// test检索字符串中指定的值,返回true或false
+//exec返回一个数组，其中存放匹配的结果。如果未找到匹配，则返回值为 null。
+//lastIndex上一次匹配文本之后的第一个字符的位置
+// var reg=/^[abc]/g;
+// var str='asabcaadaddsfdf';
+// reg.test(str);
+// console.log(str.match(reg));
+// console.log(str.replace('dd','**'));
+
+
+// var reg=/\w{3}/g;
+// var tel='abcdds';
+// console.log(tel.match(reg));
+// var reg=/(^1[3578][0-9]{9})/g;
+// var str='hkknhghh134522462352';
+// console.log(str.match(reg));
+// var reg=/$/g;
+// var tel='123abc';
+// console.log(tel.match(reg));
+
+// var reg=/1[3587]/;
+// var tel='13931688553';
+// console.log(tel.match(reg));
+// var reg=/^1[3456789][0-9]{9}$/;
+// var tel='adsdssdsddds13931688858';
+// console.log(tel.match(reg));
+
+
+// var tel='23133323\n65525';
+// console.log(tel);
+
+//非s取边界
+// var reg=/[s]?/g;
+// var tel='ssladasssasdas';
+// console.log(tel.match(reg));
+
+
+// {标记限定符地开始
+// var reg=/[s]{1,3}/g;
+// var tel='ssladasssasdas';
+// console.log(tel.match(reg));
+
+
+
+
+// var reg=/(\w)(\w)\1\2/g;
+// var tel='ddddsssa12333'
+// console.log(tel.match(reg));
+
+// var reg=/\\/g;
+// var tel='a\\dddds';
+// console.log(tel.match(reg));
+
+
+
+// var reg=/ab/g;
+// var tel='abaasxab';
+
+// console.log(reg.exec(tel));   //0
+// console.log(reg.lastIndex);   //2
+// console.log(reg.exec(tel));   //6
+// console.log(reg.lastIndx);    //8
+// console.log(tel.match(reg));    
+
+
+// var reg=/https/
+// var tel='唧唧复唧唧，木兰当户织。不问及出生，惟闻https://www.baidu.com女叹息。问女何所思;'
+
+
+
+
+var reg=/(4)/g;
+var tel='3244488746541';
+var con=0;
+document.write(tel.replace(reg,function($,$1){
+	con++;
+	var num=Number($1)*con;
+	return num;
+}));
+console.log(tel.match(reg));
+</script>
+</head>
+</body>
+</html>

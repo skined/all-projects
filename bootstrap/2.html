@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+	<style type="text/css">
+		 div[class*="col-"]{
+			border:1px solid blue;
+			text-align:center;
+			background:#666;
+			color:#fff;
+			height:51px;
+			line-height:51px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4">1111111</div>
+			<div class="col-xs-4">2222222</div>
+			<div class="col-xs-4">4444444</div>
+
+		</div>
+		<div class="row">
+			<div class="col-md-4">col-md-4</div>
+			<div class="col-md-4">col-md-4</div>
+			<div class="col-md-4">col-md-4</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-4">col-lg-4</div>
+			<div class="col-lg-4">col-lg-4</div>
+			<div class="col-lg-4">col-lg-4</div>
+		</div>
+			<div class="row">
+			<div class="col-sm-4">col-sm-4</div>
+			<div class="col-sm-4">col-sm-4</div>
+			<div class="col-sm-4">col-sm-4</div>
+		</div>
+			<div class="row">
+			<div class="col-xs-4">col-xs-4</div>
+			<div class="col-xs-4 ">col-xs-4</div>
+			<div class="col-xs-4">col-xs-4</div>
+		</div> 
+		<!-- 列排序 -->
+		<div class="row">
+			<div class="col-md-3 col-md-push-9">col-md-3</div>
+			<div class="col-md-9 col-md-pull-3">col-md-9</div>
+		</div>
+		<!-- 嵌套列 -->
+		<div class="row">
+		  <div class="col-sm-9">
+		    Level 1: .col-sm-9
+		    <div class="row">
+		      <div class="col-xs-8 col-sm-6">
+		        Level 2: .col-xs-8 .col-sm-6
+		      </div>
+		      <div class="col-xs-4 col-sm-6">
+		        Level 2: .col-xs-4 .col-sm-6
+		      </div>
+		    </div>
+		  </div>
+		</div>	
+		<!-- 列偏移 -->
+		<div class="row">
+			<div class="col-md-4">.col-md-4</div>
+			<div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3">.col-md-3 col-md-offset-3</div>
+			<div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3"></div>
+		</div>
+	</div>
+	
+	<!-- 栅格系统
+	Bootstrap 提供了一套响应式、移动设备优先的流式栅格系统，随着屏幕或视口（viewport）尺寸的增加，系统会自动分为最多12列。它包含了易于使用的预定义类，还有强大的mixin 用于生成更具语义的布局。
+
+	简介
+	栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局，你的内容就可以放入这些创建好的布局中。下面就介绍一下 Bootstrap 栅格系统的工作原理：
+	“行（row）”必须包含在 .container （固定宽度）或 .container-fluid （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）。
+	通过“行（row）”在水平方向创建一组“列（column）”。
+	你的内容应当放置于“列（column）”内，并且，只有“列（column）”可以作为行（row）”的直接子元素。
+	类似 .row 和 .col-xs-4 这种预定义的类，可以用来快速创建栅格布局。Bootstrap 源码中定义的 mixin 也可以用来创建语义化的布局。
+	通过为“列（column）”设置 padding 属性，从而创建列与列之间的间隔（gutter）。通过为 .row 元素设置负值 margin 从而抵消掉为 .container 元素设置的 padding，也就间接为“行（row）”所包含的“列（column）”抵消掉了padding。
+	负值的 margin就是下面的示例为什么是向外突出的原因。在栅格列中的内容排成一行。
+	栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个 .col-xs-4 来创建。
+	如果一“行（row）”中包含了的“列（column）”大于 12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列。
+	栅格类适用于与屏幕宽度大于或等于分界点大小的设备 ， 并且针对小屏幕设备覆盖栅格类。 因此，在元素上应用任何 .col-md-* 栅格类适用于与屏幕宽度大于或等于分界点大小的设备 ， 并且针对小屏幕设备覆盖栅格类。 因此，在元素上应用任何 .col-lg-* 不存在， 也影响大屏幕设备。 -->
+	<!-- 从堆叠到水平排列 ：使用单一的一组.col-md就可以创建一个基本的栅格系统，在手机和平板设备上一开始是堆叠在一起的(超小屏幕到小屏幕这一范围)，在桌面(中等)屏幕设备上变为水平排列，所有列(column)必须放在.row内-->
+	<!-- 列偏移：当偏移量大于十二的时候效果无效 使用col-md-offset类可以将列向右偏移，这些类实际是通过使用*选择器为当前元素增加了左侧的边距(margin)。例：.col-md-offset-4类将.col-md-4向右侧偏移了4个列(column)的宽度-->
+	<!-- 嵌套：父元素的列套子元素的话，必须要写row -->
+	<!-- 列排序： -->
+	<!-- push；向前移动pull：向前移动 -->
+	<!-- 嵌套列：为了使用内置的栅格系统将内容再次嵌套，可以通过添加一个新的.row元素和一系列.col-sm元素岛已经存在的.col-sm-*元素内。被嵌套的行(row)所包含的列(column)的个数不能超过12(其实没有要求你必须占满12列)。 -->
+<script src="jquery.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>		
+<script type="text/javascript">
+                	   
+</script>
+</body>
+</html>

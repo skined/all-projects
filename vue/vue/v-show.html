@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<script src="vue.js"></script>
+	<div id="app">
+		<div v-show="show">我是你能看到的</div>
+	    <div v-show="hide">我是你不能看到的</div>
+	    <div v-show="age>25">{{age}}</div>
+	    <div v-on:click="fn('aaa',$event)">我是点击事件</div>
+	    <div @keyup.enter="login">
+	    	<input type="text">
+	    </div>
+	</div>
+	
+    
+<script type="text/javascript">
+	// v-show:根据表达式的真假值，切换元素的display Css属性
+	// v-show不支持template元素
+	// v-show与v-if的区别：
+	// 相同点：v-if和v-show都是控制元素的可见与不可见
+	// 不同点：（1）v-if是控制Dom元素的添加和删除 v-show只是控制css的display属性
+	//        （2）编译过程不一样：v-if是一个局部切换的过程，切换过程中是一个销毁和重建的过程；
+	//        v-show和编译无关，只是css样式的切换。
+	//        （3）性能消耗战：v-if有切换消耗，而v-show是渲染消耗
+	//        v-on:用来绑定事件：
+	//          语法：v-on:click
+	//          简写形式@click
+	//          vue的方法要放在methods属性下面
+	//事件的传参：事件修饰符
+	//按键修饰符
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			message:'hello world!',
+			show:true,
+			hide:false,
+			age:28,
+		},
+		methods:{
+			fn:function(str,event){
+				console.log(str);
+				console.log(event);
+			},
+			login:function(){
+				console.log('我是键盘事件');
+			}
+		}
+	})
+</script>
+</body>
+</html>

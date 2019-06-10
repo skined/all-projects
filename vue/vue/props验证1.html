@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="vue.js"></script>
+</head>
+<body>
+		
+		<div id="app">
+			<count-component v-bind:count="count"></count-component>
+		</div>
+
+		
+		<!-- 
+		//普入噢死
+			props验证:字符串数组对象----->
+		<!-- 语法: props:{
+				props(验证数据):Number验证数据类型,数据类型可以写多种
+		    }
+
+		    数据类型：string Number Boolean Object Function Array Date Symbol
+		 -->
+		 
+
+		<script>
+			// 创建全局的子组件
+			Vue.component("count-component",{
+				template:
+				`<div>
+					<p>{{computedCount}}</p>
+				    <button @click="changeCount()">点击</button>
+				 </div>   
+				`,
+				// props:['count'],
+
+				// 验证
+				props:{
+					// count:[Number,String]
+					count:{
+						type:[Number], //验证类型
+						default:20, //默认值
+						required:true,//必填
+						validator:function(value){ //自定义验证器,返回一个布尔值
+							console.log(value);
+							return value>10
+						}
+					}
+				},
+				data:function(){
+					 return{
+					 	recount:this.count
+					 }
+				},
+				computed:{ //选项对象实现data数据的实时计算
+					computedCount:function(){
+						return this.recount
+					}
+				},
+				methods:{
+					changeCount:function(){
+						console.log(this);
+					      this.recount++;
+					}
+				},
+			})
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					count:30
+				},
+			})
+		</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- <div id="box">
+	<span>1111</span>
+	<span>2222</span>
+	<span>3333</span>
+	<span>4444</span>
+</div> -->
+<!-- <div class="box">
+	<p>今天刚周一</p>
+	<p>天气不错</p>
+	
+</div> -->
+<script type="text/javascript">
+//BOM浏览器对象模型
+//DOM文档对象模型
+//全局变量是window对象的属性
+//全局函数是window对象的方法
+//setTimeout()一次性计时器()仅在指定的延迟时间内触发一次
+//第一个参数为要进行触发的时间，第二个参数为指定的时间间隔
+//setInterval()间歇性触发计时器，每隔一定的时间就触发一次
+//setInterval()同样是两个参数，第一个是要触发的事件，第二个是处罚的时间间隔
+//clearTimeout()方法接受一个由setTimeout()返回执行的ID值，该标识要取消延迟执行的代码块
+//clearInterval()清除间歇性触发计时器接受一个由setInterval()返回的ID值，该标识要取消执行的间隔代码块
+// function demo(){
+// 	alert('sssdsd');
+// }
+// setTimeout(demo,1000);
+// var num=0;
+// function fn(){
+//  num++;
+//  console.log(num);
+// }
+// a=setInterval(fn,1000);
+//parent父 child子 sibling同胞
+//nodeName属性指定节点名称如果节点为元素节点nodeName返回标签名
+//如果节点为属性节点，则nodeName属性返回属性的名称
+//文本节点的nodeName永远返回#text
+//返回元素
+//childNodes时返回当前元素的子节点，返回值是一个伪数组
+// var box=document.getElementById('box');
+
+// for(i=0;i<box.childNodes.length;i++){
+// 	console.log(box.childNodes[i].nodeValue);
+// } 
+//首先找到span标签元素的子节点
+//NodeValue获取到子节点的值
+//for循环依次找到span标签所有的元素
+//获取到所有span标签的子节点
+//为什么控制台输出box的子节点的第一项值为null
+// var ospan=document.getElementsByTagName('span');
+// console.log(ospan[0].childNodes[0].nodeValue);
+// for(i=0;i<ospan.length;i++){
+// 	console.log(ospan[i].childNodes[0].nodeValue);
+// }
+//nodeType属性返回指定节点的节点类型
+//元素节点返回数字1
+//属性节点返回数字2
+//文本节点返回数字3
+//注释节点返回数字8
+// var box=document.getElementById('box');
+// console.log(box.nodeType);
+// console.log(box.childNodes[0].nodeType);
+// console.log(box.childNodes[1])
+// console.log(box.childNodes[1].nodeType);
+//location对象包含有关当前url(统一资源定位符)的信息
+// location.hostname返回当前url的主机名
+// location.pathname返回url的路径部分
+//location.protrocol返回当前url的协议名
+//location.href返回完整的URL
+// Navgator对象包含有关浏览器的信息
+// appName返回浏览器的名称
+// appCodeName返回浏览器代码的名称
+// cookieEnabled指明浏览器是否启用cookie的布尔值
+// userAgent用户代理头的字符串表示
+// Screen对象包含有关客户端显示屏幕的信息
+// height返回显示屏幕的高度
+// width返回显示器屏幕的宽度
+// avaliHeight显示屏幕的可用宽度
+// avaliWidth显示屏幕的可用高度
+//getElementsByName()返回代有指定名称的对象的集合
+// document.gertElementsByName(name);
+// 另外，因为一个文档中的name属性可能不唯一(如HTML表单中的单选按钮通常具有相同的name属性)，所有getElementsByName()方法返回的是元素的数组，而不是一个元素
+// getElementsByTagName()方法可返回带有指定标签名的对象的集合(数组)，
+// getElementsByTagName()方法返回元素的顺序是他们在文档中的顺序
+// 如果把特殊字符串'*'传递给getElementsByTagName()方法，它将返回文档所有元素顺序的；列表，元素排列的顺序就是他们在文档中的顺序
+// 注释：传递给getElementsByTagName()方法的字符串可以不区分大小写
+//getElementsByClassName()方法返回所有指定类名的元素集合
+//  outerHTML.当前所有元素的开始标记和结束标记之间的所有文本和HTML标签
+//  innerTEXT与outerText
+//  innerText设置或获取位于对象起始和结束标签内的文本
+//  outText设置(包括标签)或获取(不包括标签)对象的为文本
+// 四者区别
+// 简单地说innerHTML和outerHTML,innerText与outerText的不同之处在于
+// （1）innerHTML与outerHTML在设置对象的内容时所包含的HTML会被解析，innerText与outerText则不会
+// （2）在设置时，innerHTML与innerText仅设置标签内的文本，而outerHTML与outerText设置标签在内的文本
+// getAttribute()方法返回指定属性名的属性值
+// document.getElementsByTagName('a')[0].getAttribute('target');
+// setArribute()方法添加指定的属性，为其赋指定的值，如果这个指定的属性已存在，仅设置/更改值
+
+
+// innerHTML属性设置或返回标签开始和结束标签之间的HTML
+// outerHTML属性设置当前元素的开始和结束标签之间的所有文本和HTML标签
+// innerText属性设置和获取位于对象起始和结束标签之内的文本
+// outerText属性设置(包括标签)或获取(不包括标签)对象的文本
+//Class显示的是数组
+// var box=document.getElementsByClassName('box');
+// box[0].innerHTML='<span>'+'这是一个span标签'+'</span>';
+// console.log(box[0].innerHTML);
+// box[0].outerHTML='<p>''</p>';
+// console.log(box[0].outerHTML);
+// box[0].innerText='<span>开始与结束标签之间的文本节点</span>';
+// console.log(box[0].innerText);
+// box.outerText='111111';
+// console.log(box.outerText);
+// getAttribute()返回指定属性名的属性值
+getElementById()返回指定id的第一个对象的引用
+getElementsByClassName()
+getElementsByTagName()
+getElementsByName()
+</script>
+</body>
+</html>

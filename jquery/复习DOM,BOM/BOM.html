@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+<input type='button' value='打开'> 
+<script type="text/javascript">
+	// BOM Browser Object Model 浏览器对象模型
+   var aInput=document.getElementsByTagName('input')[0];
+   //打开页面的方法
+    aInput.onclick=function(){
+    	// window.open("http://www.baidu.com/","_self");
+    	///open会接受两个参数 
+    	// 1.url打开方式(要载入窗体的名称)
+    	// 2._self表示当前页面
+    }
+
+    //获取浏览器内核及信息
+    console.log(window.navigator.userAgent);
+    if(window.navigator.userAgent.indexOf('MSIE')!=-1){
+    	alert('这是IE浏览器');
+    }else{
+    	alert('这不是IE浏览器');
+    }
+
+    
+    console.log(window.location);          //判断浏览器地址信息         
+    console.log(window.location.href);    //获取地址栏的地址
+    console.log(window.location.search);   //获取地址问号后面的参数
+    console.log(typeof window.location);   //window.location数据类
+    console.log(window.location.hash);     //获取地址栏地址#号后面的东西
+
+
+   
+ 
+</script>
+</body>
+</html>

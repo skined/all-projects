@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// es5数组方法:
+	//push 往数组后面添加元素
+	//unshift:数组首部添加
+	//pop:删除数组最后一个
+	//shift删除数组第一个
+	//concat：数组合并
+	//sort：数组排序
+	//splice：删减,新增，插入数组
+	//reverse：数组反转
+	//slice：切割数组，第一个参数为开始下标，第二个参数为结束下标
+	// es6新增数组方法
+	    // find：用于找出到一个符合条件的数组成员
+	    // ，参数是一个回调函数，数组的每一个成员依次执行回调函数，
+	    // 直到找到第一个返回值为true的成员，如果找到返回这个成员，如果没找到返回undefined
+	    // includes():返回一个布尔值，用来判断某个数组是否包含给定的值,
+	    // 可以指定位置，放在方法的第二个参数上，默认搜索的起始位置为0，如果第二个参数为负数，从倒数位置开始搜索
+	    // every():有一项不成立就返回false,所有项都满足才返回true
+	    // // some：有一项成立就返回true，返回布尔值
+	    // map:映射，把一个数组映射成一个新数组，不会改变原来的数组
+	    // fill:使用一个给定值，然后填充数组,一般用于数组初始化，数组的已有元素会全部覆盖
+	    // fill还可以指定填充的位置，第二个（开始位置）和第三个参数(结束位置)
+	    // from():类似数组的对象和可便利的对象选为真正的数组	
+	    // from使用方法：array.from()第一个参数必选的类似数组的对象，第二个可选参数，第三个参数也可选，类似数组的对象必须要指定一个length属性，返回的是新数组
+	    // filter:过虑数组中不满足条件的值，留下的都是满足条件的值，返回一个新数组不改变原数组的值和map()类似，filter也只接受一个参数，和map不同的是，filter()吧传入的参数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素  
+	    // filter可以过滤掉null，undefined，空字符串(空字符串中间不能有空格);
+	    // var a=[1,-4,5].find((n)=> n<0) //-4
+	    // console.log(a); 
+	    // var arr=[1,5,10,15];
+	    // arr.find(function(value,index,arr){
+	    // 	return value>9;
+	    // })
+	    // value:指数组的每一项
+	    // index：数组的索引
+	    // arr：原数组
+	    var arr1=[1,2,3];
+	    console.log([1,2,3].includes(2));//true
+	    console.log([1,2,3].includes(4));//false
+        
+        console.log([1,2,3].includes(3,3))//false
+
+        // var arr=[1,2,3,4,5];
+        // arr.every(item,index,arr)=>{
+        // 	return item>1  //false
+        // }
+            
+        var bol=[1,2,3,4].some((item,index,arr)=>{
+        	return item>3;
+        })
+        console.log(bol);
+        
+
+        var arr2=[1,2,3,4];
+        var newArr=arr2.map((item,index,arr2)=>{
+        	return item*10;
+        })
+        console.log(arr2);
+        console.log(newArr);
+        var newA=['a','b','c'].fill(7);//[7,7,7];
+        console.log(newA);
+        console.log(new Array(3).fill(7));
+        
+        // fill(a,a+n,1);
+        // 第一个参数为起始地址
+        // 第二个参数为我们需要结束的地方，但不会报告a[n]，区间(a[0],a[n])前闭后开
+        // 第三个参数是我们需要的赋值，这个相对于memeset()就灵活很多
+       var a=['a','b','c'].fill(7,1,2);//不包括结束位置
+       console.log(a);
+       var arrLike={
+       	'0':'a',
+       	'1':'b',
+       	'2':'c',
+       	length:3,
+       }
+       var realyArray=Array.from(arrLike);
+       console.log(realyArray);
+      //filter的调用方法
+       var r=[1,2,4,5,6,9,10,15];
+       var ar=r.filter(function (x){
+       	return x%2!==0;
+       });
+       console.log(ar);
+      // 将一个Arr的空字符串删除掉
+      var arr3=['a','b','',undefined,null,'c'];
+      var s=arr3.filter(function(s){
+            return s && s.trim();
+      })
+      console.log(s);
+
+      //回调函数
+      //filter()接收到的回调函数，其实有多个参数，通常我们仅使用第一个参数，表示Array的某个元素，回调函数还可以接手另外两个参数，表示元素的位置和元素本身
+      var arr=['A','B','C'];
+     var x=arr.filter(function(element,index,self){
+            console.log(element);//数组中的每一项
+            console.log(index);//数组的索引
+            console.log(self);//变量arr
+           
+     })
+    
+
+    var arr3=[
+       {
+       	num:1,
+       	val:'ceshi',
+       	flag:'aa'
+       },
+       {
+       	num:2,
+       	val:'ceshi2',
+       	flag:'aa'
+       }
+    ]
+    var newArr2=arr3.filter(item=>item.num===2);
+    console.log(newArr2);
+    var arr4=[undefined,'',null,'1','2',null,3,'',undefined];
+    var newArr4=arr4.filter(item=>item);
+    console.log(newArr4);
+
+    //用filter实现数组去重
+    //indexOf返回数组中的某一项的索引
+      // var arr2=[1,2,2,3,5,5,4,9,7,,7,8,8];
+      // var s=[];
+      // var newA=arr2.filter((word,index)=>{
+      //      return arr2.indexOf(word)===index;
+      // })
+      // console.log(newA);
+
+      // var arr5=[1,2,3,4];
+      // var Arr5=arr5.map((arr)=>{
+      //    var num=0;
+      //    for(i=0;i<arr.length;i++){
+      //    	var a=arr[i]*arr[i];
+      //    	num+=a;
+      //    }
+      //   return num;
+      // })
+      // console.log(Arr5);
+
+      //filter:过滤，返回新数组
+      // 封装filter方法
+      //回调函数
+     // Array.prototype.filter=function(cb){
+     //     var newArr=[];
+     //     for(i=0;i<this.length;i++){
+     //     if(cb(this[i])){//条件为真才执行
+     //         newArr.push(this[i]);
+     //     }
+     //     }
+     //     return newArr;
+     // }
+     //    let ary=[1,2,3,4];
+     //    var res=ary.filter(function(item,index){
+     //         return item>2;
+     //    })
+     //    console.log(res); 
+       
+
+
+      // 封装map方法
+      // 调用时候传的是实参，定义的时候用形参来接收
+      // ce的调用返回处理后的结果，所以在ce调用的时候，会把处理后的值添加在新数组里
+      Array.prototype.map=function(ce){
+      	var newArr1=[];
+      	for(i=0;i<this.length;i++){
+      			newArr1.push(ce(this[i],i));
+      	}
+      	return newArr1;
+      }
+      let ary1=[1,2,3,4];
+      var ran=ary1.map(function(item,index){
+      	return item*10;
+      })
+      console.log(ran);
+
+
+
+
+      // 封装push方法push方法是改变原数组，返回的是数组长度
+     //   var arr=[1,2,3];
+     //  Array.prototype.push=function(){
+     //  	// arguments实参数组
+     //  	 // console.log(arguments);
+     //  	 for(i=0;i<arguments.length;i++){
+     //  	 	this[this.length]=arguments[i];
+     //  	 } 
+     //  	 return this.length;
+     //    }
+     // var res=arr.push(4,5,6,'name','banana');
+     // console.log(res);
+     // console.log(arr);
+     //使用jquery的方法获取dom对象和使用原生js的方法获取DOM对象
+</script>
+</body>
+</html>

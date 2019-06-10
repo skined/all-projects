@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<a href="">这里是a链接</a>	
+<script type="text/javascript">
+	window.onload=function(){
+		var a=document.getElementsByTagName("a")[0];
+		//ie及ie8以下版本
+		a.addEventListener("click",fun);
+		function fun(ev){
+			var e=ev || window.event;
+			e.preventDefault();   //取消默认事件
+			//解决兼容性，高版本具有event参数,ie低版本没有这个参数
+			//为true时为高级浏览器可以使用preventDefault()方法
+			//否则为低版本浏览器需要使用return false方法取消默认行为
+			//低版本的浏览器没有preventDefault()的方法(ie8及ie8以下没有该addEventListener()方法 )只能使用dom0的方法
+			//需要return false;
+			//ie8及ie8以下没有版本不支持preventDefault()方法		
+			console.log("a链接的事件触发了");
+		}
+		a.onclick=function(ev){
+              if(ev){
+              	var e=event || window.event;
+              	e.preventDefault();
+              }else{
+              	console.log("aaaaaaaaaa");
+              	return false;
+              }
+		}
+	} 
+</script>
+</body>
+</html>

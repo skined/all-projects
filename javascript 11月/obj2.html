@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	//推荐对象取值方式
+	// var obj={
+	// 	name:'zhangsan',
+	// 	age:23,
+	// 	dsd:456,
+	// }
+	// for(key in obj){
+	// 	console.log(obj[key]);
+	// }
+
+
+
+	// var obj={
+	// 	name1:'zhangsan1',
+	// 	name2:'zhangsan2',
+	// 	name3:'zhangsan3',
+	// 	name4:'zhangsan4',
+	// }
+	// function abc(n){
+	// 	console.log(obj['name'+n]);
+	// }
+//对象的枚举（遍历）
+//for(key in obj){
+// 	console.log(obj[key]);
+// }
+// 1.hasOwnProperty();是用来判断对象属性是否是自己的
+//2.in 查看属性是否可以被对象使用（不区分自己的还是原型）
+//3. instanceof 官方定义:a对象是不是B构造函数构造出来的
+//重新定义：看a对象的原型链上有没有b的原型
+
+// Object.prototype.lastname='zhang';
+// var obj={
+// 	name:'zhangsan',
+// 	age:23,
+//     sex:'男',
+// 	__proto__:{
+// 		lastname:'zhang',
+// 	}
+// };
+
+// for(key in obj){
+// 	if(obj.hasOwnProperty(key)){
+// 	console.log(key);
+// }
+// }
+
+
+
+// function Person(){
+
+// }
+// var person=new Person();
+// console.log(person instanceof Person);
+
+
+
+
+
+//关于数组去重
+//方法一：
+// var item=[];
+// function demo(arr,item){
+// for(i=0;i<arr.length;i++){
+// 		if(arr[i] != arr[i+1]){
+// 			item[item.length]=arr[i];
+// 		}
+// 	}
+// return item;
+// }
+// console.log(demo([15,25,51,51,26,26,100,11,11],item));
+
+
+
+//方法二：
+// function abc(arr){
+// 	for(var i = 0,j = i+1; i < arr.length; i++,j++){
+// 		if(arr[i] == arr[j]){
+// 			arr.splice(i,1);
+// 		}
+// 	}
+// 	return arr;
+// }
+// console.log(abc([15,25,51,51,26,26,100,11,11]))
+
+
+
+
+
+
+//方法三：
+// var a=[15,25,51,51,26,26,100,11,11];
+// var b=[];
+// for(var i=0;i<a.length; i++){
+// 	for(j=0;j<b.length;j++){
+// 		if(a[i]==b[j]){
+//             a.splice(i,1);
+// 		}
+// 	}
+// 	if(a[i]!==b[j]){
+// 		b.push(a[i]);
+//  }
+	
+// }
+// console.log(b);
+
+ 
+
+
+ // 对象继承发展史
+ // 1.传统形式--》原型链  过多继承是没有用的
+ // 2.借用构造函数(简单粗暴) 缺点稍显不灵活
+ // 3.共享原型  不能随便修改原型
+ // 4.圣杯模式
+
+
+
+
+
+ // （1）
+//  Grand.prototype.lastName='li';
+//  function Grand(){};
+//  var grand=new Grand;
+//  Father.prototype=grand;
+//  function Father(){
+//  	this.name='hehe';
+//  }
+// var father=new Father();
+// Son.prototype=father;
+// function  Son(){}
+// var son=new Son();
+// console.log(son.lastName);
+
+
+// 2.
+// function Person(name,age){
+// 	this.name=name;
+// 	this.age=age;
+// }
+//  Student.prototype=Person.prototype;
+// function Student(name,age,sex){
+// 	Person.apply(this,[name,age]);
+// 	this.sex=sex;
+// }
+// var student=new Student('li',23,'男');
+// console.log(student);
+	
+
+
+
+
+
+//3.
+// Person.prototype.lastName='abc';
+// function Person(name,age){
+
+// }
+// Student.prototype=Person.prototype;
+// function Student(){
+
+// }
+// var student=new Student();
+// console.log(student.__proto__);
+// console.log(Person.prototype.lastName);
+
+
+//4.(共享原型模式)缺点:改变其中一个另一个也会改变
+// A.prototype.name='li';
+// function A(){}
+// E(A,B);
+// B.prototype.name='wang';
+// function B(){}
+// var b=new B();
+// function E(x,y){
+// 	B.prototype=A.prototype;
+
+// }
+
+
+// 5.圣杯模式 
+// A.prototype.name = 'li';
+// function A() {}
+// F.prototype =  A.prototype;
+// function F(){}
+// var f = new F();
+// B.prototype = f;
+// function B() {
+// }
+// var b = new B();
+
+
+
+
+
+
+// A.prototype.name = 'li';
+//             function A(){};
+//             // B.prototype.name = funciton() 
+//             function B(){
+//             	this.name='ddd';
+//             }
+//             e(A,B);             
+//             var b = new B();
+          
+//    function e(a, b) {
+//                 F.prototype = a.prototype;
+//                 function F(){};
+//                 var f =new F();  
+//                 b.prototype=f;
+//   	            b.prototype.constructor = b;  //直接看继承于谁
+//             }
+//             b.__proto__.name='ddd';
+//            console.log(b.__proto__);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+// 雅虎继承圣杯方案 立即执行函数+闭包函数
+var extend=(function(){
+	var F=function(){}
+	return function(a,b){
+		F.prototype=a.prototype;
+		b.prototype=new F();
+		b.prototype.constructor=b;    //给constructor添加一个没有的属性它也会继承a原型上的属性
+     b.prototype.uber=a.prototype;  //知道继承自谁
+	};
+
+}());
+
+
+// ABC.prototype ={
+//       a:function(){
+//           console.log('我是ABC的方法')
+//       },
+//       b:function(){
+//           console.log('我是ABC的方法')
+//       }
+//   };
+//   function ABC(){}
+  
+//   function Demo(){}
+//   extend(ABC,Demo);
+//   Demo.prototype.a = function(){
+//       console.log('我是自己的方法');
+//   }
+//   var b = new Demo();
+//   b.a();
+//   function C(){}
+//   extend(ABC,C);
+//   var c = new C();
+//   c.a();
+
+
+
+
+// function Girl(){
+// 	var age=21;
+// 	this.name='貂蝉';
+// 	this.say=function(){
+// 		console.log('我的年纪是'+age+'哈哈');
+// 	};
+// }
+// var diaochan=new Girl();
+// console.log(diaochan.say());
+
+
+// 时间戳  返回距离1970年前后的秒数
+
+// 方法一：
+// var s=new Date().getTime();
+// for(var i =0;i<1000000000;i++){
+	
+// }
+// console.log(new Date().getTime()-s);
+// 方法二：
+// var timetamp=Date.parse(new Date());
+// 方法三：
+// var time=(new Date().valueOf());
+
+
+
+
+
+</script>
+</body>
+</html>

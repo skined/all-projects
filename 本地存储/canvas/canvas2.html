@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>线性渐变与径向渐变</title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500"></canvas>
+<script type="text/javascript">
+	// 线性渐变createLinearGradient(x,y,x1,y1);
+	// addColorStop()颜色的过度
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	 // var oLin=pen.createLinearGradient(100,100,300,100);
+	//  oLin.addColorStop(0,'red');
+	//  oLin.addColorStop(1,'blue');
+	//  pen.fillStyle=oLin;//填充样式=渐变
+	// pen.arc(200,200,200,0,360*Math.PI/180,false);
+	// pen.fill();
+	// pen.fillRect(150,150,100,80);
+	//创建一个圆形渐变 createRadialGradient(x,y,r,x1,y1,r1);
+	//第一组;x,y,r第一个圆的坐标和半径
+	//第二组：x1,y1,r1第二个圆的坐标和半径
+	var lg=pen.createRadialGradient(200,200,50,200,200,200);
+	lg.addColorStop(0.2,'red');
+	lg.addColorStop(0.6,'orange');
+	lg.addColorStop(0.5,'yellow');
+	lg.addColorStop(0.7,'aqua');
+	lg.addColorStop(0.1,'blue');
+	lg.addColorStop(0.8,'purple');
+    pen.fillStyle=lg;//圆形渐变设置成填充样式
+    // 添加圆弧，径向渐变是从圆心往外散发
+     pen.arc(200,200,200,0,360*Math.PI/180,false);
+     pen.fill();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="app">
+		<p>{{counter}}</p>
+		<button @click='counter++'>点击</button><br>
+		<input type="text" v-model="personObj.name" name="">
+	</div>
+	
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	//侦听属性：js提供了一个方法watch，用来侦听vue实例数据上的变化
+	//使用：counter是vue的一个选项对象，对象有键值对
+	//键：是要监听的数据,可以是data里面的，可以是路由，组件
+	//值：
+	//1.函数
+	//2.函数名,必须加单引号''包裹起来
+	//3.选项对象 
+	//选项对象里面包含的东西
+	//a.hanlder他是监听到变化时执行的函数
+	//b.deep 值为true或者为false目的确认是否为深度监听
+	//当我们监听对象属性变化是我们要把deep设置成true
+	//obj{name:'',age:''}
+	//c.immediate值为true或者false，用来确认是否适用当前得初始值作为handler的初始值函数
+	//注意：监听某个对象下面的某个属性，可以直接用('对象.属性')
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			counter:0,
+			personObj:{
+				'name':'leo'
+			} 
+		},
+		methods:{
+			count:function(oldVal,newVal){
+               console.log('counter的值由'+oldVal+'变成'+newVal);
+			}
+		},
+		computed:{
+           //我是计算属性
+		},
+		watch:{//我是监听属性
+			// counter:代表监听的键，
+			// function:代表监听的值
+          // counter:function(newVal,oldVal){
+          //      console.log('counter的值由'+oldVal+'变成'+newVal);
+          // }  第一种方法
+          counter:{
+          	handler:function(newVal,oldVal){
+          		 console.log('counter的值由'+oldVal+'变成'+newVal);
+          	},
+          	deep:false,
+          	immediate:false,
+          }
+		// }
+		// 'personObj.name':{
+		// 	handler:function(newVal,oldVal){
+		// 		console.log('改变了：'+oldVal+'改变成：'+newVal)
+		// 	},
+		// 	deep:true,
+		// }
+	}
+	})
+</script>
+</body>
+</html>

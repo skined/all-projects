@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="button" name="" value="获取地理位置信息" id="btn"><br>
+<textarea id="t1" cols="50" rows="20"></textarea>
+<script type="text/javascript">
+	// coords请求成功返回的数据有以下这些参数
+		var btn=document.getElementById("btn");
+		var oT=document.getElementById("t1");
+		var timer=null;
+		btn.onclick=function(){
+			timer=window.navigator.geolocation.watchPosition(function(){
+				 console.log(position.coords.longitude); //经度 
+				 console.log(position.coords.latitude);//纬度
+				 console.log(position.coords.accuracy);  
+				 console.log(position.coords.altitude);
+				 console.log(position.coords.altitudeAccuracy);
+				 console.log(position.coords.heading);//前进方向
+				 console.log(position.coords.speed);//行进速度
+
+			},function(error){
+               //code返回获取位置信息失败的代码
+                 alert(error.code);
+                 clear(watch);
+			},{
+				timeout:1000,
+				frequency:1000;
+			})
+		}
+	// getCurrentPosition()//获取当前单个的位置信息，返回有三个参数
+	//获取位置信息成功的函数
+	//获取位置信息失败的函数
+	//数据收集方式 json数据格式
+</script>
+</body>
+</html>

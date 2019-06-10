@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500"></canvas>
+<input type="button" value="复制" id="btn" name="">
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	var btn=document.getElementById('btn');
+	pen.fillStyle='yellow';
+	pen.fillRect(0,0,100,100);
+	btn.onclick=function(){
+		copy();
+	}
+	function copy(){
+		var imageData=pen.getImageData(0,0,100,100);
+		pen.putImageData(imageData,100,100);
+	}
+</script>
+</body>
+</html>

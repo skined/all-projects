@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+</head>
+<body>
+<script type="text/javascript">
+	// 对象引用
+	var a=5;
+	var b=a;
+	console.log(b);//基本数据类型给的是值
+	var arr1=[1,2,3];//引用数据类型付的是值和地址
+    var arr2=arr1;
+    arr1.push(4);
+    console.log(arr1);
+    // 混合方式：
+    // 变量是属性
+    // 函数是方法
+    // 属性写在构造函数里面，公共的方法写在构造函数的prototype上面，每个函数都有
+    // prototype属性
+</script>
+</body>
+</html>

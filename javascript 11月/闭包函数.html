@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	// var  g=100;
+	// function a(){
+	// 	var aaa=123;
+	// 	function b(){
+	// 		var bbb=456;
+	// 		console.log(aaa);
+	// 	}
+	// 	return b;
+	// }
+	// var b=a();
+	// b();
+	// GO{
+	// 	global=100    a:function;
+	// }
+	// aAO={
+	// 	aaa:123;
+	// 	b:function
+	// }
+	// b={
+	// 	bAO:bbb:456;
+	// }
+	// a 定义 scrope   GO(b内存释放不了,导致内存泄漏)
+	// a 执行  scrope  aAO GO
+	// b 定义 scrope   aAO GO(b)
+	// b 执行 scrope  scrope bAO aAO GO 
+	// 闭包的作用：
+	// 1.实现共有变量
+	//2.做一个存储结构
+	//3.可以实现封装，属性私有化
+	//4.模块化开发，防止污染全局变量
+	// function test(){
+	// 	var num=100;
+	// 	function a(){
+ //           num++;    
+	// 	}
+	// 	function b(){
+	// 		num--;
+	// 	}
+	// 	function c(){
+	// 		console.log(num); 
+	// 	}
+	// 	return [a,b,c];
+	// }
+
+	// var arr=test();
+	//  // arr[2](); 	//100
+	//  arr[1]();
+	//  arr[1]();   
+	//  // arr[2]();   
+   
+
+	// function Test(){   //构造函数 
+	// 	var num=100;
+	// 	this.jia=function(){
+	// 		num++;
+	// 		console.log(num);
+	// 	}
+	// 	this.jian=function(){
+	// 		num--;
+	// 		console.log(num);
+	// 	}
+	// }
+	// var test=new Test();
+	// test.jia();   //实现属性的私有化
+    
+
+
+	// function test(){
+	// 	var arr=[];
+	// 	for(i=0;i<10;i++){
+	// 		(function(j){
+	// 		arr[j]=function(){
+	// 			console.log(j);
+	// 		}
+	// 		}(i))
+	// 	}
+	// 	return arr;
+	// }
+	//   var array=test();
+ //    for(j=0;j<10;j++){
+ //    	array[j]();
+ //  } 
+    // array[2]();
+    
+
+   // function test(){
+   // 	var arr=[]; 	   
+   // 	for(i=0;i<10;i++){
+   // 		   (function(j){
+   // 		arr[j]=function(){
+   // 			console.log(j);
+   // 		}
+   // 	       }(i))
+   // 	}
+   // 	return arr;
+   // }
+   // var array=test(); 
+   // for(j=0;j<10;j++){
+   // 	array[j]();
+   // 	console.log(j);
+   // }
+  
+   
+
+</script>
+</body>
+</html>

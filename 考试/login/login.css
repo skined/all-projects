@@ -1,0 +1,147 @@
+*{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.box{
+	width: 1349px;
+	height:637px;
+	position: relative;
+	
+}
+.bg{
+	width:1349px;
+	height:637px;
+	background-image:url(img/page1_bg.jpg);
+	background-size:2000px 1000px;
+	background-position:-320px -140px;
+}
+.login-bg{
+	width:400px;
+	height:400px;
+	position:absolute;
+	top: 50%;
+	margin-top:-200px;
+	left: 50%;
+	margin-left:-180px;
+	border-radius: 10px;
+	background:rgba(0,0,0,0.2);
+}
+.login-bg h3{
+	color: #fff;
+	text-align: center;
+	margin-top: 35px;
+	font-size: 24px;
+}
+.inp{
+	margin-left:60px;
+	margin-top:10px;
+}
+.inp input{
+	padding-left: 40px;
+	color: #fff;
+}
+._namee{
+	background:rgba(0,0,0,0);
+	border:1px #C7D2DD solid;
+	width: 240px;
+	height: 40px;
+	border-radius:4px;
+	margin-top:30px;
+}
+::-webkit-input-placeholder{
+	color: #739CB3;
+	left: 30px;
+}
+#code{
+	width: 105px;
+	float: left;
+}
+.code-img{
+	width:100px;
+	height:40px;
+	border-radius:4px;
+	background:rgba(0,0,0,0);
+	border:1px #C7D2DD solid;
+	margin-left:180px;
+	margin-top:30px;
+}
+.login-btn{
+	width: 280px;
+	height: 40px;
+	border-radius:4px;
+	margin-top:30px;
+	background: #FF795D;
+}
+.login-btn p{
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	cursor: pointer;
+}
+.user{
+	position: absolute;
+	color: #fff;
+	left: 70px;
+	top:118px;
+}
+.password{
+	position:absolute;
+	left: 70px;
+	color: #fff;
+	top:189px;
+}
+.eye{
+	position:absolute;
+	left: 315px;
+	color: #fff;
+	top:191px;
+	cursor: pointer;
+}
+.iconcode{
+	position:absolute;
+	left: 70px;
+	color: #fff;
+	top:263px;
+}
+.codetext{
+	position: absolute;
+	/*color:#ccc;*/
+	font-size:26px;
+	top:253px;
+	left:255px;
+	font-weight: bolder;
+	cursor: pointer;
+}
+._nameeText{
+	position:absolute;
+	top: 155px;
+	left: 70px;
+	color: #ccc;
+	font-size: 11px;
+	display: none;
+}
+.passText{
+	position:absolute;
+	top: 225px;
+	left: 70px;
+	color: #ccc;
+	font-size: 13px;
+	display: none;
+}
+.codeText{
+	position:absolute;
+	top: 295px;
+	left: 70px;
+	color: #ccc;
+	font-size: 11px;
+	display: none;
+}
+.true{
+	width:16px;
+	hanging-punctuation: 16px;
+	position:absolute;
+	top: 263px;
+	left:185px;
+	display:none;
+}

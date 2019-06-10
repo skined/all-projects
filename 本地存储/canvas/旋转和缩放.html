@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+			transform-origin:center bottom; 
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="600" height="500"></canvas>
+<script type="text/javascript">
+	 var oc=document.getElementById('c1');
+	 var pen=oc.getContext('2d');
+	// pen.fillRect(10,10,100,50);
+	// pen.translate(60,70,70,70);
+	// pen.fillRect(10,10,100,50);
+	// 旋转当前案例
+	
+	// pen.rotate(30*Math.PI/180);
+	// pen.fillRect(200,200,100,50);
+	
+
+	//缩放
+	// pen.strokeRect(5,5,20,15);
+	// pen.scale(2,2);//他接受两个参数：第一个参数为宽缩放人的背书，第二个参数为高缩放的倍数
+	// pen.strokeRect(5,5,20,15);
+	// pen.scale(2,2);
+	// pen.strokeRect(5,5,20,15);
+	// pen.scale(2,2);
+ //    pen.strokeRect(5,5,20,15);
+    // 注意一点：定位的点也被等比放大
+    
+
+	    
+    	
+       
+    
+    // 旋转的小方块
+   //  pen.translate(300,250)
+   // setInterval(function(){
+   // 	   pen.clearRect(-100,-100,oc.width,oc.height);
+   //  	   pen.rotate(0.1*Math.PI); 
+   //  	   pen.fillStyle='pink';
+   //  	   pen.fillRect(-50,-50,100,100);
+   // },100);
+  
+// 旋转的小方块方法二
+var num=0;
+	pen.translate(200,200);
+setInterval(function(){
+	// num++;
+	pen.fillStyle='red';
+	pen.rotate(0.8*Math.PI/180);
+	pen.clearRect(-100,-100,oc.width,oc.height);
+	pen.fillRect(0,0,100,100);
+	
+
+},32);
+
+</script>
+</body>
+</html>

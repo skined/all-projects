@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="c1" width="500" height='500'></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var open=oc.getContext('2d');
+	var box=oc.children;
+	console.log(oc);
+	console.log(box);
+	var num=0;
+	//绘制方块
+	 open.fillRect(0,0,100,100);
+	 var timer=null;
+	 timer=setInterval(function(){
+        num++;
+        open.clearRect(0,0,oc.width,oc.height);//清除重影
+        open.fillRect(num,num,100,100);
+	 },50);
+     	
+</script>
+</body>
+</html>

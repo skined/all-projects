@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="message" name="">
+		<p>{{message}}</p>
+	</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	// 什么是生命周期：从vue实例创建，运行，销毁，期间伴随着各种各样的事件,这些事件，就叫做生命周期函数
+	// 生命周期钩子=生命周期事件=生命周期函数写在VUE选项对象上，
+	// 创建期间的生命周期函数
+	// beforeCreate:实例刚从内存中被创建出来，此时还没有初始化
+	// data和methods属性，实例也没有被挂载到元素上
+	// 
+	// created:实力已经从内存中创建出来了，此时data和message已经初始化完成了，但是el还没有挂载完成
+	// beforeMount：经历了模板的编译，挂载元素的瞬间触发，
+	// Mounted:模板编译完成实例挂载到元素上
+	// 运行期间的生命周期函数
+	// beforeUpdate:数据更新之前执行的函数，此时data里面的数据是最新的，但是还没有显示到页面中，界面中的数据还是旧的，DOM元素还没有开始渲染
+	// updated:实例更新完毕以后执行，此时data中数据和界面上的数据同步都是最新的，
+	// 销毁期间的生命周期函数
+	// beforeDestroy:实例销毁之前调用，这一类实例还可以重新调用
+	// destroyed:实例销毁完成，VUE上所有的东西都被移出
+	// 问题：
+	// 1.定义公用的方法，定义个全局组件
+	// 2.发送个ajax请求MOUTED 或者created
+	// 3.操作DOM  mouted钩子
+	var vm=new Vue({//创建VUE对象
+		el:'#app',//挂载元素
+        data:{ //数据对象
+            message:'Hello World!'
+        },
+        computed:{
+        	//实现某个属性的计算
+        },
+        methods:{
+        	//方法
+        },
+        watch:{
+        	// 监听某个属性的变化
+        	
+        },
+        beforeCreate:function(){
+        	console.group('-------before创建前状态--------');
+        	console.log(this);
+        	console.log('%c%s','color:red','el:'+this.$el);//当前挂载的元素 undefined
+        	console.log('%c%s','color:red','data:'+this.$data);//undefined
+        	console.log('%c%s','color:red','message:'+this.message);//undefined
+        },
+        created:function(){
+        	console.group('--------created创建完成状态------');
+        	console.log(this);
+        	console.log('%c%s','color:red','el:'+this.$el);//当前挂载的元素undefined
+        	console.log('%c%s','color:red','data'+this.$data);//object
+        	console.log('%c%s','color:red','message'+this.message);//hello world
+        },
+        beforeMount:function(){
+        		console.group('--------beforeMount挂载前状态------');
+        	console.log(this);
+        	console.log('%c%s','color:red','el:'+this.$el);//当前挂载的元素undefined
+        	console.log('%c%s','color:red','data'+this.$data);
+        	console.log('%c%s','color:red','message'+this.message);
+        },
+        mounted:function(){
+        	console.group('--------mouted挂载完成状态------');
+        	console.log(this);
+        	console.log('%c%s','color:red','el:'+this.$el);//当前挂载的元素undefined
+        	console.log('%c%s','color:red','data'+this.$data);
+        	console.log('%c%s','color:red','message'+this.message);
+        },
+        beforeUpdate:function(){
+        	console.group('-------beforUpate更新前状态-----------------');
+        	console.log('%c%s','color:red','data'+this.$data);
+        	console.log('%c%s','color:red','message'+this.message);
+        },
+        updated:function(){
+        	console.group('--------upate更新完成状态------');
+        	console.log('%c%s','color:red','el:'+this.$el);//当前挂载的元素undefined
+        	console.log('%c%s','color:red','data'+this.$data);
+        	console.log('%c%s','color:red','message'+this.message);
+        },
+        beforeDestroy:function(){
+
+        },
+        destroyed:function(){
+
+        }
+
+	})
+</script>
+</body>
+</html>

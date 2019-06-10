@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<p id="demo">断落1</p>
+<p class="intro">段落3</p>
+<p class="intro">断落2</p>
+<p></p>
+<p></p>
+<a href="#">aaa</a>
+<a href="#">aaa</a>
+<a href="">aaa</a>
+<a href="">aaa</a>
+<a href="">aaa</a>
+
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('p').css('background','red');
+		$('p.intro').css('background','blue');//选择所有类名为intro的p元素
+		$('p#demo').css('background','skyblue');//选择所有id名为demo的元素
+		$('[href]').css('color','red');//选择所有属性为href的选择器
+		$('[href=#]').css('color','yellow');//选择所有href=#的元素
+	})
+</script>
+</body>
+</html>

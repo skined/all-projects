@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.div1{
+			width: 100px;
+			height: 100px;
+			background: red;
+			padding: 10px;
+			border: 10px solid #000;
+			margin: 10px;
+			list-style:none;
+         }
+	</style>
+</head>
+<body>
+<h1>展示jQuery中on()和click()的区别</h1>
+<div class="test">
+<button class="new" id="newon">On</button> 
+<button class="new" id="newclick">Click</button>
+<ul class="ul1"> 
+<li>原先的HTML元素on<button class="deleteon">Delete</button></li> 
+<li>原先的HTML元素click<button class="deleteclick">Delete</button></li> 
+</ul> 
+</div> 	
+<script src="jquery.js"></script>	
+<script type="text/javascript">
+	//5.click可以给文档加载完成之后的元素获取并且添加事件也可以给jquery动态创建的元素获取并且添加事件
+	$(function(){
+		$('#newon').click(function(){
+			$('.ul1').append('<li>动态添加的HTML元素on<button class="deleteon">Delete</button></li>')
+		})
+		$('#newclick').click(function(){
+			$('.ul1').append('<li>动态创建的HTML元素click<button class="deleteclick">Delete</button></li>')
+		})
+		$('.ul1').on('click','.deleteon',function(){
+			$(this).parent().remove();
+
+		})
+		$('.deleteclick').click(function(){
+			$(this).parent().remove();
+		})
+	})
+</script>
+</body>
+</html>

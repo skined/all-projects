@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+</head>
+<body>
+<script type="text/javascript">
+	// set：类似于数组但是成员都是唯一的，不重复，使用，set()是一个构造函数
+	// 可以接受数组也可以做为参数，也可以接收对象作为参数。
+	var arr=[1,2,3,5];
+	var s=new Set([1,2,3,4]);
+	[2,3,5,4,5,2,2].forEach(x=>s.add(x));
+    for(let i of s){
+      console.log(i);
+    }
+    var s=new Set([1,3,5,7]);//接收参数数组，用来初始化
+    console.log(s);
+    console.log(s.size);
+    // set属性:size用来描述大小的
+    // 数组去重的方法
+    var s=new Set([1,2,3,4,4,5,5]);
+    console.log([...s]);//[.new Set([1,2,3,4,4,5,5])];
+    var str=[...new Set(['ababbc'])];
+    console.log(str);
+    console.log(str.join());//数组转字符串
+    //NaN对于set来说NaN===NaN;
+    let S1=new Set();
+    let a=NaN;
+    let b=NaN;
+    S1.add(a);
+    S1.add(b);
+    console.log(S1);
+
+    //set的属性和方法
+    // set.prototype.constructor//Set
+    // set.prototype.size//大小实例的成员总数 相当于length属性
+    
+    // 操作方法
+    // add(value):结构本身添加成员，对象的最后面添加
+    // delete(value):删除结构成员，返回布尔值，成功返回true，失败返回false
+    // has(value):表示has里面是否拥有这个值，返回布尔值
+    // clear():清除全部成员
+    var s2=new Set([1,3,6,7,4]);
+    s2.add(2);
+    console.log(s2);
+    s2.delete(4);
+    console.log(s2);
+    console.log(s2.has(8));
+    console.log(s2.clear());
+    console.log(s2);
+
+    //数组去重的另一种方法(把类似数组的对象转换成新数组)可以用该方法去重
+    var newArray=Array.from(new Set([1,3,5,3,8,6,8]));
+    console.log(newArray);
+    //set实例的方法 keys:返回键名
+    //values:返回键值
+    //entries:返回键值对
+    //forEach():使用回调函数便利成员
+    var s3=new Set(['apple','banana','pear']);
+    for(let i of s3.keys()){
+         console.log(i);
+    }
+    for(let val of s3.values()){
+    	console.log(val);
+    }
+    for(let end of s3.entries()){
+    	console.log(end);
+    }
+    s3.forEach((value,key)=>{
+    	console.log(key);
+    	console.log(value);
+    })
+
+
+    //map方法
+    //map出现的意义：我们的意愿是把一个dom节点添加到对象()里面作为键值，但是对象只接受字符串类型的键值，map的出现解决了这个问题，他会把对象转换成字符串
+    //map定义:是一种数据结构，数据的存在可以是键——值，键不局限于字符串，可以是对象等任意数据类型
+    //往map里面设置值的时候添加重复的后面的会覆盖前面的
+    //读取的时候读取不存在的值会返回undefined
+    //map实例的方法：
+    //set(key,value):设置键和值
+    //get(key):获取键所对应的值
+    //delete(key):删除
+    //has(key)；判断是不是拥有
+    //size：数据的总长度
+    //  {
+    // 	// key:value
+    // 	'name':'lili',
+    // 	document.getElementById('myDiv'):值
+    // }
+    //{}
+    var obj=new Object();
+    var map=new Map();//构造函数实例化出来的
+    console.log(map);
+    const o={p:'Hello World'};//对象当做一个键批
+    map.set(o,'content');//设置键和值
+    console.log(map.get(o));//获取键对应的值
+    console.log(map);
+  //接受一个数组作为参数，数组的成员也是一个键值对的数组
+    const map1=new Map([
+         ['lili','aaa'],
+         ['age','111']
+
+    	]);
+     var map=new Map();
+     // items.forEach(([key,value])=>map.set(key,value));
+
+
+     var map2=new Map([
+       ['city1','北京'],
+       ['city2','上海'],
+       ['city3','深圳'],
+     	])
+     for(let keys of map2){
+     	console.log(keys);
+     }
+     for(let keys of map2.keys()){
+     	//循环键
+     	console.log(keys);
+     }
+     for(let values of map2.values()){
+     	//返回键对应的值
+     	console.log(values);
+     }
+     for(let entries of map2.entries()){
+     	//返回键值对
+     	console.log(entries);
+     }
+     // map数据结构转化成数组结构，使用扩展运算符
+     var map3=new Map([
+        ['a',1],
+        ['b',2],
+        ['c',3]
+     ])
+   //键值转换成数组
+     console.log([...map3.keys()]);
+    //循环
+    // for...in:一般用于遍历对象的属性，也可以用原来便利数组，但是不推荐便利数组，他会便利原型上的所有属性
+    // 便利数组的时候便利的是索引
+    // 获取对象的时候是获取的对象的属性
+    // 遍历方法：
+    // keys:便利的是键名
+    // values:便利键值
+    // entries:便利键值对
+    // forEach():遍历所有成员
+    var arr1=['a','b','c','d'];
+    for(let i in arr1){
+    	console.log(i);
+    	console.log(arr1[i]);
+    }
+    var obj={
+    	'name':'lili',
+    	'age':13,
+    	'city':'北京'
+    }
+    // Obj.prototype.color={
+    // 	'color':'red',
+
+    // }
+    for(let item in obj){
+    	console.log(item);
+    	console.log(obj[item]);
+    }
+    //for...of:一般用于便利数组，Array,Map,Set,arguments，string便利数组的时候是数组的每一项
+    //，不能遍历对象
+    //可以使用break,continue,return等对循环进行改变状态
+    var arr2=['apple','orange','banana'];
+    for(let item of arr2){
+        console.log(item);
+    }
+     var obj2={
+    	'name':'lili',
+    	'age':13,
+    	'city':'北京'
+    }
+    // for(let item of obj2){
+    // 	console.log(item);//obj2 is not iterable obj2是不可枚举的
+    // }
+    var str='hello';
+    for(let item of str){
+    	console.log(item);
+    	if(item==='l'){
+    		break;
+    	}
+    }
+    var map=new Map([
+           ['name','lili'],
+           ['age',18]
+    	]);
+    for(let m of map){
+    	console.log(m);
+    }
+
+//forEach:接受一个回调函数
+// forEach(function(currentValue,index,arr){
+// 
+// })
+// currentvalue:循环当前的值  必须参数
+// index:当前循环值的索引     可选参数
+// arr:当前循环所在的数组     可选参数
+// 不能使用continue,break,return这些关键字对循环进行干扰
+var arr=['a','b','c'];
+arr.forEach((value,index,ary)=>{
+	console.log(value);
+	console.log(index);
+	console.log(ary);
+})
+</script>
+</body>
+</html>

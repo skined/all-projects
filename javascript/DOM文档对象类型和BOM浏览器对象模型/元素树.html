@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div id="box">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+<script type="text/javascript">
+	var box=document.getElementById('box');
+	console.log(box.parentNode);//父节点
+	console.log(box.childNodes);//子节点
+	console.log(box.firstChild);//获取该节点的子节点数组
+	console.log(box.lastChild);//获取该节点的最后一个子节点
+	console.log(box.nextSibling);//获取该节点的下一个兄弟节点
+	console.log(box.previousSibling);//获取该节点的上一个兄弟节点
+</script>
+</body>
+</html>

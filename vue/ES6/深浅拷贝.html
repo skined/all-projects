@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+//js数据类型:
+//基本数据类型:string,number,null,boolean,undefined
+//引用数据类型：object(Array,function,date,RegExp);
+//为什么会出现深浅拷贝？
+      // 根源在于引用数据类型，深浅拷贝仅存在于引用数据类型上，和基本数据类型无关
+  // 什么是堆和栈
+  // 对于基本数据类型来说，数据都保存在内部的栈中，以键值对的形式
+  // 对于引用数据类型来说，栈内存中保存的是地址的引用，而实际的值保存在了堆里面
+  // 什么是深拷贝和浅拷贝(引用数据类型和基本数据类型无关)
+  //   浅拷贝:复制对象和地址，而不是对象本身，新旧对象还是共用一块内存，其中有一方改变，另一方会受影响
+  //   深拷贝：会创建出来一个一模一样的对象，新对象和旧对象不共享·一块内存
+  //   修改新对象不会改变原有对象
+  //浅拷贝
+  var arr1=[1,2,3];
+  var arr2=arr1;
+  arr2.push(4);
+  console.log(arr1);
+// 对象深拷贝的方法：
+// 方案一：序列化与反序列化实现深拷贝json.stringify json.parse
+   let obj={'name':'lili',c:{'age':4},undefined};
+   let obj2=JSON.parse(JSON.stringify(obj));
+   obj2.c.name='李亮';
+   console.log(obj);
+   console.log(obj2);
+   // 为什么序列化和反序列化可以实现深拷贝？
+   // JSON.stringify(obj);内存里面开辟一个新的地址，在使用反序列化转成js对象
+   // 这种方式有弊端，undefined和null是无法拷贝过去的
+   // 实现深拷贝的第二种方法(for in+递归 函数)
+       let obj3={'name':'lili',c:{'age':4},undefined};
+       function deepClone(target){
+       	  //定义一个空的对象盛放拷贝后的数据
+            var newObj=null;
+            // 容错处理
+            // 由于null类型属于object但又不能循环操作所以要排除掉
+            if(typeof(target)=='object'&& target!=null){
+            	// 要判断target的类型Array(),object(),instanceOf()
+            	newObj = target instanceof Array ? [] : {};
+                //处理
+                //for in循环对象中的属性
+                for(let key in target){
+                     // newObj[key]=target[key];
+                     newObj[key]=typeof(target[key])?deepClone(target[key]):target[key];
+                }                                                             1
+            }else{
+            	 return newObj=target;
+            }
+            return newObj;
+       }
+       console.log(deepClone(obj3));
+  //jquery里面也有深拷贝方法 extend()
+  //extend(第一个参数，第二个参数，第三个参数(可选))
+  //第一个参数如果是true就是深拷贝，false浅拷贝，必选
+  //第二个参数 拷贝时的对象，必选
+  //$.extend();
+
+ var object1={};
+ var object2={
+ 	b:{
+ 		mm:333
+ 	},
+ 	c:100
+ };
+ console.log('原来的object1-->'+JSON.stringify(object1));
+ console.log('原来的object2-->'+JSON.stringify(object2));
+ $.extend(true,object1,object2);
+ object1.b.mm=600;
+ console.log('新的object1-->'+JSON.stringify(object1));
+ console.log('新的object2-->'+JSON.stringify(object2));
+ 
+</script>
+</body>
+</html>

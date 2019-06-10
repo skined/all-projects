@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+</head>
+<body>
+<script type="text/javascript">
+	/*1.箭头函数:
+	Arrow Function
+	为什么叫Arrow Function因为它的定义就是一个箭头来表示一个函数
+	2.和普通函数的区别:
+	 （1）更简洁的代码语法
+	 （2）不绑定this
+	3.语法：
+	将原函数的function关键字和函数名称都去掉并且使用'=>'将函数体和参数列表连接起来*/
+	// es5:
+	// var fn1=function(a,b){
+	// 	return a+b;
+	// }
+	// function fn2(a,b){
+	// 	return a+b;
+	// }
+
+	// // es6:
+	// (a,b)=>{
+	// 	return a+b;
+	// }
+	// (a,b)=>a+b;
+	// var fn2=function(a){
+ //        return a;
+	// } 
+	// var fn2=a=>a;  //如果函数没有参数时括号不可以省略，必须写
+	// var fn1=function(){
+
+ //  }
+ //    var fn1=()=>{}
+ //    	// es5:
+ //    var fn3=function(a,b){//如果有两个以上参数必须要写小括号并且用逗号分隔
+	
+ //   }
+ //    var fn3=(a,b)=>{}
+	// //写法规则：
+	// //1.当函数只有一个参数的时候，()是可选的，可以省略，
+	// //2.如果函数没有参数时括号不可以省略，必须写
+	// //3.如果有两个以上参数必须要写小括号并且用逗号分隔
+	// //4.只有一个参数一个表达式可以省略{}和return
+	// // 5.包含多条语句不能省略{}和return
+	// function(x){
+	// 	return x*x;
+	// }
+	// (x)=>x*x;//或者 x=>x*x;
+	
+	// // x=>{
+	//  //if(x>0){
+	//  //  return x*x
+	//  //} else{
+	//  //return x*x;
+	//  //}
+	// // }
+     
+ //    //三元运算符(三目运算符)
+ //      // es5里
+ //      // a>5?1:0;
+ //      // es6
+ //      var simple=a=> a > 15 ? : a;
+ //      simple(16);
+ //      // es5还原
+ //      function simple(a){	
+ //      	if(a>15){
+ //      		return 15;
+ //      	}else{
+ //      		return a;
+ //      	}
+ //      }
+ //      simple(16);
+ //      //作为事件的处理器(handler)
+ //      //es5
+ //        document.addEventListener('click',function(ev){
+ //        	console.log(ev);//ev为事件详情
+ //        })
+ //        // es6
+ //         document.addEventListener('click',ev=>{
+ //         	console.log(ev);
+ //         });
+         //求和
+        var add=(a,b)=>{
+        	if(typeof(a)===number && typeof(b)===number){
+        		return a+b;
+        	}else{
+        		return 0;
+        	}
+        }
+        //如果要返回一个对象需要注意，return后面返回的对象必须加上括号，不写括号会报错，因为他会和函数主体的大括号有语法冲突
+        // var getHash=arr=>{
+        // 	return ({
+        // 		 name:'jack',
+        // 	     age:20
+        // 	})
+        	 
+
+        // }
+        // console.log(getHash());
+        // var getHash=arr=>({
+        //  'name':'xiaohong',
+        //  'age':20
+        // })
+      // 返回值是对象，为了以示区分，用小括号
+      // let show=name=>({'username':name});
+      // // 用了return关键字需要加花括号
+      // let show=name=>{return {'user':'name'}};
+      // 箭头函数和普通函数一样，也可以使用剩余参数和默认参数
+      var func1=(x=1,y=2)=>x+y
+      console.log(func1());
+      var func2=(x,...argus)=>{
+      	console.log(argus);
+      }
+      func2(1,2,3);
+      // 不绑定this：箭头函数的this其实就是定义时候的确定的this，不管怎么调用这个箭头函数，
+      // 箭头函数this始终为定义时候的this
+      // function Counter(){
+      // 	this.num=0;
+      // }
+      // var n=new Counter();
+      // console.log(n.num);
+      //此时新增个需求L我要过一秒将a.num的值加1，可以使用定时器setInterval()函数
+//       function Counter(){
+//       	this.num=0;
+//       	console.log(this);
+//       	var _this=this;
+//       	this.timer=setInterval(function add(){
+//       		_this.num++;
+//       		console.log(_this.num);
+//       	},1000)
+//       }
+//       var b=new Counter();
+// //es6
+//  function Counter(){
+//  	this.num=0;
+//  	this.timer=setInterval(()=>{
+//  		this.num++;
+//  		console.log(this.num);
+//  	},1000)
+//  }
+// var b=new Counter();
+
+
+//数组排序 sort
+// var arr=[23,1,56,32,78];
+// function sort(arr){
+// 	for(i=0;i<this.length;i++){
+// 		for(j=i;j<this.length;j++){
+// 			if(arr[i]>arr[j]){
+// 				var num=arr[i];
+// 				arr[i]=arr[j];
+// 				arr[j]=num;
+// 			}
+// 		}
+// 	}
+// 	return this;
+// }
+// sort();
+// console.log(arr.sort());
+// arr.sort(function(a,b){
+// 	if(a-b>0){
+// 		return a-b;
+// 	}else{
+// 		return b-a;
+// 	}
+// })
+// arr.sort((a,b)=>{
+// 	if(a-b>0){
+// 		return a-b;
+// 	}else{
+// 		return b-a;
+// 	}
+// })
+
+
+//以下几种情况不能用箭头函数：
+//（1）箭头函数不能用作构造器和new一起，会报错
+// (2)箭头函数没有prototype属性
+var Person=()=>{
+    
+}
+var p1=new Person();//Person is not constructor!Person不是一个构造函数！
+Person.prototype.name='小明';//Person is not undefined    person没有意义
+var p1=new Person();
+</script>
+</body>
+</html>

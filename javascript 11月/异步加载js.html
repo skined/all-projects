@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div>异步加载js</div>
+<script type="text/javascript" async="async">
+	// 1.js加载的缺点:加载工具方法时没必要阻塞文档，js加载会影响页面效率，一旦网速不好，整个网站将会等待js加载而不进行后续渲染工作
+	// 2.有些工具方法需要按需加载，用到再加载，不用不加载
+	// js异步加载方法
+	// 1.defer 异步加载方法，但要等到dom文档全部解析完成之后才会被执行，只有IE有这个方法，也可以将代码写在内部
+	// 2.async 异步加载 加载完就执行，只能加载外部文件，不能把js写在内部
+	// 两个不能同时写在一块
+       // 3.创建script标签插入到dom中然后加载完成后再callkack(常用)
+      var script=document.createElement('script');
+      // console.log(script);
+     script.type='text/javascript';
+     script.src='abcc.js';																													
+    // 执行  插入到dom中
+   //  document.head.appendChild(script);
+   //  // setTimeout(function(){
+   //  	    // test();
+   //  // },10)   
+   //  // IE不好使
+   // script.onload=function(){
+   // 	  test();
+   // }
+   // IE readyState(状态码)
+   // readyState在开始状态为loading
+   // 在结束(结束完成时)loaded或complete
+    // script.onreadystatechange监听状态码事件
+    // if(script.readyState){
+    // 	script.onreadystatechange=function(){
+    //           if(script.readyState==='complete'  || script.readyState==='loaded'){
+    //           	test();
+    //           }
+    // 	}
+    // }
+
+    // 加载js文件并执行的方法
+    // function loadScript(url,callback){
+    // 	document.head.appendChild(script);
+    // 	if(script.readyState){
+    // 		script.onreadystatechange=function(){
+    // 			if(script.readyState='complete' || script.readyState=='loaded'){
+    // 				// callback();
+    // 				obj[callback]();
+    // 			}
+    // 		}
+    // 	}else{
+    // 		script.onload=function(){
+    // 			// callback();
+    // 			obj[callback]();
+    // 		}
+    // 	}
+    // 	script.type='text/javascript'
+    // 	script.src='abcc.js'
+    // }
+    // loadScript('abcc.js','aaa');
+    
+
+var bar=function(){
+  console.log(this.x);
+}
+var foo={
+  x:3,
+}
+var sed={
+  x:4
+}
+var five={
+  x:5
+}
+bar();
+var func=bar.bind(foo).bind(sed).bind(five);
+func();
+</script>
+</body>
+</html>

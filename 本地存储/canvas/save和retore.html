@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500"></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	// save()和restore()必须要承兑使用，如果使用save()没有使用restore(),会报错
+  //save：保持当前状态，restore恢复保存之前的状态
+  pen.strokeStyle='red';
+  pen.strokeRect(10,10,100,80);
+  pen.save();
+  pen.translate(10,10);
+  pen.restore(); 
+  pen.strokeStyle='blue';
+//重新定义你画布的起始点
+  pen.strokeRect(10,10,100,80);
+</script>
+</body>
+</html>

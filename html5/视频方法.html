@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<video autoplay="autoplay" controls="" >
+		<source src="Intermission-Walk-in_512kb.mp4" type="" >
+</video>
+<script type="text/javascript">
+	window.onload=function(){
+		var video=document.querySelector('video');
+		video.onmouseover=function(){
+			this.pause();
+			console.log(this);
+		}
+		video.onmouseout=function(){
+			this.play();
+			console.log(this);
+		}
+      console.log(video.videoWidth);
+      console.log(video.videoHeight);
+	}
+</script>
+</body>
+</html>

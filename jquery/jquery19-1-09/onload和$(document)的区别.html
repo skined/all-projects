@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	
+	<script src="jquery.js"></script>
+<script type="text/javascript">
+	// window.onload和$()的区别：
+	// 1.编写个数的区别：window.onload(){},只能编写一个，$()可以编写多个
+	// 2.执行顺序：$()要比window.onload先执行
+	// 3.执行时间：$()执行时间是在dom结构加载完成之后就执行不用等待其他资源，window.onload=function(){
+	// }要等到dom结构加载完成之后，（还有其他图片资源）link引入的资源等
+	// 4.window.onload=function(){}没有简写方法
+	// $(function(){})是$(document).ready(function(){})的简写
+
+
+
+// 1.
+// window.onload=function(){
+// 	alert(1);
+// }
+// window.onload=function(){
+// 	alert(2);
+// }
+// $(function(){
+// 	alert(1);
+// })
+// $(function(){
+// 	alert(2);
+// })
+
+
+// 2.
+// $(function(){
+// 	alert(1);
+// })
+// window.onload=function(){
+// 	alert(2);
+// }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		textarea{
+			width:400px;
+			height:70px;
+			margin:15px 0px 0px; 
+		}
+		.hr{
+			width:400px;
+			margin-top:10px;
+		}
+		.h{
+			margin:6px 0px;
+		}
+		#box{
+			width:400px;
+		}
+		.content{
+			width:100%;
+			height:180px;
+			border:5px red solid;
+		}
+		.fabu{
+			width:100%;
+			height:80px;
+			background:#ECECE5;
+			border:1px #D0D0D0 solid;
+		}
+	</style>
+</head>
+<body>
+ <h3 class="h">留言板</h3>
+ <p>发布人:<input type="text" class="name"></p>
+ 共<span class="num"></span>楼
+ <textarea class="text"></textarea><br>
+ <button class="add">确认发布</button>
+ <h3 class="h">全部留言</h3>
+ <div class="hr"></div>
+ <div id="box"></div>
+ <script type="text/javascript">
+	//获取当前时间
+	var _date=new Date();
+	//将当前时间转换为本地格式的字符串
+	var _localeDate=_date.toLocaleString();
+	//获取到星期
+	var _day=_date.getDay();
+	//将获取到的星期得到的数字转换为文字
+	switch(_day){
+      case 1:_day='星期一';
+      break;
+      case 2:_day='星期二';
+      break;
+      case 3:_day='星期三';
+      break;
+      case 4:_day='星期四';
+      break;
+      case 5:_day='星期五';
+      break;
+      case 6:_day='星期六';
+      break;
+      case 0:_day='星期日';
+      break;
+	}	
+	//获取元素
+	var _name=document.getElementsByClassName('name')[0];
+	var _text=document.getElementsByClassName('text')[0];
+	var _add=document.getElementsByClassName('add')[0];
+	var _num=document.getElementsByClassName('num')[0];
+	var _box=document.getElementById("box");
+	var _addBtn=document.getElementsByClassName('add')[0];
+     _add.onclick=function(){
+     	// console.log(_name.value);
+      //   console.log(_text.value);
+        var div=document.createElement('div');
+       div.setAttribute('class','content');
+       //给div添加内容
+       var str = '<p>第<span class="index"></span>楼</p><p>发布人：<span>'+ _name.value +'</span></p><p>发布内容：</p><div class="fabu">'+_text.value+'</div><p class="op">发布时间：'+ _localeDate+_day+'<button class="del">删除</button><button class="edit">编辑</button></p>';
+          
+
+		div.innerHTML=str;	
+		//将div插入到box放入一个子节点的前面
+		_box.insertBefore(div,_box.firstChild); 
+        //删除
+        //获取到所有的删除按钮
+        var _dels=document.getElementsByClassName('del');
+        //循环给所有的删除按钮添加点击事件
+        for(i=0;i<_dels.length;i++){
+        	_dels[i].onclick=function(){
+        		//删除此节点的父节点的父节点
+               _box.removeChild(this.parentNode.parentNode);
+                indexFun();
+        	}
+        }
+        //编号函数
+        function indexFun(){
+        	//获取到所有存放编号的标签
+        	var _index=document.getElementsByClassName('index');
+        	//循环所有的index给index赋值
+        	for(i=0,j=_index.length;i<_index.length;i++,j--){
+                         _index[i].innerHTML=j;
+        	}
+        	_num.innerText=_index.length;
+        }
+        indexFun();
+        //获取编辑按钮
+        var _edits=document.getElementsByClassName('edit');
+        var _fabu=document.getElementsByClassName('fabu')[0];
+        var _op=document.getElementsByClassName("op")[0];
+        var _str=document.getElementsByClassName('str');
+        for(i=0;i<_edits.length;i++){
+        	_edits[i].onclick=function(){
+              var a = prompt("请输入您要修改的内容");
+              _fabu.innerHTML=a;
+        	}
+        }
+    }
+     
+</script>
+</body>
+</html>

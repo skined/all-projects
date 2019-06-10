@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jsonp</title>
+	<style type="text/css"></style>
+</head>
+<body>
+	
+<script type="text/javascript">
+
+	var url="http://localhost:cross-domain/2019-1-1.js";
+//创建一个script标签，设置其属性
+var script=document.createElement('script');
+document.getElementsByTagName('head')[0].appendChild(script);
+function callbackFun(data){
+   console.log(data.age);
+   console.log(data.name);
+}
+
+
+</script>
+<script src="domain.js"></script>
+</body>
+</html>

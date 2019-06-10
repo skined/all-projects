@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+			<ul>
+				<li>aaa</li>
+				<li>vvv</li>
+				<li>sss</li>
+				<li class="ee">aaa</li>
+				<li>dsss</li>
+				<li>wwww</li>
+			</ul>
+		<script src="jquery-1.12.4.js"></script>	
+		<script>
+			$(function(){
+				$('ul li:first').css('background','red');//选择第一个元素
+				$("li:last").css('background','red');//选则最后一个元素
+				$('ul li:eq(2)').css('background','green')//选则第二个元素
+				//隔行变色效果
+				$("li:odd").css('background','yellow');//奇数
+				$('li:even').css('background','aqua');//偶数
+				$('li').filter('[class=ee]').css('background','blue');//选中类名为ee的li元素
+			})
+
+		</script>
+	</body>
+</html>

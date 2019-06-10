@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+<input type="text" id="number1">
+<select class="func">
+	<option>+</option>
+	<option>-</option>
+	<option>*</option>
+	<option>/</option>
+	<option>%</option>
+</select>
+ <input type="text" id="number2">
+ <span>=</span>
+<input type="text" name="result">
+<!-- <span></span> -->
+<button id="getBtn">计算</button>	
+<script type="text/javascript">
+ //首先获取元素
+ var _number1=document.getElementById('number1');
+ var _number2=document.getElementById('number2');
+ var _result=document.getElementsByName('result')[0];
+ var _func=document.getElementsByClassName('func')[0];
+ var _getBtn=document.getElementById('getBtn');
+ _getBtn.onclick=function(){
+    var a=Number(_number1.value);
+    var b=Number(_number2.value);
+    console.log(a);
+    console.log(b);
+    console.log(_func.value);
+    if(_func.value=='+'){
+        _result.value=a+b;  
+    }
+    if(_func.value=='-'){
+    	_result.value=a-b;
+    }
+    if(_func.value=='*'){
+    	_result.value=a*b;
+    	
+
+    }
+    if(_func.value=='/'){
+    	_result.value=a/b;
+    }if(_func.value=='%'){
+    	_result.value=a%b;
+    }
+ }
+</script>
+</body>
+</html>

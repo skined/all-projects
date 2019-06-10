@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#btn1,#btn2{
+			display: inline-block;
+			width:71px;
+			height:30px;
+			border:1px solid red;	
+		}
+	</style>
+</head>
+<body>
+<video>
+	<source src="Intermission-Walk-in_512kb.mp4" type="" class="mp4">
+</video>
+<div class="controls">
+			<input type="button" name="" value="播放" class="play" >
+			<input type="button" name="" value="暂停" class="paused">
+			<div id="btn1">
+				<!-- 00:00:00 -->
+			</div>
+			<div id="btn2"><!-- 00:00:00 --></div>
+		    <input type="button" name="" value="静音" class="muted" >
+		    <input type="button" name="" value="全屏" class="esc" >
+		</div>
+		<script type="text/javascript">
+			window.onload=function(){
+				var play=document.querySelector(".play");
+				var muted=document.querySelector(".muted");
+				var esc=document.querySelector(".esc");
+				var video=document.querySelector("video");
+				var currentTime=document.querySelector(".currentTime");				
+				var paused=document.querySelector(".paused");
+				var btn1=document.querySelector("#btn1");
+				var btn2=document.querySelector("#btn2");
+				
+				var timer=null;
+				play.onclick=function(){
+					video.play();
+					nowTime(video.currentTime);
+					timer=setInterval(function(){
+						nowTime(video.currentTime);
+					},1000)
+					
+				}
+                 
+				paused.onclick=function(){
+					video.pause();
+				}
+				// 视频播放时间
+				function nowTime(num){
+                    console.log(num);
+                    btn1.innerText=changeTime(num);
+				}
+				// 视频总时间195s=00:03:15；
+				btn2.innerText=changeTime(video.duration);
+                function changeTime(num){
+                	var num=parseInt(num);
+                	var iH=toZero(Math.floor(num/3600));
+                	var iM=toZero(Math.floor(num%3600/60));
+                	var iS=toZero(Math.floor(num%60));
+                	return iH+":"+iM+":"+iS;
+                }
+               function toZero(num){
+                 if(num<=9){
+                 	return '0'+num;
+                 }else{
+                 	return ''+num;
+                 }
+               }
+
+
+
+
+
+
+
+
+				esc.onclick=function(){
+					video.webkitRequestFullScreen();  //h5调用全屏方法
+				}
+				muted.onclick=function(){
+					if(video.muted){
+						video.muted=false;
+						this.value="静音";
+					}else{
+						video.muted=true;
+                        this.value="取消静音";       
+					}
+				} 
+			}
+		</script>
+</body>
+</html>

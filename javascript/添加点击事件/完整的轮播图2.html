@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		.all{
+			width:500px;
+			height:200px;
+			border:1px #ccc solid;
+			margin:100px auto;
+			padding:7px;		
+			position:relative; 
+		}
+		   .screen{
+         	width:500px;
+         	height:200px;
+            overflow:hidden; 
+         	position:relative; 
+         }
+         .screen ul{
+         	width:3000px;
+         	top:0;
+         	left:0;
+         	position:absolute; 
+         }
+         .screen li{
+         	width:500px;
+         	height:200px;
+         	float:left;
+         }
+       .all ol{
+         position:absolute;
+         right:10px;
+         bottom:10px;
+         line-height:20px; 
+         text-align:center; 
+       }      
+      .all ol li{
+      	float:left;
+      	width:20px;
+      	height:20px;
+      	background:#fff;
+      	border:1px #ccc solid;
+      	margin-left:10px;
+      	cursor:pointer;   
+      }
+      .all ol li.current{
+      	background:yellow;
+      }
+      #arr{
+      	display:none; 
+      }
+      #arr span{
+          width:40px;
+          height:40px;
+          background:#000;
+          opacity:0.4;
+          top:50%;
+          margin-top:-20px;
+          left:5px;
+          font-size:30px;
+          color:#fff;
+          font-family:'黑体';
+          font-weight:bold;
+          line-height:40px;
+          text-align:center;
+          position:absolute; 
+          border:1px #fff solid;
+          cursor:pointer;     
+      }
+      #arr #right{
+          right:5px;
+          left:auto;
+      }
+	</style>
+</head>
+<body>
+<div id="box" class="all">
+	<div class="screen">
+		<ul>
+			<li><img src="image/1.jpg" width="500" height="200"></li>
+			<li><img src="image/2.jpg" width="500" height="200"></li>
+			<li><img src="image/3.jpg" width="500" height="200"></li>
+			<li><img src="image/4.jpg" width="500" height="200"></li>
+			<li><img src="image/5.jpg" width="500" height="200"></li>
+		</ul>
+		<ol></ol>
+	</div>
+	<div id="arr">
+		<span id="left">&lt;</span>
+		<span id="right">&gt;</span>
+	</div>
+</div>
+<script src="animate1.js"></script>
+<script type="text/javascript">
+	var box=document.querySelector("#box");
+	var ul=document.querySelector("ul");
+	var ol=document.querySelector("ol");
+	var ulLis=ul.children;
+	var img=document.querySelector("img");
+	var imgWid=img.offsetWidth;
+	var arr=document.querySelector("#arr");
+	var left=arr.children[0]
+	var right=arr.children[1];
+	var screen=document.querySelector(".screen");
+	for(i=0;i<ulLis.length;i++){
+		var li=document.createElement("li");
+		li.innerText=i+1;
+		ol.appendChild(li);
+	}
+	var firstImg=ul.children[0].cloneNode(true);
+	ul.appendChild(firstImg);
+	var olLis=ol.children;
+	for(j=0;j<olLis.length;j++){
+       olLis[j].index=j;
+       olLis[j].onmouseover=function(){
+             pic=this.index; 
+       for(i=0;i<olLis.length;i++){
+       	   olLis[i].className='';
+       }
+       this.className='current';      
+        end=-this.index*imgWid;
+       animate1(ul,end);
+
+       }
+
+       
+	}
+	var square=0;
+	var pic=0;
+	box.onmouseover=function(){
+		arr.style.display='block';
+		timer1=setInterval(playNext,2000);
+	}
+	box.onmouseout=function(){
+		arr.style.display='none';
+		clearInterval(timer1);
+	}
+	right.onclick=playNext;
+	function playNext(){
+		if(pic==ulLis.length-1){
+			ul.style.left='0px';
+			pic=0;
+		}
+		pic++;
+		var end=-pic*imgWid;
+		animate1(ul,end);
+		square=pic;
+		if(square==ulLis.length-1){
+			square=0;
+		}
+		for(i=0;i<olLis.length;i++){
+			olLis[i].className='';
+		}
+		olLis[square].className='current';
+	}
+	var square=0;
+	left.onclick=function(){
+		if(pic==0){
+			ul.style.left=-(ulLis.length-1)*imgWid+'px';
+			pic=ulLis.length-1;
+		}
+		pic--;
+		var end=-pic*imgWid;
+		animate1(ul,end);
+		square=pic;
+		if(square==ulLis.length-1){
+			square=0;
+		}
+		for(i=0;i<olLis.length;i++){
+			olLis[i].className='';
+		}
+		olLis[square].className='current';
+	}
+ var timer1=setInterval(playNext,2000);
+</script>
+</body>
+</html>

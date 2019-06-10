@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+<script type="text/javascript">
+	// var xhr=XMLHttpRequest;
+	  var xhr=null;
+	if(window.XMLHttpRequest){
+       xhr=new XMLHttpRequest();
+	}else{
+       xhr=new ActiveXObject('Microsoft.XMLHttp');
+	}
+	console.log(xhr.readyState);
+    //建立连接
+    //get方式传参键值对用等号链接 多个键值对用&链接
+     xhr.open('get','url?name=xiaoming&age=18','true');//默认是true 可以省略
+	// console.log(xhr.readyState);
+
+     //发送请求
+     xhr.send();//xhr.send(null);
+	
+
+      //等待响应
+     xhr.onreadystatechange=function(){
+     	//判断ajax的工作状态
+     	if(xhr.readyState==4){
+     	//判断后台状态，容错处理
+     		if(xhr.status==200){ //http状态码
+     			var data=xhr.responseText;//后端返回的数据都放在了responseText，返回的是字符串
+     			console.log(data);
+     		}
+     	}
+     }
+	console.log(xhr.readyState);
+
+     //ajax工作状态：
+     //0：初始化 还没有调用open方法
+     //1：载入中   已调用send方法，建立连接正在发送请求
+     //2载入完成     
+     //3解析     正在解析响应内容
+     //4解析完成  响应内容解析完成可以在客户端调用
+     // http状态码
+     // 200：请求成功 304：缓存请求成功 403：请求不允许
+     //404：url资源地址无法找到 500：内部服务器错误 405：请求方法不允许
+</script>
+</body>
+</html>

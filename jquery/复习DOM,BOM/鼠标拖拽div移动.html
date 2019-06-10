@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		div{
+			width:100px;
+			height:100px;
+			background:red;
+			line-height:100px;
+			text-align:center;
+			border:1px blue solid;
+			position:absolute;
+			top:0;
+			left:0;
+		}
+	</style>
+</head>
+<body>	
+	<div id="box"></div>
+<script type="text/javascript">
+    var divs=document.getElementById('box');
+	// console.log(div);
+	// divs.onmousedown=function(ev){
+	// 	    //鼠标点下所在的位置
+ //             var divsX=ev.clientX-divs.offsetLeft;
+ //             var divsY=ev.clientY-divs.offsetTop;
+ //         document.onmousemove=function(ev){
+
+ //             var left=ev.clientX-divsX;
+ //             var top=ev.clientY-divsY;
+ //             if(left<0){
+ //             	left=0;
+ //             }else if(left>document.documentElement.clientWidth-divs.offsetWidth){
+ //             	left=document.documentElement.clientWidth-divs.offsetWidth;
+ //             }
+ //             if (top<0) {
+ //             	top=0;
+ //             }else if(top>document.documentElement.clientHeight-divs.offsetHeight){
+ //             	top=document.documentElement.clientHeight-divs.offsetHeight;
+ //             }
+ //             divs.style.left=left+'px';
+ //             divs.style.top=top+'px';    
+ //         }
+ //         document.onmouseup=function(){
+ //              document.onmousemove=null;
+ //              document.onmousemove=null;          
+        
+ //     }
+ //     return false;
+ //     // 当鼠标按下的时候如果页面中有文字被选中，那么会触发浏览器默认拖拽文字的效果
+ 
+	// }
+	
+
+	// 封装拖拽的原理
+// 	function drag(obj){
+// 		divs.onmousedown=function(ev){
+// 		    //鼠标点下所在的位置
+//              var divsX=ev.clientX-obj.offsetLeft;
+//              var divsY=ev.clientY-obj.offsetTop;
+//          document.onmousemove=function(ev){
+
+//              var left=ev.clientX-divsX;
+//              var top=ev.clientY-divsY;
+//              if(left<0){
+//              	left=0;
+//              }else if(left>document.documentElement.clientWidth-obj.offsetWidth){
+//              	left=document.documentElement.clientWidth-obj.offsetWidth;
+//              }
+//              if (top<0) {
+//              	top=0;
+//              }else if(top>document.documentElement.clientHeight-obj.offsetHeight){
+//              	top=document.documentElement.clientHeight-obj.offsetHeight;
+//              }
+//              divs.style.left=left+'px';
+//              divs.style.top=top+'px';    
+//          }
+//          document.onmouseup=function(){
+//               document.onmousemove=null;
+//               document.onmousemove=null;          
+        
+//      }
+// 	}
+// }
+// drag(divs);
+
+
+
+// div吸附
+ var divs=document.getElementById('box');
+	// console.log(div);
+	divs.onmousedown=function(ev){
+		    //鼠标点下所在的位置   把鼠标的位置限制在div内部
+             var divsX=ev.clientX-divs.offsetLeft;
+             var divsY=ev.clientY-divs.offsetTop;
+         document.onmousemove=function(ev){
+               //规定div移动的距离
+             var left=ev.clientX-divsX;
+             var top=ev.clientY-divsY;
+             if(left<100){
+             	left=0;
+             }else if(left>document.documentElement.clientWidth-divs.offsetWidth){
+             	left=document.documentElement.clientWidth-divs.offsetWidth;
+             }
+             if (top<0) {
+             	top=0;
+             }
+             else if(top>document.documentElement.clientHeight-divs.offsetHeight){
+             	top=document.documentElement.clientHeight-divs.offsetHeight;
+             }
+             divs.style.left=left+'px';
+             divs.style.top=top+'px';    
+         }
+         document.onmouseup=function(){
+              document.onmousemove=null;
+              document.onmousemove=null;          
+        
+     }
+	}
+
+</script>
+</body>
+</html>

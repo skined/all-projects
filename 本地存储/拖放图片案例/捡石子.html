@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+	 #basket{
+	 	width:400px;
+	 	height:300px;
+	 	border:1px solid #ccc;
+	 }
+	 #floor{
+	 	width:400px;
+	 	height:300px;
+	 	border:1px solid #ccc;
+	 }
+	  .shizi{
+	 	width:50px;
+	 	height:50px;
+	 	margin:10px;
+	 	float:left;
+	 	line-height:50px;
+	 	text-align:center;
+	 	border-radius: 50%;
+	 	list-style:none;
+	 	background:gray;
+	 }
+	</style>
+</head>
+<body>
+<h4>从前有个人走在丛林里，传来一个声音，说地上有石子，捡几个吧，会有用的，但是走出丛林后发现手中的石子变成了金子，这个故事充满了哲学智慧，下面我们给出一些石子，希望你把它捡到篮子里，没准变成金子</h4>
+<p id=p1>我是篮子</p>
+<div id="basket">
+	<ul id="list"></ul>
+</div>
+<p id="p2">我是地</p>
+<div id="floor">
+		<li class="shizi" draggable=true data-id=1>石子</li>
+		<li class="shizi" draggable=true data-id=2>石子</li>
+		<li class="shizi" draggable=true data-id=3>石子</li>
+		<li  class="shizi" draggable=true data-id=4>石子</li>
+		<li class="shizi" draggable=true data-id=5>石子</li>
+		<li class="shizi" draggable=true data-id=6>石子</li>
+		<li class="shizi" draggable=true data-id=7>石子</li>	
+</div>
+<script type="text/javascript">
+	var ul=document.getElementById("list");
+	var li=document.getElementsByTagName("li");
+	var oBox=document.getElementById("basket");
+	var floor=document.getElementById('floor');
+	// var basket=document.getElementById("basket");
+   for(i=0;i<li.length;i++){
+    // li[i]._index=i;
+   	li[i].ondragstart=function(ev){
+   	    this.innerHTML='拾起'; 
+   	    //ev.dataTransfer.setData('name',this._index);
+        var id=ev.dataTransfer.setData('id',this.getAttribute('data-id'));
+   	}
+   	li[i].ondragend=function(){
+   		this.innerHTML='石子';
+   	}
+   }
+    oBox.ondragenter=function(){
+    	this.style.background='pink';
+    }
+   oBox.ondragleave=function(){
+    	this.style.background='transparent';
+    }
+      oBox.ondragover=function(ev){//进入目标元素和离开目标元素之间触发的事件
+         ev.preventDefault();
+    }
+    oBox.ondrop=function(ev){//数据必须在释放元素里面获取
+          //    console.log(ev.dataTransfer.getData('name',this._index));
+	         // ul.appendChild(li[ev.dataTransfer.getData('name',this._index)]);//利用了appendChild的剪切功能
+        // for(i=0;i<li.length;i++){//重新排序
+        // 	li[i]._index=i;
+        // 	 ev.preventDefault();
+	        
+        // }  
+        var id=ev.dataTransfer.getData('id');
+        console.log(id);
+            for(i=0;i<li.length;i++){
+            	if(li[i].getAttribute('data-id')==id){
+            		floor.removeChild(li[i]);
+            	}
+            }
+       var li1=document.createElement('li');
+       li1.className='shizi';
+       li1.innerHTML='捡起';
+       ul.appendChild(li1);
+    }
+  
+
+</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<!-- 组件:自定义的HTML元素，是一个可复用的vue实例 
+		组件的组成：
+	        1.样式结构
+	        2.行为逻辑
+	        3.数据-->
+	<!-- 组件的注册：
+	全局注册：可以在模板任何地方使用
+	Vue.component表示定义一份全局的组件！
+	语法：是一个Vue.component('组件名称',{
+	  选项对象放组件所需要的东西
+	})
+	全局注册的行为要在根vue实例(new Vue)创建之前发生。
+	组件名称：自定义的元素
+	组件名称的命名规则：
+	1.驼峰命名法 CustomUl
+	2.kebab-case(烤串命名法)
+	每个组件都是vue的一个实例
+	template:放HTML元素，英文是模板的意思
+	组件的使用：把组件的元素放到使用的地方
+	局部注册：在component选项对象里
+     key:组件名称
+     value:选项对象(组件的所有东西，数据，方法，属性)-->
+	<div id="app">
+		<custom-ul></custom-ul>
+		<custom-ul></custom-ul>
+		<custom-ul></custom-ul>
+	</div>
+	<div id="app1">
+        <custom-ul></custom-ul>
+		<custom-ul></custom-ul>
+		<custom-p><custom-p> 
+	</div>
+	<div id="app2">
+		<custom-p1></custom-p1>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	Vue.component('custom-ul',{
+         template:`
+         <ul>
+          <li>111</li>
+          <li>222</li>
+         </ul>
+         `
+	})//组件的一个模板
+	var vm=new Vue({//根实例
+		el:'#app',//el只能放在根实例里面
+		data:{
+			person:'hello world!',
+		},
+		computed:{
+
+		},methods:{
+
+		},
+		
+	})
+
+	var vm1=new Vue({
+		el:'#app1',
+		components:{
+            // key:value
+            // key:组件的名称，value:{选项对象}
+            'custom-p':{
+               template:`
+               <div>
+	               <p>我是p1</p>
+	               <p>我是p2</p>
+               </div>`
+
+            }
+	}
+
+})
+	
+var vm2=new Vue({
+	el:'#app2',
+	components:{
+		'custom-p1':{
+			template:`
+			<ul>
+			<li>杨金金宁</li></ul>`
+		}
+	}
+})	
+	
+</script>
+</body>
+</html>

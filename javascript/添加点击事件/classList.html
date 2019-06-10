@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		div{
+			width:100px;
+			height:100px;
+			border:1px #ccc solid;
+		}
+		div.a{
+           width:200px;
+           height:200px;
+           background:yellow;
+		}
+	</style>
+</head>
+<body>
+<div>我是演示的盒子</div>
+<button>点击添加类名</button>
+<button>点击删除类名</button>
+<button>点击切换类名</button>
+<script type="text/javascript">
+	var div=document.getElementsByTagName("div")[0];
+	var a=document.querySelector(".a");
+	var btn1=document.getElementsByTagName("button")[0];
+	var btn2=document.getElementsByTagName("button")[1];
+	var btn3=document.getElementsByTagName("button")[2];
+	btn1.onclick=function(){
+		div.classList.add('a');
+	}
+	btn2.onclick=function(){
+		div.classList.remove("a");
+	}
+	btn3.onclick=function(){
+		div.classList.toggle("a");   //切换
+		var b=div.classList.contains("a");  //判断是否拥有该类名有返回true没有返回false
+		console.log(b);
+	}
+</script>
+</body>
+</html>

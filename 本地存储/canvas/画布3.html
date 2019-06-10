@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+			body{
+				background:#000;
+			}
+		canvas{
+			background:#fff;
+
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="600" height='500'>
+	
+</canvas>
+<script type="text/javascript">
+  var oC=document.getElementById('c1');
+  var open=oC.getContext('2d');
+// //画矩形的方法	x,y,w,h
+//  open.rect(100,100,200,200);
+//  open.fillStyle='lightgreen';
+//  open.fill();
+//  open.stroke();
+//  open.clearRect(0,0,oC.width,oC.height);//清除给定矩形内的指定像素 清空画布
+
+
+
+open.moveTo(50,50);
+open.lineTo(150,150);
+open.lineWidth=20;
+// open.lineCap='round';//设置端点样式
+open.lineCap='square';//长度增加了宽的一半
+open.stroke();
+// canvas:用来绘制图形的，通过脚本语言(javascript)来完成
+// canvas是一个图形容器，他本身没有绘制功能，类似于白板
+// 这个canvas画布默认宽是300像素，高是150像素
+// canvas画布大小可以修改，给canvas标签修改属性 width height
+</script>
+</body>
+</html>

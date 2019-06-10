@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		body{
+			background:#000;
+		}
+		canvas{
+			background:#fff;
+		}
+	</style>
+</head>
+<body>
+<canvas id="c1" width="600" height=500></canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	// pen.moveTo(100,200);
+ //    pen.arcTo(100,100,200,100,50);
+ //    pen.stroke();
+
+     // pen.moveTo(100,200);
+     // pen.quadraticCurveTo(100,100,200,100);
+     // pen.arcTo(100,100,200,100,50);
+     // pen.stroke();
+   
+
+   pen.moveTo(100,200);
+
+   pen.bezierCurveTo(100,100,200,200,200,100);
+   // 贝赛尔曲线第一组控制点，第二组控制点，第三组结束坐标变换
+   pen.stroke();
+</script>
+</body>
+</html>

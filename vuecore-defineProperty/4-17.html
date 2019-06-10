@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script src="vue.js"></script>	
+<script type="text/javascript">
+	//vue原理
+	//Object.defineProperty()方法进行数据劫持
+	let obj={};
+	// 参数是obj,key,options
+	Object.defineProperty(obj,'name',{
+      get(){//表示获取值
+         return value
+      },
+      set(val){
+      	// 设置值，每次值改变的时候都会触动set方法
+      	// val就是改变后的值
+      	   console.log('值更新了');
+      	  value=val;
+      }
+	})
+	obj.name='aaa';
+</script>
+</body>
+</html>

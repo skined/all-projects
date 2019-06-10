@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>如何创建一个组件</title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div>这是一个全局注册的</div>
+     <div id="app">
+     	<parent></parent>	
+     </div>
+	<script src="vue.js"></script>
+    <script type="text/javascript">
+	//通过vue.extend('template')通过构造器拓展一个模板，然后注册，最后使用
+	var child=Vue.extend({
+		template:'<p>this is child component</p>'
+	});
+	//Vue.component('组件名',{})再注册之前会自动创建(调用vue.extend()方法)
+	//这是一个全局注册(兼创建与注册)
+	Vue.component("parent",{
+		//有时我们可以省略extend
+		 template:'<div>this is parent component------{{text}}<child-component></child-component></div>',//局部使用
+		 components:{
+		 	"child-component":child,//局部注册
+
+		 },
+		 //data:function
+		 data(){
+		 	return {text:'哈哈哈,我是组件内部的text'}
+		 },
+
+	});
+	var vm=new Vue({
+		el:'#app',
+		data:{}
+	});
+	
+
+</script>
+</body>
+</html>

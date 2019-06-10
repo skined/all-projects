@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+			list-style:none;
+		}
+		ul{
+			width:800px;
+			height:40px;
+			border:1px solid red;
+		}
+        li{
+        	width:80px;
+        	height:40px;
+        	background:lightblue;
+        	border:1px solid #ccc;
+        	float:left;
+        	color:#fff;
+        	line-height:40px;
+        	text-align:center;
+        }
+	</style>
+</head>
+<body>
+<ul id="list">
+	<li au="a">aaa</li>
+	<li au="b">bbb</li>
+	<li au="c">ccc</li>
+	<li au="d">ddd</li>
+	<li au="e">eee</li>
+	<li au="f">fff</li>
+	<li au="g">ggg</li>
+</ul>
+<audio id="au"></audio>
+<script type="text/javascript">
+	window.onload=function(){
+		var au=document.getElementById("au");
+	var ul=document.getElementById("list");
+	var li=ul.children;
+   
+
+   for(i=0;i<li.length;i++){
+   	li[i].onclick=function(){
+   		console.log(this);
+   		console.log(this.getAttribute("au"));
+   		  au.src="http://s8.qhimg.com/share/audio/piano1/"+this.getAttribute('au')+'4.mp3';
+   	
+   		au.play();
+
+   	}
+
+   }
+}
+
+</script>
+</body>
+</html>

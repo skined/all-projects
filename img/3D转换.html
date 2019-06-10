@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		.box{
+			width: 100px;
+			height: 100px;
+			/*flat 显示在2D空间*/
+			/*规定被嵌套的元素怎么在3D空间里显示*/
+			transform-style: preserve-3d;
+			/*规定3D元素的透视效果,元素于视图之间的距离*/
+			/*perspective: 300px;*/
+		}
+	    .box1{
+			width: 300px;
+			height: 300px;
+			background-color: green;
+			transform: translate3d(0px,0px,0px) scale3d(1,1,2);
+		}
+		.box2{
+			margin: 100px 100px;
+			border-radius: 50%;
+			transform-origin: top center;
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			transform: /*translate3d(100px,100px,0px)*/ rotateX(104deg) /*rotateY(0deg) rotateZ(50deg)*/;
+			/*rotate(x,y,z,0deg)
+			前三个值为1时为旋转*/
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="box1"></div>
+	<div class="box2"></div>
+</div>
+</body>
+</html>

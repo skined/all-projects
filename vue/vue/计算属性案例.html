@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+	<div id="app">
+		<p>{{totalPrice}}</p>
+		<button @click="count()">点击按钮</button>
+	</div>
+	<script src="vue.js"></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			name:{price:2,count:0},
+			names:{price:4,count:0},
+		},
+		methods:{
+			count:function(){
+				this.name.count++;
+				this.names.count++;
+			}
+		},
+		computed:{
+			totalPrice:function(){
+				return this.name.count*this.names.price+this.names.count*this.names.price;
+			}
+		}
+	})
+</script>
+</body>
+</html>

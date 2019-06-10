@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css"></style>
+</head>
+<body>
+<script src="jquery.js"></script>	
+<script type="text/javascript">
+	$.ajax({
+		'url':'1.php',//请求地址
+		 'type':'post',//请求方式
+		'data':{    //请求数据
+			'name':'小明',
+			'age':'123',
+		}, 
+        
+         'async':true,//默认方式为异步还是同步
+         'content-type':'application/x-www-form-urlencoded',//设置请求头告知后台发送数据的格式
+         'dataType':'json',//期待后台返回的数据类型，如果不指定，浏览器自己会解析
+         success:function(data){
+         	console.log(data);
+         },fail:function(err){
+             console.log(err);
+         },beforeSend:function(XMLHttpRequest){
+
+         }
+	})
+</script>
+</body>
+</html>

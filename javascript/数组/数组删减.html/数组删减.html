@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<script>
+	//join将元素转化为字符串连接在一起,如果不使用分隔符则默认使用逗号
+// var arr=["java","sc","ipt"];
+// console.log(arr.join(" "));
+//reverse将顺序颠倒,返回逆序的数组
+// console.log(arr.reverse());
+//concat合并两个数组,并且返回合并后的数组。
+// var arr1=["java","src","ipt"];
+// var arr2=["欢迎","来到","北工商","学院","学习"];
+// var b=(arr2.concat(arr1));
+// console.log(b.join(""));
+//slice切割数组,第一个参数为开始下标，第二个为结束下标位置(不包含该元素);
+// var arr2=["欢迎","来到","北工商","学习"];
+// console.log(arr2.slice(0,1));
+
+// var web=["老白","老白","老白","庞宇飞","岳博超"];
+// for(i=0;i<1;i++){
+// document.write('<p>'+web.slice(i,i+5)+'</p>');
+// }
+// document.write(web.splice(4));
+
+
+// 1.将一个数组 2,3,4,5,1,65,3,1进行反转 1,3,65,1,5,4,3,2;
+// var a=[2,3,4,5,1,65,3,1];
+// console.log(a.reverse());
+
+// 2.将一个数组［1，2，3，4，5］转换成字符串1-2-3-4-5;
+// var a=[1,2,3,4,5];
+// console.log(a.join('-'));
+// 3.自己建立2个数组，并将其合并；
+// var arr1=['今天','天气','不错'];
+// var arr2=['出去','转一转'];
+// console.log(arr1.concat(arr2));
+// 4.自己建立1个数组，删除第一个和最后一个元素；
+// var item=[1,2,3,4,5];
+// console.log(item.slice(1,4));
+// 5.将数组a中的元素倒序从插入b数组尾部
+// var a=["java","src","ipt"];
+// var b=["欢迎","来到","北工商","学习"];
+// console.log(a.reverse(" "));
+// console.log(b.concat(a));
+// 6.找出数组中的同时能被2和3整除的数，并求和。
+// A =[1,4,6,3,6,7,12,34,5,67,78，6,6,6];
+// var A=[1,4,6,3,6,7,12,34,5,67,78,6,6,6];
+// var num=0;
+// for(i=0;i<=A.length;i++){
+// 	if(i%2==0&&i%3==0){  
+// 	}
+// 	 num=num+i;
+// }
+// console.log(num);
+// 7.将30-100之间数放入数组，输出数组以及数组长度，
+// 再找出能同时被3和7整除的数，每5个一行显示。
+//(1)第一种方法
+ // var arr9 = new Array();
+ //    for(var i = 30;i <=100;i++){
+ //    	arr9.push(i+" ");
+ //    	if(i%3==0&&i%7==0){
+ //    		document.write(i+"<br>");
+ //    	}
+
+ //    }
+ //    document.write("数组:"+arr9);
+ //    document.write("数组长度:"+arr9.length);
+
+//(2)第二种方法
+// var arr9=[];
+//    for(i=30;i<=100;i++){
+// 	arr9.push(i);
+// 	if(i%3==0&&i%7==0){
+// 		document.write(i+" ");
+// 	}
+// }
+// document.write("原数组"+arr9);
+// document.write("数组长度"+arr9.length);
+//1.定义一个数组,将数组中的第五项替换成小仙女;
+// var arr=[1,2,3,4,5];
+// console.log(arr.splice(4,1,"小仙女"));
+// console.log(arr);
+// var arr=['a','b','c','d','e'];
+// console.log(arr.splice(4,1,"小仙女"));
+// console.log(arr);
+//2.定义一个数组arr=[100,35,57,35];
+//判断数组组中的元素是不是奇数如果不是奇数就删除;
+// var arr=[100,35,57,35];
+// for(i=0;i<arr.length;i++){
+//     if(arr[i]%2==0){
+//     	console.log("删除部分"+arr.splice(i,1));
+//     	i--;
+//     }
+// }
+// console.log("新数组"+arr);
+// 1. 定义一个数组，删除数组中的重复项
+// var arr = ['100','100','33','33'];
+// 结果  arr = ['100','33']
+
+// var arr=['100','100','33','33'];
+//i定义数组的长度，j定义数组的循环次数
+//如果下边没有j--则将会跳过数组中的元素
+// for(i=0;i<arr.length;i++){
+// 	for(j=i+1;j<arr.length;j++){
+// 		if(arr[i]==arr[j]){
+// 			arr.splice(i,1);
+// 			j--;
+// 		}
+// 	}
+// }
+// console.log(arr);
+
+//sort将当前的元素进行排序,并且返回排序后的数组
+//arr.sort(sortby)(数字也是按字母表排序，因此只能自定义函数顺序)
+//若不带参数调用sort(),将按字母表进行排序。
+//如果数组包含Undefined，将放到数组尾部
+// var arr=[87,82,56,23,25,3,1];
+// function fn(a,b){
+// 	return b-a;
+// }
+// arr.sort();
+// console.log(arr);
+//该函数要比较两个值，返回一个用来用于说明这两个值的相对顺序的数字
+//比较函数应该有两个参数a,b返回值如下：
+//若a<b,则排序中a应该出现在b之前
+//若a=b则返回0；
+//若a大于b,则返回一个大于0的值,a在b后面,如果返回一个小于0的值,
+//它们则不交换位置,sort将数组中的元素进行排序,并返回排序后的数组
+//arr.sort(sortby)(数字也是按照字母表排序,因此自定义函数顺序)
+//若不带参数调用sort(),将按照字母表排序。
+ 
+
+
+
+//三维数组其实就是for循环的嵌套,两层即为二维,三层即为三维，以此类推。
+//  var arr=[
+//    [0,["男装"]],
+//    [1,["女装"]],
+//    [2,["童装"]]
+// ]
+// for(x in arr){
+// 	for(y in arr[x]){
+// 		for(j in arr[x][y]){
+// 			console.log(arr[x][y][j]);
+// 		}
+// 	 }
+// }
+
+
+//二维数组循环遍历九九乘法表
+// var arr=[1,2,3,4,5,6,7,8,9];
+// for(i in arr){
+// 	for(j in arr){
+// 		if(j>i){
+// 			break;
+// 		}else{
+// 			document.write(arr[i]+"*"+arr[j]+" ");
+// 		}
+// 	}
+// 	document.write('<br>');
+// }
+// var arr=[2,5,4,23,75,21];
+// function fn(arr){
+// 	for(i=1;i<=arr.length;i++){
+// 	for(j=i+1;j<=arr.length;j++){
+// 		if(arr[i]>arr[j]){
+//            var num=arr[i];
+//            arr[i]=arr[j];
+//            arr[j]=num;
+
+// 		}
+// 	}	
+// 	}
+// 	return arr;
+// }
+//console.log(arr);
+
+
+</script>
+</body> 
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<div id="box">
+
+  <!--  文本节点	 -->
+
+</div>
+<body>
+<script type="text/javascript">
+	//nodeType属性返回指定节点的节点类型
+	//元素节点返回数字1
+	//属性节点返回数字2
+	//文本节点返回数字3
+	//注释节点返回数字8
+var box=document.getElementById('box');
+//找到box的节点类型
+console.log(box.nodeType);
+//找到box的子节点
+console.log(box.childNodes);
+//找到box的子节点的节点类型
+console.log(box.childNodes[0].nodeType);
+//找到box的注释节点
+console.log(box.childNodes[1]);
+//找到box注释节点的节点类型
+console.log(box.childNodes[1].nodeType);
+</script>
+</body>
+</html>

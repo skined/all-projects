@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:890px;
+			height:360px;
+			border:1px solid #ccc;
+		}
+		ul li{
+			width:200px;
+			height:320px;
+			border:1px solid #ccc;
+			list-style:none;
+			float:left;
+			margin:10px;
+		    text-align:center;
+		}
+		#shop{
+			width:400px;
+			height:400px;
+			border:1px solid #000;
+			font-size:18px;
+		}
+		#input1{
+			width:80px;
+			margin-left:10px;
+			clear:both;
+			float:left;
+		}
+		.num,.name,.price{
+			width:200px;
+		}
+		#shop p span{
+			width:127px;
+			height:30px;
+			text-align:center;
+			border:1px solid #ccc;
+			display:inline-block;
+          
+		}
+	</style>
+</head>
+<body>
+<div id="box">
+	<ul id="list">
+		<li>
+			<img src="img/jt.JPG" draggabl3='true'>
+			<p>精通JavaScript</p>
+			<p>￥40</p>
+		</li>
+		<li>
+			<img src="img/qw.JPG" draggable='true'>
+			<p>javascript权威指南</p>
+			<p>￥98</p>
+		</li>
+		<li>
+			<img src="img/bc.JPG" draggable='true'>
+			<p>javascript编程艺术</p>
+			<p>￥79</p>
+		</li>
+		<li>
+			<img src="img/jc.JPG" draggable='true'>
+			<p>javascript语言精粹</p>
+			<p>￥89</p>
+		</li>
+	</ul>
+</div>
+<div id="shop">
+	<p>
+		<span class="num">数量</span>
+		<span class="title">书名</span>
+		<span class="price">价格</span>
+	</p> 
+</div>
+<script type="text/javascript">
+	var li=document.getElementsByTagName('li');
+	var box=document.getElementById('box');
+	var shop=document.getElementById('shop');
+	for(i=0;i<li.length;i++){
+		li[i].ondragstart=function(ev){
+           var op=this.getElementsByTagName('p'); 
+           console.log(op);
+           ev.dataTransfer.setData('bookname',op[0].innerHTML);
+           ev.dataTransfer.setData('bookprice',op[1].innerHTML);  
+		}
+
+	}
+	shop.dragover=function(ev){
+		ev.preventDefault();
+	}
+	shop.ondrop=function(ev){
+       var name=ev.dataTransfer.getData('bookname');
+       var price=ev.dataTransfer.getData('bookprice');
+           console.log(name);
+           console.log(price);
+           //创建p标签和span标签
+           var  p=document.createElement('p');
+           //创建第一个span
+           var span1=document.createElement('span');
+           span1.innerHTML=1;
+           //创建第二个span
+           var span2=document.createElement('span');
+           span2.innerHTML=name;
+           //创建第三个span标签
+           var span3=document.createElement("span");
+           span3.innerHTML=price;
+           p.appendChild(span1);
+           p.appendChild(span2);
+           p.appendChild(span3);
+           oBox.appendChild(p);
+	}
+</script>
+</body>
+</html>

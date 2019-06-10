@@ -1,0 +1,70 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			paddding:0;
+		}
+		#box{
+			width:200px;
+			height:200px;
+			background:red;
+		}
+		p{
+           width:100px;
+           height:100px;
+           background:yellow;
+		}
+	</style>
+</head>
+<body>
+<div id="box">
+	<p id="p"></p>
+</div>
+<script type="text/javascript">
+	window.onload=function(){
+		var box=document.getElementById("box");
+		var  p=document.getElementById("p");
+		// box.addEventListener('click',function(ev){
+		// 	//box.style.background='blue';
+		// 	console.log(ev);   //其他主流浏览器
+		// 	//获取用户类型
+		// 	console.log(ev.type);
+		// 	//获取调用者
+		// 	console.log(ev.toElement);           
+		// 	//获取
+		// },false)
+	    p.addEventListener('click',function(){
+	    	//p.style.background='pink';
+	    },false)
+	    function fun(){
+	    	console.log("addEventListener的事件被触发了")
+	    }
+	    box.addEventListener('click',fun,false);
+	    box.removeEventListener('click',fun,false);   //移除事件
+	    //event对象怎么来的
+	    // 例如点击一个元素时，会执行一个函数；
+	    // 那么这个函数会接受一个参数就是event对象
+	    // event对象代表了当前对象
+	    // 用于存放事件的信息和状态或者对事件进行处理
+	    // 比如说:事件名称或调用者
+	    //ie8以下不支持event对象只能通过window.event找到event对象
+	    //console.log(window.event)  ie8以下浏览器
+      //  解决浏览器兼容性,如果有ev参数的话就赋值,
+//			没有ev参数时,就去找window.event
+			//var e = ev || window.event;
+//			获取事件类型/名称
+			//console.log(e.type);
+//			获取调用者
+//			console.log(e.toElement);
+//		   获取鼠标在在p标签的位置 X Y
+//         console.log(X:+'e.offsetX'+ Y:+'E.offsetY'); 
+		//removeEventListener()不能移除匿名添加的函数
+
+	}
+</script>
+</body>
+</html>

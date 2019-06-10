@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		
+	</style>
+</head>
+<body>
+	
+	<!-- ogg不支持ie浏览器 -->
+<!-- <audio src="" controls=""></audio> -->
+<video  controls="" autoplay="autoplay" >
+	<source src="Intermission-Walk-in_512kb.mp4" type="">
+</video>
+<script type="text/javascript">
+	window.onload=function(){
+		var video=document.querySelector('video');
+   // video.currentTime=60;
+     
+       // console.log(video.duration);
+       // console.log(video.muted);
+	//  setInterval(function(){
+	
+ //       console.log(video.currentTime);
+    
+	// },1000)
+	console.log(video.paused);//是否暂停
+	console.log(video.ended);//是否结束
+	console.log(video.error);//是否报错
+	console.log(video.currentSrc);//显示当前视频和音频的url
+	}
+	
+	
+	
+
+
+</script>
+</body>
+</html>

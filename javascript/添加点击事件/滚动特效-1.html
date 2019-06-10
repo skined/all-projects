@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		html,body,ul,ul>li{
+			width:100%;
+			height:100%;
+		}
+		ul>li{
+			font-size:80px;
+			line-height:500px;
+            text-align:center;
+            color:#000;  
+		}
+         ol{
+         	position:fixed; 
+         	top:100px;
+         	left:50px;
+         	list-style:none; 
+         }
+         ol>li{
+         	width:50px;
+         	height:50px;
+         	font-size:25px;
+         	color:#000;
+         	line-height:25px;
+         	text-align:center;   
+         	border:1px #ccc solid;
+         }
+      
+	</style>
+</head>
+<body>
+<ul>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ul>
+<ol>
+	<li>1</li>
+	<li>2</li>
+	<li>3</li>
+	<li>4</li>
+	<li>5</li>
+</ol>
+<script type="text/javascript">
+	var ulLis=document.querySelectorAll("ul>li");
+	var olLis=document.querySelectorAll("ol>li");
+	var colorArr=['red','orange','pink','skyblue','blue'];
+	for(i=0;i<ulLis.length;i++){
+		ulLis[i].style.background=colorArr[i];
+		olLis[i].style.background=colorArr[i];
+	}
+ 	var timer=null;
+ 	var timer1=null;
+ 	var timer2=null;
+	for(i=0;i<olLis.length;i++){
+		olLis[i].index=i;
+		console.log(i);
+		olLis[i].onclick=function(){
+		clearInterval(timer);
+		clearInterval(timer1);
+		clearInterval(timer2);
+              var end=this.index*document.documentElement.offsetHeight;
+              timer=setInterval(function(){
+              	  var leader=document.documentElement.scrollTop;
+              	  var step=(end-leader)/10;
+              	  step>0?step=Math.ceil(step):step=Math.floor(step);
+              	  if(end!=leader){
+              	  	document.documentElement.scrollTo(0,leader+step);
+              	  	leader+=step;
+              	  }
+              },15)
+		}
+	}
+	document.documentElement.onmousewheel=function(e){
+		clearInterval(timer);
+		clearInterval(timer1);
+		clearInterval(timer2);
+         if(e.wheelDelta<0){
+         	var end=Math.ceil(document.documentElement.scrollTop/document.documentElement.offsetHeight)*document.documentElement.offsetHeight;
+         	timer1=setInterval(function(){
+         		var leader=document.documentElement.scrollTop;
+         		var step=Math.ceil(end-leader)/10;
+         		step>0?step=Math.ceil(step):step=Math.floor(step);
+         		if(leader!=end){
+         			leader=leader+step;
+         			document.documentElement.scrollTo(0,leader);
+         		}else{
+         			clearInterval(timer1);
+         		}
+         	},15)
+         }
+         else if(e.wheelDelta>0){
+         	clearInterval(timer);
+            clearInterval(timer1);
+            clearInterval(timer2);
+         	var end=Math.floor(document.documentElement.scrollTop/document.documentElement.offsetHeight)*
+         	document.documentElement.offsetHeight;
+         	timer2=setInterval(function(){
+                  var leader=document.documentElement.scrollTop;
+                  var step=Math.ceil(end-leader)/10;
+                  step>0?step=Math.ceil(step):step=Math.floor(step);
+                  if(leader!=end){
+                  	leader+=step;
+                  	document.documentElement.scrollTo(0,leader);
+                  }else{
+                  	clearInterval(timer2);
+                  }
+         	},15)
+         }
+	}
+</script>
+</body>
+</html>

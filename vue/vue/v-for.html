@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<!-- v-for:便利树，对象等
+		迭代数据 -->
+	<!-- 常用的迭代的数据的类型:数字，数组，对象 ，字符串-->
+	<!-- 特定语法：alias in expression /别名 in 表达式 (要便利的对象)-->
+	<!-- item如果只写一个是值不是索引 -->
+	<!-- 对于数组来说，一个变量名字代表是数组的每一项的值 -->
+	<!-- 两个别名：一个代表索隐，一个代表值 -->
+	<!-- 多个别名用逗号分隔 -->
+	<!-- 对于对象来说：一个别名代表对象的值 ,两个别名是键和值，三个别名 键,值,索引-->
+	<!-- template:本身没有任何标签意义，一般充当一个父级元素 -->
+	<div id="app">
+		<ul >
+			<li v-for="(item,index) in arr">{{index}}-{{item}}</li>
+		</ul>
+		<ul >
+			<li v-for="(item,key,index) in obj">{{item}}-{{key}}-{{index}}</li>
+		</ul>
+		<ul >
+			<li v-for="(item) in list">{{item.animal}}</li>
+		</ul>
+		<template>
+			<ul>
+				<li  v-for="(item,index) in arr">{{item}}-{{index}}</li>
+			</ul>
+		</template>
+	</div>
+<script src="vue.js"></script>
+<script type="text/javascript">
+	var vm=new Vue({
+		el:'#app',
+		data:{
+			arr:['apple','orange','banana'],
+			obj:{
+				name:'Jack',
+				age:30,
+				job:'码农',
+			},//字典
+			list:[
+             {animal:'tiger'},
+             {animal:'lion'},
+             {animal:'snake'},
+			]
+		}
+	})
+</script>
+</body>
+</html>

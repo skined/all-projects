@@ -1,0 +1,9 @@
+<!--logs.wxml-->
+<view>
+ <text class='font'>绘画作品展示
+ </text>
+  <block wx:for='{{logs}}' >
+   <text class='font1'>{{item.name}}</text>
+   <image src='{{item.img}}' class='draw'></image>
+  </block>
+</view>

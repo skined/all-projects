@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#box{
+			width: 400px;
+			height: 240px;
+			border: 3px black solid;
+			overflow: hidden;
+			position: relative;
+		}
+		ul{
+			width: 1600px;
+			height: 240px;
+			list-style:none;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		li{
+			width: 400px;
+			height: 240px;
+			font-size: 40px;
+			text-align: center;
+			line-height: 240px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li style="background: pink;">1</li>
+			<li style="background: saddlebrown;">2</li>
+			<li style="background: skyblue;">3</li>
+			<li style="background: springgreen;">4</li>
+		</ul>
+	</div>
+	<button id="btn">开始滚动</button>
+	<script>
+		window.onload = function(){
+//			获取到ul
+			var _ul = document.getElementById('box').children[0];
+			console.log(_ul);
+//			获取到btn
+			var btn = document.getElementById('btn');
+//			获取到img的宽度
+			var imgWidth = document.getElementById('box').offsetWidth;
+			
+//			给开始按钮添加点击事件
+			btn.onclick = function(){
+//				定义一个计时器
+				var timer = setInterval(fun,10);
+				function fun(){
+//					判断第四张图是否完全展示了  
+//					当前left值等于前三张宽度总和的时候
+					if( _ul.offsetLeft <= -3 * imgWidth){
+//						将left值赋值为0
+						_ul.style.left = 0;
+					}else{
+//						每次调用获取当前的left值 , 进行减2 
+						var _left = _ul.offsetLeft;
+//						定义步数	  每次走2px
+						var step = 2;
+						_left = _left - step;
+						_ul.style.left = _left + 'px';
+					}
+					
+				}
+			}
+			
+			
+		}
+//		
+	</script>
+</body>
+</html>

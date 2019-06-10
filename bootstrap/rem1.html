@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"content='width=device-width,initial-scale=1.0'>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>rem布局</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+	<style type="text/css">
+        div{
+        	width:10rem;
+        	height:7.5rem;
+        	background:red;
+        	font-size:1.5rem;
+        }
+	</style>
+</head>
+<body >
+<div>今天天气不错</div>
+<script src="jquery.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>		
+<script type="text/javascript">
+  	     // 我们要监控设备的变化，如果是屏幕旋转事件或者是页面缩放事件
+  	     var docEle=document.documentElement;//页面的根元素
+  	    var watchResize='orientationchange' in window?'orientationchange':'resize';
+  	    realc=function(){
+  	    	console.log(docEle.clientWidth);
+  	    	console.log(1);
+  	    	//动态改变页面字体大小
+  	    	docEle.style.fontSize=20*(docEle.clientWidth)/320+'px';//自适应的核心 通用
+             // 20:是我人为规定的
+             // clientWidth：设备宽度
+             // 320设计稿宽度
+  	    }
+        window.addEventListener(watchResize,realc,false)
+  	    document.addEventListener('DOMContentLoaded',realc,false);
+  
+</script> 
+</body>
+</html>

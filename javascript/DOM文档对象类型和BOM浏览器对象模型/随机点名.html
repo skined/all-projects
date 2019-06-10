@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+	</style>
+</head>
+<p id="op"></p>
+<button onclick="start()">开始随机</button>
+<button onclick="cl()">就是你了</button>
+<body>
+<script type="text/javascript">
+var arr=['杨金宁','张旭','谢晖','肖剑','谢尚右'];
+
+function fn(){
+  var a=parseInt(Math.random()*(arr.length-1-0+1)+0);
+   var str='<p>'+arr[a]+'</p>';
+   op.innerHTML=str; 
+}
+function start(){
+	 timer=setInterval(fn,50);
+}
+function cl(){
+	clearInterval(timer);
+}	
+
+
+</script>
+</body>
+</html>

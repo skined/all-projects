@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<input type="text" name="" value="aaa">	
+<button>点击</button>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+	
+	$(function(){
+		console.log($('input').val());//value的取值用法
+		$('input').val('bbb');//val的取值用法,为空val('')
+
+		$('button').click(function(){
+			$(this).text('哈哈');//获取text
+			$(this).text()//获取text为空，text('');
+          
+		})
+	})
+</script>
+</body>
+</html>

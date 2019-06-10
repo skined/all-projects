@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>事件总结</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:500px;
+			height:300px;
+			background:gray;
+			font-size:35px;
+			color:#000;
+			line-height:300px;
+			text-align:center;
+			top:200px;
+			left:600px;   
+			position:absolute; 
+		}
+		div{
+			width:150px;
+			height:150px;
+			font-size:25px;
+			color:#fff;
+			line-height:150px;
+			text-align:center;   
+			top:0;
+			left:0;
+			float:left;
+			position:relative; 
+			
+		}
+	</style>
+</head>
+<body id="body">
+<div style="background:orange" id="div1">1</div>
+<div style="background:pink" id="div2">2</div>
+<div style="background:green" id="div3">3</div>
+<div id="box">
+回收站	
+</div>
+<script type="text/javascript">
+window.onload=function(){		
+//var div=document.getElementsByTagName("div")[0];
+var div1=document.getElementById("div1");
+var div2=document.getElementById("div2");
+var div3=document.getElementById("div3");
+var box=document.getElementById("box");
+var body=document.getElementById("body");
+//循环给盒子添加鼠标点击事件
+   div1.onmousedown=function(){
+   	   window.onmousemove=function(ev){
+             var e=ev || window.event;
+             // console.log(e);
+             div1.style.left=e.clientX-div1.offsetWidth/2+'px';
+             div1.style.top=e.clientY-div1.offsetHeight/2+'px';
+             div1Left=div1.offsetLeft+div1.offsetWidth;
+             div1Top=div1.offsetTop+div1.offsetHeight;
+             boxLeft=box.offsetLeft+box.offsetWidth;
+             boxTop=box.offsetTop+box.offsetHeight;
+              if(div1Left>=box.offsetLeft && div1Top>=box.offsetTop && div1.offsetLeft<=boxLeft && div1.offsetTop<=boxTop){
+                    body.removeChild(div1);
+                    console.log('进去了！！');          	   
+             }else{
+             	box.style.background='gray';
+             }
+   	  
+   	   }
+
+   }
+    div1.onmouseup=function(){
+   	   	         window.onmousemove=null;
+   	   	        
+   	     }
+   	             
+}
+//clientX clientY 显示鼠标相对于显示器窗口可视区域的X Y坐标
+//screenX screenY 显示鼠标相对于显示器窗口左上角的X Y坐标
+//offsetX offsetY 显示鼠标相对于事件源的X Y坐标
+//stopPraopagation()阻止事件的进一步传播  cancelBubble=true;  
+//preventDefault()阻止事件的默认动作   return false;
+</script>
+</body>
+</html>

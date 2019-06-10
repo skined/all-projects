@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    <style type="text/css">
+    	body{
+    		background:#000;
+    	}
+    	canvas{
+    		background:#fff;
+    	}
+    </style>
+</head>
+<body>
+<canvas id="c1" width="500" height="500">
+</canvas>
+<script type="text/javascript">
+	var oc=document.getElementById('c1');
+	var pen=oc.getContext('2d');
+	console.log(oc);
+	function draw(){
+		var time=new Date();
+		var oh=time.getHours();
+		var om=time.getMinutes();
+		var os=time.getSeconds();
+		var ohValue=(-90+oh*30+om/2)*Math.PI/180;
+		var omVaue=(-90+6*om)*Math.PI/180;
+		var osValue=(-90+6*os)*Math.PI/180;
+		//画小刻度
+		pen.beginPath();
+		for(i=0;i<60;i++){
+			pen.moveTo(200,200);
+			pen.strokeStyle='gold';
+			pen.arc(200,200,150,i*6*Math.PI/180,(i+1)*6*Math.PI/180,false);
+		}
+		pen.closePath();
+		pen.stroke();
+		//画小圆
+		pen.beginPath();
+		pen.moveTo(200,200);
+		pen.fillStyle='aqua';
+		pen.arc(200,200,150*19/20,360*Math.PI/180,false);
+		pen.closePath();
+		pen.fill();
+		//画大刻度
+		pen.beginPath();
+		for(j=0;j<12;j++){
+			pen.moveTo(200,200);
+			pen.arc(200,200,150,j*30*Math.PI/180,(j+1)*30*Math.PI,false);
+		}
+		pen.closePath();
+		pen.stroke();
+		//画大圆
+		pen.beginPath();
+		pen.moveTo(200,200);
+		pen.fillStyle='pink';
+		pen.arc(200,200,150*18/20,360*Math.PI/180,false);
+		pen.closePath();
+		pen.fill();
+		//画时针
+		pen.beginPath();
+		pen.lineWidth=3;
+		pen.strokeStyle='red';
+		pen.moveTo(200,200);
+		pen.arc(200,200,150*1/2,ohValue,ohValue,false);
+		pen.closePath();
+		pen.stroke();
+        //画分针
+        pen.beginPath();
+        pen.moveTo(200,200);
+        pen.lineWidth=2;
+        pen.strokeStyle='#000';
+        pen.arc(200,200,150*15/20,omVaue,omVaue,false);
+        pen.closePath();
+        pen.stroke();
+        //画秒针
+        pen.beginPath();
+        pen.lineWidth=1;
+        pen.strokeStyle='yellow';
+        pen.moveTo(200,200);
+        pen.arc(200,200,150*18/20,osValue,osValue,false);
+        pen.closePath();
+        pen.stroke();
+        //画数字
+        var hou=[3,4,5,6,7,8,9,10,11,12,1,2];
+        hou.forEach(function(num,i){
+              var rad=2*Math.PI/12*i;
+              var x=Math.cos(rad)*120;
+              var y=Math.sin(rad)*120;
+              pen.font=('18px sans-self bold ');
+              pen.textalign='center';
+              pen.textbasline='middle';
+              pen.fillStyle='#000fff';
+              pen.fillText(num,x+200,y+200);
+        })
+    }
+    draw();
+    setInterval(draw,1000);
+</script>
+</body>
+</html>

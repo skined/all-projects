@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style type="text/css">
+   *{
+    margin:0;
+    padding:0;
+   }
+   ul{
+    list-style:none; 
+   }
+    img{
+      vertical-align: top;
+    }
+    img{
+      width:420px;
+      height:200px;
+    }
+    .box{
+      width:420px;
+      height:200px;
+      border:1px #000 solid;
+      margin:100px auto;
+      padding:5px;
+    }
+    .inner{
+      width:420px;
+      height:200px;
+      background:pink;
+      position:relative;
+      overflow:hidden;  
+    }
+    .inner ul{
+      width:1000%;
+      position:absolute; 
+    /*  float:left;*/
+      top:0;
+      left:0;
+    }
+    .inner li{
+      width:420px;
+      height:200px;
+      float:left;
+    }
+     .square{
+      position:absolute;
+      right:10px;
+      bottom:10px; 
+     }
+    .square span{
+      display:inline-block;
+      width:16px;
+      height:16px;
+      background:#fff;
+      line-height:16px;
+      text-align:center;
+      cursor:pointer;
+    }
+    .square span .current{
+      background:orangered;
+      color:#fff;
+    }
+  </style>
+</head>
+<body>
+<div id="box" class="box">
+  <div class="inner">
+    <ul>
+      <li><img src="../添加点击事件/sz1.JPG" alt="" /></li>
+      <li><img src="../添加点击事件/sz2.JPG" alt="" /></li>
+      <li><img src="../添加点击事件/sz3.JPG" alt="" /></li>
+      <li><img src="../添加点击事件/ani.JPG" alt="" /></li>
+    </ul>
+    <div class="square">
+      <span class="current">1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>4</span>
+    </div>
+  </div>
+</div>
+<script src="animate1.js"></script>
+<script type="text/javascript">
+//ul的offsetLeft是依据inner的盒子计算的  
+//鼠标经过那个序号那个序号亮起
+  var squares=document.querySelectorAll(".square>span");
+  for(i=0;i<squares.length;i++){
+    squares[i].index=i;
+    console.log(i);
+    //鼠标表移入事件             
+     squares[i].onmouseover=function(){
+  for(j=0;j<squares.length;j++){
+    squares[j].className='';
+  }
+  this.className='current';
+  //让ul滚动起来
+  var ul=document.querySelector('ul');
+  var li=ul.children[0];
+  var wid=li.offsetWidth;
+  //计算end
+  var end=-this.index*wid;
+  animate1(ul,end);
+  }          
+  }
+</script>
+</body>
+</html>

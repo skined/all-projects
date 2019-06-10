@@ -1,0 +1,182 @@
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	/*background:#ccc;*/
+}
+.box{
+	width:1349px;
+	height:630px;
+	margin:0 auto;
+	position:relative;
+}
+.left{
+	width:400px;
+	height:630px;
+	background:#424F63;
+	left:0;
+	position:absolute;
+}
+
+h1{
+	display:inline-block;
+	color:white;
+	text-align:center;
+	background:transparent;
+}
+
+.title{
+	width:400px;
+	height:120px;
+	background:#FF6B6B;
+	top:0;
+	left:0;
+	position:absolute;
+}
+.title>img{
+	margin-top:32px;
+	margin-left:101px;
+}
+.one1{
+	width:400px;
+	height:85px;
+	border:1px solid #3D4A5E;
+	margin-top:120px;
+	position:absolute;
+	background:#424F63;
+	font-size:18px;
+	color:#fff;
+	line-height:85px;
+	padding-left:30px;
+
+}
+.one1:hover{
+	background:#242C39;
+}
+#two{
+	margin-top:207px;
+}
+#three{
+	margin-top:293px;
+}
+#four{
+	margin-top:379px;
+}
+#five{
+	margin-top:465px;
+}
+#six{
+	margin-top:551px;
+}
+span{
+	display:inline-block;
+	float:right;
+	margin-right:60px;
+	cursor:pointer;
+}
+.right{
+	width:949px;
+	height:630px;
+	background:#f7f7f7;
+    right:0;
+    position:absolute;
+}
+.nav{
+	width:949px;
+	height:120px;
+	border:1px solid #D4D2D4;
+	background:#FFFFFF;
+	top:0;
+	right:0;
+	position:absolute;
+}
+.circle{
+	width:150px;
+	height:120px;
+	border-radius:10px;
+	border:1px solid #EBEBEB;
+	font-size:30px;
+	line-height:120px;
+	text-align:center;
+}
+.clo{
+	display:inline-block;
+	float:left;
+	margin-left:170px;
+	margin-top:-75px;
+	font-size:23px;
+	font-weight:350;
+	color:#7A7676;
+}
+.icon {
+	margin-top:-83px;
+	float:right;
+	margin-right:10px;
+
+}
+.icon>img{
+	width:100%;
+	height:100%;
+}
+.nav-2{
+	width:949px;
+	height:50px;
+	border:1px solid #ccc;
+	position:absolute;
+	left:0;
+	top:120px;
+	background:#FFFFFF;
+	border:1px solid #E1E1E1;
+}
+.nav-2>p{
+   margin-top:10px;
+   margin-left:27px;
+   font-weight:bold;
+   color:#7A7676;
+}
+.inp{
+   width:949px;
+   height:60px;
+   background:#fff;
+   left:0;
+   top:171px;
+   position:absolute;
+}
+.inps{
+	width:300px;
+	height:40px;
+	border:1px solid #DFDFDF;
+	color:#9D9BA8;
+	font-size:18px;
+	padding-left:10px;
+	margin-left:27px;
+}
+.search{
+	width:80px;
+	height:40px;
+	background:#5BC0DE;
+	border-radius:5px;
+	border:none;
+	color:#fff;
+	font-size:18px;
+	line-height:40px;
+	text-align:center;
+}
+.form{
+	width:940px;
+	height:410px;
+	background:#fff;
+	left:0;
+	top:230px;
+	position:absolute;
+}
+table{
+	width:935px;
+	height:410px;
+	border:1px solid #ccc;
+	color:#858799;
+	padding-left:20px;
+}
+tr,td{
+	border:1px solid #ccc;
+}

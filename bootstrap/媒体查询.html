@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport",content='width=device-width,initial-scale=1.0,maxium-scale=1.0,user-scalable=0'>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.css">
+	<style type="text/css">
+	 .ads{
+		width:100px;
+		height:100px;
+		border:1px solid #000;
+	 }
+	/*在屏幕分辨率小于480px的时候会隐藏，隐藏效果会生效*/
+      @media screen and(max-width:480px){
+         .ads{
+         	display:none;
+         }
+      }
+      /*媒体查询组合使用*/
+      @media screen and (min-width:480px)and (max-width:900px){
+      	  .ads{
+      	  	border-radius:50%; 
+      	  }
+      }
+      /*当屏幕分辨率大于900px的时候会生效*/
+      @media screen and (min-width:900px){
+      	.ads{
+      		background:red;
+      	}
+      }
+      #nav{
+      	list-style-type:none;
+      }
+      #nav li a{
+      	color:green;
+      	text-decoration:none;
+      	padding:3px;
+      	display:block;
+      }
+      #nav{
+      	width:35%;
+      	float:left;
+      }
+      @media screen and(max-width:699px) and(min-width:520px),(min-width:1151px){
+      	#nav li a{
+      		padding-left:30px;
+      		background:url(email-icon.png) left center no-repeat;
+      	}
+
+      }
+      @media screen and(max-width:1000px) and(min-width:700px){
+      	#nav li a:before{
+      		content:'Email';
+      		font-style:italic;
+      	    color:#666666;
+      	}
+      }
+      @media screen and(min-width:1001px){
+      	#nav li a:after{
+      		content:'('attr(data-email)')';
+      		font-size:12px;
+      		font-style:italic;
+      		color:#666666;
+      	}
+      }
+	</style>
+</head>
+<!-- media媒体类型and（媒体特性）{你的样式} -->
+<!-- and还有not -->
+<!-- only用来指定某种特定的媒体类型 -->
+<!-- 可以不排除不支持媒体查询的某种设备 -->
+<!-- content属性值 ：-->
+<!-- nameviewport:视门 -->
+<!-- content='width=decide-width'设备的宽度和高度一样 -->
+<!-- initial-scale:初始化缩放比例 -->
+<!-- maximum-scale=1.0:可视区域的缩放级别 -->
+<body >
+	  <!--  <div class="ads"></div> -->
+	  <h1>重置浏览器窗口，查看效果！</h1>
+	  <ul id="nav">
+	  	<li><a data-email='johndoe@example.com' href="mailto:johndoe@example.com">John Doe</a></li>
+	  	<li><a data-email='marymoe@example.com' href="mailto:marymoe@example.com">Mary Moe</a></li>
+	  	<li><a data-email="amandapand@example.com" href="mailto:amandapanda@example.com">Amanda Panda</a></li>
+	  </ul>
+	  <div id="main">
+	  	<p>这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！这里是很多的文本！！！</p>
+	  </div>
+<script src="jquery.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.js"></script>		
+<script type="text/javascript">
+</script> 
+</body>
+</html>

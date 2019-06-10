@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	
+	<input type="text" value="aaa">
+	<input type="button" value="点击">
+	<script src="jquery.js"></script>
+<script type="text/javascript">
+  
+	$(function(){
+	$('input:last').click(function(){
+		$('input:first').val('bbb');
+	})
+	$('input:eq(1)').click(function(){
+		//第几个
+		$('input:eq(0)').val('bbb');
+	})
+	$('input[type=button]').click(function(
+		){
+		//选中属性为按钮的input框
+		$('input[type=text]').val('ccc');
+	})
+	$('input[type=text]').focus(function(){
+		$(this).val('聚焦');
+	})
+	$('input[type=text]').blur(function(){
+		$('input[type=text]').val('失焦');
+	})
+	})
+	//事件种类同原生js的事件种类，但是要注意没有on
+</script>
+</body>
+</html>

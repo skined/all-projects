@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#text1::-webkit-input-placeholder{
+			font-size:16px;
+			color:gold;
+		}
+	</style>
+</head>
+<body>
+<input type="text" name="" id="text1" placeholder="请输入姓名">
+<input type="" name="" id="" placeholder="请输入性别" autofocus="">
+<div>
+	div
+</div>
+<input type="text" name="" id="">
+<input type="text" name="" id="all">
+<input type="button" value="全选" id="btn">
+<a href="http://www.baidu.com">百度</a>
+<script type="text/javascript">
+	//placeholder请输入用户提示信息
+	// 焦点:使浏览器能够接受区分用户输入的对象
+	// 当一个元素有焦点时他就可以接受用户的输入操作
+	// 1.点击
+	// 2.tab
+	// 3.js
+	// 注意:不是所有元素都能接受焦点的,能够响应用户操作的元素
+	// 什么是相应用户操作,比如a标签 input 输入框 按钮 下拉框
+    //关于placeholder的样式设置
+    // ::-webkit-input-placeholder{}    /* 使用webkit内核的浏览器 */
+    // :-moz-placeholder{}                  /* Firefox版本4-18 */
+    // ::-moz-placeholder{}                  /* Firefox版本19+ */
+    // :-ms-input-placeholder{}            IE浏览器 
+    // 注意:冒号前写对应的text/input元素
+
+	var text=document.getElementById('text1');
+
+    text.focus=function(){
+    	if(this.value=='请输入内容'){
+    	    this.value='';
+    }
+    }
+    text.onBlur=function(){
+    	console.log(1);
+    }
+    text.focus()    //自动获取焦点
+    text.blur()    //失去焦点
+    text.select()   //全选用户输入的内容
+    //autofocus //自动获取焦点
+    var btn=document.getElementById('btn');
+    btn.onclick=function(){
+    	document.getElementById('all').select();
+    }
+</script>
+</body>
+</html>

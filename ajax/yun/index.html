@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div class="box">
+ <div class="left">
+
+	<div class="title">
+		<img src="images/logo.PNG" >
+	</div>
+	<div id="one" class="one1">
+	首页概览
+	<span>+</span>
+</div>
+	<div id="two" class="one1">我的资源池
+	<span>+</span>	
+	 </div>
+	->
+	<div id="three" class="one1">资源管理
+	<span id="sp">+</span>
+	<span>资源视图</span>
+	<span>业务视图</span>
+    </div>
+	<div id="four" class="one1">云服务
+	<span id="sp">+</span>
+   </div>
+	<div id="five" class="one1">Openstack管理
+	<span id="sp">+</span>	
+	</div>
+	<div id="six" class="one1">运维工具
+	<span id="sp">+</span>	
+	</div>	
+</div>
+<div class="right">
+	<div class="nav">
+		<div class="circle">☰</div>
+	  <span class="clo">Cloud- 云计算管理平台</span>
+	  <img src="images/icon.PNG" class="icon">
+	</div>
+	<div class="nav-2">
+		<p>功能管理</p>
+	</div>
+	<div class="inp">	
+		<input type="text" value="请输入搜索内容" name="" class="inps" id="inps">
+		<input type="button" class="search" id="search" value="搜索" name="">
+	</div>
+	<div class="form">
+		<table cellspacing="0" cellpadding="10px">
+		<tr>
+			<th>功能编号</th>
+			<th>名称</th>
+			<th>链接地址</th>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+		<tr>
+			<td>1201040000</td>
+			<td>虚拟主机列表</td>
+			<td>rm/vm/list</td>
+		</tr>
+	</table>
+	</div>
+</div>	
+</div>
+<script src="jquery.js"></script>
+<script type="text/javascript">
+  $(function(){
+  	$("#sp").click(function(){
+  		$(this).css('fontSize','18px');
+  	},function(){
+  		$(this).css('fontSize','15px');
+  	})
+  	$("span").not($("#sp").css("display","none"));
+  	$("#sp").click(function(){
+  		$("span").not($("#sp").css("display",'none'));
+         $(this).silbings().css("display","block");
+  	})
+  })
+</script>     
+</body>
+</html>
